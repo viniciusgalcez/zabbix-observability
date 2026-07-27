@@ -1,0 +1,25 @@
+{
+  "descricao": "Correlacao #4: dependencia de trigger switch->AP. Os triggers de down do AP (ICMP e SNMP) passam a depender do 'Cisco IOS: Unavailable by ICMP ping' do switch pai. Quando o switch cai, os alarmes dos APs abaixo ficam suprimidos.",
+  "data": "2026-07-27",
+  "topologia_fonte": "descricoes de porta do switch (net.if.status / Operational status) - autoritativo",
+  "switch_pai": { "host": "BGP-EXP-SW03", "hostid": "10775", "trigger_pai": "26387", "trigger_desc": "Cisco IOS: Unavailable by ICMP ping" },
+  "metodo_reverter": "Para cada triggerid filho, trigger.update com 'dependencies': [] (estado original, todos vazios).",
+  "estado_original": "todos os 28 triggers filhos estavam com dependencies: []",
+  "dependencias_criadas": [
+    { "ap": "BGP-EXP-AP11", "porta": "gi1/0/1", "icmp": "37657", "snmp": "40038" },
+    { "ap": "BGP-EXP-AP12", "porta": "gi1/0/2", "icmp": "37660", "snmp": "39904" },
+    { "ap": "BGP-EXP-AP13", "porta": "gi1/0/3", "icmp": "37663", "snmp": "39954" },
+    { "ap": "BGP-EXP-AP14", "porta": "gi1/0/4", "icmp": "37666", "snmp": "40006" },
+    { "ap": "BGP-EXP-AP15", "porta": "gi1/0/5", "icmp": "37669", "snmp": "40060" },
+    { "ap": "BGP-EXP-AP16", "porta": "gi1/0/6", "icmp": "37672", "snmp": "39990" },
+    { "ap": "BGP-EXP-AP17", "porta": "gi1/0/7", "icmp": "37675", "snmp": "39962" },
+    { "ap": "BGP-EXP-AP18", "porta": "gi1/0/8", "icmp": "37678", "snmp": "39978" },
+    { "ap": "BGP-EXP-AP19", "porta": "gi1/0/9", "icmp": "37681", "snmp": "39928" },
+    { "ap": "BGP-EXP-AP20", "porta": "gi1/0/10", "icmp": "37684", "snmp": "40026" },
+    { "ap": "BGP-EXP-AP21", "porta": "gi1/0/11", "icmp": "37687", "snmp": "40040" },
+    { "ap": "BGP-EXP-AP22", "porta": "gi1/0/12", "icmp": "37690", "snmp": "40036" },
+    { "ap": "BGP-EXP-AP23", "porta": "gi1/0/13", "icmp": "37693", "snmp": "39944" },
+    { "ap": "BGP-EXP-AP24", "porta": "gi1/0/14", "icmp": "37696", "snmp": "40068" }
+  ],
+  "pendente": "BGP-EXP-SW02 e demais switches do estado: aplicar apos obter as descricoes de porta (SW02 nao retornou descricoes nesta rodada)."
+}
