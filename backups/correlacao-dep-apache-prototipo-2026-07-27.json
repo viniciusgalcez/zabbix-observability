@@ -1,0 +1,13 @@
+{
+  "descricao": "Correlacao #1 para Apache (triggers de LLD). Como o trigger descoberto nao aceita dependencia direta, a dependencia foi adicionada no PROTOTIPO de trigger (triggerprototype.update), a nivel de host. Propaga para os triggers descobertos no ciclo de LLD.",
+  "data": "2026-07-27",
+  "aprendizado": "Trigger descoberto por LLD => editar dependencia no PROTOTIPO, nao no trigger. A API aceita dependencia host-level no prototipo mesmo herdado de template (templateid 23040).",
+  "metodo_reverter": "triggerprototype.update em cada id abaixo com 'dependencies': [] (estado original vazio).",
+  "prototipos_alterados": [
+    { "prototipo": "46235", "desc": "Apache: Service is down", "host": "SCL-SRV-VAPP12", "depende_de": "39152 (Windows: Zabbix agent is not available)", "antes": [] },
+    { "prototipo": "46237", "desc": "Apache: Process is not running", "host": "SCL-SRV-VAPP12", "depende_de": "39152", "antes": [] },
+    { "prototipo": "48084", "desc": "Apache: Service is down", "host": "BGP-SRV-VAPP04", "depende_de": "39118 (Windows: Zabbix agent is not available)", "antes": [] },
+    { "prototipo": "48086", "desc": "Apache: Process is not running", "host": "BGP-SRV-VAPP04", "depende_de": "39118", "antes": [] }
+  ],
+  "observacao": "Os prototipos 'Failed to fetch status page' e 'Service response time is too high' ja dependiam de 'Service is down' (definicao do template), entao ficam suprimidos por transitividade. SCL-SRV-VAPP12 propagou imediato; BGP-SRV-VAPP04 propaga no proximo ciclo de LLD."
+}
