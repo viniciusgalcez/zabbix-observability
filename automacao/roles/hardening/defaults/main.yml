@@ -1,0 +1,45 @@
+---
+# SSH
+hardening_ssh_port: 22
+hardening_ssh_max_auth_tries: 3
+hardening_ssh_max_sessions: 10
+hardening_ssh_client_alive_interval: 300
+hardening_ssh_client_alive_count_max: 3
+hardening_ssh_password_authentication: "yes"
+hardening_ssh_key_type: ed25519
+hardening_ssh_key_path: "{{ inventory_dir }}/../files/ssh/capricornio_ed25519"
+hardening_ssh_authorized_user: "{{ ansible_user }}"
+hardening_ssh_authorized_group: "{{ hardening_ssh_authorized_user }}"
+
+# UFW
+hardening_ufw_default_incoming: deny
+hardening_ufw_default_outgoing: allow
+hardening_ufw_logging: "on"
+hardening_ufw_rules: []  # sobrescrito por group_vars
+
+# sysctl
+hardening_sysctl_params:
+  net.ipv4.tcp_syncookies: 1
+  net.ipv4.conf.all.rp_filter: 1
+  net.ipv4.conf.default.rp_filter: 1
+  net.ipv4.conf.all.accept_redirects: 0
+  net.ipv4.conf.default.accept_redirects: 0
+  net.ipv4.conf.all.send_redirects: 0
+  net.ipv4.conf.default.send_redirects: 0
+  net.ipv4.conf.all.accept_source_route: 0
+  net.ipv4.conf.default.accept_source_route: 0
+  net.ipv4.icmp_echo_ignore_broadcasts: 1
+  net.ipv4.icmp_ignore_bogus_error_responses: 1
+  net.ipv4.tcp_fin_timeout: 30
+  net.ipv4.tcp_keepalive_time: 1200
+  net.ipv4.tcp_max_syn_backlog: 4096
+  net.core.somaxconn: 65535
+  net.core.netdev_max_backlog: 5000
+  vm.swappiness: 10
+  vm.dirty_ratio: 60
+  vm.dirty_background_ratio: 2
+  kernel.randomize_va_space: 2
+  kernel.dmesg_restrict: 1
+  kernel.kptr_restrict: 2
+  fs.protected_hardlinks: 1
+  fs.protected_symlinks: 1

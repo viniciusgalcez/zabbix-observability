@@ -1,0 +1,160 @@
+---
+# Atribui cada host ao proxy correto com base no segundo octeto do IP:
+#   172.16.x.x → SCL → SCL-SRV-V08
+#   172.17.x.x → SPO → SPO-SRV-V04
+#   172.18.x.x → BGP → BGP-SRV-V08
+#
+# Hosts em 127.0.0.1 (Zabbix server self-monitoring) são ignorados.
+# Hosts em subnets sem mapeamento (172.19.x.x, etc.) são listados no sumário.
+#
+# ansible-playbook playbooks/zabbix_atribuir_proxies.yml
+
+- name: Atribuir hosts aos proxies corretos por site
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    site_proxy_map:
+      "16": "SCL-SRV-V08"
+      "17": "SPO-SRV-V04"
+      "18": "BGP-SRV-V08"
+
+  tasks:
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    - name: Buscar todos os proxies cadastrados
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "proxy.get"
+          params:
+            output: [ "proxyid", "name" ]
+          auth: "{{ _token }}"
+          id: 2
+      register: _proxies
+
+    - name: Construir mapa nome → proxyid
+      ansible.builtin.set_fact:
+        _proxy_map: "{{ _proxies.json.result | items2dict(key_name='name',
+          value_name='proxyid') }}"
+
+    - name: Verificar se todos os proxies esperados existem no Zabbix
+      ansible.builtin.assert:
+        that: item in _proxy_map
+        fail_msg: "Proxy '{{ item }}' não encontrado no Zabbix — verifique o nome
+          cadastrado em Administration → Proxies"
+      loop: "{{ site_proxy_map.values() | list | unique }}"
+
+    - name: Buscar todos os hosts habilitados com suas interfaces
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: [ "hostid", "host", "monitored_by", "proxyid" ]
+            selectInterfaces: [ "ip" ]
+            filter:
+              status: 0
+          auth: "{{ _token }}"
+          id: 3
+      register: _hosts
+
+    - name: Atribuir proxy por subnet (segundo octeto do IP)
+      vars:
+        _ip: "{{ (item.interfaces | first).ip }}"
+        _oct2: "{{ _ip.split('.')[1] }}"
+        _proxy_name: "{{ site_proxy_map[_oct2] | default('') }}"
+        _proxy_id: "{{ _proxy_map[_proxy_name] | default('') }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.hostid }}"
+            monitored_by: "1"
+            proxyid: "{{ _proxy_id }}"
+          auth: "{{ _token }}"
+          id: 4
+      register: _update
+      failed_when: _update.json.error is defined
+      when:
+        - _ip != '127.0.0.1'
+        - _proxy_name != ''
+        - _proxy_id != ''
+      loop: "{{ _hosts.json.result }}"
+      loop_control:
+        label: >-
+          {{ item.host }} ({{ (item.interfaces | first).ip }}) → {{
+          site_proxy_map[((item.interfaces | first).ip).split('.')[1]] |
+          default('sem mapeamento') }}
+
+    - name: Listar hosts ignorados (sem proxy mapeado para o subnet)
+      ansible.builtin.debug:
+        msg: >-
+          [IGNORADO] {{ item.host }} — IP {{ (item.interfaces | first).ip }}
+          (subnet 172.{{ ((item.interfaces | first).ip).split('.')[1] }}.x.x sem
+          proxy definido)
+      vars:
+        _ip: "{{ (item.interfaces | first).ip }}"
+        _oct2: "{{ _ip.split('.')[1] }}"
+      when:
+        - _ip != '127.0.0.1'
+        - site_proxy_map[_oct2] is not defined
+      loop: "{{ _hosts.json.result }}"
+      loop_control:
+        label: "{{ item.host }}"
+
+    - name: Sumário
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Atribuição de proxies concluída
+          ══════════════════════════════════════════════════════════════
+          Proxies configurados:
+            SCL (172.16.x.x) → SCL-SRV-V08
+            SPO (172.17.x.x) → SPO-SRV-V04
+            BGP (172.18.x.x) → BGP-SRV-V08
+          ══════════════════════════════════════════════════════════════
+          Verifique em: Data collection → Hosts → coluna Proxy
+
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          auth: "{{ _token }}"
+          id: 99

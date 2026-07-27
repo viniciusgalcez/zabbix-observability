@@ -1,0 +1,16 @@
+---
+- name: SSH hardening
+  ansible.builtin.import_tasks: ssh.yml
+  tags: [hardening, ssh]
+
+- name: Firewall UFW
+  ansible.builtin.import_tasks: firewall.yml
+  tags: [hardening, firewall]
+
+- name: sysctl parameters
+  ansible.builtin.import_tasks: sysctl.yml
+  tags: [hardening, sysctl]
+
+- name: Unattended-upgrades
+  ansible.builtin.import_tasks: unattended_upgrades.yml
+  tags: [hardening, upgrades]

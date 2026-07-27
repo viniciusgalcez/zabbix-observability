@@ -1,0 +1,389 @@
+---
+# Cria e classifica todos os hosts UPS no Zabbix.
+#
+# Para hosts já existentes (criados como IP bruto em "Em Classificação"),
+# atualiza nome, grupo, template e interface SNMP.
+# Para IPs ainda não cadastrados, cria novos hosts.
+#
+# SNMP: SNMPv2c — community Mizv.tN4=2TN2X*
+#
+# Templates aplicados:
+#   APC Smart-UPS  → "APC UPS by SNMP"
+#   Phoenixtec UPS → (sem template — importar "Phoenixtec UPS by SNMP" da comunidade Zabbix)
+#
+# ansible-playbook playbooks/zabbix_criar_ups.yml
+
+- name: Criar e classificar hosts UPS no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    snmp_community: "Mizv.tN4=2TN2X*"
+
+    ups_inventory:
+      # ── SCL — São Carlos ────────────────────────────────────────────────
+      - ip: "172.16.23.201"
+        name: "SCL-TEC1-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 1"
+        site: "SCL"
+      - ip: "172.16.23.202"
+        name: "SCL-TEC1-UPS02"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 1"
+        site: "SCL"
+      - ip: "172.16.23.203"
+        name: "SCL-TIN-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tingimento"
+        site: "SCL"
+      - ip: "172.16.23.204"
+        name: "SCL-TEC2-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 2"
+        site: "SCL"
+      - ip: "172.16.23.205"
+        name: "SCL-TEC2-UPS02"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 2"
+        site: "SCL"
+      - ip: "172.16.23.206"
+        name: "SCL-EXP-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Expedição"
+        site: "SCL"
+      - ip: "172.16.23.207"
+        name: "SCL-ACA-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Acabamento"
+        site: "SCL"
+      - ip: "172.16.23.208"
+        name: "SCL-TEC1-UPS04"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 1"
+        site: "SCL"
+      - ip: "172.16.23.209"
+        name: "SCL-TEC1-UPS03"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tecelagem 1"
+        site: "SCL"
+      - ip: "172.16.23.210"
+        name: "SCL-CLD-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Caldeira"
+        site: "SCL"
+      - ip: "172.16.23.211"
+        name: "SCL-TIN-UPS02"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Tingimento"
+        site: "SCL"
+      - ip: "172.16.23.212"
+        name: "SCL-MAN-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Manutenção"
+        site: "SCL"
+      - ip: "172.16.23.213"
+        name: "SCL-URD-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Urdição"
+        site: "SCL"
+      - ip: "172.16.23.214"
+        name: "SCL-DRH-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos RH"
+        site: "SCL"
+      - ip: "172.16.23.215"
+        name: "SCL-ALM-UPS01"
+        model: "Phoenixtec UPS"
+        location: "São Carlos Almoxarifado"
+        site: "SCL"
+      - ip: "172.16.23.220"
+        name: "SCL-CPD-UPS01"
+        model: "APC Smart-UPS 1500"
+        location: "São Carlos CPD"
+        site: "SCL"
+      # ── SPO — São Paulo ─────────────────────────────────────────────────
+      - ip: "172.17.23.220"
+        name: "SPO-CPD-UPS01"
+        model: "APC Smart-UPS SRC 6000"
+        location: "São Paulo CPD"
+        site: "SPO"
+      # ── BGP — Bragança Paulista ─────────────────────────────────────────
+      - ip: "172.18.23.201"
+        name: "BGP-EXP-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Expedição"
+        site: "BGP"
+      - ip: "172.18.23.202"
+        name: "BGP-ADM-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Administrativo"
+        site: "BGP"
+      - ip: "172.18.23.203"
+        name: "BGP-TEC-UPS03"
+        model: "Phoenixtec UPS"
+        location: "Bragança Tecelagem"
+        site: "BGP"
+      - ip: "172.18.23.204"
+        name: "BGP-TEC-UPS04"
+        model: "Phoenixtec UPS"
+        location: "Bragança Tecelagem"
+        site: "BGP"
+      - ip: "172.18.23.205"
+        name: "BGP-TEC-UPS02"
+        model: "Phoenixtec UPS"
+        location: "Bragança Tecelagem"
+        site: "BGP"
+      - ip: "172.18.23.206"
+        name: "BGP-TEC-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Tecelagem"
+        site: "BGP"
+      - ip: "172.18.23.207"
+        name: "BGP-POR-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Portaria"
+        site: "BGP"
+      - ip: "172.18.23.208"
+        name: "BGP-ACA-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Acabamento"
+        site: "BGP"
+      - ip: "172.18.23.209"
+        name: "BGP-REV-UPS01"
+        model: "Phoenixtec UPS"
+        location: "Bragança Revisão"
+        site: "BGP"
+      - ip: "172.18.23.220"
+        name: "BGP-CPD-UPS01"
+        model: "APC Smart-UPS 1500"
+        location: "Bragança CPD"
+        site: "BGP"
+
+  tasks:
+    # ── Autenticação ──────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar estado atual do Zabbix ─────────────────────────────────────
+    - name: Buscar todos os hosts com interfaces
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid", "host"]
+            selectInterfaces: ["interfaceid", "ip", "type"]
+          auth: "{{ _token }}"
+          id: 2
+      register: _all_hosts
+
+    - name: Buscar todos os grupos
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+          auth: "{{ _token }}"
+          id: 3
+      register: _all_groups
+
+    - name: Buscar template APC UPS by SNMP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+            filter:
+              name: "APC UPS by SNMP"
+          auth: "{{ _token }}"
+          id: 4
+      register: _tmpl_apc
+
+    # ── Construir mapas ───────────────────────────────────────────────────
+    - name: Construir mapa IP → {hostid, interfaceid}
+      ansible.builtin.set_fact:
+        _host_map: >-
+          {{ _host_map | default({}) | combine({
+              item.interfaces[0].ip: {
+                'hostid': item.hostid,
+                'interfaceid': item.interfaces[0].interfaceid
+              }
+            }) }}
+      loop: "{{ _all_hosts.json.result }}"
+      when: item.interfaces | length > 0
+
+    - name: Set mapa de grupos
+      ansible.builtin.set_fact:
+        _group_map: "{{ _all_groups.json.result | items2dict(key_name='name', value_name='groupid') }}"
+
+    - name: Set templateid APC
+      ansible.builtin.set_fact:
+        _tmpl_apc_id: "{{ _tmpl_apc.json.result[0].templateid | default('') }}"
+
+    # ── Construir listas: atualizar vs criar ──────────────────────────────
+    - name: Construir lista de UPS já existentes (a atualizar)
+      ansible.builtin.set_fact:
+        _ups_update: >-
+          {{ _ups_update | default([]) + [{
+              'ip':          item.ip,
+              'name':        item.name,
+              'model':       item.model,
+              'location':    item.location,
+              'site':        item.site,
+              'hostid':      (_host_map | default({}))[item.ip].hostid,
+              'interfaceid': (_host_map | default({}))[item.ip].interfaceid
+            }] }}
+      loop: "{{ ups_inventory }}"
+      when: item.ip in (_host_map | default({}))
+
+    - name: Construir lista de UPS a criar
+      ansible.builtin.set_fact:
+        _ups_create: "{{ _ups_create | default([]) + [item] }}"
+      loop: "{{ ups_inventory }}"
+      when: item.ip not in (_host_map | default({}))
+
+    - name: Resumo antes da execução
+      ansible.builtin.debug:
+        msg:
+          - "UPS a atualizar: {{ (_ups_update | default([])) | length }}"
+          - "UPS a criar:     {{ (_ups_create | default([])) | length }}"
+
+    # ── Atualizar hosts existentes ────────────────────────────────────────
+    - name: Atualizar nome, grupo e template dos UPS existentes
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.hostid }}"
+            host: "{{ item.name }}"
+            name: "{{ item.name }} ({{ item.model }})"
+            description: "{{ item.location }} — {{ item.model }}"
+            groups:
+              - groupid: "{{ _group_map['UPS/' + item.site] }}"
+            templates: >-
+              {{
+                [{'templateid': _tmpl_apc_id}]
+                if ('APC' in item.model and _tmpl_apc_id != '')
+                else []
+              }}
+          auth: "{{ _token }}"
+          id: 5
+      register: _update_host
+      failed_when: _update_host.json.error is defined
+      loop: "{{ _ups_update | default([]) }}"
+      loop_control:
+        label: "{{ item.ip }} → {{ item.name }}"
+
+    - name: Atualizar interface SNMP dos UPS existentes (SNMPv2c)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostinterface.update"
+          params:
+            interfaceid: "{{ item.interfaceid }}"
+            details:
+              version: 2
+              bulk: 1
+              community: "{{ snmp_community }}"
+          auth: "{{ _token }}"
+          id: 6
+      register: _update_iface
+      failed_when: _update_iface.json.error is defined
+      loop: "{{ _ups_update | default([]) }}"
+      loop_control:
+        label: "{{ item.ip }}"
+
+    # ── Criar hosts novos ─────────────────────────────────────────────────
+    - name: Criar novos hosts UPS
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.create"
+          params:
+            host: "{{ item.name }}"
+            name: "{{ item.name }} ({{ item.model }})"
+            description: "{{ item.location }} — {{ item.model }}"
+            interfaces:
+              - type: 2
+                main: 1
+                useip: 1
+                ip: "{{ item.ip }}"
+                dns: ""
+                port: "161"
+                details:
+                  version: 2
+                  bulk: 1
+                  community: "{{ snmp_community }}"
+            groups:
+              - groupid: "{{ _group_map['UPS/' + item.site] }}"
+            templates: >-
+              {{
+                [{'templateid': _tmpl_apc_id}]
+                if ('APC' in item.model and _tmpl_apc_id != '')
+                else []
+              }}
+          auth: "{{ _token }}"
+          id: 7
+      register: _create_host
+      failed_when: _create_host.json.error is defined
+      loop: "{{ _ups_create | default([]) }}"
+      loop_control:
+        label: "{{ item.ip }} → {{ item.name }}"
+
+    # ── Sumário ───────────────────────────────────────────────────────────
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Classificação UPS concluída — {{ ups_inventory | length }} hosts processados
+          ══════════════════════════════════════════════════════════════
+          Atualizados (já existiam): {{ (_ups_update | default([])) | length }}
+          Criados (novos):           {{ (_ups_create | default([])) | length }}
+
+          Template "APC UPS by SNMP" aplicado a: SCL-CPD-UPS01, SPO-CPD-UPS01, BGP-CPD-UPS01
+          Phoenixtec UPS: sem template (importar da comunidade Zabbix)
+
+          Verifique em: Data collection → Hosts → filtrar grupo UPS/*
+          ══════════════════════════════════════════════════════════════

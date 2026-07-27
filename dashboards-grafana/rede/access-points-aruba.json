@@ -1,0 +1,598 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix",
+      "description": ""
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "4.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {"type": "grafana", "uid": "-- Grafana --"},
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0,211,255,1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Monitoramento de 108 Access Points Aruba (58 BGP + 40 SCL + 10 SPO)",
+  "editable": false,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Resumo",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "panels": []
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "APs UP",
+      "gridPos": {"h": 4, "w": 6, "x": 0, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["sum"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "color": {"mode": "fixed", "fixedColor": "green"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "APs DOWN",
+      "gridPos": {"h": 4, "w": 6, "x": 6, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {"type": "value", "options": {"0": {"text": "DOWN", "color": "red", "index": 0}}},
+            {"type": "value", "options": {"1": {"text": "UP", "color": "green", "index": 1}}}
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [{"fieldName": "Value", "config": {"id": "equal", "options": {"value": 0}}}],
+            "type": "include",
+            "match": "any"
+          }
+        },
+        {"id": "reduce", "options": {"reducers": ["count"]}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Latência Média (ms)",
+      "gridPos": {"h": 4, "w": 6, "x": 12, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["mean"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 50},
+              {"color": "red", "value": 100}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP response time"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "APs com Perda >0%",
+      "gridPos": {"h": 4, "w": 6, "x": 18, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["count"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 1},
+              {"color": "red", "value": 5}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [{"fieldName": "Value", "config": {"id": "greater", "options": {"value": 0}}}],
+            "type": "include",
+            "match": "any"
+          }
+        }
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP loss"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "row",
+      "title": "Disponibilidade",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 5},
+      "panels": []
+    },
+    {
+      "id": 7,
+      "type": "state-timeline",
+      "title": "Status ICMP — todos os APs",
+      "gridPos": {"h": 12, "w": 24, "x": 0, "y": 6},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "rowHeight": 0.7,
+        "mergeValues": true,
+        "showValue": "auto",
+        "alignValue": "left",
+        "tooltip": {"mode": "single", "sort": "none"},
+        "legend": {"displayMode": "list", "placement": "bottom", "showLegend": true}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {"type": "value", "options": {"0": {"text": "DOWN", "color": "red", "index": 0}}},
+            {"type": "value", "options": {"1": {"text": "UP", "color": "green", "index": 1}}}
+          ],
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "green", "value": 1}
+            ]
+          },
+          "custom": {
+            "displayName": "{{HOSTNAME}}"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/BGP"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Access Points Aruba/SCL"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Access Points Aruba/SPO"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "row",
+      "title": "Latência e Perda",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 18},
+      "panels": []
+    },
+    {
+      "id": 9,
+      "type": "timeseries",
+      "title": "ICMP Response Time (ms)",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 19},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["last", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 5,
+            "gradientMode": "none",
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 50},
+              {"color": "red", "value": 100}
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "$ap"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP response time"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "bargauge",
+      "title": "ICMP Loss % — APs com perda",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 27},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "minVizWidth": 0,
+        "minVizHeight": 10,
+        "valueMode": "color",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 1},
+              {"color": "red", "value": 10}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [{"fieldName": "Value", "config": {"id": "greater", "options": {"value": 0}}}],
+            "type": "include",
+            "match": "any"
+          }
+        }
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP loss"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "row",
+      "title": "Uptime e Inventário",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 35},
+      "panels": []
+    },
+    {
+      "id": 12,
+      "type": "table",
+      "title": "Inventário de Access Points",
+      "gridPos": {"h": 12, "w": 24, "x": 0, "y": 36},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "cellHeight": "sm",
+        "footer": {"show": false, "reducer": ["sum"], "countRows": false, "fields": ""},
+        "showHeader": true,
+        "sortBy": [{"displayName": "Status", "desc": true}]
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Uptime do sistema"},
+            "properties": [
+              {"id": "unit", "value": "dtdurations"},
+              {"id": "displayName", "value": "Uptime"}
+            ]
+          },
+          {
+            "matcher": {"id": "byName", "options": "ICMP ping"},
+            "properties": [
+              {"id": "displayName", "value": "Status"},
+              {
+                "id": "mappings",
+                "value": [
+                  {"type": "value", "options": {"0": {"text": "DOWN", "color": "red", "index": 0}}},
+                  {"type": "value", "options": {"1": {"text": "UP", "color": "green", "index": 1}}}
+                ]
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          },
+          {
+            "matcher": {"id": "byName", "options": "ICMP response time"},
+            "properties": [
+              {"id": "unit", "value": "ms"},
+              {"id": "displayName", "value": "Latência"},
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {"color": "green", "value": null},
+                    {"color": "yellow", "value": 50},
+                    {"color": "red", "value": 100}
+                  ]
+                }
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          }
+        ]
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Uptime do sistema"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Access Points Aruba/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP response time"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    }
+  ],
+  "refresh": "60s",
+  "schemaVersion": 39,
+  "tags": ["capricornio", "rede", "wifi", "aruba"],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "site",
+        "options": [
+          {"selected": false, "text": "All", "value": "$__all"},
+          {"selected": false, "text": "BGP", "value": "BGP"},
+          {"selected": false, "text": "SCL", "value": "SCL"},
+          {"selected": false, "text": "SPO", "value": "SPO"}
+        ],
+        "query": "All,BGP,SCL,SPO",
+        "type": "custom",
+        "label": "Site"
+      },
+      {
+        "current": {},
+        "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "ap",
+        "options": [],
+        "query": {"group": {"filter": "Access Points Aruba/$site"}, "host": {"filter": ""}, "queryType": "hosts"},
+        "refresh": 2,
+        "sort": 1,
+        "type": "query",
+        "label": "Access Point"
+      }
+    ]
+  },
+  "time": {"from": "now-3h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Rede — Access Points Aruba",
+  "uid": "capri-access-points",
+  "version": 1
+}

@@ -1,0 +1,33 @@
+---
+- name: Instalar e configurar Zabbix Server + Web Frontend
+  hosts: zabbix_server
+  become: true
+
+  pre_tasks:
+    - name: Atualizar cache de pacotes (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Atualizar cache de pacotes (RedHat/CentOS)
+      ansible.builtin.yum:
+        update_cache: true
+      when: ansible_os_family == "RedHat"
+
+  post_tasks:
+    - name: Remover nginx default site (conflita com vhost do Zabbix)
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      notify: Recarregar nginx
+
+  handlers:
+    - name: Recarregar nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
+
+  roles:
+    - role: community.zabbix.zabbix_server
+    - role: community.zabbix.zabbix_web

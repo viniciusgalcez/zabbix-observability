@@ -1,0 +1,239 @@
+---
+# Corrige itens QNAP via item prototypes (LLD).
+#
+# Os itens Volume Status, FAN, HDD, Pool, LUN são criados por Low-Level Discovery
+# (flags=4 = "discovered object") e são somente leitura no nível do host — a API
+# recusa item.update com "cannot update readonly parameter of discovered object".
+# A correção correta é itemprototype.update no template, que propaga para todos
+# os hosts vinculados.
+#
+# Fixes aplicados (nível prototype no template SNMP QNAP):
+#   a) value_type → Text (4): protótipos Status, Temperature, FAN Speed, FAN Status
+#   b) status → disabled (1): protótipos FAN Name (OID "No Such Instance")
+#
+# Itens herdados não-LLD (CPU Temperature, System Temperature) já foram corrigidos
+# no template pelo playbook zabbix_fix_itens_template.yml — não são tocados aqui.
+#
+# ansible-playbook playbooks/zabbix_fix_qnap_hosts.yml
+
+- name: Corrigir protótipos de itens QNAP via LLD
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar template SNMP QNAP ─────────────────────────────────────────────
+    - name: Buscar template SNMP QNAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+            filter:
+              name: "SNMP QNAP"
+          auth: "{{ _token }}"
+          id: 2
+      register: _qnap_tpl
+
+    - name: Falhar se template SNMP QNAP não encontrado
+      ansible.builtin.assert:
+        that: _qnap_tpl.json.result | length > 0
+        fail_msg: "Template 'SNMP QNAP' não encontrado no Zabbix"
+
+    - name: Set template ID
+      ansible.builtin.set_fact:
+        _tpl_id: "{{ (_qnap_tpl.json.result | first).templateid }}"
+
+    # ── Buscar regras LLD do template ─────────────────────────────────────────
+    # discoveryrule.get usa hostids mesmo para templates (templates são hosts internamente)
+    - name: Buscar regras LLD do template SNMP QNAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "discoveryrule.get"
+          params:
+            output: ["itemid", "name"]
+            hostids: ["{{ _tpl_id }}"]
+          auth: "{{ _token }}"
+          id: 3
+      register: _lld_rules
+
+    - name: Mostrar regras LLD encontradas
+      ansible.builtin.debug:
+        msg: "Regras LLD: {{ _lld_rules.json.result | map(attribute='name') | list }}"
+
+    - name: Falhar se nenhuma regra LLD encontrada
+      ansible.builtin.assert:
+        that: _lld_rules.json.result | length > 0
+        fail_msg: "Nenhuma regra LLD encontrada no template SNMP QNAP"
+
+    # ── Buscar todos os item prototypes das regras LLD ────────────────────────
+    - name: Buscar item prototypes de todas as regras LLD
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "itemprototype.get"
+          params:
+            output: ["itemid", "name", "value_type", "status"]
+            discoveryids: "{{ _lld_rules.json.result | map(attribute='itemid') | list }}"
+          auth: "{{ _token }}"
+          id: 4
+      register: _all_prototypes
+
+    - name: Debug total de protótipos encontrados
+      ansible.builtin.debug:
+        msg: "Total de item prototypes: {{ _all_prototypes.json.result | length }}"
+
+    # ── Filtrar protótipos por categoria ──────────────────────────────────────
+    - name: Filtrar protótipos Status e Temperature que precisam de value_type → Text
+      ansible.builtin.set_fact:
+        _proto_text: >-
+          {{ _all_prototypes.json.result
+             | selectattr('name', 'search', 'Status|Temperature')
+             | rejectattr('value_type', 'equalto', '4')
+             | list }}
+
+    - name: Filtrar protótipos FAN Speed e FAN Status que precisam de value_type → Text
+      ansible.builtin.set_fact:
+        _proto_fan_speed: >-
+          {{ _all_prototypes.json.result
+             | selectattr('name', 'search', 'FAN.+: Speed|FAN.+: Status')
+             | rejectattr('value_type', 'equalto', '4')
+             | list }}
+
+    - name: Filtrar protótipos FAN Name a desabilitar
+      ansible.builtin.set_fact:
+        _proto_fan_name: >-
+          {{ _all_prototypes.json.result
+             | selectattr('name', 'search', 'FAN.+: Name')
+             | rejectattr('status', 'equalto', '1')
+             | list }}
+
+    - name: Resumo de protótipos a corrigir
+      ansible.builtin.debug:
+        msg: >-
+          Status/Temperature: {{ _proto_text | length }} protótipos |
+          FAN Speed/Status: {{ _proto_fan_speed | length }} protótipos |
+          FAN Name (a desabilitar): {{ _proto_fan_name | length }} protótipos
+
+    # ── Aplicar correções nos protótipos ─────────────────────────────────────
+    - name: Corrigir value_type → Text nos protótipos Status/Temperature
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "itemprototype.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            value_type: "4"
+          auth: "{{ _token }}"
+          id: 5
+      register: _upd_text
+      failed_when: _upd_text.json.error is defined
+      loop: "{{ _proto_text }}"
+      loop_control:
+        label: "{{ item.name }} (vt={{ item.value_type }} → 4)"
+
+    - name: Corrigir value_type → Text nos protótipos FAN Speed/Status
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "itemprototype.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            value_type: "4"
+          auth: "{{ _token }}"
+          id: 6
+      register: _upd_fan_speed
+      failed_when: _upd_fan_speed.json.error is defined
+      loop: "{{ _proto_fan_speed }}"
+      loop_control:
+        label: "{{ item.name }} (vt={{ item.value_type }} → 4)"
+
+    - name: Desabilitar protótipos FAN Name (OID não existe nesses modelos)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "itemprototype.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            status: "1"
+          auth: "{{ _token }}"
+          id: 7
+      register: _upd_fan_name
+      failed_when: _upd_fan_name.json.error is defined
+      loop: "{{ _proto_fan_name }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    # ── Sumário ───────────────────────────────────────────────────────────────
+    - name: Sumário
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Correções aplicadas nos item prototypes do template SNMP QNAP
+          ══════════════════════════════════════════════════════════════
+          Status/Temp:     {{ _proto_text | length }} protótipos → value_type Text
+          FAN Speed/Stat:  {{ _proto_fan_speed | length }} protótipos → value_type Text
+          FAN Name:        {{ _proto_fan_name | length }} protótipos → desabilitados
+          ══════════════════════════════════════════════════════════════
+          O Zabbix propaga as alterações de prototype para os itens
+          descobertos em todos os hosts vinculados ao template.
+          Aguarde ~2 min e re-execute o script de diagnóstico:
+            python3 scripts/zabbix_audit_hosts.py
+
+    # ── Logout ────────────────────────────────────────────────────────────────
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          auth: "{{ _token }}"
+          id: 99

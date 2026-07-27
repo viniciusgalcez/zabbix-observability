@@ -1,0 +1,159 @@
+---
+# Gerado automaticamente por scripts/gen_switch_vars.py
+# NÃO EDITE MANUALMENTE — edite o Excel e regenere
+switch_inventory:
+  '172.16.23.10':
+    name: 'SCL-CPD-SW02'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos CPD'
+    site: 'SCL'
+  '172.16.23.12':
+    name: 'SCL-TIN-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Tingimento'
+    site: 'SCL'
+  '172.16.23.16':
+    name: 'SCL-TEC1-SW02'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Tecelagem 1'
+    site: 'SCL'
+  '172.16.23.18':
+    name: 'SCL-TIN-SW02'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Tingimento'
+    site: 'SCL'
+  '172.16.23.19':
+    name: 'SCL-ACA-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Acabamento'
+    site: 'SCL'
+  '172.16.23.21':
+    name: 'SCL-MAN-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Manutenção'
+    site: 'SCL'
+  '172.16.23.23':
+    name: 'SCL-URD-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Urdição'
+    site: 'SCL'
+  '172.16.23.24':
+    name: 'SCL-DRH-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos RH'
+    site: 'SCL'
+  '172.16.23.26':
+    name: 'SCL-TEC1-SW03'
+    model: 'CBS350-24P-4X'
+    location: 'São Carlos Tecelagem 1'
+    site: 'SCL'
+  '172.16.23.27':
+    name: 'SCL-EXP-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Expedição'
+    site: 'SCL'
+  '172.16.23.28':
+    name: 'SCL-TEC1-SW04'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Tecelagem 1'
+    site: 'SCL'
+  '172.16.23.29':
+    name: 'SCL-TEC2-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Tecelagem 2'
+    site: 'SCL'
+  '172.16.23.30':
+    name: 'SCL-TEC2-SW02'
+    model: 'CBS350-24P-4X'
+    location: 'São Carlos Tecelagem 2'
+    site: 'SCL'
+  '172.16.23.31':
+    name: 'SCL-CLD-SW01'
+    model: 'CBS350-24P-4X'
+    location: 'São Carlos Caldeira'
+    site: 'SCL'
+  '172.16.23.34':
+    name: 'SCL-TEC1-SW01'
+    model: 'CBS350-24P-4X'
+    location: 'São Carlos Tecelagem 1'
+    site: 'SCL'
+  '172.16.23.40':
+    name: 'SCL-ALM-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos Almoxarifado'
+    site: 'SCL'
+  '172.16.23.9':
+    name: 'SCL-CPD-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Carlos CPD'
+    site: 'SCL'
+  '172.17.23.15':
+    name: 'SPO-CPD-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'São Paulo CPD'
+    site: 'SPO'
+  '172.18.23.20':
+    name: 'BGP-CPD-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança CPD'
+    site: 'BGP'
+  '172.18.23.22':
+    name: 'BGP-CPD-SW02'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança CPD'
+    site: 'BGP'
+  '172.18.23.24':
+    name: 'BGP-TEC-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Tecelagem'
+    site: 'BGP'
+  '172.18.23.25':
+    name: 'BGP-TEC-SW02'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Tecelagem'
+    site: 'BGP'
+  '172.18.23.26':
+    name: 'BGP-TEC-SW03'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Tecelagem'
+    site: 'BGP'
+  '172.18.23.27':
+    name: 'BGP-TEC-SW04'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Tecelagem'
+    site: 'BGP'
+  '172.18.23.28':
+    name: 'BGP-ADM-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Administrativo'
+    site: 'BGP'
+  '172.18.23.29':
+    name: 'BGP-REV-SW01'
+    model: 'CBS350-24P-4X'
+    location: 'Bragança Revisão'
+    site: 'BGP'
+  '172.18.23.30':
+    name: 'BGP-EXP-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Expedição'
+    site: 'BGP'
+  '172.18.23.31':
+    name: 'BGP-ACA-SW01'
+    model: 'CBS350-48P-4X'
+    location: 'Bragança Acabamento'
+    site: 'BGP'
+  '172.18.23.32':
+    name: 'BGP-POR-SW01'
+    model: 'CBS350-24P-4X'
+    location: 'Bragança Portaria'
+    site: 'BGP'
+  '172.18.23.33':
+    name: 'BGP-EXP-SW02'
+    model: 'CBS350-24P-4X'
+    location: 'Bragança Expedição Nova'
+    site: 'BGP'
+  '172.18.23.35':
+    name: 'BGP-EXP-SW04'
+    model: 'C1300-48P-4X'
+    location: 'Bragança Expedição Nova'
+    site: 'BGP'

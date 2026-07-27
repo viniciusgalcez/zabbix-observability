@@ -1,0 +1,51 @@
+---
+# ATENÇÃO: gerar e implantar a chave ANTES de desabilitar senha
+
+- name: Gerar par de chaves SSH Ed25519 no control node
+  community.crypto.openssh_keypair:
+    path: "{{ hardening_ssh_key_path }}"
+    type: ed25519
+    comment: "capricornio-ansible"
+    force: false
+    owner: "{{ lookup('env', 'USER') }}"
+    group: "{{ lookup('env', 'USER') }}"
+    mode: "0600"
+  delegate_to: localhost
+  run_once: true
+  become: false
+  vars:
+    ansible_become: false
+
+- name: Garantir diretório .ssh no host remoto
+  ansible.builtin.file:
+    path: "/home/{{ hardening_ssh_authorized_user }}/.ssh"
+    state: directory
+    owner: "{{ hardening_ssh_authorized_user }}"
+    group: "{{ hardening_ssh_authorized_group }}"
+    mode: "0700"
+
+- name: Implantar chave pública no authorized_keys
+  ansible.posix.authorized_key:
+    user: "{{ hardening_ssh_authorized_user }}"
+    state: present
+    key: "{{ lookup('file', hardening_ssh_key_path + '.pub') }}"
+
+- name: Forçar encerramento da conexão SSH existente
+  ansible.builtin.meta: reset_connection
+
+- name: Testar autenticação por chave (sem senha)
+  ansible.builtin.ping:
+  vars:
+    ansible_ssh_private_key_file: "{{ hardening_ssh_key_path }}"
+    ansible_password: ""
+    ansible_ssh_common_args: "-o PasswordAuthentication=no -o PubkeyAuthentication=yes"
+
+- name: Aplicar sshd_config endurecido
+  ansible.builtin.template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: "0644"
+    validate: "/usr/sbin/sshd -t -f %s"
+  notify: restart sshd

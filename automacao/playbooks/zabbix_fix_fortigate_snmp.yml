@@ -1,0 +1,305 @@
+---
+# Normaliza todos os hosts FortiGate para template SNMP + interface SNMPv3.
+#
+# Usa queries distintas por templateid para categorizar os hosts — evita
+# selectattr aninhado que o Jinja2 do Ansible não suporta.
+#
+# ansible-playbook playbooks/zabbix_fix_fortigate_snmp.yml
+
+- name: Normalizar todos os FortiGates para template SNMP + SNMPv3
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    snmpv3_securityname: "zabbix_snmp"
+    snmpv3_authpassphrase: "ZbxAuth_2026@Net"
+    snmpv3_privpassphrase: "ZbxPriv_2026@Secure"
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar templates FortiGate ────────────────────────────────────────────
+    - name: Buscar templates FortiGate disponíveis
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+            search:
+              name: "FortiGate"
+          auth: "{{ _token }}"
+          id: 2
+      register: _fortigate_tpls
+
+    - name: Set IDs dos templates SNMP e HTTP
+      ansible.builtin.set_fact:
+        _tpl_snmp: >-
+          {{ _fortigate_tpls.json.result
+             | selectattr('name', 'search', 'SNMP')
+             | rejectattr('name', 'search', 'HTTP')
+             | list | first }}
+        _tpl_http: >-
+          {{ _fortigate_tpls.json.result
+             | selectattr('name', 'search', 'HTTP')
+             | list | first | default({}) }}
+
+    - name: Mostrar templates selecionados
+      ansible.builtin.debug:
+        msg: >-
+          SNMP: {{ _tpl_snmp.name }} ({{ _tpl_snmp.templateid }}) |
+          HTTP: {{ _tpl_http.name | default('N/A') }}
+
+    # ── Buscar hosts por categoria (queries separadas por templateid) ─────────
+    - name: Buscar grupos Firewalls/*
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+            search:
+              name: "Firewalls"
+          auth: "{{ _token }}"
+          id: 3
+      register: _fw_groups
+
+    - name: Buscar TODOS os hosts em grupos Firewalls
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid", "host"]
+            groupids: "{{ _fw_groups.json.result | map(attribute='groupid') | list }}"
+            selectInterfaces: ["interfaceid", "type", "ip", "port"]
+            selectParentTemplates: ["templateid", "name"]
+          auth: "{{ _token }}"
+          id: 4
+      register: _all_fw_hosts
+
+    - name: Buscar hosts com template FortiGate HTTP (a migrar)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid"]
+            templateids: ["{{ _tpl_http.templateid }}"]
+          auth: "{{ _token }}"
+          id: 5
+      register: _hosts_http_raw
+      when: _tpl_http.templateid is defined
+
+    - name: Buscar hosts com template FortiGate SNMP (já corretos)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid"]
+            templateids: ["{{ _tpl_snmp.templateid }}"]
+          auth: "{{ _token }}"
+          id: 6
+      register: _hosts_snmp_raw
+
+    # ── Derivar listas de IDs ─────────────────────────────────────────────────
+    - name: Calcular listas de hostids por categoria
+      ansible.builtin.set_fact:
+        _ids_http: "{{ (_hosts_http_raw.json.result | default([])) | map(attribute='hostid') | list }}"
+        _ids_snmp: "{{ _hosts_snmp_raw.json.result | map(attribute='hostid') | list }}"
+
+    - name: Resumo de hosts por categoria
+      ansible.builtin.debug:
+        msg: >-
+          Total FW: {{ _all_fw_hosts.json.result | length }} |
+          Com HTTP (migrar): {{ _ids_http | length }} |
+          Com SNMP (só iface): {{ _ids_snmp | length }} |
+          Sem FortiGate (add): {{ _all_fw_hosts.json.result | rejectattr('hostid', 'in', _ids_http + _ids_snmp) | list | length }}
+
+    # ── FIX A: Migrar hosts HTTP → SNMP ──────────────────────────────────────
+    - name: "[A] Trocar template HTTP → SNMP"
+      vars:
+        _current_tpls: >-
+          {{ item.parentTemplates
+             | rejectattr('templateid', 'equalto', _tpl_http.templateid)
+             | list }}
+        _new_tpls: "{{ _current_tpls + [{'templateid': _tpl_snmp.templateid}] }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.hostid }}"
+            templates: "{{ _new_tpls }}"
+            templates_clear:
+              - templateid: "{{ _tpl_http.templateid }}"
+          auth: "{{ _token }}"
+          id: 7
+      register: _upd_http
+      failed_when: _upd_http.json.error is defined
+      when:
+        - item.hostid in _ids_http
+        - _tpl_http.templateid is defined
+      loop: "{{ _all_fw_hosts.json.result }}"
+      loop_control:
+        label: "{{ item.host }}"
+
+    # ── FIX B: Adicionar template SNMP aos que não têm nenhum FortiGate ───────
+    - name: "[B] Adicionar template FortiGate SNMP"
+      vars:
+        _new_tpls: "{{ item.parentTemplates + [{'templateid': _tpl_snmp.templateid}] }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.hostid }}"
+            templates: "{{ _new_tpls }}"
+          auth: "{{ _token }}"
+          id: 8
+      register: _upd_add
+      failed_when: _upd_add.json.error is defined
+      when: item.hostid not in (_ids_http + _ids_snmp)
+      loop: "{{ _all_fw_hosts.json.result }}"
+      loop_control:
+        label: "{{ item.host }}"
+
+    # ── FIX C: Atualizar interface SNMP existente para SNMPv3 ─────────────────
+    - name: "[C] Atualizar interface SNMP → v3 (hosts com interface tipo 2)"
+      vars:
+        _snmp_ifaces: "{{ item.interfaces | selectattr('type', 'equalto', '2') | list }}"
+        _snmp_iface: "{{ _snmp_ifaces | first | default({}) }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostinterface.update"
+          params:
+            interfaceid: "{{ _snmp_iface.interfaceid }}"
+            details:
+              version: 3
+              bulk: 1
+              securityname: "{{ snmpv3_securityname }}"
+              securitylevel: 2
+              authprotocol: 3
+              authpassphrase: "{{ snmpv3_authpassphrase }}"
+              privprotocol: 1
+              privpassphrase: "{{ snmpv3_privpassphrase }}"
+          auth: "{{ _token }}"
+          id: 9
+      register: _upd_iface
+      failed_when: _upd_iface.json.error is defined
+      when: (_snmp_ifaces | length) > 0
+      loop: "{{ _all_fw_hosts.json.result }}"
+      loop_control:
+        label: "{{ item.host }}"
+
+    # ── FIX D: Criar interface SNMPv3 para hosts sem interface SNMP ───────────
+    - name: "[D] Criar interface SNMPv3 (hosts sem interface tipo 2)"
+      vars:
+        _snmp_ifaces: "{{ item.interfaces | selectattr('type', 'equalto', '2') | list }}"
+        _first_iface: "{{ item.interfaces | first | default({}) }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostinterface.create"
+          params:
+            hostid: "{{ item.hostid }}"
+            type: 2
+            main: 1
+            useip: 1
+            ip: "{{ _first_iface.ip | default('') }}"
+            dns: ""
+            port: "161"
+            details:
+              version: 3
+              bulk: 1
+              securityname: "{{ snmpv3_securityname }}"
+              securitylevel: 2
+              authprotocol: 3
+              authpassphrase: "{{ snmpv3_authpassphrase }}"
+              privprotocol: 1
+              privpassphrase: "{{ snmpv3_privpassphrase }}"
+          auth: "{{ _token }}"
+          id: 10
+      register: _create_iface
+      failed_when: _create_iface.json.error is defined
+      when: (_snmp_ifaces | length) == 0
+      loop: "{{ _all_fw_hosts.json.result }}"
+      loop_control:
+        label: "{{ item.host }}"
+
+    # ── Sumário ───────────────────────────────────────────────────────────────
+    - name: Sumário
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Normalização FortiGates concluída
+          ══════════════════════════════════════════════════════════════
+          Hosts processados: {{ _all_fw_hosts.json.result | map(attribute='host') | list | join(', ') }}
+          ══════════════════════════════════════════════════════════════
+          Aguarde ~2 min e re-execute o script de diagnóstico:
+            python3 scripts/zabbix_audit_hosts.py
+
+    # ── Logout ────────────────────────────────────────────────────────────────
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          auth: "{{ _token }}"
+          id: 99

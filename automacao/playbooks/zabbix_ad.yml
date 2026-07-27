@@ -1,0 +1,288 @@
+---
+# Configura monitoramento dos 5 Domain Controllers no Zabbix.
+#
+# Estratégia: Simple checks TCP (sem agent) para os serviços críticos de AD.
+# Funciona IMEDIATAMENTE, sem depender do Zabbix Agent nos DCs.
+#   - Porta 389  : LDAP
+#   - Porta 636  : LDAPS
+#   - Porta 88   : Kerberos KDC
+#   - Porta 3268 : Global Catalog
+#
+# Também adiciona os DCs ao grupo "Active Directory" e aplica o template
+# de AD se ele existir na instância (opcional — não falha se ausente).
+#
+# DCs configurados:
+#   SPO-SRV-FAD01  — 172.17.2.140 (SPO, direto ao servidor)
+#   SCL-SRV-V03    — 172.16.2.141 (SCL, proxy SCL-SRV-V08)
+#   SCL-SRV-V02    — 172.16.2.142 (SCL, proxy SCL-SRV-V08)
+#   BGP-SRV-VAD01  — 172.18.2.141 (BGP, proxy BGP-SRV-V08)
+#   BGP-SRV-V02    — 172.18.2.142 (BGP, proxy BGP-SRV-V08)
+#
+# ansible-playbook playbooks/zabbix_ad.yml
+
+- name: Configurar monitoramento de Active Directory nos Domain Controllers
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    dc_hostnames:
+      - "SPO-SRV-FAD01"
+      - "SCL-SRV-V03"
+      - "SCL-SRV-V02"
+      - "BGP-SRV-VAD01"
+      - "BGP-SRV-V02"
+
+    ad_ports:
+      - { port: "389",  name: "LDAP",           key_suffix: "ldap" }
+      - { port: "636",  name: "LDAPS",           key_suffix: "ldaps" }
+      - { port: "88",   name: "Kerberos KDC",    key_suffix: "kerberos" }
+      - { port: "3268", name: "Global Catalog",  key_suffix: "global_catalog" }
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Grupo Active Directory ────────────────────────────────────────────────
+
+    - name: Buscar grupo Active Directory
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output:
+              - groupid
+              - name
+            filter:
+              name: "Active Directory"
+          auth: "{{ _token }}"
+          id: 2
+      register: _grp_ad
+
+    - name: Criar grupo Active Directory (se não existir)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.create"
+          params:
+            name: "Active Directory"
+          auth: "{{ _token }}"
+          id: 3
+      register: _grp_ad_created
+      when: _grp_ad.json.result | length == 0
+
+    - name: Registrar groupid Active Directory
+      ansible.builtin.set_fact:
+        _ad_groupid: >-
+          {{
+            _grp_ad.json.result[0].groupid
+            if _grp_ad.json.result | length > 0
+            else _grp_ad_created.json.result.groupids[0]
+          }}
+
+    # ── Template AD (opcional) ────────────────────────────────────────────────
+
+    - name: Verificar se template AD existe
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output:
+              - templateid
+              - name
+            filter:
+              name:
+                - "Windows Active Directory by Zabbix agent"
+                - "Template App Active Directory"
+          auth: "{{ _token }}"
+          id: 4
+      register: _ad_template
+
+    - name: Set AD template ID (vazio se não encontrado)
+      ansible.builtin.set_fact:
+        _tmpl_ad_id: "{{ (_ad_template.json.result | first | default({})).templateid | default('') }}"
+
+    - name: Avisar sobre template AD ausente
+      ansible.builtin.debug:
+        msg: >-
+          Template de Active Directory não encontrado.
+          Monitoramento via checks TCP será criado (funciona sem agent).
+          Para monitoramento completo, importe o template oficial:
+          Configuration → Templates → Import → template_windows_active_directory.yaml
+      when: _tmpl_ad_id == ''
+
+    # ── Buscar dados dos Domain Controllers ───────────────────────────────────
+
+    - name: Buscar dados dos Domain Controllers
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+              - host
+            selectParentTemplates:
+              - templateid
+            selectGroups:
+              - groupid
+            filter:
+              host: "{{ item }}"
+          auth: "{{ _token }}"
+          id: 10
+      register: _dc_hosts_raw
+      loop: "{{ dc_hostnames }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Avisar sobre DCs não encontrados
+      ansible.builtin.debug:
+        msg: "AVISO: Host {{ item.item }} não encontrado no Zabbix."
+      loop: "{{ _dc_hosts_raw.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+      when: item.json.result | length == 0
+
+    # ── Adicionar grupo + template AD ─────────────────────────────────────────
+
+    - name: Adicionar grupo AD e template (se existir) aos DCs
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.json.result[0].hostid }}"
+            groups: >-
+              {{
+                (item.json.result[0].groups | default([]))
+                + ([{'groupid': _ad_groupid}] if
+                   _ad_groupid not in (item.json.result[0].groups | default([]) | map(attribute='groupid') | list)
+                   else [])
+              }}
+            templates: >-
+              {{
+                (item.json.result[0].parentTemplates | default([]))
+                + ([{'templateid': _tmpl_ad_id}] if
+                   _tmpl_ad_id != '' and
+                   _tmpl_ad_id not in (item.json.result[0].parentTemplates | default([]) | map(attribute='templateid') | list)
+                   else [])
+              }}
+          auth: "{{ _token }}"
+          id: 11
+      loop: "{{ _dc_hosts_raw.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+      when: item.json.result | length > 0
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CHECKS TCP SIMPLES — funcionam sem Zabbix Agent nos DCs
+    # Executados pelo proxy/server que monitora cada host
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: "Criar check TCP {{ ad_ports[item.1].name }} em {{ dc_hostnames[item.0] }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.create"
+          params:
+            hostid: "{{ _dc_hosts_raw.results[item.0].json.result[0].hostid }}"
+            name: "AD: {{ ad_ports[item.1].name }} disponível (porta {{ ad_ports[item.1].port }})"
+            key_: "net.tcp.service[tcp,,{{ ad_ports[item.1].port }}]"
+            type: 3
+            value_type: 3
+            delay: "1m"
+            history: "7d"
+          auth: "{{ _token }}"
+          id: 20
+      register: _item_create
+      failed_when:
+        - _item_create.json.error is defined
+        - "'already exist' not in (_item_create.json.error.data | default(''))"
+      loop: "{{ range(dc_hostnames | length) | list | product(range(ad_ports | length) | list) | list }}"
+      loop_control:
+        label: "{{ dc_hostnames[item.0] }} — {{ ad_ports[item.1].name }}"
+      when: _dc_hosts_raw.results[item.0].json.result | length > 0
+
+    - name: "Criar trigger {{ ad_ports[item.1].name }} DOWN em {{ dc_hostnames[item.0] }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "trigger.create"
+          params:
+            description: "AD: {{ ad_ports[item.1].name }} indisponível em {{ dc_hostnames[item.0] }}"
+            expression: >-
+              last(/{{ dc_hostnames[item.0] }}/net.tcp.service[tcp,,{{ ad_ports[item.1].port }}])=0
+            priority: 4
+            manual_close: 0
+          auth: "{{ _token }}"
+          id: 21
+      register: _trigger_create
+      failed_when:
+        - _trigger_create.json.error is defined
+        - "'already exist' not in (_trigger_create.json.error.data | default(''))"
+      loop: "{{ range(dc_hostnames | length) | list | product(range(ad_ports | length) | list) | list }}"
+      loop_control:
+        label: "{{ dc_hostnames[item.0] }} — {{ ad_ports[item.1].name }}"
+      when: _dc_hosts_raw.results[item.0].json.result | length > 0
+
+    # ── Sumário ───────────────────────────────────────────────────────────────
+
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg:
+          - "══════════════════════════════════════════════════════"
+          - "Configuração de Active Directory concluída"
+          - "══════════════════════════════════════════════════════"
+          - "Grupo: Active Directory"
+          - "DCs  : {{ dc_hostnames | join(', ') }}"
+          - "Checks: LDAP (389), LDAPS (636), Kerberos (88), GC (3268)"
+          - "Triggers: HIGH se qualquer porta ficar indisponível"
+          - "══════════════════════════════════════════════════════"
+          - "{{ 'Template AD aplicado: ' ~ _tmpl_ad_id if _tmpl_ad_id else 'Template AD: não encontrado (importe manualmente)' }}"
+          - "Os checks TCP funcionam imediatamente sem agent."
+          - "══════════════════════════════════════════════════════"

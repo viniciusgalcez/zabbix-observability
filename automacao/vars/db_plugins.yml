@@ -1,0 +1,35 @@
+---
+# Credenciais dos bancos de dados para os plugins do Zabbix Agent 2 nos proxies Linux.
+
+# ── MSSQL (SQL Server 2022) ───────────────────────────────────────────────────
+# 3 instâncias — usuário com VIEW SERVER STATE + VIEW DATABASE STATE
+mssql_sessions:
+  # BGP — proxy BGP-SRV-V08 (172.18.2.51)
+  - name: "BGP_SRV_V04"
+    uri: "sqlserver://172.18.2.12"
+    user: "zabbix"
+    password: "CHANGE_ME"
+    proxy: "BGP-SRV-V08"
+
+  - name: "BGP_SRV_VAPP06"
+    uri: "sqlserver://172.18.2.11"
+    user: "zabbix"
+    password: "CHANGE_ME"
+    proxy: "BGP-SRV-V08"
+
+  # SCL — proxy SCL-SRV-V08 (172.16.2.51)
+  - name: "SCL_SRV_VAPP02"
+    uri: "sqlserver://172.16.2.32"
+    user: "zabbix"
+    password: "CHANGE_ME"
+    proxy: "SCL-SRV-V08"
+
+# ── PostgreSQL (Veeam Backup) ─────────────────────────────────────────────────
+# BGP-SRV-VAPP02 — proxy BGP-SRV-V08
+pgsql_sessions:
+  - name: "BGP_SRV_VAPP02"
+    uri: "postgresql://172.18.2.5:5432"
+    user: "veeam.bkp"
+    password: "CHANGE_ME"
+    database: "postgres"
+    proxy: "BGP-SRV-V08"

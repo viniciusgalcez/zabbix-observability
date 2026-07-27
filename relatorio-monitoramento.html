@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Monitoramento Zabbix — Capricórnio Têxtil</title>
+<style>
+  :root{
+    --bg:#f4f6f9; --card:#fff; --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb;
+    --brand:#b1271b; --brand2:#7a1a12;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px}
+  header{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-radius:14px;padding:28px 30px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  header h1{margin:0 0 6px;font-size:24px}
+  header .sub{opacity:.92;font-size:13px}
+  header .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);padding:4px 10px;border-radius:999px;font-size:12px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:18px 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .stat b{display:block;font-size:28px;color:var(--brand)}
+  .stat span{color:var(--muted);font-size:12px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:16px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  h2{margin:0 0 14px;font-size:18px;border-left:4px solid var(--brand);padding-left:10px}
+  h3{margin:18px 0 8px;font-size:14px;color:var(--brand2)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#fafafa;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.02em}
+  tr:hover td{background:#fafbfc}
+  .badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap}
+  .b-ok{background:#dcfce7;color:#166534}
+  .b-warn{background:#fef3c7;color:#92400e}
+  .b-bad{background:#fee2e2;color:#991b1b}
+  .b-add{background:#dbeafe;color:#1e40af}
+  .b-pend{background:#f3f4f6;color:#374151}
+  .b-opt{background:#ede9fe;color:#5b21b6}
+  code{background:#f3f4f6;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:12.5px}
+  .note{background:#ecfdf5;border:1px solid #a7f3d0;border-radius:8px;padding:12px 14px;color:#065f46;font-size:13px;margin-top:10px}
+  .note.warn{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  ul.tight{margin:6px 0;padding-left:18px}
+  ul.tight li{margin:3px 0}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:18px}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted);margin-bottom:10px}
+  .bar{height:10px;border-radius:6px;overflow:hidden;display:flex;border:1px solid var(--line)}
+  .bar i{display:block;height:100%}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Relatório de Monitoramento — Zabbix Observability</h1>
+    <div class="sub">Capricórnio Têxtil S.A. — Padronização de alertas de disponibilidade por aplicação</div>
+    <div class="meta">
+      <span class="chip">Zabbix 7.0.26 LTS</span>
+      <span class="chip">172.17.2.51</span>
+      <span class="chip">Dados via API</span>
+      <span class="chip">Atualizado em 26/06/2026</span>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b>37</b><span>hosts OK</span></div>
+    <div class="stat"><b>3</b><span>a linkar/ajustar</span></div>
+    <div class="stat"><b>5</b><span>pendentes (app)</span></div>
+    <div class="stat"><b>55</b><span>templates</span></div>
+    <div class="stat"><b>24</b><span>roles</span></div>
+  </div>
+
+  <section>
+    <h2>Progresso geral</h2>
+    <div class="bar" title="36 OK / 6 ajuste / 5 pendentes">
+      <i style="width:82%;background:#16a34a"></i>
+      <i style="width:7%;background:#2563eb"></i>
+      <i style="width:11%;background:#9ca3af"></i>
+    </div>
+    <p style="margin-top:10px"><b>~82% dos hosts já corretos.</b> As correções do diagnóstico foram aplicadas;
+       restam 2 links, 1 verificação e os apps proprietários a definir.</p>
+    <div class="note"><b>✓ Resolvido desde o último relatório:</b> SCL-SRV-VAPP15 (EAS Cozinha linkado),
+      SCL-SRV-VAPP14 (InfoTint removido — 0 itens não suportados), BGP-SRV-V08 / VAPP12 / VAD01 / V04 (já tratados).</div>
+  </section>
+
+  <section>
+    <h2>Arquitetura de alertas</h2>
+    <ul class="tight">
+      <li><b>1 componente cai</b> → alerta daquele componente (você vê qual).</li>
+      <li><b>Todos caem</b> → dispara a agregada "&lt;App&gt; fora do ar" e as individuais ficam
+          <b>suprimidas por dependência</b> → <b>1 alerta só</b>, sem flapping.</li>
+    </ul>
+    <div class="note warn"><b>Decisão técnica:</b> usamos <b>trigger dependency</b> (não event correlation). O teste no
+      host <code>TESTE-CORRELACAO</code> provou que correlação "close old events" causa <b>flapping</b> em condição
+      persistente (fecha o evento e a trigger reabre). A dependência suprime na origem. Validado: as 6 triggers do
+      Totvs de teste apontam corretamente para "Totvs fora do ar".</div>
+  </section>
+
+  <section>
+    <h2>Comportamento quando o agente / host cai</h2>
+    <p>Quando o <b>agente ou o host inteiro</b> cai, você recebe <b>~1 alerta</b> ("Zabbix agent is not available") —
+       <b>não há chuva de "serviço parado"</b>.</p>
+    <table>
+      <tr><th>O que cai</th><th>O que dispara</th></tr>
+      <tr><td><b>Agente / host inteiro</b></td><td>Só "Zabbix agent is not available". As triggers de serviço <b>congelam em OK</b> e não disparam.</td></tr>
+      <tr><td><b>1 serviço (agente vivo)</b></td><td>A trigger daquele serviço (identifica qual).</td></tr>
+      <tr><td><b>Todos os componentes de um app</b></td><td>1 trigger agregada "&lt;App&gt; fora do ar"; individuais suprimidas por dependência.</td></tr>
+    </table>
+    <div class="note"><b>Por quê:</b> as triggers usam <code>last()</code>. Sem dado novo (agente fora), o <code>last()</code>
+      mantém o último valor (serviço OK) → a trigger não dispara. A tempestade só ocorreria com <code>nodata()</code>,
+      que não é usado. Confirmado via API: todos os hosts (Windows e Linux) têm o gatilho de agente indisponível.</div>
+    <div class="note warn"><b>Atenção (Windows):</b> o template oficial <i>Windows by Zabbix agent</i> tem <b>duas</b>
+      triggers "agent is not available" (Average + High) → host Windows dá <b>2 alertas</b> na queda do agente.
+      Para reduzir a 1, desabilite a de severidade Average.</div>
+  </section>
+
+  <section>
+    <h2>Tipos de template</h2>
+    <table>
+      <tr><th>Tipo</th><th>Item Zabbix</th><th>Aplicações</th></tr>
+      <tr><td>Serviço Windows</td><td><code>service.info[svc,state]</code></td><td>DHCP, DNS, AD, SQL, IIS, Veeam, Dimep, Lansweeper, Entra Connect, NodeRed…</td></tr>
+      <tr><td>Unit systemd (Linux)</td><td><code>systemd.unit.info[unit,ActiveState]</code></td><td>Veeam Repo, GLPI, Grafana, Clickhouse, Docker, Cisco/Oxidized, Fastweb…</td></tr>
+      <tr><td>Processo</td><td><code>proc.num[processo]</code></td><td>EAS-Cozinha (TexHost, TexCom, TexDosif)</td></tr>
+      <tr><td>Porta TCP</td><td><code>net.tcp.listen[porta]</code></td><td>Totvs (License, DBAccess, Broker, Monitor, TSS)</td></tr>
+      <tr><td>Disponib. do host</td><td><code>net.tcp.service[…,10050]</code></td><td>App Zabbix Agent Availability</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Mapeamento host → role (estado real via API)</h2>
+    <div class="legend">
+      <span><span class="badge b-ok">OK</span> linkado e correto</span>
+      <span><span class="badge b-add">LINKAR</span> falta linkar</span>
+      <span><span class="badge b-warn">AJUSTE</span></span>
+      <span><span class="badge b-opt">OPCIONAL</span></span>
+      <span><span class="badge b-pend">PENDENTE</span> sem template</span>
+    </div>
+
+    <h3>Site BGP</h3>
+    <table>
+      <tr><th>Host</th><th>Role / Template linkado</th><th>Status</th></tr>
+      <tr><td>BGP-SRV-FHV01/02/03</td><td>Template Windows Hyper-V Host 2</td><td><span class="badge b-opt">OPCIONAL Role Hyper-V (cluster/vmms)</span></td></tr>
+      <tr><td>BGP-SRV-V02</td><td>DC Primário On-Prem</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAD01</td><td>DC Secundário com CA (sem DHCP)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-V03</td><td>Veeam ONE</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-V04</td><td>SQL Server (já monitorado)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-V06</td><td>Clipnet</td><td><span class="badge b-pend">PENDENTE</span></td></tr>
+      <tr><td>BGP-SRV-V08</td><td>Zabbix proxy health</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP02</td><td>Veeam Backup</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP04</td><td>Fact Teares + Apache</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP06</td><td>SQL Server</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP10 / VAPP12</td><td>Servidor IIS</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP11</td><td>Totvs</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP18</td><td>OpManager / AppManager</td><td><span class="badge b-pend">PENDENTE</span></td></tr>
+      <tr><td>BGP-SRV-VAPP26</td><td>Docker by Zabbix agent 2</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP28</td><td>Entra Connect e Gateways</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>BGP-SRV-VAPP29</td><td>Deps homolog</td><td><span class="badge b-pend">PENDENTE</span></td></tr>
+      <tr><td>BGP-SRV-FREP</td><td>Veeam Repository Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+    </table>
+
+    <h3>Site SCL</h3>
+    <table>
+      <tr><th>Host</th><th>Role / Template linkado</th><th>Status</th></tr>
+      <tr><td>SCL-SRV-FHV02 / FHV03</td><td>Hyper-V Host 2</td><td><span class="badge b-opt">OPCIONAL (padronizar)</span></td></tr>
+      <tr><td>SCL-SRV-V02</td><td>DC Primário On-Prem</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-V03</td><td>DC Secundário</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-V04</td><td>Cisco Dashboard e Oxidized Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-V05</td><td>Clickhouse Linux + Docker Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-V06</td><td>Clipnet</td><td><span class="badge b-pend">PENDENTE</span></td></tr>
+      <tr><td>SCL-SRV-V07</td><td>Docker (proxy do Clickhouse)</td><td><span class="badge b-add">LINKAR Zabbix proxy health</span></td></tr>
+      <tr><td>SCL-SRV-V08</td><td>Zabbix proxy health</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP01</td><td>Dimep</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP02</td><td>SQL Server</td><td><span class="badge b-add">LINKAR Dimep</span></td></tr>
+      <tr><td>SCL-SRV-VAPP03</td><td>NodeRed (Node-RED + Mosquitto + Grafana)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP12</td><td>Apache (Fact Teares removida)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP13</td><td>Entra Connect e Gateways</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP14</td><td>EAS Cozinha (TexHost/TexCom/TexDosif)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SCL-SRV-VAPP15</td><td>EAS Cozinha (homolog)</td><td><span class="badge b-warn">VERIFICAR processos (app fora do ar)</span></td></tr>
+      <tr><td>scl-srv-vapp09</td><td>desconhecido</td><td><span class="badge b-pend">PENDENTE + hostname minúsculo</span></td></tr>
+      <tr><td>SCL-SRV-FREP</td><td>Veeam Repository Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+    </table>
+
+    <h3>Site SPO / Azure</h3>
+    <table>
+      <tr><th>Host</th><th>Role / Template linkado</th><th>Status</th></tr>
+      <tr><td>SPO-SRV-FAD01</td><td>DC Primário + Hyper-V + Entra Connect</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-V01</td><td>Zabbix server health (oficial)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-V02</td><td>PostgreSQL Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-V03</td><td>Grafana Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-V04</td><td>Zabbix proxy health</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-V05</td><td>Fastweb Linux (cron)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>SPO-SRV-VAPP04</td><td>Veeam Repository Linux</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>AZ-VM-APP-03</td><td>GLPI Linux (Apache + PHP-FPM + MySQL)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>AZ-VM-DC-01 / DC-02</td><td>DC Azure</td><td><span class="badge b-ok">OK</span></td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Verificação (via API)</h2>
+    <p><b>Itens não suportados das aplicações: 0.</b> Sem alarmes falsos das apps. A única trigger agregada
+       disparando é <b>"EAS Cozinha fora do ar" em SCL-SRV-VAPP15</b> — provável processo parado / nome diferente no homolog.</p>
+    <table>
+      <tr><th>Item</th><th>Status</th></tr>
+      <tr><td>BGP-SRV-V08 — item <code>service.info</code> não suportado (role Windows em Linux)</td><td><span class="badge b-ok">RESOLVIDO</span></td></tr>
+      <tr><td>SCL-SRV-VAPP12 — Fact Teares falso (Portal Teares / Agente FACT)</td><td><span class="badge b-ok">RESOLVIDO</span></td></tr>
+      <tr><td>BGP-SRV-VAD01 — DHCP falso (secundário sem DHCP)</td><td><span class="badge b-ok">RESOLVIDO</span></td></tr>
+      <tr><td>SCL-SRV-VAPP14 — EAS InfoTint removido</td><td><span class="badge b-ok">RESOLVIDO</span></td></tr>
+      <tr><td>SCL-SRV-VAPP15 — "EAS Cozinha fora do ar" disparando</td><td><span class="badge b-warn">VERIFICAR processos no homolog</span></td></tr>
+    </table>
+    <div class="note"><b>Consolidação OK:</b> no SCL-SRV-VAPP15, dispara só a agregada "EAS Cozinha fora do ar"
+      (as 3 individuais ficam suprimidas pela dependência) — prova de que o "1 alerta por app" está funcionando.</div>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="grid2">
+      <div>
+        <h3>Linkar (template pronto)</h3>
+        <ul class="tight">
+          <li>BGP-SRV-FHV02/03 → Role Servidor Hyper-V</li>
+          <li>SCL-SRV-V07 → Zabbix proxy health</li>
+          <li>SCL-SRV-VAPP02 → Role Dimep</li>
+          <li>SCL-SRV-VAPP15 → Role EAS Cozinha</li>
+          <li>(SCL-SRV-FHV02/03 → Hyper-V, opcional)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Definir serviço (pendentes)</h3>
+        <ul class="tight">
+          <li>Clipnet — BGP-SRV-V06, SCL-SRV-V06</li>
+          <li>OpManager/AppManager — BGP-SRV-VAPP18</li>
+          <li>Deps homolog — BGP-SRV-VAPP29</li>
+          <li>scl-srv-vapp09 — identificar + hostname</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note"><b>Automação:</b> <code>link_roles.py</code> (token admin) já contempla os links acima
+      (BGP-FHV02/03, SCL-V07, SCL-VAPP02 Dimep, SCL-VAPP15 EAS) — roda idempotente.</div>
+  </section>
+
+  <section>
+    <h2>Serviços de Negócio (BSM) &amp; SLA</h2>
+    <p><b>26 serviços</b> organizados em 4 domínios, mapeados por <b>tags</b> (não por host), com <b>SLA por criticidade</b>.
+       Inclui <b>7 serviços compostos</b> (App + Banco) que caem se a aplicação <b>ou</b> o banco cair.</p>
+
+    <h3>Árvore de serviços</h3>
+    <table>
+      <tr><th>Domínio</th><th>Serviços</th></tr>
+      <tr><td><b>Aplicações</b></td><td>Totvs*, Deps Produção*, Portal de OS*, Deps Homolog*, Dimep*, EAS Cozinha*, GLPI, NodeRed, Fact Teares, Clickhouse, Cisco/Oxidized, IIS, SQL Server, PostgreSQL, Docker, Grafana, Fastweb, Lansweeper, Power BI</td></tr>
+      <tr><td><b>Identidade</b></td><td>Active Directory, DNS, DHCP, RADIUS (NPS), Entra Connect</td></tr>
+      <tr><td><b>Backup</b></td><td>Veeam Backup*, Veeam ONE, Veeam Repository</td></tr>
+      <tr><td><b>Virtualização</b></td><td>Hyper-V, Cluster</td></tr>
+    </table>
+    <p><small class="mut">* composto (App + Banco). Pai = slatier + Most critical; filhos = problem tags.</small></p>
+
+    <h3>Dependência aplicação ↔ banco (tag <code>negocio</code>)</h3>
+    <p>15 hosts marcados com <code>negocio=X</code> ligando cada app ao seu banco (mesmo em máquina separada).
+       O filho "Banco" usa <code>negocio=X</code> + <code>scope=availability</code> — só indisponibilidade, sem ruído de performance.</p>
+    <table>
+      <tr><th>Negócio</th><th>App</th><th>Banco</th></tr>
+      <tr><td>deps · totvs · portal-os</td><td>VAPP10 · VAPP11 · VAPP12 (+ V04)</td><td>BGP-SRV-V04-DB (MSSQL)</td></tr>
+      <tr><td>deps-homolog</td><td>VAPP29 (+ VAPP06)</td><td>BGP-SRV-VAPP06-DB (MSSQL)</td></tr>
+      <tr><td>veeam-backup</td><td>VAPP02</td><td>BGP-SRV-VAPP02-DB (PostgreSQL)</td></tr>
+      <tr><td>dimep · eas-cozinha</td><td>VAPP01 · VAPP14 (+ VAPP02)</td><td>SCL-SRV-VAPP02-DB (MSSQL)</td></tr>
+      <tr><td>clickhouse</td><td>SCL-SRV-V07 (proxy)</td><td>SCL-SRV-V05 (Clickhouse)</td></tr>
+    </table>
+
+    <h3>SLAs configurados</h3>
+    <table>
+      <tr><th>SLA</th><th>SLO</th><th>Período</th><th>Schedule</th><th>Aplica a</th><th>Status</th></tr>
+      <tr><td>SLA Crítico</td><td>99.9%</td><td>Mensal</td><td>24x7</td><td><code>slatier=critico</code></td><td><span class="badge b-ok">ativo</span></td></tr>
+      <tr><td>SLA Padrão</td><td>99%</td><td>Mensal</td><td>24x7</td><td><code>slatier=padrao</code></td><td><span class="badge b-ok">ativo</span></td></tr>
+    </table>
+    <div class="note"><b>Verificado via API:</b> 0 itens não suportados · todos os serviços <b>OK</b> · 2 SLAs ativos. Relatório em <b>Reports → SLA report</b>.</div>
+    <div class="note warn"><b>Opcional:</b> criar <b>SLA Baixo</b> (<code>slatier=baixo</code>) para Lansweeper/Power BI; e avaliar <b>horário comercial</b> no SLA Padrão (hoje 24x7).</div>
+  </section>
+
+  <section>
+    <h2>Entregáveis (pasta <code>automacao/</code>)</h2>
+    <table>
+      <tr><th>Arquivo</th><th>Função</th></tr>
+      <tr><td><code>gen_app_templates.py</code></td><td>Gera o pacote de templates/roles (UUIDs v4 determinísticos)</td></tr>
+      <tr><td><code>app-availability-templates.yaml</code></td><td>Pacote para importar (Templates → Import)</td></tr>
+      <tr><td><code>link_roles.py</code></td><td>Linka roles por host via API (idempotente) + remove erradas</td></tr>
+      <tr><td><code>zabbix_dashboard.py</code> + <code>Painel-Zabbix.bat</code></td><td>Painel local ao vivo (puxa dados do Zabbix em tempo real, só leitura)</td></tr>
+      <tr><td><code>fix_zabbix_hostname.sh</code></td><td>Corrige hostname minúsculo (agente Linux)</td></tr>
+      <tr><td><code>fix_zabbix_agent2_timeout.sh</code></td><td>Aumenta Timeout do agent2 (descoberta systemd)</td></tr>
+      <tr><td><code>Zabbix_Serviços_atualizado.xlsx</code></td><td>Inventário com coluna "Banco / Negócio (SLA)" e dependências app↔banco</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Arquitetura completa do projeto</h2>
+    <table>
+      <tr><th>Camada</th><th>Status</th></tr>
+      <tr><td>1. Templates de disponibilidade (service.info / systemd / proc / porta)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>2. Consolidação "1 alerta por app" (agregada + dependência)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>3. Roles por host linkadas</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>4. Árvore de Serviços (4 domínios, 26 serviços)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>5. Dependência app↔banco (tag negocio, compostos)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>6. SLA (Crítico 99.9% / Padrão 99%)</td><td><span class="badge b-ok">OK</span></td></tr>
+      <tr><td>7. Rede via SNMP (tune do error-rate pendente) + Infra SLA</td><td><span class="badge b-warn">em andamento</span></td></tr>
+    </table>
+  </section>
+
+  <footer>
+    Capricórnio Têxtil S.A. — Projeto Zabbix Observability · Dados coletados via API do Zabbix 7.0.26 LTS · 29/06/2026
+  </footer>
+
+</div>
+</body>
+</html>

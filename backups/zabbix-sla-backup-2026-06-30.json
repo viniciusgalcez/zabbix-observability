@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "backup_date": "2026-06-30",
+    "zabbix": "http://172.17.2.51 (7.0.26)",
+    "purpose": "Backup antes de criar SLA de rede. Itens EXISTENTES que serao MODIFICADOS: tags dos 3 templates (rollback critico abaixo). Services/SLA novos sao apenas criados (rollback = deletar criados).",
+    "rollback_templates": "Para reverter, template.update em cada templateid com EXATAMENTE o array 'tags' abaixo."
+  },
+  "templates_tags_ORIGINAL": [
+    {
+      "templateid": "10218",
+      "name": "Cisco IOS by SNMP",
+      "tags": [
+        { "tag": "class", "value": "network" },
+        { "tag": "target", "value": "cisco" },
+        { "tag": "target", "value": "cisco-ios" }
+      ]
+    },
+    {
+      "templateid": "10604",
+      "name": "FortiGate by SNMP",
+      "tags": [
+        { "tag": "class", "value": "network" },
+        { "tag": "target", "value": "fortigate" },
+        { "tag": "target", "value": "fortinet" }
+      ]
+    },
+    {
+      "templateid": "10943",
+      "name": "Aruba IAP by SNMPv3",
+      "tags": []
+    }
+  ],
+  "slas_ORIGINAL": [
+    {
+      "slaid": "3", "name": "SLA Critico", "period": "2", "slo": "99.9",
+      "effective_date": "1782691200", "timezone": "America/Sao_Paulo", "status": "1",
+      "service_tags": [ { "tag": "slatier", "operator": "0", "value": "critico" } ],
+      "schedule": [], "excluded_downtimes": []
+    },
+    {
+      "slaid": "4", "name": "SLA Padrao", "period": "2", "slo": "99",
+      "effective_date": "1782691200", "timezone": "America/Sao_Paulo", "status": "1",
+      "service_tags": [ { "tag": "slatier", "operator": "0", "value": "padrao" } ],
+      "schedule": [], "excluded_downtimes": []
+    }
+  ],
+  "services_index_ORIGINAL": "serviceids existentes 2-48 (Aplicacoes, Identidade, Backup, Virtualizacao e filhos). Nenhum sera modificado; novos services de rede recebem ids a partir do proximo disponivel.",
+  "role_user_ORIGINAL": {
+    "roleid": "1", "name": "User role",
+    "services.read.mode": "1", "services.write.mode": "0",
+    "nota": "No momento do backup a escrita de Services estava DESABILITADA nesta role."
+  }
+}

@@ -1,0 +1,29 @@
+# === SEGREDOS — NUNCA COMMITAR ===
+# Token da API do Zabbix aparece em texto puro nestes arquivos:
+.mcp.json
+.codex/
+noc_app/noc_app.py
+update_bgp_address.py
+
+# Senhas (Grafana/Zabbix/proxy) no inventário Ansible
+automacao/inventory/group_vars/*.yml
+
+# Certificados e chaves
+certificados/
+*.crt
+*.cer
+*.pem
+*.key
+
+# Configuração local do Claude (pode conter dados de sessão)
+.claude/settings.local.json
+
+# === Externos / gerados ===
+# Repositório do servidor MCP (clonado externamente)
+zabbix-mcp-server/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

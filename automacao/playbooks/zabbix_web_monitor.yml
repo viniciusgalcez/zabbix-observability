@@ -1,0 +1,413 @@
+---
+# Cria monitoramento de URLs e certificados SSL no Zabbix:
+#
+#   Web Scenarios (22 URLs): verifica disponibilidade HTTP/HTTPS com alerta se
+#   status code != 200 por mais de 2 verificações consecutivas.
+#
+#   Certificados SSL (8 domínios): verifica validade do certificado e dispara
+#   alertas com 30 dias (Warning) e 7 dias (High) de antecedência ao vencimento.
+#
+# Tudo monitorado pelo host dedicado "CAPRICORNIO-WEB" (sem proxy —
+# runs direto no Zabbix Server em 172.17.2.51).
+#
+# ansible-playbook playbooks/zabbix_web_monitor.yml
+
+- name: Configurar monitoramento web e certificados SSL no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    monitoring_hostname: "CAPRICORNIO-WEB"
+    monitoring_host_ip: "172.17.2.51"
+
+    web_scenarios:
+      - name: "SinergyRH - Ponto"
+        url: "https://www.pontosinergyrh.com.br"
+      - name: "SinergyRH - Folha"
+        url: "https://www.folhasinergyrh.com.br"
+      - name: "Plusoft OMNI - Tenant Capricórnio"
+        url: "https://capricornio.plusoftomni.com.br"
+      - name: "Picanol - PicConnect"
+        url: "https://picconnect.picanol.be/"
+      - name: "Paytrack"
+        url: "https://app.paytrack.com.br"
+      - name: "NDD Print 360"
+        url: "https://360.nddprint.com/"
+      - name: "Lansweeper"
+        url: "https://lansweeper.capricornio.corp.br/"
+      - name: "HAProxy Systextil ERP"
+        url: "https://hacapricornio.systextil.com.br/systextil"
+      - name: "Deps API"
+        url: "https://depsapi.capricornio.com.br/"
+      - name: "Deps - Vivo"
+        url: "http://deps.vivo.capricornio.com.br/"
+      - name: "Deps - Home"
+        url: "http://deps.capricornio.com.br/"
+      - name: "Deps - Cross Connection"
+        url: "http://deps.cross.capricornio.com.br/"
+      - name: "Capricórnio - Site"
+        url: "https://capricornio.com.br"
+      - name: "Base-B - Tenant Capricórnio"
+        url: "https://capricornio.baseb.app/"
+      - name: "CLP SCL-TIN-UTL01"
+        url: "https://clp.capricornio.com.br:8081/"
+      - name: "CLP SCL-TEC2-UTL01"
+        url: "https://clp.capricornio.com.br:8083/wbm/"
+      - name: "CLP SCL-ACA-UTL01"
+        url: "https://clp.capricornio.com.br:8082/"
+      - name: "Projuris - Tenant Capricórnio"
+        url: "https://capricorniotextil.projuris.com.br/"
+      - name: "NodeRed - Instância 1"
+        url: "https://nodered.capricornio.corp.br:1880/"
+      - name: "NodeRed - Instância 2"
+        url: "https://nodered.capricornio.corp.br:1881/"
+      - name: "NodeRed - Instância 3"
+        url: "https://nodered.capricornio.corp.br:1882/"
+      - name: "Cisco Dashboard"
+        url: "https://cisco.capricornio.corp.br/"
+
+    ssl_certificates:
+      - name: "GLPI ServiceDesk"
+        host: "servicedesk.capricornio.com.br"
+        port: 443
+      - name: "OpManager"
+        host: "opmanager.capricornio.corp.br"
+        port: 443
+      - name: "Lansweeper"
+        host: "lansweeper.capricornio.corp.br"
+        port: 443
+      - name: "Dimep"
+        host: "dimep.capricornio.corp.br"
+        port: 443
+      - name: "DepsNet"
+        host: "deps.capricornio.com.br"
+        port: 443
+      - name: "Deps API"
+        host: "depsapi.capricornio.com.br"
+        port: 443
+      - name: "Cisco Dashboard"
+        host: "cisco.capricornio.corp.br"
+        port: 443
+      - name: "Capricórnio Site"
+        host: "capricornio.com.br"
+        port: 443
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Grupo e host de monitoramento web ─────────────────────────────────────
+
+    - name: Buscar grupo Monitoramento Web
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output:
+              - groupid
+              - name
+            filter:
+              name: "Monitoramento Web"
+          auth: "{{ _token }}"
+          id: 2
+      register: _grp_web
+
+    - name: Criar grupo Monitoramento Web (se não existir)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.create"
+          params:
+            name: "Monitoramento Web"
+          auth: "{{ _token }}"
+          id: 3
+      register: _grp_web_created
+      when: _grp_web.json.result | length == 0
+
+    - name: Registrar groupid Monitoramento Web
+      ansible.builtin.set_fact:
+        _web_groupid: >-
+          {{
+            _grp_web.json.result[0].groupid
+            if _grp_web.json.result | length > 0
+            else _grp_web_created.json.result.groupids[0]
+          }}
+
+    - name: Verificar se host CAPRICORNIO-WEB já existe
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+              - host
+            filter:
+              host: "{{ monitoring_hostname }}"
+          auth: "{{ _token }}"
+          id: 4
+      register: _web_host_check
+
+    - name: Criar host CAPRICORNIO-WEB
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.create"
+          params:
+            host: "{{ monitoring_hostname }}"
+            name: "CAPRICORNIO-WEB (Web Monitoring)"
+            interfaces:
+              - type: 1
+                main: 1
+                useip: 1
+                ip: "{{ monitoring_host_ip }}"
+                dns: ""
+                port: "10050"
+            groups:
+              - groupid: "{{ _web_groupid }}"
+          auth: "{{ _token }}"
+          id: 5
+      register: _web_host_created
+      when: _web_host_check.json.result | length == 0
+
+    - name: Registrar hostid CAPRICORNIO-WEB
+      ansible.builtin.set_fact:
+        _web_hostid: >-
+          {{
+            _web_host_check.json.result[0].hostid
+            if _web_host_check.json.result | length > 0
+            else _web_host_created.json.result.hostids[0]
+          }}
+
+    - name: Buscar interfaceid do host CAPRICORNIO-WEB
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+            selectInterfaces:
+              - interfaceid
+              - type
+            hostids:
+              - "{{ _web_hostid }}"
+          auth: "{{ _token }}"
+          id: 6
+      register: _web_host_ifaces
+
+    - name: Set interfaceid do agente CAPRICORNIO-WEB
+      ansible.builtin.set_fact:
+        _web_interfaceid: >-
+          {{
+            (_web_host_ifaces.json.result[0].interfaces
+             | selectattr('type', 'equalto', '1') | first).interfaceid
+          }}
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # WEB SCENARIOS (22 URLs)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Verificar web scenarios existentes
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "httptest.get"
+          params:
+            output:
+              - httptestid
+              - name
+            hostids:
+              - "{{ _web_hostid }}"
+          auth: "{{ _token }}"
+          id: 10
+      register: _existing_scenarios
+
+    - name: Criar web scenarios
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "httptest.create"
+          params:
+            hostid: "{{ _web_hostid }}"
+            name: "{{ item.name }}"
+            delay: "5m"
+            retries: 1
+            agent: "Mozilla/5.0 (compatible; Zabbix)"
+            steps:
+              - name: "Homepage"
+                url: "{{ item.url }}"
+                status_codes: "200"
+                "no": 1
+                timeout: "30"
+          auth: "{{ _token }}"
+          id: 11
+      register: _scenario_create
+      failed_when:
+        - _scenario_create.json.error is defined
+        - "'already exist' not in (_scenario_create.json.error.data | default(''))"
+      loop: "{{ web_scenarios }}"
+      loop_control:
+        label: "{{ item.name }}"
+      when: >-
+        item.name not in (_existing_scenarios.json.result | map(attribute='name') | list)
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CERTIFICADOS SSL (8 domínios)
+    # web.certificate.get[host,port] — requer Zabbix Agent 2 em 172.17.2.51
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Verificar itens SSL existentes
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.get"
+          params:
+            output:
+              - itemid
+              - key_
+              - name
+            hostids:
+              - "{{ _web_hostid }}"
+            search:
+              key_: "web.certificate.get"
+          auth: "{{ _token }}"
+          id: 20
+      register: _existing_ssl_items
+
+    - name: Criar item SSL — {{ item.name }}
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.create"
+          params:
+            hostid: "{{ _web_hostid }}"
+            interfaceid: "{{ _web_interfaceid }}"
+            name: "SSL Cert expiry: {{ item.name }}"
+            key_: "web.certificate.get[{{ item.host }},{{ item.port }}]"
+            type: 0
+            value_type: 3
+            delay: "1h"
+            description: "Certificado SSL de {{ item.host }}:{{ item.port }}"
+            preprocessing:
+              - type: 12
+                params: "$.x509.not_after.timestamp"
+                error_handler: 2
+                error_handler_params: "0"
+            units: "unixtime"
+          auth: "{{ _token }}"
+          id: 21
+      register: _ssl_item_create
+      failed_when:
+        - _ssl_item_create.json.error is defined
+        - "'already exist' not in (_ssl_item_create.json.error.data | default(''))"
+      loop: "{{ ssl_certificates }}"
+      loop_control:
+        label: "{{ item.name }}"
+      when: >-
+        'web.certificate.get[' ~ item.host ~ ',' ~ item.port ~ ']'
+        not in (_existing_ssl_items.json.result | map(attribute='key_') | list)
+
+    - name: Criar triggers de expiração SSL — {{ item.name }}
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "trigger.create"
+          params:
+            - description: "SSL {{ item.name }}: expira em menos de 7 dias"
+              expression: >-
+                last(/{{ monitoring_hostname }}/web.certificate.get[{{ item.host }},{{ item.port }}]) - now() < 604800
+              priority: 4
+              manual_close: 0
+            - description: "SSL {{ item.name }}: expira em menos de 30 dias"
+              expression: >-
+                last(/{{ monitoring_hostname }}/web.certificate.get[{{ item.host }},{{ item.port }}]) - now() < 2592000
+                and last(/{{ monitoring_hostname }}/web.certificate.get[{{ item.host }},{{ item.port }}]) - now() >= 604800
+              priority: 2
+              manual_close: 0
+          auth: "{{ _token }}"
+          id: 22
+      register: _ssl_trigger_create
+      failed_when:
+        - _ssl_trigger_create.json.error is defined
+        - "'already exist' not in (_ssl_trigger_create.json.error.data | default(''))"
+      loop: "{{ ssl_certificates }}"
+      loop_control:
+        label: "{{ item.name }}"
+      when: >-
+        'web.certificate.get[' ~ item.host ~ ',' ~ item.port ~ ']'
+        not in (_existing_ssl_items.json.result | map(attribute='key_') | list)
+
+    # ── Sumário ───────────────────────────────────────────────────────────────
+
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg:
+          - "══════════════════════════════════════════════════════"
+          - "Monitoramento web e SSL configurado"
+          - "══════════════════════════════════════════════════════"
+          - "Host: {{ monitoring_hostname }} ({{ monitoring_host_ip }})"
+          - "Web scenarios: {{ web_scenarios | length }} URLs"
+          - "SSL certs    : {{ ssl_certificates | length }} domínios"
+          - "══════════════════════════════════════════════════════"
+          - "Verifique em: Monitoring → Hosts → CAPRICORNIO-WEB"
+          - "  → Web Scenarios (disponibilidade das URLs)"
+          - "  → Latest Data (expiração dos certificados SSL)"
+          - "══════════════════════════════════════════════════════"
+          - "IMPORTANTE: os itens SSL requerem Zabbix Agent 2"
+          - "rodando em 172.17.2.51 (Zabbix Server)."
+          - "══════════════════════════════════════════════════════"

@@ -1,0 +1,149 @@
+---
+# Atualiza as interfaces SNMP dos hosts Cisco existentes de SNMPv1 para SNMPv3.
+#
+# Afeta todos os hosts nos grupos "Switches Cisco/*".
+# Parâmetros SNMPv3 aplicados:
+#   securityname:  zabbix_snmp
+#   authprotocol:  SHA-1 (1)
+#   authpassphrase: ZbxAuth_2026@Net
+#   privprotocol:  AES-128 (1)
+#   privpassphrase: ZbxPriv_2026@Secure
+#
+# ansible-playbook playbooks/zabbix_atualizar_snmp_cisco.yml
+
+- name: Atualizar interfaces SNMP dos switches Cisco para SNMPv3
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    snmpv3:
+      version: 3
+      bulk: 1
+      securityname: "zabbix_snmp"
+      securitylevel: 2
+      authprotocol: 1
+      authpassphrase: "ZbxAuth_2026@Net"
+      privprotocol: 1
+      privpassphrase: "ZbxPriv_2026@Secure"
+      contextname: ""
+
+  tasks:
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar todos os grupos Switches Cisco/* ───────────────────────────
+    - name: Buscar groupids de Switches Cisco/*
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+            search:
+              name: "Switches Cisco"
+          auth: "{{ _token }}"
+          id: 2
+      register: _groups
+
+    - name: Set lista de groupids
+      ansible.builtin.set_fact:
+        _groupids: "{{ _groups.json.result | map(attribute='groupid') | list }}"
+
+    - name: Exibir grupos encontrados
+      ansible.builtin.debug:
+        msg: "{{ _groups.json.result | map(attribute='name') | list }}"
+
+    # ── Buscar hosts e suas interfaces ───────────────────────────────────
+    - name: Buscar hosts dos grupos Switches Cisco
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid", "host"]
+            groupids: "{{ _groupids }}"
+            selectInterfaces: ["interfaceid", "ip", "type", "details"]
+          auth: "{{ _token }}"
+          id: 3
+      register: _hosts
+
+    - name: Exibir total de hosts encontrados
+      ansible.builtin.debug:
+        msg: "{{ _hosts.json.result | length }} switches Cisco encontrados"
+
+    # ── Extrair apenas interfaces SNMP (type=2) ───────────────────────────
+    - name: Construir lista de interfaces SNMP a atualizar
+      ansible.builtin.set_fact:
+        _snmp_interfaces: >-
+          {{ _hosts.json.result
+            | map(attribute='interfaces')
+            | flatten
+            | selectattr('type', 'equalto', '2')
+            | list }}
+
+    - name: Total de interfaces SNMP
+      ansible.builtin.debug:
+        msg: "{{ _snmp_interfaces | length }} interfaces SNMP a atualizar"
+
+    # ── Atualizar cada interface para SNMPv3 ─────────────────────────────
+    - name: Atualizar interface SNMP para SNMPv3
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostinterface.update"
+          params:
+            interfaceid: "{{ item.interfaceid }}"
+            details: "{{ snmpv3 }}"
+          auth: "{{ _token }}"
+          id: 4
+      register: _update
+      failed_when: _update.json.error is defined
+      loop: "{{ _snmp_interfaces }}"
+      loop_control:
+        label: "{{ item.ip }}"
+
+    # ── Sumário ───────────────────────────────────────────────────────────
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════
+          Atualização SNMPv3 concluída
+          ══════════════════════════════════════════════════════
+          Interfaces atualizadas: {{ _snmp_interfaces | length }}
+          Erros: {{ _update.results | selectattr('json.error', 'defined') | list | length }}
+
+          Configuração aplicada:
+            Security name:  zabbix_snmp
+            Auth protocol:  SHA-1
+            Priv protocol:  AES-128
+            Security level: authPriv
+          ══════════════════════════════════════════════════════

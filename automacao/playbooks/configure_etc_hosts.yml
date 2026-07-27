@@ -1,0 +1,36 @@
+---
+# Adiciona entradas no /etc/hosts de todos os servidores da stack Zabbix
+# para resolução dos domínios internos .corp.br inacessíveis via DNS externo.
+#
+# Isso garante que os cenários web do Zabbix Server e proxies consigam
+# resolver hostnames como lansweeper.capricornio.corp.br, nodered.capricornio.corp.br, etc.
+#
+# Preencha vars/etc_hosts_internal.yml com os IPs reais fornecidos pelo Marcos.
+#
+# Uso:
+#   ansible-playbook playbooks/configure_etc_hosts.yml -i inventory/hosts.yml
+
+- name: Configurar /etc/hosts para domínios internos .corp.br
+  hosts: zabbix_server:zabbix_proxy:postgres:grafana
+  become: true
+  vars_files:
+    - ../vars/etc_hosts_internal.yml
+
+  tasks:
+    - name: Adicionar entradas de hosts internos no /etc/hosts
+      blockinfile:
+        path: /etc/hosts
+        marker: "# {mark} ANSIBLE MANAGED — domínios internos Capricórnio (.corp.br)"
+        block: "{{ internal_hosts_block }}"
+
+    - name: Verificar resolução dos domínios após configuração
+      command: getent hosts {{ item.hostname }}
+      loop: "{{ internal_hosts }}"
+      register: resolve_check
+      changed_when: false
+      failed_when: false
+
+    - name: Resultado das resoluções
+      debug:
+        msg: "{{ item.item.hostname }}: {{ 'OK — ' + item.stdout if item.rc == 0 else 'FALHA — não resolveu' }}"
+      loop: "{{ resolve_check.results }}"

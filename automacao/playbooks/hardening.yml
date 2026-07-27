@@ -1,0 +1,46 @@
+---
+- name: Hardening base em todos os hosts
+  hosts: all
+  become: true
+  gather_facts: true
+
+  pre_tasks:
+    - name: Atualizar cache APT
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+  roles:
+    - role: hardening
+
+  post_tasks:
+    - name: "[VERIFY] SSH - PasswordAuthentication configurado corretamente"
+      ansible.builtin.command: >-
+        grep -E '^PasswordAuthentication {{ hardening_ssh_password_authentication | default("yes") }}'
+        /etc/ssh/sshd_config
+      changed_when: false
+      register: ssh_verify
+      failed_when: ssh_verify.rc != 0
+
+    - name: "[VERIFY] UFW ativo"
+      ansible.builtin.command: ufw status
+      changed_when: false
+      register: ufw_status
+      failed_when: "'Status: active' not in ufw_status.stdout"
+
+    - name: "[VERIFY] sysctl net.ipv4.tcp_syncookies = 1"
+      ansible.builtin.command: "sysctl net.ipv4.tcp_syncookies"
+      changed_when: false
+      register: sysctl_verify
+      failed_when: "'net.ipv4.tcp_syncookies = 1' not in sysctl_verify.stdout"
+
+    - name: "[VERIFY] Coletar facts de serviços"
+      ansible.builtin.service_facts:
+
+    - name: "[VERIFY] Confirmar serviço unattended-upgrades"
+      ansible.builtin.assert:
+        that: >-
+          'unattended-upgrades.service' in ansible_facts.services or
+          'unattended-upgrades' in ansible_facts.services
+        fail_msg: "unattended-upgrades não está instalado/ativo"

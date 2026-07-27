@@ -1,0 +1,290 @@
+---
+# Classifica automaticamente hosts no Zabbix usando inventário de switches do Excel
+# (docs/Sws_Capricornio.xlsx) e DNS reverso para demais dispositivos.
+#
+# Lógica de classificação (em ordem de prioridade):
+#   1. Excel (Sws_Capricornio.xlsx): switches Cisco com nome, modelo e local exatos
+#   2. DNS reverso: dispositivos com PTR no formato SITE-LOC-TIPO99
+#   3. Fallback: permanece em "Em Classificação" com tag de site
+#
+# Resultado por host classificado:
+#   - nome atualizado para o nome real (planilha ou DNS)
+#   - description com modelo e local (se disponível)
+#   - grupo correto: Switches Cisco/SITE, Firewalls/SITE, etc.
+#   - template vinculado: Cisco IOS by SNMP, FortiGate by SNMP, etc.
+#
+# ansible-playbook playbooks/zabbix_classificar_hosts.yml
+
+- name: Classificar hosts descobertos no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+    excel_path: "{{ playbook_dir }}/../docs/Sws_Capricornio.xlsx"
+
+    site_map:
+      "16": "SCL"
+      "17": "SPO"
+      "18": "BGP"
+
+    # DNS tipo abrev → grupo e template
+    dns_type_config:
+      SW:
+        group_prefix: "Switches Cisco"
+        template: "Cisco IOS by SNMP"
+      FW:
+        group_prefix: "Firewalls"
+        template: "FortiGate by SNMP"
+      GW:
+        group_prefix: "Firewalls"
+        template: "FortiGate by SNMP"
+      AP:
+        group_prefix: "Access Points Aruba"
+        template: "HP Enterprise Wireless Switch by SNMP"
+      UP:
+        group_prefix: "UPS"
+        template: "APC UPS by SNMP"
+      NAS:
+        group_prefix: "NAS QNAP"
+        template: "SNMP QNAP"
+      IDR:
+        group_prefix: "iDRAC Dell"
+        template: "Dell iDRAC by SNMP"
+
+  tasks:
+    # ── Autenticação ──────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Montar inventário de switches a partir do arquivo de vars ─────────
+    # Regenerar com: python3 scripts/gen_switch_vars.py
+    - name: Carregar inventário de switches (gerado do Excel)
+      ansible.builtin.include_vars:
+        file: "{{ playbook_dir }}/../vars/switches_excel.yml"
+
+    - name: Set mapa de switches (IP → dados)
+      ansible.builtin.set_fact:
+        _switch_map: "{{ switch_inventory }}"
+
+    - name: Total de switches no Excel
+      ansible.builtin.debug:
+        msg: "{{ _switch_map | length }} IPs únicos de switches no Excel"
+
+    # ── Buscar dados do Zabbix ────────────────────────────────────────────
+    - name: Buscar groupid de Em Classificação
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+            filter:
+              name: "Em Classificação"
+          auth: "{{ _token }}"
+          id: 2
+      register: _em_class
+
+    - name: Buscar todos os hosts do grupo Em Classificação
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid", "host", "name"]
+            groupids: ["{{ _em_class.json.result[0].groupid }}"]
+            selectInterfaces: ["ip"]
+          auth: "{{ _token }}"
+          id: 3
+      register: _hosts
+
+    - name: Buscar dservices para DNS reverso
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "dservice.get"
+          params:
+            output: ["ip", "dns"]
+          auth: "{{ _token }}"
+          id: 4
+      register: _dservices
+
+    - name: Construir mapa IP → dns
+      ansible.builtin.set_fact:
+        _dns_map: "{{ _dns_map | default({}) | combine({item.ip: item.dns}) }}"
+      loop: "{{ _dservices.json.result }}"
+      when: item.ip != '' and item.dns != ''
+
+    - name: Buscar todos os grupos existentes
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+          auth: "{{ _token }}"
+          id: 5
+      register: _all_groups
+
+    - name: Set mapa de grupos
+      ansible.builtin.set_fact:
+        _group_map: "{{ _all_groups.json.result | items2dict(key_name='name', value_name='groupid') }}"
+
+    - name: Buscar todos os templates
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+          auth: "{{ _token }}"
+          id: 6
+      register: _all_templates
+
+    - name: Set mapa de templates
+      ansible.builtin.set_fact:
+        _template_map: "{{ _all_templates.json.result | items2dict(key_name='name', value_name='templateid') }}"
+
+    # ── Classificar e atualizar cada host ─────────────────────────────────
+    - name: Classificar e atualizar hosts
+      vars:
+        _ip: "{{ (item.interfaces | first).ip }}"
+        _oct2: "{{ _ip.split('.')[1] }}"
+        _site: "{{ site_map[_oct2] | default('') }}"
+        # --- Fonte 1: Excel de switches ---
+        _sw: "{{ _switch_map[_ip] | default({}) }}"
+        _from_excel: "{{ _sw | length > 0 }}"
+        # --- Fonte 2: DNS reverso ---
+        _dns: "{{ _dns_map[_ip] | default('') }}"
+        _dns_short: "{{ _dns.split('.')[0] }}"
+        _dns_parts: "{{ _dns_short.split('-') }}"
+        _dns_type: "{{ _dns_parts[2][:3].upper() if _dns_parts | length >= 3 else '' }}"
+        _from_dns: "{{ not _from_excel and _dns != '' and _dns_type in dns_type_config }}"
+        # --- Nome final ---
+        _new_name: >-
+          {{
+            _sw.name if _from_excel
+            else (_dns_short if _from_dns
+            else _ip)
+          }}
+        # --- Grupo final ---
+        _group_name: >-
+          {{
+            ('Switches Cisco/' + _sw.site) if _from_excel
+            else ((dns_type_config[_dns_type].group_prefix + '/' + _site) if _from_dns
+            else '')
+          }}
+        # --- Template final ---
+        _template_name: >-
+          {{
+            'Cisco IOS by SNMP' if _from_excel
+            else (dns_type_config[_dns_type].template if _from_dns
+            else '')
+          }}
+        # --- Grupos a atribuir (grupo classificado + manter Em Classificação só se não classificado) ---
+        _groups: >-
+          {{
+            [{'groupid': _group_map[_group_name]}]
+            if (_group_name and _group_name in _group_map)
+            else [{'groupid': _em_class.json.result[0].groupid}]
+          }}
+        # --- Templates a vincular ---
+        _templates: >-
+          {{
+            [{'templateid': _template_map[_template_name]}]
+            if (_template_name and _template_name in _template_map)
+            else []
+          }}
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.hostid }}"
+            host: "{{ _new_name }}"
+            name: >-
+              {{
+                (_sw.name + ' (' + _sw.model + ')') if _from_excel
+                else (_dns if _from_dns else _ip)
+              }}
+            description: >-
+              {{
+                (_sw.location + ' — ' + _sw.model) if _from_excel
+                else ''
+              }}
+            groups: "{{ _groups }}"
+            templates: "{{ _templates }}"
+          auth: "{{ _token }}"
+          id: 7
+      register: _update
+      failed_when: _update.json.error is defined
+      loop: "{{ _hosts.json.result }}"
+      loop_control:
+        label: >-
+          {{ (item.interfaces | first).ip }} →
+          {{ ('Excel:' + _sw.name) if _from_excel else ('DNS:' + _dns_short if _from_dns else 'sem classificação') }}
+
+    # ── Sumário ────────────────────────────────────────────────────────────
+    - name: Calcular sumário por categoria
+      ansible.builtin.set_fact:
+        _classified_excel: "{{ _hosts.json.result | selectattr('interfaces.0.ip', 'in', _switch_map) | list | length }}"
+        _classified_dns: >-
+          {{ _hosts.json.result
+            | rejectattr('interfaces.0.ip', 'in', _switch_map)
+            | selectattr('interfaces.0.ip', 'in', (_dns_map | default({})))
+            | list | length }}
+        _unclassified: >-
+          {{ _hosts.json.result
+            | rejectattr('interfaces.0.ip', 'in', _switch_map)
+            | rejectattr('interfaces.0.ip', 'in', (_dns_map | default({})))
+            | list | length }}
+
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Classificação concluída — {{ _hosts.json.result | length }} hosts processados
+          ══════════════════════════════════════════════════════════════
+          Classificados pelo Excel (switches Cisco): {{ _classified_excel }}
+          Classificados pelo DNS reverso:            {{ _classified_dns }}
+          Sem classificação (permanecem no grupo):   {{ _unclassified }}
+
+          Verifique os grupos em: Data collection → Hosts → filtrar grupo
+          Hosts não classificados = dispositivos desconhecidos a triagem manual
+          ══════════════════════════════════════════════════════════════

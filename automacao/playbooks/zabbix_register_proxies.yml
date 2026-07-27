@@ -1,0 +1,26 @@
+---
+- name: Registrar proxies Zabbix no servidor via API
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Registrar proxy {{ item }}
+      vars:
+        ansible_network_os: community.zabbix.zabbix
+        ansible_connection: httpapi
+        ansible_user: Admin
+        ansible_httpapi_pass: "zabbix"  # alterar se já trocou a senha
+        ansible_host: "172.17.2.51"
+        ansible_httpapi_port: 80
+        ansible_httpapi_use_ssl: false
+        ansible_httpapi_validate_certs: false
+        ansible_zabbix_url_path: ""
+      community.zabbix.zabbix_proxy:
+        proxy_name: "{{ item }}"
+        operating_mode: active
+        state: present
+      loop:
+        - SPO-SRV-V04
+        - SCL-SRV-V08
+        - BGP-SRV-V08

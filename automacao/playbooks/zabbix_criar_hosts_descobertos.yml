@@ -1,0 +1,198 @@
+---
+# Cria hosts no Zabbix a partir dos IPs descobertos pelas regras de discovery.
+#
+# Os hosts são adicionados ao grupo "Em Classificação" com interface SNMP (port 161),
+# pois foram descobertos via varredura ICMP + SNMP. Hosts já existentes são ignorados.
+#
+# Após execução, classifique os hosts manualmente em Data collection → Hosts.
+#
+# ansible-playbook playbooks/zabbix_criar_hosts_descobertos.yml
+
+- name: Criar hosts a partir dos dhosts descobertos
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+  tasks:
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar IPs dos dhosts descobertos ──────────────────────────────────
+    - name: Buscar todos os dhosts com seus serviços (IPs)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "dhost.get"
+          params:
+            output:
+              - dhostid
+              - druleid
+              - status
+            selectDServices:
+              - ip
+              - dns
+              - type
+              - port
+          auth: "{{ _token }}"
+          id: 2
+      register: _dhosts
+
+    - name: Extrair IPs únicos dos dhosts Up
+      ansible.builtin.set_fact:
+        _discovered_ips: "{{ _dhosts.json.result
+          | selectattr('status', 'equalto', '0')
+          | map(attribute='dservices')
+          | flatten
+          | map(attribute='ip')
+          | select('match', '^[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+$')
+          | reject('equalto', '')
+          | list
+          | unique }}"
+
+    - name: Exibir IPs descobertos
+      ansible.builtin.debug:
+        msg: "{{ _discovered_ips | length }} IPs únicos encontrados nos dhosts"
+
+    # ── Buscar hosts já existentes no Zabbix ──────────────────────────────
+    - name: Buscar hosts já cadastrados (por interface IP)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+              - host
+            selectInterfaces:
+              - ip
+          auth: "{{ _token }}"
+          id: 3
+      register: _existing_hosts
+
+    - name: Extrair IPs de hosts já monitorados
+      ansible.builtin.set_fact:
+        _existing_ips: "{{ _existing_hosts.json.result
+          | map(attribute='interfaces')
+          | flatten
+          | map(attribute='ip')
+          | list
+          | unique }}"
+
+    - name: Calcular IPs novos (não monitorados ainda)
+      ansible.builtin.set_fact:
+        _new_ips: "{{ _discovered_ips | difference(_existing_ips) }}"
+
+    - name: Exibir resumo
+      ansible.builtin.debug:
+        msg:
+          - "IPs descobertos: {{ _discovered_ips | length }}"
+          - "IPs já monitorados: {{ (_discovered_ips | intersect(_existing_ips)) | length }}"
+          - "IPs a criar: {{ _new_ips | length }}"
+
+    # ── Buscar ID do grupo Em Classificação ───────────────────────────────
+    - name: Buscar groupid de Em Classificação
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output:
+              - groupid
+              - name
+            filter:
+              name: "Em Classificação"
+          auth: "{{ _token }}"
+          id: 4
+      register: _group
+
+    - name: Set group ID
+      ansible.builtin.set_fact:
+        _group_id: "{{ _group.json.result[0].groupid }}"
+
+    - name: Falhar se grupo não encontrado
+      ansible.builtin.fail:
+        msg: "Grupo 'Em Classificação' não encontrado no Zabbix."
+      when: _group.json.result | length == 0
+
+    # ── Criar hosts novos ──────────────────────────────────────────────────
+    - name: Criar host para cada IP descoberto (não existente)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.create"
+          params:
+            host: "{{ item }}"
+            name: "{{ item }}"
+            interfaces:
+              - type: 2
+                main: 1
+                useip: 1
+                ip: "{{ item }}"
+                dns: ""
+                port: "161"
+                details:
+                  version: 3
+                  bulk: 1
+                  securityname: "zabbix_snmp"
+                  securitylevel: 2
+                  authprotocol: 1
+                  authpassphrase: "ZbxAuth_2026@Net"
+                  privprotocol: 1
+                  privpassphrase: "ZbxPriv_2026@Secure"
+                  contextname: ""
+            groups:
+              - groupid: "{{ _group_id }}"
+          auth: "{{ _token }}"
+          id: 5
+      register: _create
+      failed_when:
+        - _create.json.error is defined
+        - "'already exists' not in (_create.json.error.data | default(''))"
+      loop: "{{ _new_ips }}"
+      loop_control:
+        label: "{{ item }}"
+
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════
+          Criação de hosts concluída
+          ══════════════════════════════════════════════════════
+          IPs novos processados: {{ _new_ips | length }}
+          Criados com sucesso:   {{ _create.results | selectattr('json.result', 'defined') | list | length }}
+          Já existiam (skip):    {{ _create.results | selectattr('json.error', 'defined') | list | length }}
+
+          Verifique em: Data collection → Hosts → Filtrar por grupo "Em Classificação"
+          ══════════════════════════════════════════════════════

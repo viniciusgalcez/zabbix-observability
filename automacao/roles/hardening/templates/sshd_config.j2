@@ -1,0 +1,40 @@
+# {{ ansible_managed }}
+Protocol 2
+Port {{ hardening_ssh_port }}
+
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Autenticação
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries {{ hardening_ssh_max_auth_tries }}
+MaxSessions {{ hardening_ssh_max_sessions }}
+
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
+PasswordAuthentication {{ hardening_ssh_password_authentication }}
+PermitEmptyPasswords no
+ChallengeResponseAuthentication {{ hardening_ssh_password_authentication }}
+KbdInteractiveAuthentication {{ hardening_ssh_password_authentication }}
+
+# Segurança
+X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding local
+LoginGraceTime 30
+MaxStartups 5:50:10
+UsePAM yes
+PrintMotd no
+
+# Idle timeout ({{ hardening_ssh_client_alive_interval * hardening_ssh_client_alive_count_max // 60 }} min)
+ClientAliveInterval {{ hardening_ssh_client_alive_interval }}
+ClientAliveCountMax {{ hardening_ssh_client_alive_count_max }}
+
+# Logging
+SyslogFacility AUTH
+LogLevel VERBOSE
+
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/openssh/sftp-server

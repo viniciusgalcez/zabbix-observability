@@ -1,0 +1,34 @@
+verbose_logging = false
+
+[[servers]]
+host = "{{ grafana_ldap_host }}"
+port = {{ grafana_ldap_port }}
+use_ssl = true
+ssl_skip_verify = true
+root_ca_cert = "/etc/grafana/ldap-ca.crt"
+start_tls = false
+bind_dn = '{{ grafana_ldap_bind_dn }}'
+bind_password = '{{ grafana_ldap_bind_password }}'
+timeout = 10
+search_filter = "(sAMAccountName=%s)"
+search_base_dns = ["{{ grafana_ldap_base_dn }}"]
+
+[servers.attributes]
+name = "givenName"
+surname = "sn"
+username = "sAMAccountName"
+member_of = "memberOf"
+email = "mail"
+
+{% for mapping in grafana_ldap_group_mappings %}
+[[servers.group_mappings]]
+group_dn = "{{ mapping.group_dn }}"
+org_role = "{{ mapping.org_role }}"
+{% if mapping.grafana_admin | default(false) %}
+grafana_admin = true
+{% endif %}
+
+{% endfor %}
+[[servers.group_mappings]]
+group_dn = "*"
+org_role = "Viewer"

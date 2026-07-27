@@ -1,0 +1,10 @@
+PidFile=/run/zabbix/zabbix_agent2.pid
+LogFile=/var/log/zabbix/zabbix_agent2.log
+LogFileSize=10
+
+Server=127.0.0.1,{{ zabbix_server_ip }}
+ServerActive={{ zabbix_server_ip }}
+Hostname={{ inventory_hostname }}
+
+Timeout=10
+Include=/etc/zabbix/zabbix_agent2.d/*.conf

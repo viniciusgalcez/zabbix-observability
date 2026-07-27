@@ -1,0 +1,690 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix",
+      "description": ""
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "4.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {"type": "grafana", "uid": "-- Grafana --"},
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0,211,255,1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Saúde física dos servidores Dell via iDRAC — 7 hosts (4 BGP + 2 SCL + 1 SPO)",
+  "editable": false,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Saúde do Hardware",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "panels": []
+    },
+    {
+      "id": 2,
+      "type": "gauge",
+      "title": "Overall System Health — todos os servidores",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["last"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 4},
+              {"color": "red", "value": 5}
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "1": {"text": "Outro", "color": "grey"},
+                "2": {"text": "Desconhecido", "color": "blue"},
+                "3": {"text": "OK", "color": "green"},
+                "4": {"text": "Não-crítico", "color": "yellow"},
+                "5": {"text": "Crítico", "color": "red"},
+                "6": {"text": "Irrecuperável", "color": "dark-red"}
+              }
+            }
+          ],
+          "min": 1,
+          "max": 6,
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Overall system health status"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "row",
+      "title": "Componentes — Temperatura e Fans",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 9},
+      "panels": []
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "Temperatura por Sensor (°C)",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 10},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["max", "last"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 40},
+              {"color": "red", "value": 50}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*Temperature*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "table",
+      "title": "Status dos Fans",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 18},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*Fan*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "table",
+      "title": "Status das PSUs",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 18},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*PSU*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "row",
+      "title": "Armazenamento",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 26},
+      "panels": []
+    },
+    {
+      "id": 8,
+      "type": "table",
+      "title": "Discos Físicos",
+      "gridPos": {"h": 10, "w": 12, "x": 0, "y": 27},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*Physical disk*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "table",
+      "title": "Discos Virtuais (RAID)",
+      "gridPos": {"h": 10, "w": 12, "x": 12, "y": 27},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*Virtual disk*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "table",
+      "title": "RAID Controllers",
+      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 37},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "auto"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*RAID controller*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "row",
+      "title": "CPU e Memória",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 43},
+      "panels": []
+    },
+    {
+      "id": 12,
+      "type": "table",
+      "title": "Status dos CPUs",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 44},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*CPU*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "table",
+      "title": "Status dos DIMMs",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 44},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/$site"},
+          "host": {"filter": "$server"},
+          "application": {"filter": ""},
+          "item": {"filter": "*Memory*"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "row",
+      "title": "Inventário",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 52},
+      "panels": []
+    },
+    {
+      "id": 15,
+      "type": "table",
+      "title": "Inventário Dell iDRAC",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 53},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [{"displayName": "Host", "desc": false}],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {"align": "auto", "cellOptions": {"type": "auto"}, "inspect": false, "filterable": true}
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Value #E"},
+            "properties": [{"id": "unit", "value": "bytes"}]
+          },
+          {
+            "matcher": {"id": "byName", "options": "Value #F"},
+            "properties": [{"id": "unit", "value": "dthms"}]
+          }
+        ]
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Hardware model name"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Hardware serial number"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "BIOS version"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "D",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Firmware version"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "E",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Memory, total size"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "F",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Uptime (hardware)"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "G",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Operating system"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "state-timeline",
+      "title": "SNMP Availability — 24h",
+      "gridPos": {"h": 6, "w": 24, "x": 0, "y": 61},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "mergeValues": true,
+        "showValue": "never",
+        "alignValue": "left",
+        "rowHeight": 0.8,
+        "legend": {"displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "multi", "sort": "none"}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "custom": {"lineWidth": 0, "fillOpacity": 70},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "green", "value": 1}
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {"text": "OFFLINE", "color": "red"},
+                "1": {"text": "OK", "color": "green"}
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "iDRAC Dell/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "SNMP agent availability"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    }
+  ],
+  "refresh": "60s",
+  "schemaVersion": 39,
+  "tags": ["capricornio", "hardware", "idrac", "dell"],
+  "templating": {
+    "list": [
+      {
+        "current": {"selected": true, "text": ["All"], "value": ["$__all"]},
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "site",
+        "query": "All,BGP,SCL,SPO",
+        "options": [
+          {"selected": false, "text": "All", "value": "$__all"},
+          {"selected": false, "text": "BGP", "value": "BGP"},
+          {"selected": false, "text": "SCL", "value": "SCL"},
+          {"selected": false, "text": "SPO", "value": "SPO"}
+        ],
+        "type": "custom",
+        "label": "Site"
+      },
+      {
+        "current": {},
+        "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "server",
+        "options": [],
+        "query": {"group": {"filter": "iDRAC Dell/$site"}, "host": {"filter": ""}, "queryType": "hosts"},
+        "refresh": 2,
+        "sort": 1,
+        "type": "query",
+        "label": "Servidor"
+      }
+    ]
+  },
+  "time": {"from": "now-3h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Hardware — Dell iDRAC",
+  "uid": "capri-idrac",
+  "version": 1
+}

@@ -1,0 +1,39 @@
+---
+- name: Instalar UFW
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Resetar UFW para estado limpo (apenas se ufw_reset=true)
+  community.general.ufw:
+    state: reset
+  when: ufw_reset | default(false)
+
+- name: Definir política padrão de entrada (deny)
+  community.general.ufw:
+    default: "{{ hardening_ufw_default_incoming }}"
+    direction: incoming
+
+- name: Definir política padrão de saída (allow)
+  community.general.ufw:
+    default: "{{ hardening_ufw_default_outgoing }}"
+    direction: outgoing
+
+- name: Habilitar logging UFW
+  community.general.ufw:
+    logging: "{{ hardening_ufw_logging }}"
+
+- name: Aplicar regras de firewall do grupo
+  community.general.ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port | string }}"
+    proto: "{{ item.proto | default('tcp') }}"
+    src: "{{ item.from_ip | default(omit) }}"
+    comment: "{{ item.comment | default('') }}"
+  loop: "{{ hardening_ufw_rules }}"
+
+- name: Habilitar UFW
+  community.general.ufw:
+    state: enabled

@@ -1,0 +1,43 @@
+---
+- name: Deploy Grafana dashboards
+  hosts: grafana
+  become: true
+
+  handlers:
+    - name: Reload grafana-server
+      ansible.builtin.service:
+        name: grafana-server
+        state: restarted
+
+  tasks:
+    - name: Criar estrutura de diretórios para dashboards
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: grafana
+        group: grafana
+        mode: "0755"
+      loop:
+        - /var/lib/grafana/dashboards
+        - /var/lib/grafana/dashboards/00-overview
+        - /var/lib/grafana/dashboards/rede
+        - /var/lib/grafana/dashboards/servidores
+        - /var/lib/grafana/dashboards/infra-dados
+        - /var/lib/grafana/dashboards/energia
+
+    - name: Copiar dashboards para o servidor
+      ansible.builtin.copy:
+        src: ../files/grafana/dashboards/
+        dest: /var/lib/grafana/dashboards/
+        owner: grafana
+        group: grafana
+        mode: "0644"
+
+    - name: Copiar configuração de provisionamento de dashboards
+      ansible.builtin.copy:
+        src: ../files/grafana/provisioning/dashboards.yaml
+        dest: /etc/grafana/provisioning/dashboards/dashboards.yaml
+        owner: root
+        group: grafana
+        mode: "0640"
+      notify: Reload grafana-server

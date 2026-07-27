@@ -1,0 +1,68 @@
+---
+# Inventário dos servidores Linux para instalação do Zabbix Agent
+#
+# Edite este arquivo antes de rodar a playbook:
+#   1. Confirme os IPs (ansible_host)
+#   2. Preencha ansible_user e ansible_password (ou configure chave SSH)
+#   3. Adicione ou remova hosts conforme necessário
+
+all:
+  children:
+
+    # ── BGP (Bragança Paulista) ────────────────────────────────────────────────
+    # Agente aponta para o proxy: BGP-SRV-V08 (172.18.2.51)
+    linux_bgp:
+      vars:
+        zabbix_proxy_server: "172.18.2.51"
+      hosts:
+        BGP-SRV-VAPP26:
+          ansible_host: 172.18.2.48
+        BGP-SRV-FREP:
+          ansible_host: 172.18.8.77
+
+    # ── SCL (São Carlos) ──────────────────────────────────────────────────────
+    # Agente aponta para o proxy: SCL-SRV-V08 (172.16.2.51)
+    linux_scl:
+      vars:
+        zabbix_proxy_server: "172.16.2.51"
+      hosts:
+        SCL-SRV-V04:
+          ansible_host: 172.16.2.144
+        SCL-SRV-V05:
+          ansible_host: 172.16.2.145
+        SCL-SRV-V07:
+          ansible_host: 172.16.2.146
+        SCL-SRV-FREP:
+          ansible_host: 172.16.8.77
+
+    # ── SPO (São Paulo) ───────────────────────────────────────────────────────
+    # SPO sem proxy — agente aponta direto para o Zabbix Server
+    linux_spo:
+      vars:
+        zabbix_proxy_server: ""
+      hosts:
+        SPO-SRV-VAPP04:
+          ansible_host: 172.17.2.10
+
+# ── Credenciais (ajuste conforme seu ambiente) ─────────────────────────────────
+# Aplica-se a todos os grupos acima.
+# Escolha UMA das opções abaixo e comente a outra.
+#
+# Opção A — senha (mais simples, menos seguro):
+#   ansible_user: "seu_usuario"
+#   ansible_password: "sua_senha_ssh"
+#   ansible_become_password: "sua_senha_sudo"
+#
+# Opção B — chave SSH (recomendado):
+#   ansible_user: "seu_usuario"
+#   ansible_ssh_private_key_file: "~/.ssh/id_rsa"
+#   ansible_become_password: "sua_senha_sudo"  # só se sudo pedir senha
+
+# Descomente e preencha o bloco abaixo:
+# ---
+# all:
+#   vars:
+#     ansible_user: "marcos"
+#     ansible_password: "SENHA_SSH"
+#     ansible_become: true
+#     ansible_become_password: "SENHA_SUDO"

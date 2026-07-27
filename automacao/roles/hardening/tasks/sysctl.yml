@@ -1,0 +1,13 @@
+---
+- name: Aplicar parâmetros sysctl de segurança e performance
+  ansible.posix.sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: false
+    sysctl_file: /etc/sysctl.d/99-hardening.conf
+  loop: "{{ hardening_sysctl_params | dict2items }}"
+
+- name: Recarregar configurações sysctl
+  ansible.builtin.command: sysctl --system
+  changed_when: false

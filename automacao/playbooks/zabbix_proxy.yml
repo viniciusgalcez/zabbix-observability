@@ -1,0 +1,28 @@
+---
+- name: Instalar e configurar Zabbix Proxy
+  hosts: zabbix_proxy
+  become: true
+
+  pre_tasks:
+    - name: Atualizar cache de pacotes (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Atualizar cache de pacotes (RedHat/CentOS)
+      ansible.builtin.yum:
+        update_cache: true
+      when: ansible_os_family == "RedHat"
+
+    - name: Garantir diretório de dados do proxy
+      ansible.builtin.file:
+        path: /var/lib/zabbix
+        state: directory
+        owner: zabbix
+        group: zabbix
+        mode: "0750"
+      ignore_errors: true
+
+  roles:
+    - role: community.zabbix.zabbix_proxy

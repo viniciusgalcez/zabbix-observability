@@ -1,0 +1,953 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix",
+      "description": ""
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.0.1"
+    },
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "4.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0,211,255,1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": false,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Hosts Monitorados",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["count"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null}
+            ]
+          },
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "green"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "/ICMP ping|Zabbix agent ping/"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Problemas Ativos",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["count"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 1},
+              {"color": "red", "value": 5}
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 1,
+            "count": false,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 100
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Alta Severidade",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["count"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 4,
+            "count": false,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 100
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Severidade Média",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["count"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 1}
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 3,
+            "maxSeverity": 3,
+            "count": false,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 100
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Avisos",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["count"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 1}
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 2,
+            "maxSeverity": 2,
+            "count": false,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 100
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "Sites Monitorados",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "3": {"text": "3", "index": 0}
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "blue", "value": null}
+            ]
+          },
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          },
+          "displayName": "BGP · SCL · SPO",
+          "noValue": "3",
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "Firewalls/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 1,
+            "count": true,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 1
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ],
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "mode": "reduceRow",
+            "reduce": {"reducer": "sum"},
+            "replaceFields": true,
+            "alias": "BGP · SCL · SPO"
+          }
+        },
+        {
+          "id": "organizeFields",
+          "options": {
+            "renameByName": {}
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "row",
+      "title": "Alertas Ativos",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "panels": []
+    },
+    {
+      "id": 8,
+      "type": "table",
+      "title": "Problemas Ativos",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {"displayName": "lastchange", "desc": true}
+        ],
+        "footer": {
+          "show": false,
+          "reducer": ["sum"],
+          "fields": ""
+        },
+        "frameIndex": 0,
+        "showProblems": "all problems"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 80}
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "severity"},
+            "properties": [
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {"type": "value", "options": {"Disaster": {"color": "dark-red", "index": 0}}},
+                  {"type": "value", "options": {"High": {"color": "red", "index": 1}}},
+                  {"type": "value", "options": {"Average": {"color": "orange", "index": 2}}},
+                  {"type": "value", "options": {"Warning": {"color": "yellow", "index": 3}}},
+                  {"type": "value", "options": {"Information": {"color": "blue", "index": 4}}}
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "queryType": "problems",
+          "group": {"filter": "*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "trigger": {"filter": ""},
+          "triggers": {
+            "minSeverity": 1,
+            "count": false,
+            "acknowledged": 2
+          },
+          "options": {
+            "sortProblemsBy": "lastchange",
+            "hostsInMaintenance": false,
+            "limit": 100
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "type": "row",
+      "title": "Disponibilidade por Grupo",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "panels": []
+    },
+    {
+      "id": 10,
+      "type": "state-timeline",
+      "title": "Status ICMP — todos os grupos",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "options": {
+        "mergeValues": true,
+        "showValue": "auto",
+        "alignValue": "left",
+        "rowHeight": 0.9,
+        "legend": {
+          "show": true,
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 70,
+            "spanNulls": false,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {"text": "DOWN", "color": "red", "index": 0},
+                "1": {"text": "UP", "color": "green", "index": 1}
+              }
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null}
+            ]
+          },
+          "color": {
+            "mode": "thresholds"
+          }
+        },
+        "overrides": []
+      },
+      "timeFrom": "6h",
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Servidores Windows/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Zabbix agent ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Servidores Linux/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Zabbix agent ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "D",
+          "group": {"filter": "UPS/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "E",
+          "group": {"filter": "Access Points Aruba/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "row",
+      "title": "Tendência — Hosts OK por Grupo",
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "panels": []
+    },
+    {
+      "id": 12,
+      "type": "barchart",
+      "title": "Hosts OK por Grupo de Dispositivos",
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "${DS_ZABBIX}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "options": {
+        "orientation": "horizontal",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 200,
+        "barRadius": 0,
+        "groupWidth": 0.7,
+        "barWidth": 0.97,
+        "stacking": "none",
+        "fullHighlight": false,
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "legend": {
+          "show": true,
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "text": {
+          "valueSize": 12
+        },
+        "fillOpacity": 80,
+        "gradientMode": "none",
+        "showValue": "auto",
+        "xField": "group"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null}
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Servidores Windows/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Zabbix agent ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Servidores Linux/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Zabbix agent ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "D",
+          "group": {"filter": "UPS/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        },
+        {
+          "refId": "E",
+          "group": {"filter": "Access Points Aruba/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": true,
+            "useZabbixValueMapping": false
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          }
+        }
+      ]
+    }
+  ],
+  "refresh": "60s",
+  "schemaVersion": 39,
+  "tags": ["capricornio", "overview", "noc"],
+  "templating": {"list": []},
+  "time": {"from": "now-3h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "NOC Overview — Capricórnio",
+  "uid": "capri-noc-overview",
+  "version": 1
+}

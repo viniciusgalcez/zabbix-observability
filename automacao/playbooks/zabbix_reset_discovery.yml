@@ -1,0 +1,312 @@
+---
+# Força re-descoberta de todos os hosts deletando e recriando as regras de descoberta.
+#
+# Quando uma drule é deletada, o Zabbix remove em cascata todos os registros dhost
+# associados. Ao recriar as regras e executar nova varredura, todos os hosts são
+# tratados como novos e a ação catch-all "Discovery: Adicionar todos os hosts
+# descobertos" dispara corretamente.
+#
+# ATENÇÃO: NÃO apaga hosts já em monitoramento — apenas o histórico de descoberta.
+#
+# ansible-playbook playbooks/zabbix_reset_discovery.yml
+
+- name: Deletar e recriar regras de descoberta para forçar re-descoberta
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    discovery_rules:
+      - name: "Descoberta — Rede BGP"
+        proxy: "BGP-SRV-V08"
+        iprange: "172.18.23.0/24"
+        delay: "3600"
+      - name: "Descoberta — Rede SCL"
+        proxy: "SCL-SRV-V08"
+        iprange: "172.16.23.0/24"
+        delay: "3600"
+      - name: "Descoberta — Rede SPO"
+        proxy: "SPO-SRV-V04"
+        iprange: "172.17.23.0/24"
+        delay: "3600"
+
+  tasks:
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── FASE 1: Buscar IDs das regras existentes ────────────────────────────
+    - name: Buscar IDs das regras de descoberta capricornio
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.get"
+          params:
+            output: ["druleid", "name"]
+            filter:
+              name: "{{ item.name }}"
+          auth: "{{ _token }}"
+          id: 2
+      register: _drule_get
+      loop: "{{ discovery_rules }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Extrair IDs encontrados
+      ansible.builtin.set_fact:
+        _drule_ids: "{{ _drule_get.results
+          | map(attribute='json.result')
+          | flatten
+          | map(attribute='druleid')
+          | list }}"
+
+    - name: Exibir IDs a deletar
+      ansible.builtin.debug:
+        msg: "Deletando druleids: {{ _drule_ids }}"
+
+    - name: Falhar se nenhuma regra encontrada
+      ansible.builtin.fail:
+        msg: "Nenhuma regra de descoberta encontrada. Verifique os nomes."
+      when: _drule_ids | length == 0
+
+    # ── FASE 2: Deletar regras (cascateia deleção dos dhosts) ───────────────
+    - name: Deletar regras de descoberta (cascateia dhosts)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.delete"
+          params: "{{ _drule_ids }}"
+          auth: "{{ _token }}"
+          id: 3
+      register: _delete
+      failed_when: _delete.json.error is defined
+
+    - name: Confirmar deleção
+      ansible.builtin.debug:
+        msg: "Regras deletadas: {{ _delete.json.result.druleids }}"
+
+    # ── FASE 3: Buscar IDs dos proxies ──────────────────────────────────────
+    - name: Buscar proxies registrados
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "proxy.get"
+          params:
+            output: ["proxyid", "name"]
+          auth: "{{ _token }}"
+          id: 4
+      register: _proxies_result
+
+    - name: Set mapa de proxies (nome → ID)
+      ansible.builtin.set_fact:
+        _proxy_map: "{{ _proxies_result.json.result | items2dict(key_name='name', value_name='proxyid') }}"
+
+    # ── FASE 4: Recriar regras ───────────────────────────────────────────────
+    - name: Recriar regras de descoberta
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.create"
+          params:
+            name: "{{ item.name }}"
+            iprange: "{{ item.iprange }}"
+            delay: "1m"
+            proxyid: "{{ _proxy_map[item.proxy] }}"
+            dchecks:
+              - type: "12"
+                name: "ICMP ping"
+              - type: "2"
+                name: "SNMP sysDescr (SNMPv3)"
+                ports: "161"
+                snmpversion: "3"
+                snmpv3_securityname: "zabbix_snmp"
+                snmpv3_securitylevel: "2"
+                snmpv3_authprotocol: "1"
+                snmpv3_authpassphrase: "ZbxAuth_2026@Net"
+                snmpv3_privprotocol: "1"
+                snmpv3_privpassphrase: "ZbxPriv_2026@Secure"
+                key_: ".1.3.6.1.2.1.1.1.0"
+            status: "0"
+          auth: "{{ _token }}"
+          id: 5
+      register: _create
+      failed_when: _create.json.error is defined
+      loop: "{{ discovery_rules }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Confirmar criação
+      ansible.builtin.debug:
+        msg: "{{ item.item.name }}: druleid={{ item.json.result.druleids | default('erro') }}"
+      loop: "{{ _create.results }}"
+      loop_control:
+        label: "{{ item.item.name }}"
+
+- name: Recarregar cache de configuração no Zabbix server
+  hosts: zabbix_server
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Recarregar config cache do zabbix-server
+      ansible.builtin.command: zabbix_server -R config_cache_reload
+      changed_when: true
+
+- name: Aguardar varredura e restaurar delay para 1h
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    discovery_rules:
+      - name: "Descoberta — Rede BGP"
+      - name: "Descoberta — Rede SCL"
+      - name: "Descoberta — Rede SPO"
+
+  tasks:
+    - name: Aguardar 90s para a primeira varredura das novas regras
+      ansible.builtin.pause:
+        seconds: 90
+        prompt: "Aguardando 90s para as regras varrarem a rede..."
+
+    - name: Autenticar novamente
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth2
+
+    - name: Set auth token (2)
+      ansible.builtin.set_fact:
+        _token2: "{{ _auth2.json.result }}"
+
+    - name: Buscar IDs das novas regras
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.get"
+          params:
+            output: ["druleid", "name"]
+            filter:
+              name: "{{ item.name }}"
+          auth: "{{ _token2 }}"
+          id: 2
+      register: _drules_new
+      loop: "{{ discovery_rules }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: Extrair IDs das novas regras
+      ansible.builtin.set_fact:
+        _new_ids: "{{ _drules_new.results
+          | map(attribute='json.result')
+          | flatten
+          | map(attribute='druleid')
+          | list }}"
+
+    - name: Restaurar delay para 1h
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.update"
+          params:
+            druleid: "{{ item }}"
+            delay: "3600"
+          auth: "{{ _token2 }}"
+          id: 6
+      loop: "{{ _new_ids }}"
+      failed_when: false
+
+    - name: Verificar hosts adicionados no grupo Em Classificação
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid", "name"]
+            filter:
+              name: "Em Classificação"
+          auth: "{{ _token2 }}"
+          id: 7
+      register: _group
+
+    - name: Contar hosts no grupo Em Classificação
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            groupids: ["{{ _group.json.result[0].groupid }}"]
+            output: ["hostid", "host"]
+            countOutput: true
+          auth: "{{ _token2 }}"
+          id: 8
+      register: _host_count
+      when: _group.json.result | length > 0
+
+    - name: Sumário
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════
+          Re-descoberta concluída
+          ══════════════════════════════════════════════════════
+          Delays restaurados para 1h.
+          Hosts no grupo "Em Classificação": {{ _host_count.json.result | default('N/A') }}
+
+          Se o número ainda for baixo, os proxies BGP/SCL precisam
+          de mais tempo para completar a varredura da sub-rede.
+          Verifique novamente em: Data collection → Hosts
+          ══════════════════════════════════════════════════════

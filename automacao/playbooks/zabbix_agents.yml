@@ -1,0 +1,56 @@
+---
+# Instala e configura o Zabbix Agent 2 em todos os servidores da infraestrutura.
+# O agente aponta para o Zabbix Server (172.17.2.51) ou para o proxy do site.
+#
+# Execução:
+#   ansible-playbook playbooks/zabbix_agents.yml
+
+- name: Instalar Zabbix Agent 2 nos servidores
+  hosts: zabbix_server:postgres:grafana:zabbix_proxy
+  become: true
+
+  vars:
+    zabbix_server_ip: "172.17.2.51"
+    zabbix_version: "7.0"
+
+    # Proxy por site — servidores SPO reportam direto ao server
+    proxy_map:
+      SPO-SRV-V01: ""
+      SPO-SRV-V02: ""
+      SPO-SRV-V03: ""
+      SPO-SRV-V04: ""
+      SCL-SRV-V08: "SCL-SRV-V08"
+      BGP-SRV-V08: "BGP-SRV-V08"
+
+  tasks:
+    - name: Adicionar repositório Zabbix
+      ansible.builtin.apt:
+        deb: "https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_{{ zabbix_version }}+ubuntu24.04_all.deb"
+        state: present
+
+    - name: Instalar zabbix-agent2
+      ansible.builtin.apt:
+        name: zabbix-agent2
+        state: present
+        update_cache: true
+
+    - name: Configurar zabbix_agent2.conf
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/zabbix_agent2.conf.j2"
+        dest: /etc/zabbix/zabbix_agent2.conf
+        owner: root
+        group: zabbix
+        mode: "0640"
+      notify: Reiniciar Zabbix Agent2
+
+    - name: Habilitar e iniciar Zabbix Agent2
+      ansible.builtin.service:
+        name: zabbix-agent2
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Reiniciar Zabbix Agent2
+      ansible.builtin.service:
+        name: zabbix-agent2
+        state: restarted

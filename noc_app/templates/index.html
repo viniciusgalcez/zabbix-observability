@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoMap - Network</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            
+            /* Severities */
+            --sev-0: #10b981; /* OK Green */
+            --sev-1: #3b82f6; /* Info Blue */
+            --sev-2: #eab308; /* Warn Yellow */
+            --sev-3: #f97316; /* Avg Orange */
+            --sev-4: #ef4444; /* High Red */
+            --sev-5: #991b1b; /* Disaster Dark Red */
+            
+            /* Card Colors */
+            --c-blue: #3b82f6;
+            --c-cyan: #06b6d4;
+            --c-purple: #8b5cf6;
+        }
+
+        body { margin: 0; padding: 0; background-color: var(--bg-body); color: var(--text-main); font-family: 'Inter', sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        .top-header { background: #fff; height: 50px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); z-index: 2000; }
+        .header-left { display: flex; align-items: center; font-weight: 600; color: var(--text-muted); }
+        .app-title { color: var(--text-main); font-weight: 800; font-size: 1.2rem; margin-right: 15px; letter-spacing: -0.5px; }
+        .header-actions { display: flex; gap: 10px; }
+        .btn { padding: 6px 12px; border: 1px solid var(--border-color); background: white; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text-main); transition: all 0.2s; }
+        .btn:hover { background: #f8fafc; border-color: #cbd5e1; }
+        .btn-primary { background: var(--c-blue); color: white; border: none; }
+        .btn-primary:hover { background: #2563eb; }
+
+        .dashboard { padding: 15px 20px; display: flex; flex-direction: column; gap: 15px; height: calc(100vh - 50px); box-sizing: border-box; }
+        .cards-row { display: flex; gap: 15px; height: 90px; z-index: 1000; }
+        .stat-card { flex: 1; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 12px 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .stat-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: bold; flex-shrink: 0; }
+        .stat-info { display: flex; flex-direction: column; }
+        .stat-title { font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; }
+        .stat-value { font-size: 1.7rem; font-weight: 800; line-height: 1.1; margin: 2px 0; color: var(--text-main); }
+        .stat-sub { font-size: 0.7rem; font-weight: 600; }
+
+        .map-wrapper { position: relative; flex: 1; border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; background: #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+        #map { width: 100%; height: 100%; }
+
+        .floating-panel { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(8px); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); z-index: 1000; display: flex; flex-direction: column; transition: transform 0.3s ease, opacity 0.3s ease; }
+        .panel-right { top: 20px; right: 20px; width: 380px; max-height: calc(100% - 40px); }
+        .hidden { transform: translateX(420px); opacity: 0; pointer-events: none; position: absolute; }
+        
+        .panel-header { padding: 15px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; font-weight: 700; font-size: 0.95rem; }
+        .panel-header .badge { padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; }
+        .panel-body { padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+        .panel-body::-webkit-scrollbar { width: 4px; }
+        .panel-body::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+
+        /* Problem List Styles */
+        .problem-item { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; display: flex; gap: 12px; align-items: flex-start; cursor: pointer; transition: background 0.2s;}
+        .problem-item:hover { background: #f1f5f9; }
+        .problem-host { font-size: 0.85rem; font-weight: 700; margin-bottom: 3px; color: var(--text-main); }
+        .problem-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
+        .sev-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
+        
+        /* Host Details Styles */
+        .btn-back { cursor: pointer; color: var(--c-blue); font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 5px; margin-bottom: 15px; }
+        .btn-back:hover { text-decoration: underline; }
+        .host-title-area { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .host-icon { width: 40px; height: 40px; background: #e0e7ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--c-blue); font-size: 1.2rem; }
+        .host-name { font-weight: 800; font-size: 1.1rem; }
+        .host-type { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+        
+        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .metric-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; text-align: center; }
+        .metric-val { font-size: 1.2rem; font-weight: 800; color: var(--text-main); }
+        .metric-lbl { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-top: 4px; }
+
+        .section-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main); text-transform: uppercase; }
+        .inv-row { font-size: 0.8rem; display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px dashed var(--border-color); }
+        .inv-lbl { color: var(--text-muted); font-weight: 500; }
+        .inv-val { font-weight: 600; text-align: right; max-width: 60%; }
+
+        /* Legenda */
+        .panel-legenda { bottom: 20px; left: 20px; padding: 15px; width: auto; }
+        .panel-legenda h4 { margin: 0 0 10px 0; font-size: 0.85rem; color: var(--text-main); }
+        .legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
+        .legend-row { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); font-weight: 600; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+        /* Tipos de Equips */
+        .panel-types { bottom: 20px; left: 280px; padding: 15px; display: flex; gap: 15px; align-items: center; }
+        .type-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+        .type-item svg { width: 16px; height: 16px; fill: var(--c-blue); }
+
+        /* Map Markers */
+        .site-marker { background: white; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; position: relative; border: 2px solid white; cursor: pointer; transition: transform 0.2s;}
+        .site-marker:hover { transform: scale(1.1); z-index: 1000 !important; }
+        .site-marker svg { width: 18px; height: 18px; fill: var(--text-main); }
+        
+        .marker-badge { position: absolute; top: -8px; right: -8px; color: white; font-size: 0.75rem; font-weight: 800; min-width: 18px; height: 18px; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px solid white; padding: 0 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+
+        .blast-radius { border-radius: 50%; pointer-events: none; animation: pulse-blast 2s infinite alternate; }
+        @keyframes pulse-blast { 0% { transform: scale(0.9); opacity: 0.7; } 100% { transform: scale(1.1); opacity: 0.9; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-header" id="header-area">
+        <div class="header-left">
+            <span class="app-title">Z</span>
+            <span style="border-left: 1px solid var(--border-color); padding-left: 15px;">NOC Geomap Enterprise</span>
+        </div>
+        <div class="header-actions">
+            <button class="btn" onclick="exportData()">Exportar XLSX</button>
+            <button class="btn btn-primary" onclick="takeSnapshot()">📸 Snapshot</button>
+        </div>
+    </div>
+
+    <div class="dashboard" id="dashboard-area">
+        <!-- Cards -->
+        <div class="cards-row">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--c-blue);">=</div>
+                <div class="stat-info"><div class="stat-title">Dispositivos</div><div class="stat-value" id="val-devices">--</div><div class="stat-sub" style="color: var(--sev-0);">● Online</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--sev-4);">!</div>
+                <div class="stat-info"><div class="stat-title">Problemas</div><div class="stat-value" id="val-problems">--</div><div class="stat-sub" style="color: var(--sev-4);">Críticos</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--sev-3);">📍</div>
+                <div class="stat-info"><div class="stat-title">Sites Afetados</div><div class="stat-value" id="val-sites">--</div><div class="stat-sub" style="color: var(--sev-3);">Com incidentes</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--c-cyan);">👥</div>
+                <div class="stat-info"><div class="stat-title">Grupos</div><div class="stat-value" id="val-groups">--</div><div class="stat-sub" style="color: var(--c-cyan);">● Monitorados</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--c-purple);">♥</div>
+                <div class="stat-info"><div class="stat-title">Operacional Health</div><div class="stat-value" id="val-loss">--/100</div><div class="stat-sub" style="color: var(--c-purple);">Estabilidade</div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: var(--sev-0);">∞</div>
+                <div class="stat-info"><div class="stat-title">Correlações</div><div class="stat-value">0</div><div class="stat-sub" style="color: var(--sev-0);">Incidentes Relacionados</div></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <div id="map"></div>
+            
+            <!-- Floating Panels -->
+            <div class="floating-panel panel-legenda">
+                <h4>Legenda de Status</h4>
+                <div class="legend-grid">
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-0);"></div> OK</div>
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-1);"></div> Info</div>
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-2);"></div> Warning</div>
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-3);"></div> Average</div>
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-4);"></div> High</div>
+                    <div class="legend-row"><div class="legend-dot" style="background: var(--sev-5);"></div> Disaster</div>
+                </div>
+            </div>
+
+            <div class="floating-panel panel-types">
+                <div class="type-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-4 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2zm-4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2z"/></svg> Server</div>
+                <div class="type-item"><svg viewBox="0 0 24 24"><path d="M21 13v-2h-3V9h3V7h-3V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2v-2h3v-2h-3v-2h3zM5 5h11v14H5V5z"/></svg> Switch</div>
+                <div class="type-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Router</div>
+                <div class="type-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> Firewall</div>
+            </div>
+
+            <!-- Top Impactos -->
+            <div class="floating-panel panel-right" id="panel-impactos">
+                <div class="panel-header">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="color:var(--sev-4);">●</span> Top Impactos Agora
+                    </div>
+                    <div class="badge" id="badge-priorities" style="background:#fee2e2; color:var(--sev-4);">0 ALERTAS</div>
+                </div>
+                <div class="panel-body" id="problems-container">
+                    <div class="no-data">Carregando dados...</div>
+                </div>
+            </div>
+
+            <!-- Host Details (Drill Down) -->
+            <div class="floating-panel panel-right hidden" id="panel-host-details">
+                <div class="panel-body">
+                    <div class="btn-back" onclick="closeDetails()">← Voltar para Painel Global</div>
+                    
+                    <div class="host-title-area">
+                        <div class="host-icon" id="det-icon">🖥️</div>
+                        <div>
+                            <div class="host-name" id="det-name">Loading...</div>
+                            <div class="host-type" id="det-type">DEVICE</div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">Métricas em Tempo Real</div>
+                    <div class="metric-grid" id="det-metrics">
+                        <!-- Metrics injected here -->
+                    </div>
+
+                    <div class="section-title">Inventário</div>
+                    <div id="det-inv">
+                        <!-- Inv injected here -->
+                    </div>
+                    
+                    <div class="section-title" style="margin-top:20px;">Problemas Ativos</div>
+                    <div id="det-probs">
+                        <!-- Probs injected here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bibliotecas Externas -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        const SVGS = {
+            server: '<svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-4 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2zm-4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2z"/></svg>',
+            switch: '<svg viewBox="0 0 24 24"><path d="M21 13v-2h-3V9h3V7h-3V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2v-2h3v-2h-3v-2h3zM5 5h11v14H5V5z"/></svg>',
+            router: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>',
+            firewall: '<svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>',
+            generic: '<svg viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>'
+        };
+
+        const SEV_COLORS = {
+            0: 'var(--sev-0)', 1: 'var(--sev-1)', 2: 'var(--sev-2)',
+            3: 'var(--sev-3)', 4: 'var(--sev-4)', 5: 'var(--sev-5)'
+        };
+
+        const map = L.map('map', { zoomControl: false }).setView([-15.793889, -47.882778], 4);
+        L.control.zoom({ position: 'topleft' }).addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; CARTO' }).addTo(map);
+
+        let markerGroup = L.layerGroup().addTo(map);
+        let blastGroup = L.layerGroup().addTo(map);
+        
+        let GLOBAL_SITES = {}; // Armazena os sites para o painel de detalhes
+
+        async function updateDashboard() {
+            try {
+                const res = await fetch('/api/data');
+                const data = await res.json();
+
+                const sites = {};
+                const hostToSite = {};
+
+                data.markers.forEach(m => {
+                    const key = `${m.lat.toFixed(2)},${m.lon.toFixed(2)}`;
+                    hostToSite[m.id] = key;
+                    if (!sites[key]) {
+                        sites[key] = { 
+                            key: key,
+                            lat: m.lat, 
+                            lon: m.lon, 
+                            hosts: 0, 
+                            problems: 0, 
+                            name: m.name.split('-')[0], // Ex: SCL
+                            max_sev: 0, 
+                            rep_id: m.id, 
+                            rep_type: m.type,
+                            inventory: {},
+                            active_problems: []
+                        };
+                    }
+                    sites[key].hosts++;
+                    
+                    // Count equipment types for inventory
+                    if (!sites[key].inventory[m.type]) sites[key].inventory[m.type] = 0;
+                    sites[key].inventory[m.type]++;
+
+                    if (m.severity > 0) {
+                        sites[key].problems++;
+                        if (m.severity > sites[key].max_sev) sites[key].max_sev = m.severity;
+                    }
+                    if(m.type !== 'generic') sites[key].rep_type = m.type; 
+                });
+
+                // Attach problems to sites
+                data.problems.forEach(p => {
+                    const sKey = hostToSite[p.hostid];
+                    if(sKey && sites[sKey]) {
+                        sites[sKey].active_problems.push(p);
+                    }
+                });
+
+                GLOBAL_SITES = sites;
+
+                let affectedSitesCount = 0;
+                Object.values(sites).forEach(s => { if(s.problems > 0) affectedSitesCount++; });
+
+                document.getElementById('val-devices').innerText = data.stats.total_devices;
+                document.getElementById('val-problems').innerText = data.stats.problems_count;
+                document.getElementById('val-sites').innerText = affectedSitesCount;
+                document.getElementById('val-groups').innerText = data.stats.total_groups || '1';
+                document.getElementById('val-loss').innerText = (100 - data.stats.avg_loss).toFixed(0) + '/100'; 
+                document.getElementById('badge-priorities').innerText = `${data.stats.problems_count} ALERTAS`;
+
+                markerGroup.clearLayers();
+                blastGroup.clearLayers();
+
+                Object.values(sites).forEach(site => {
+                    const hasProb = site.problems > 0;
+                    const color = SEV_COLORS[site.max_sev] || SEV_COLORS[0];
+                    
+                    let html = `<div class="site-marker" style="width:34px;height:34px; border-color:${hasProb ? color : 'white'};" onclick="openSiteDetails('${site.key}')">
+                                    ${SVGS[site.rep_type] || SVGS['generic']}
+                                </div>`;
+                    if (hasProb) {
+                        html += `<div class="marker-badge" style="background:${color};">${site.problems}</div>`;
+                    }
+
+                    const icon = L.divIcon({ html: html, className: '', iconSize: [34, 34], iconAnchor: [17, 17] });
+                    const m = L.marker([site.lat, site.lon], {icon: icon}).addTo(markerGroup);
+                    m.bindTooltip(`<b>Site:</b> ${site.name}<br>Hosts: ${site.hosts}`);
+
+                    if (hasProb) {
+                        const rgba = color.replace('var(--sev-', '').replace(')', ''); // Hack for blast
+                        // Realistically we need the hex. Let's just use CSS class approach for blast
+                        const rColor = site.max_sev >= 4 ? '239,68,68' : (site.max_sev == 3 ? '249,115,22' : '234,179,8');
+                        const radiusIcon = L.divIcon({
+                            html: `<div class="blast-radius" style="width:140px;height:140px; background: radial-gradient(circle, rgba(${rColor},0.3) 0%, rgba(${rColor},0) 70%); border: 1px solid rgba(${rColor},0.5);"></div>`,
+                            className: '', iconSize: [140, 140], iconAnchor: [70, 70]
+                        });
+                        L.marker([site.lat, site.lon], {icon: radiusIcon, interactive: false}).addTo(blastGroup);
+                    }
+                });
+
+                const listEl = document.getElementById('problems-container');
+                if(data.problems.length === 0) {
+                    listEl.innerHTML = '<div class="no-data">Tudo verde! Nenhum impacto ativo. ✅</div>';
+                } else {
+                    listEl.innerHTML = data.problems.map((p, idx) => `
+                        <div class="problem-item" onclick="openDetails('${p.hostid}')">
+                            <div class="sev-dot" style="background:${SEV_COLORS[p.severity]}"></div>
+                            <div class="problem-text">
+                                <div class="problem-host">${p.host}</div>
+                                <div class="problem-desc">${p.description}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+            } catch(e) { console.error(e); }
+        }
+
+        // Drill Down Site Logic
+        function openSiteDetails(siteKey) {
+            const site = GLOBAL_SITES[siteKey];
+            if(!site) return;
+
+            document.getElementById('panel-impactos').classList.add('hidden');
+            const detPanel = document.getElementById('panel-host-details');
+            detPanel.classList.remove('hidden');
+            
+            document.getElementById('det-name').innerText = "Site: " + site.name;
+            document.getElementById('det-type').innerText = "VISÃO DA LOCALIDADE";
+            document.getElementById('det-icon').innerHTML = '📍';
+
+            // Metrics: Total hosts vs Problem hosts
+            const online = site.hosts - site.problems;
+            document.getElementById('det-metrics').innerHTML = `
+                <div class="metric-box">
+                    <div class="metric-val" style="color:var(--sev-0);">${online}</div>
+                    <div class="metric-lbl">Hosts Online</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-val" style="color:${site.problems > 0 ? 'var(--sev-4)' : 'var(--sev-0)'};">${site.problems}</div>
+                    <div class="metric-lbl">Com Problemas</div>
+                </div>
+                <div class="metric-box" style="grid-column: span 2;">
+                    <div class="metric-val">${site.hosts}</div>
+                    <div class="metric-lbl">Total de Equipamentos</div>
+                </div>
+            `;
+
+            // Inventory breakdown
+            const invHTML = Object.entries(site.inventory).map(([type, count]) => `
+                <div class="inv-row">
+                    <span class="inv-lbl" style="text-transform:uppercase; display:flex; align-items:center; gap:5px;">
+                        <span style="width:16px;height:16px;fill:var(--c-blue);">${SVGS[type] || ''}</span> ${type}
+                    </span>
+                    <span class="inv-val">${count} unidades</span>
+                </div>
+            `).join('');
+            document.getElementById('det-inv').innerHTML = invHTML || "<div class='no-data'>Sem inventário</div>";
+
+            // Active Problems
+            if(site.active_problems.length > 0) {
+                document.getElementById('det-probs').innerHTML = site.active_problems.map(p => `
+                    <div class="problem-item" style="margin-bottom:8px; cursor:pointer;" onclick="openDetails('${p.hostid}')">
+                        <div class="sev-dot" style="background:${SEV_COLORS[p.severity] || SEV_COLORS[0]}"></div>
+                        <div class="problem-text">
+                            <div class="problem-host">${p.host}</div>
+                            <div class="problem-desc">${p.description}</div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                document.getElementById('det-probs').innerHTML = "<div class='no-data'>Tudo verde neste site! ✅</div>";
+            }
+        }
+
+        // Drill Down Host Logic (Called when clicking a problem)
+        async function openDetails(hostid) {
+            document.getElementById('panel-impactos').classList.add('hidden');
+            const detPanel = document.getElementById('panel-host-details');
+            detPanel.classList.remove('hidden');
+            
+            document.getElementById('det-name').innerText = "Carregando...";
+            document.getElementById('det-metrics').innerHTML = "";
+            document.getElementById('det-inv').innerHTML = "";
+            document.getElementById('det-probs').innerHTML = "";
+
+            try {
+                const res = await fetch('/api/host/' + hostid);
+                const data = await res.json();
+                if(data.error) throw new Error(data.error);
+
+                document.getElementById('det-name').innerText = data.name;
+                document.getElementById('det-type').innerText = data.type;
+                document.getElementById('det-icon').innerHTML = SVGS[data.type];
+
+                if(data.metrics.length > 0) {
+                    document.getElementById('det-metrics').innerHTML = data.metrics.map(m => `
+                        <div class="metric-box">
+                            <div class="metric-val">${m.value}</div>
+                            <div class="metric-lbl">${m.name}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    document.getElementById('det-metrics').innerHTML = "<div style='grid-column: span 2; text-align:center; color:gray;'>Sem métricas ativas</div>";
+                }
+
+                if(Object.keys(data.inventory).length > 0) {
+                    const validInv = Object.entries(data.inventory).filter(([k,v]) => v && v.trim() !== "");
+                    document.getElementById('det-inv').innerHTML = validInv.map(([k,v]) => `
+                        <div class="inv-row"><span class="inv-lbl">${k}</span><span class="inv-val">${v}</span></div>
+                    `).join('');
+                } else {
+                    document.getElementById('det-inv').innerHTML = "<div class='no-data'>Inventário vazio</div>";
+                }
+
+                if(data.problems.length > 0) {
+                    document.getElementById('det-probs').innerHTML = data.problems.map(p => `
+                        <div class="problem-item" style="margin-bottom:8px;">
+                            <div class="sev-dot" style="background:${SEV_COLORS[p.priority]}"></div>
+                            <div class="problem-text"><div class="problem-desc">${p.description}</div></div>
+                        </div>
+                    `).join('');
+                } else {
+                    document.getElementById('det-probs').innerHTML = "<div class='no-data'>Sem alertas neste host.</div>";
+                }
+
+            } catch(e) {
+                document.getElementById('det-name').innerText = "Erro ao carregar";
+                console.error(e);
+            }
+        }
+
+        function closeDetails() {
+            document.getElementById('panel-host-details').classList.add('hidden');
+            document.getElementById('panel-impactos').classList.remove('hidden');
+        }
+
+        function takeSnapshot() {
+            html2canvas(document.body).then(canvas => {
+                let link = document.createElement('a');
+                link.download = 'NOC_Snapshot.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        }
+        
+        function exportData() {
+            alert("Exportação XLSX iniciada (Simulação)");
+        }
+
+        updateDashboard();
+        setInterval(updateDashboard, 30000);
+    </script>
+</body>
+</html>

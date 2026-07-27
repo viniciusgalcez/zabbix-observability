@@ -1,0 +1,160 @@
+---
+# Instala e configura o Zabbix Agent 2 em servidores Linux da Capricórnio.
+#
+# Pré-requisito: edite inventory/linux_servidores.yml com as credenciais SSH.
+#
+# Execução:
+#   ansible-playbook -i inventory/linux_servidores.yml playbooks/zabbix_agente_linux.yml
+#
+# Para instalar em apenas um servidor:
+#   ansible-playbook -i inventory/linux_servidores.yml playbooks/zabbix_agente_linux.yml --limit BGP-SRV-FREP
+#
+# Para testar conectividade antes de instalar:
+#   ansible -i inventory/linux_servidores.yml all -m ping
+
+- name: Instalar Zabbix Agent 2 nos servidores Linux
+  hosts: all
+  become: true
+
+  vars:
+    zabbix_version: "7.0"
+    zabbix_server_ip: "172.17.2.51"
+    # zabbix_proxy_server é definido por grupo em linux_servidores.yml:
+    #   linux_bgp → 172.18.2.51
+    #   linux_scl → 172.16.2.51
+    #   linux_spo → "" (direto ao server)
+
+  tasks:
+
+    # ── 1. Repositório ──────────────────────────────────────────────────────────
+
+    - name: Detectar versão do Ubuntu/Debian
+      ansible.builtin.set_fact:
+        distro_codename: "{{ ansible_distribution_release }}"
+        distro_major: "{{ ansible_distribution_major_version }}"
+
+    - name: Baixar e instalar pacote do repositório Zabbix (Debian/Ubuntu)
+      ansible.builtin.apt:
+        deb: >-
+          https://repo.zabbix.com/zabbix/{{ zabbix_version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_{{ zabbix_version }}+ubuntu{{ ansible_distribution_version }}_all.deb
+        state: present
+      when: ansible_os_family == "Debian"
+      register: repo_install
+      failed_when:
+        - repo_install is failed
+        - "'already installed' not in (repo_install.msg | default(''))"
+
+    - name: Atualizar cache APT após adicionar repositório
+      ansible.builtin.apt:
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+    # ── 2. Instalação ────────────────────────────────────────────────────────────
+
+    - name: Instalar zabbix-agent2
+      ansible.builtin.package:
+        name: zabbix-agent2
+        state: present
+
+    # ── 3. Configuração ──────────────────────────────────────────────────────────
+
+    - name: Determinar Server/Proxy para este host
+      ansible.builtin.set_fact:
+        # Passive: quem pode fazer poll no agente
+        # Se há proxy no site, tanto o proxy quanto o server podem fazer poll
+        agent_server: >-
+          {{
+            zabbix_server_ip
+            if (zabbix_proxy_server | default('')) == ''
+            else zabbix_proxy_server ~ ',' ~ zabbix_server_ip
+          }}
+        # Active: para onde o agente envia checks ativos
+        agent_server_active: >-
+          {{
+            zabbix_server_ip
+            if (zabbix_proxy_server | default('')) == ''
+            else zabbix_proxy_server
+          }}
+
+    - name: Criar diretório de configuração Zabbix
+      ansible.builtin.file:
+        path: /etc/zabbix
+        state: directory
+        owner: root
+        group: zabbix
+        mode: "0755"
+
+    - name: Configurar /etc/zabbix/zabbix_agent2.conf
+      ansible.builtin.copy:
+        dest: /etc/zabbix/zabbix_agent2.conf
+        owner: root
+        group: zabbix
+        mode: "0640"
+        content: |
+          # Gerado pelo Ansible — não editar manualmente
+          PidFile=/run/zabbix/zabbix_agent2.pid
+          LogFile=/var/log/zabbix/zabbix_agent2.log
+          LogFileSize=10
+
+          # Servidor/Proxy que fará polling passivo no agente
+          Server={{ agent_server }}
+
+          # Servidor/Proxy para checks ativos
+          ServerActive={{ agent_server_active }}
+
+          # Nome do host como está registrado no Zabbix
+          Hostname={{ inventory_hostname }}
+
+          Timeout=10
+          Include=/etc/zabbix/zabbix_agent2.d/*.conf
+      notify: Reiniciar Zabbix Agent2
+
+    # ── 4. Firewall ──────────────────────────────────────────────────────────────
+
+    - name: Abrir porta 10050/tcp no UFW (se UFW estiver ativo)
+      community.general.ufw:
+        rule: allow
+        port: "10050"
+        proto: tcp
+        comment: "Zabbix Agent"
+      when: ansible_os_family == "Debian"
+      ignore_errors: true  # UFW pode não estar instalado — não é bloqueante
+
+    - name: Abrir porta 10050/tcp no firewalld (se firewalld estiver ativo)
+      ansible.posix.firewalld:
+        port: "10050/tcp"
+        permanent: true
+        state: enabled
+        immediate: true
+      when: ansible_os_family == "RedHat"
+      ignore_errors: true
+
+    # ── 5. Serviço ───────────────────────────────────────────────────────────────
+
+    - name: Habilitar e iniciar zabbix-agent2
+      ansible.builtin.service:
+        name: zabbix-agent2
+        state: started
+        enabled: true
+
+    # ── 6. Verificação ───────────────────────────────────────────────────────────
+
+    - name: Verificar se o agente está escutando na porta 10050
+      ansible.builtin.wait_for:
+        port: 10050
+        timeout: 15
+        msg: "Zabbix Agent não está escutando na porta 10050 após a instalação"
+
+    - name: Exibir resumo da instalação
+      ansible.builtin.debug:
+        msg:
+          - "Host         : {{ inventory_hostname }}"
+          - "Server       : {{ agent_server }}"
+          - "ServerActive : {{ agent_server_active }}"
+          - "Porta 10050  : OK"
+
+  handlers:
+    - name: Reiniciar Zabbix Agent2
+      ansible.builtin.service:
+        name: zabbix-agent2
+        state: restarted

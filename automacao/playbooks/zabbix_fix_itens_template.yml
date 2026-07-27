@@ -1,0 +1,362 @@
+---
+# Corrige três classes de erros de itens detectados no diagnóstico (2026-05-05):
+#
+#   1. Template "Aruba IAP by SNMPv3" — 101 APs com 6 OIDs inexistentes cada
+#      Fix: preprocessing "Check for not supported value → Discard" (type 25)
+#      Remove os ~600 falsos erros sem perder dados dos APs que suportam os OIDs.
+#
+#   2. Template "SNMP QNAP" — erros de tipo de dado e OIDs ausentes
+#      Fix a: Status/Temperatura → value_type Numeric → Text (retornam strings)
+#      Fix b: itens FAN → value_type Numeric → Text + preprocessing type 25 discard
+#             (alguns modelos retornam "-1" como string; outros não têm o OID)
+#
+#   3. Host "Zabbix server" — item "Zabbix stats cluster" (HA não configurado)
+#      Fix: desabilitar o item no host (HA não está em uso)
+#
+# ansible-playbook playbooks/zabbix_fix_itens_template.yml
+
+- name: Corrigir erros de itens em templates e hosts
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    # Preprocessing step type 25: "Check for not supported value"
+    # params = "0\n" → match type 0 (any error); segunda linha vazia (sem regex pattern)
+    # error_handler deve ser 0 — o descarte é o comportamento intrínseco do tipo 25
+    _step_discard_unsupported:
+      type: "25"
+      params: "0\n"
+      error_handler: "0"
+      error_handler_params: ""
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # FIX 1 — Template "Aruba IAP by SNMPv3"
+    # 6 itens com OIDs de rádio que não existem nos modelos instalados
+    # ══════════════════════════════════════════════════════════════════════════
+
+    - name: "[Aruba] Buscar template"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+            filter:
+              name: "Aruba IAP by SNMPv3"
+          auth: "{{ _token }}"
+          id: 2
+      register: _aruba_tpl
+
+    - name: "[Aruba] Falhar se template não encontrado"
+      ansible.builtin.assert:
+        that: _aruba_tpl.json.result | length > 0
+        fail_msg: "Template 'Aruba IAP by SNMPv3' não encontrado no Zabbix"
+
+    - name: "[Aruba] Buscar todos os itens do template"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.get"
+          params:
+            output: ["itemid", "name"]
+            selectPreprocessing: true
+            templateids: ["{{ (_aruba_tpl.json.result | first).templateid }}"]
+          auth: "{{ _token }}"
+          id: 3
+      register: _aruba_items_all
+
+    - name: "[Aruba] Filtrar itens de rádio (Canal / Clientes / Potência TX)"
+      ansible.builtin.set_fact:
+        _aruba_radio_items: >-
+          {{ _aruba_items_all.json.result
+             | selectattr('name', 'search', 'Canal|Clientes associados|Potência de transmissão')
+             | list }}
+
+    # Preprocessing tipo 25 com error_handler=0 é no-op (mantém o estado "not supported").
+    # A abordagem correta para OIDs inexistentes é desabilitar os itens no template.
+    - name: "[Aruba] Desabilitar itens de rádio com OIDs inexistentes"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            status: "1"
+          auth: "{{ _token }}"
+          id: 4
+      register: _aruba_update
+      failed_when: _aruba_update.json.error is defined
+      loop: "{{ _aruba_radio_items }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "[Aruba] Sumário"
+      ansible.builtin.debug:
+        msg: >-
+          Template Aruba IAP by SNMPv3:
+          {{ _aruba_radio_items | length }} itens de rádio desabilitados no template.
+          Afeta ~101 APs (6 erros cada → ~600 falsos erros eliminados).
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # FIX 2 — Template "SNMP QNAP"
+    # Itens com type mismatch (string vs Numeric) e OIDs ausentes (No Such Instance)
+    # ══════════════════════════════════════════════════════════════════════════
+
+    - name: "[QNAP] Buscar template"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output: ["templateid", "name"]
+            filter:
+              name: "SNMP QNAP"
+          auth: "{{ _token }}"
+          id: 5
+      register: _qnap_tpl
+
+    - name: "[QNAP] Falhar se template não encontrado"
+      ansible.builtin.assert:
+        that: _qnap_tpl.json.result | length > 0
+        fail_msg: "Template 'SNMP QNAP' não encontrado no Zabbix"
+
+    - name: "[QNAP] Buscar todos os itens do template"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.get"
+          params:
+            output: ["itemid", "name", "value_type"]
+            selectPreprocessing: true
+            templateids: ["{{ (_qnap_tpl.json.result | first).templateid }}"]
+          auth: "{{ _token }}"
+          id: 6
+      register: _qnap_items_all
+
+    # "Volume * Status" e "CPU Temperature" retornam string onde se espera Numeric.
+    # Filtrar só por nome (sem checar value_type — o API pode retornar int ou string).
+    - name: "[QNAP] Filtrar itens Status e Temperature"
+      ansible.builtin.set_fact:
+        _qnap_text_items: >-
+          {{ _qnap_items_all.json.result
+             | selectattr('name', 'search', 'Status|Temperature')
+             | list }}
+
+    # Itens FAN Name retornam "No Such Instance" — desabilitar é mais confiável que preprocessing.
+    # Itens FAN Speed retornam string "-1" — value_type → Text.
+    - name: "[QNAP] Filtrar itens FAN Name (OID inexistente)"
+      ansible.builtin.set_fact:
+        _qnap_fan_name_items: >-
+          {{ _qnap_items_all.json.result
+             | selectattr('name', 'search', 'FAN.+: Name')
+             | list }}
+
+    - name: "[QNAP] Filtrar itens FAN Speed/Status (retornam string)"
+      ansible.builtin.set_fact:
+        _qnap_fan_value_items: >-
+          {{ _qnap_items_all.json.result
+             | selectattr('name', 'search', 'FAN.+: Speed|FAN.+: Status')
+             | list }}
+
+    - name: "[QNAP] Corrigir value_type → Text (Status, Temperature)"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            value_type: "4"
+          auth: "{{ _token }}"
+          id: 7
+      register: _qnap_text_update
+      failed_when: _qnap_text_update.json.error is defined
+      loop: "{{ _qnap_text_items }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "[QNAP] Corrigir value_type → Text (FAN Speed/Status)"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            value_type: "4"
+          auth: "{{ _token }}"
+          id: 71
+      register: _qnap_fan_speed_update
+      failed_when: _qnap_fan_speed_update.json.error is defined
+      loop: "{{ _qnap_fan_value_items }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "[QNAP] Desabilitar itens FAN Name (OID não existe nesses modelos)"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            status: "1"
+          auth: "{{ _token }}"
+          id: 8
+      register: _qnap_fan_disable
+      failed_when: _qnap_fan_disable.json.error is defined
+      loop: "{{ _qnap_fan_name_items }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "[QNAP] Sumário"
+      ansible.builtin.debug:
+        msg: >-
+          Template SNMP QNAP:
+          {{ _qnap_text_items | length }} itens Status/Temperature → value_type Text;
+          {{ _qnap_fan_value_items | length }} itens FAN Speed/Status → value_type Text;
+          {{ _qnap_fan_name_items | length }} itens FAN Name → desabilitados (OID inexistente).
+          Afeta 5 NAS conectados + SCL-NAS-Backup e BGP-NAS-03 quando o cliente configurar SNMPv3.
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # FIX 3 — Host "Zabbix server" — item haservice
+    # ══════════════════════════════════════════════════════════════════════════
+
+    - name: "[ZS] Buscar host 'Zabbix server'"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output: ["hostid", "name"]
+            filter:
+              host: "Zabbix server"
+          auth: "{{ _token }}"
+          id: 9
+      register: _zs_host
+
+    - name: "[ZS] Buscar itens 'Zabbix stats cluster' no host"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.get"
+          params:
+            output: ["itemid", "name", "status"]
+            hostids: ["{{ (_zs_host.json.result | first).hostid }}"]
+            search:
+              name: "Zabbix stats cluster"
+          auth: "{{ _token }}"
+          id: 10
+      register: _haservice_items
+      when: _zs_host.json.result | length > 0
+
+    - name: "[ZS] Desabilitar item haservice (HA não configurado)"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.update"
+          params:
+            itemid: "{{ item.itemid }}"
+            status: "1"
+          auth: "{{ _token }}"
+          id: 11
+      register: _haservice_update
+      failed_when: _haservice_update.json.error is defined
+      when:
+        - _zs_host.json.result | length > 0
+        - item.status != '1'
+      loop: "{{ _haservice_items.json.result | default([]) }}"
+      loop_control:
+        label: "{{ item.name }} (status {{ item.status }} → disabled)"
+
+    - name: "[ZS] Sumário"
+      ansible.builtin.debug:
+        msg: >-
+          Zabbix server:
+          {{ _haservice_items.json.result | default([]) | length }} item(s)
+          'Zabbix stats cluster' desabilitado(s).
+
+    # ── Sumário global ────────────────────────────────────────────────────────
+    - name: "Sumário global"
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════════
+          Correções aplicadas
+          ══════════════════════════════════════════════════════════════
+          [1] Aruba IAP by SNMPv3   → {{ _aruba_radio_items | length }} itens de rádio desabilitados
+          [2] SNMP QNAP Status/Temp → {{ _qnap_text_items | length }} itens value_type → Text
+          [2] SNMP QNAP FAN Speed   → {{ _qnap_fan_value_items | length }} itens value_type → Text
+          [2] SNMP QNAP FAN Name    → {{ _qnap_fan_name_items | length }} itens desabilitados
+          [3] Zabbix server HA      → item haservice desabilitado
+          ══════════════════════════════════════════════════════════════
+          Execute o script de diagnóstico para confirmar a redução de erros:
+            python3 scripts/zabbix_audit_hosts.py
+
+    # ── Logout ────────────────────────────────────────────────────────────────
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          auth: "{{ _token }}"
+          id: 99

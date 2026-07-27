@@ -1,0 +1,705 @@
+---
+# Configura monitoramento de bancos de dados no Zabbix:
+#   SQL Server 2022 (3 instâncias) — BGP-SRV-V04, BGP-SRV-VAPP06, SCL-SRV-VAPP02
+#   PostgreSQL Veeam Backup         — BGP-SRV-VAPP02
+#   Oracle Systextil ERP            — BGP-SYS-ORACLE01 (10.20.1.100) [novo host]
+#   ClickHouse Analytics            — SCL-SRV-V05 (172.16.2.145:8123)
+#
+# Pré-requisito nos hosts Windows (SQL Server / PostgreSQL / Oracle):
+#   Zabbix Agent 2 instalado com plugins de banco configurados.
+#   Veja comentários em cada seção abaixo para as diretivas do zabbix_agent2.conf.
+#
+# ansible-playbook playbooks/zabbix_databases.yml
+
+- name: Configurar monitoramento de bancos de dados no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    # ── SQL Server 2022 ────────────────────────────────────────────────────────
+    # Plugin no zabbix_agent2.conf (em cada host):
+    #   Plugins.Mssql.Sessions.Local.Uri=sqlserver://localhost:1433
+    #   Plugins.Mssql.Sessions.Local.User=zabbix
+    #   Plugins.Mssql.Sessions.Local.Password=PO?aL6F90bM{/t(
+    sql_server_hosts:
+      - hostname: "BGP-SRV-V04"
+      - hostname: "BGP-SRV-VAPP06"
+      - hostname: "SCL-SRV-VAPP02"
+    mssql_macros:
+      - macro: "{$MSSQL.INSTANCE}"
+        value: "localhost"
+        type: 0
+      - macro: "{$MSSQL.USERNAME}"
+        value: "zabbix"
+        type: 0
+      - macro: "{$MSSQL.PASSWORD}"
+        value: "PO?aL6F90bM{/t("
+        type: 1  # secured
+
+    # ── PostgreSQL Veeam Backup ────────────────────────────────────────────────
+    # Plugin no zabbix_agent2.conf (em BGP-SRV-VAPP02):
+    #   Plugins.PostgreSQL.Sessions.Local.Uri=tcp://localhost:5432
+    #   Plugins.PostgreSQL.Sessions.Local.User=veeam.bkp
+    #   Plugins.PostgreSQL.Sessions.Local.Password=4W9JO=BunxL)$32Cyb#S
+    postgresql_host: "BGP-SRV-VAPP02"
+    postgresql_macros:
+      - macro: "{$PG.CONNSTRING}"
+        value: "tcp://localhost:5432"
+        type: 0
+      - macro: "{$PG.USER}"
+        value: "veeam.bkp"
+        type: 0
+      - macro: "{$PG.PASSWORD}"
+        value: "4W9JO=BunxL)$32Cyb#S"
+        type: 1
+
+    # ── Oracle Systextil ERP ───────────────────────────────────────────────────
+    # Host novo — acessado via proxy BGP (172.18.2.51).
+    # Instalar Zabbix Agent 2 no servidor Oracle e configurar:
+    #   Plugins.Oracle.Sessions.Local.Uri=tcp://localhost:1521/ORCL
+    #   Plugins.Oracle.Sessions.Local.User=systextil
+    #   Plugins.Oracle.Sessions.Local.Password=3rp#_TESTE2022
+    oracle_hostname: "BGP-SYS-ORACLE01"
+    oracle_ip: "10.20.1.100"
+    oracle_macros:
+      - macro: "{$ORACLE.CONNSTRING}"
+        value: "tcp://localhost:1521/ORCL"
+        type: 0
+      - macro: "{$ORACLE.USER}"
+        value: "systextil"
+        type: 0
+      - macro: "{$ORACLE.PASSWORD}"
+        value: "3rp#_TESTE2022"
+        type: 1
+      - macro: "{$ORACLE.SERVICE}"
+        value: "ORCL"
+        type: 0
+
+    # ── ClickHouse Analytics ───────────────────────────────────────────────────
+    # Monitoramento via HTTP agent (sem necessidade de agent no host).
+    # Autenticação via cabeçalhos X-ClickHouse-User / X-ClickHouse-Key.
+    clickhouse_hostname: "SCL-SRV-V05"
+    clickhouse_ip: "172.16.2.145"
+    clickhouse_port: "8123"
+    clickhouse_macros:
+      - macro: "{$CLICKHOUSE.HOST}"
+        value: "172.16.2.145"
+        type: 0
+      - macro: "{$CLICKHOUSE.PORT}"
+        value: "8123"
+        type: 0
+      - macro: "{$CLICKHOUSE.USER}"
+        value: "analytics"
+        type: 0
+      - macro: "{$CLICKHOUSE.PASSWORD}"
+        value: "dJFNs2AyWZgsZ9"
+        type: 1
+
+  tasks:
+
+    # ── Autenticação ──────────────────────────────────────────────────────────
+
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Buscar proxies ────────────────────────────────────────────────────────
+
+    - name: Buscar proxies BGP e SCL
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "proxy.get"
+          params:
+            output:
+              - proxyid
+              - name
+            filter:
+              name:
+                - "BGP-SRV-V08"
+                - "SCL-SRV-V08"
+          auth: "{{ _token }}"
+          id: 2
+      register: _proxies
+
+    - name: Mapear IDs dos proxies
+      ansible.builtin.set_fact:
+        _proxy_bgp: >-
+          {{ (_proxies.json.result | selectattr('name', 'equalto', 'BGP-SRV-V08') | first).proxyid | default('') }}
+        _proxy_scl: >-
+          {{ (_proxies.json.result | selectattr('name', 'equalto', 'SCL-SRV-V08') | first).proxyid | default('') }}
+
+    # ── Buscar templates de banco de dados ───────────────────────────────────
+
+    - name: Buscar IDs dos templates de banco de dados
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "template.get"
+          params:
+            output:
+              - templateid
+              - name
+            filter:
+              name:
+                - "MSSQL by Zabbix agent 2"
+                - "PostgreSQL by Zabbix agent 2"
+                - "Oracle by Zabbix agent 2"
+                - "Template Module ICMP Ping"
+          auth: "{{ _token }}"
+          id: 3
+      register: _templates
+
+    - name: Mapear IDs dos templates
+      ansible.builtin.set_fact:
+        _tmpl_mssql: >-
+          {{ (_templates.json.result | selectattr('name', 'equalto', 'MSSQL by Zabbix agent 2') | first | default({})).templateid | default('') }}
+        _tmpl_pg: >-
+          {{ (_templates.json.result | selectattr('name', 'equalto', 'PostgreSQL by Zabbix agent 2') | first | default({})).templateid | default('') }}
+        _tmpl_oracle: >-
+          {{ (_templates.json.result | selectattr('name', 'equalto', 'Oracle by Zabbix agent 2') | first | default({})).templateid | default('') }}
+        _tmpl_icmp: >-
+          {{ (_templates.json.result | selectattr('name', 'equalto', 'Template Module ICMP Ping') | first | default({})).templateid | default('') }}
+
+    - name: Validar templates encontrados
+      ansible.builtin.debug:
+        msg:
+          - "MSSQL template    : {{ _tmpl_mssql or 'NÃO ENCONTRADO (esperado: MSSQL by Zabbix agent 2)' }}"
+          - "PostgreSQL template: {{ _tmpl_pg or 'NÃO ENCONTRADO — importe o template no Zabbix' }}"
+          - "Oracle template   : {{ _tmpl_oracle or 'NÃO ENCONTRADO — importe o template no Zabbix' }}"
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # SQL SERVER 2022
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Buscar dados dos hosts SQL Server
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+              - host
+            selectParentTemplates:
+              - templateid
+            filter:
+              host: "{{ item.hostname }}"
+          auth: "{{ _token }}"
+          id: 10
+      register: _mssql_hosts_raw
+      loop: "{{ sql_server_hosts }}"
+      loop_control:
+        label: "{{ item.hostname }}"
+
+    - name: Adicionar template SQL Server aos hosts (mantendo templates existentes)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ item.json.result[0].hostid }}"
+            templates: >-
+              {{
+                (item.json.result[0].parentTemplates | default([]))
+                + ([{'templateid': _tmpl_mssql}] if _tmpl_mssql and
+                   (_tmpl_mssql not in (item.json.result[0].parentTemplates | default([]) | map(attribute='templateid') | list))
+                   else [])
+              }}
+          auth: "{{ _token }}"
+          id: 11
+      loop: "{{ _mssql_hosts_raw.results }}"
+      loop_control:
+        label: "{{ item.item.hostname }}"
+      when:
+        - item.json.result | length > 0
+        - _tmpl_mssql != ''
+
+    - name: Buscar macros existentes dos hosts SQL Server
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usermacro.get"
+          params:
+            hostids:
+              - "{{ item.json.result[0].hostid }}"
+            output:
+              - hostmacroid
+              - macro
+          auth: "{{ _token }}"
+          id: 12
+      register: _mssql_macros_raw
+      loop: "{{ _mssql_hosts_raw.results }}"
+      loop_control:
+        label: "{{ item.item.hostname }}"
+      when: item.json.result | length > 0
+
+    - name: "Configurar macro {{ mssql_macros[item.1].macro }} em {{ sql_server_hosts[item.0].hostname }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: >-
+            {{
+              'usermacro.update'
+              if ((_mssql_macros_raw.results[item.0].json.result | default([]))
+                  | selectattr('macro', 'equalto', mssql_macros[item.1].macro) | list | length > 0)
+              else 'usermacro.create'
+            }}
+          params: >-
+            {{
+              {'hostmacroid': ((_mssql_macros_raw.results[item.0].json.result | default([]))
+                              | selectattr('macro', 'equalto', mssql_macros[item.1].macro) | first).hostmacroid,
+               'value': mssql_macros[item.1].value, 'type': mssql_macros[item.1].type | default(0)}
+              if ((_mssql_macros_raw.results[item.0].json.result | default([]))
+                  | selectattr('macro', 'equalto', mssql_macros[item.1].macro) | list | length > 0)
+              else {'hostid': _mssql_hosts_raw.results[item.0].json.result[0].hostid,
+                    'macro': mssql_macros[item.1].macro,
+                    'value': mssql_macros[item.1].value,
+                    'type': mssql_macros[item.1].type | default(0)}
+            }}
+          auth: "{{ _token }}"
+          id: 13
+      loop: "{{ range(sql_server_hosts | length) | list | product(range(mssql_macros | length) | list) | list }}"
+      loop_control:
+        label: "{{ sql_server_hosts[item.0].hostname }} — {{ mssql_macros[item.1].macro }}"
+      when: >-
+        _mssql_hosts_raw.results[item.0].json.result | length > 0
+        and not (_mssql_macros_raw.results[item.0].skipped | default(false))
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # POSTGRESQL — VEEAM BACKUP
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Buscar host PostgreSQL (BGP-SRV-VAPP02)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+              - host
+            selectParentTemplates:
+              - templateid
+            filter:
+              host: "{{ postgresql_host }}"
+          auth: "{{ _token }}"
+          id: 20
+      register: _pg_host
+
+    - name: Adicionar template PostgreSQL ao BGP-SRV-VAPP02
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.update"
+          params:
+            hostid: "{{ _pg_host.json.result[0].hostid }}"
+            templates: >-
+              {{
+                (_pg_host.json.result[0].parentTemplates | default([]))
+                + ([{'templateid': _tmpl_pg}] if _tmpl_pg and
+                   (_tmpl_pg not in (_pg_host.json.result[0].parentTemplates | default([]) | map(attribute='templateid') | list))
+                   else [])
+              }}
+          auth: "{{ _token }}"
+          id: 21
+      when:
+        - _pg_host.json.result | length > 0
+        - _tmpl_pg != ''
+
+    - name: Buscar macros existentes em BGP-SRV-VAPP02
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usermacro.get"
+          params:
+            hostids:
+              - "{{ _pg_host.json.result[0].hostid }}"
+            output:
+              - hostmacroid
+              - macro
+          auth: "{{ _token }}"
+          id: 22
+      register: _pg_existing_macros
+      when: _pg_host.json.result | length > 0
+
+    - name: "Upsert macro {{ item.macro }} em BGP-SRV-VAPP02"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: >-
+            {{
+              'usermacro.update'
+              if (_pg_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+              else 'usermacro.create'
+            }}
+          params: >-
+            {{
+              {'hostmacroid': (_pg_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | first).hostmacroid,
+               'value': item.value, 'type': item.type | default(0)}
+              if (_pg_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+              else {'hostid': _pg_host.json.result[0].hostid, 'macro': item.macro, 'value': item.value, 'type': item.type | default(0)}
+            }}
+          auth: "{{ _token }}"
+          id: 23
+      loop: "{{ postgresql_macros }}"
+      loop_control:
+        label: "{{ item.macro }}"
+      when: _pg_host.json.result | length > 0
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # ORACLE — SYSTEXTIL ERP (novo host)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Verificar se host Oracle já existe
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+            filter:
+              host: "{{ oracle_hostname }}"
+          auth: "{{ _token }}"
+          id: 30
+      register: _oracle_check
+
+    - name: Buscar grupo Servidores Linux/BGP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output:
+              - groupid
+              - name
+            filter:
+              name: "Servidores Linux/BGP"
+          auth: "{{ _token }}"
+          id: 31
+      register: _grp_linux_bgp
+      when: _oracle_check.json.result | length == 0
+
+    - name: Criar host Oracle BGP-SYS-ORACLE01
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.create"
+          params:
+            host: "{{ oracle_hostname }}"
+            name: "{{ oracle_hostname }} (Oracle Systextil ERP)"
+            interfaces:
+              - type: 1
+                main: 1
+                useip: 1
+                ip: "{{ oracle_ip }}"
+                dns: ""
+                port: "10050"
+            groups:
+              - groupid: "{{ _grp_linux_bgp.json.result[0].groupid }}"
+            templates: >-
+              {{
+                ([{'templateid': _tmpl_icmp}] if _tmpl_icmp else [])
+                + ([{'templateid': _tmpl_oracle}] if _tmpl_oracle else [])
+              }}
+            proxy_hostid: "{{ _proxy_bgp }}"
+          auth: "{{ _token }}"
+          id: 32
+      register: _oracle_created
+      when:
+        - _oracle_check.json.result | length == 0
+        - _grp_linux_bgp.json.result is defined
+        - _grp_linux_bgp.json.result | length > 0
+
+    - name: Registrar hostid Oracle (novo ou existente)
+      ansible.builtin.set_fact:
+        _oracle_hostid: >-
+          {{
+            _oracle_created.json.result.hostids[0]
+            if (_oracle_check.json.result | length == 0 and _oracle_created is not skipped)
+            else _oracle_check.json.result[0].hostid
+          }}
+      when: >-
+        (_oracle_check.json.result | length > 0) or
+        (_oracle_created is not skipped and _oracle_created.json.result is defined)
+
+    - name: Buscar macros existentes em Oracle
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usermacro.get"
+          params:
+            hostids:
+              - "{{ _oracle_hostid }}"
+            output:
+              - hostmacroid
+              - macro
+          auth: "{{ _token }}"
+          id: 33
+      register: _oracle_existing_macros
+      when: _oracle_hostid is defined
+
+    - name: "Upsert macro {{ item.macro }} em {{ oracle_hostname }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: >-
+            {{
+              'usermacro.update'
+              if (_oracle_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+              else 'usermacro.create'
+            }}
+          params: >-
+            {{
+              {'hostmacroid': (_oracle_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | first).hostmacroid,
+               'value': item.value, 'type': item.type | default(0)}
+              if (_oracle_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+              else {'hostid': _oracle_hostid, 'macro': item.macro, 'value': item.value, 'type': item.type | default(0)}
+            }}
+          auth: "{{ _token }}"
+          id: 34
+      loop: "{{ oracle_macros }}"
+      loop_control:
+        label: "{{ item.macro }}"
+      when:
+        - _oracle_hostid is defined
+        - _oracle_existing_macros is not skipped
+
+    # ═══════════════════════════════════════════════════════════════════════════
+    # CLICKHOUSE — SCL-SRV-V05 (HTTP agent items)
+    # ═══════════════════════════════════════════════════════════════════════════
+
+    - name: Buscar host ClickHouse (SCL-SRV-V05)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "host.get"
+          params:
+            output:
+              - hostid
+            filter:
+              host: "{{ clickhouse_hostname }}"
+          auth: "{{ _token }}"
+          id: 40
+      register: _ch_host
+
+    - name: Configurar macros ClickHouse em SCL-SRV-V05
+      block:
+        - name: Buscar macros existentes em SCL-SRV-V05
+          ansible.builtin.uri:
+            url: "{{ zabbix_api_url }}"
+            method: POST
+            body_format: json
+            body:
+              jsonrpc: "2.0"
+              method: "usermacro.get"
+              params:
+                hostids:
+                  - "{{ _ch_host.json.result[0].hostid }}"
+                output:
+                  - hostmacroid
+                  - macro
+              auth: "{{ _token }}"
+              id: 41
+          register: _ch_existing_macros
+
+        - name: "Upsert macro {{ item.macro }} em SCL-SRV-V05"
+          ansible.builtin.uri:
+            url: "{{ zabbix_api_url }}"
+            method: POST
+            body_format: json
+            body:
+              jsonrpc: "2.0"
+              method: >-
+                {{
+                  'usermacro.update'
+                  if (_ch_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+                  else 'usermacro.create'
+                }}
+              params: >-
+                {{
+                  {'hostmacroid': (_ch_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | first).hostmacroid,
+                   'value': item.value, 'type': item.type | default(0)}
+                  if (_ch_existing_macros.json.result | selectattr('macro', 'equalto', item.macro) | list | length > 0)
+                  else {'hostid': _ch_host.json.result[0].hostid, 'macro': item.macro, 'value': item.value, 'type': item.type | default(0)}
+                }}
+              auth: "{{ _token }}"
+              id: 42
+          loop: "{{ clickhouse_macros }}"
+          loop_control:
+            label: "{{ item.macro }}"
+      when: _ch_host.json.result | length > 0
+
+    - name: Verificar itens ClickHouse existentes
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.get"
+          params:
+            output:
+              - itemid
+              - key_
+            hostids:
+              - "{{ _ch_host.json.result[0].hostid }}"
+            filter:
+              key_: "clickhouse.uptime"
+          auth: "{{ _token }}"
+          id: 43
+      register: _ch_items_check
+      when: _ch_host.json.result | length > 0
+
+    - name: Criar itens HTTP agent para ClickHouse
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "item.create"
+          params:
+            hostid: "{{ _ch_host.json.result[0].hostid }}"
+            name: "{{ item.name }}"
+            key_: "{{ item.key }}"
+            type: 19
+            value_type: "{{ item.value_type }}"
+            delay: "{{ item.delay | default('5m') }}"
+            url: "http://{$CLICKHOUSE.HOST}:{$CLICKHOUSE.PORT}/{{ item.query_path }}"
+            request_method: 0
+            headers:
+              - name: "X-ClickHouse-User"
+                value: "{$CLICKHOUSE.USER}"
+              - name: "X-ClickHouse-Key"
+                value: "{$CLICKHOUSE.PASSWORD}"
+            retrieve_mode: 0
+            timeout: "10s"
+          auth: "{{ _token }}"
+          id: 44
+      register: _ch_item_create
+      failed_when:
+        - _ch_item_create.json.error is defined
+        - "'already exist' not in (_ch_item_create.json.error.data | default(''))"
+      loop:
+        - name: "ClickHouse: Uptime (segundos)"
+          key: "clickhouse.uptime"
+          value_type: 3
+          query_path: "?query=SELECT+uptime()"
+          delay: "5m"
+        - name: "ClickHouse: Queries em execução"
+          key: "clickhouse.queries.running"
+          value_type: 3
+          query_path: "?query=SELECT+count()+FROM+system.processes"
+          delay: "1m"
+        - name: "ClickHouse: Queries processadas (total)"
+          key: "clickhouse.queries.total"
+          value_type: 3
+          query_path: "?query=SELECT+value+FROM+system.metrics+WHERE+metric%3D'Query'"
+          delay: "1m"
+        - name: "ClickHouse: Conexões TCP ativas"
+          key: "clickhouse.connections.tcp"
+          value_type: 3
+          query_path: "?query=SELECT+value+FROM+system.metrics+WHERE+metric%3D'TCPConnection'"
+          delay: "1m"
+        - name: "ClickHouse: Uso de memória (bytes)"
+          key: "clickhouse.memory.usage"
+          value_type: 3
+          query_path: "?query=SELECT+value+FROM+system.metrics+WHERE+metric%3D'MemoryTracking'"
+          delay: "5m"
+        - name: "ClickHouse: Tabelas no banco"
+          key: "clickhouse.tables.count"
+          value_type: 3
+          query_path: "?query=SELECT+count()+FROM+system.tables+WHERE+database+NOT+IN+('system')"
+          delay: "15m"
+      loop_control:
+        label: "{{ item.name }}"
+      when:
+        - _ch_host.json.result | length > 0
+        - _ch_items_check.json.result | length == 0
+
+    # ── Sumário ───────────────────────────────────────────────────────────────
+
+    - name: Sumário final
+      ansible.builtin.debug:
+        msg:
+          - "══════════════════════════════════════════════════════"
+          - "Configuração de bancos de dados concluída"
+          - "══════════════════════════════════════════════════════"
+          - "SQL Server  : BGP-SRV-V04, BGP-SRV-VAPP06, SCL-SRV-VAPP02"
+          - "PostgreSQL  : BGP-SRV-VAPP02 (Veeam Backup)"
+          - "Oracle      : BGP-SYS-ORACLE01 (10.20.1.100)"
+          - "ClickHouse  : SCL-SRV-V05 (172.16.2.145:8123)"
+          - "══════════════════════════════════════════════════════"
+          - "IMPORTANTE: Para SQL Server, PostgreSQL e Oracle,"
+          - "o Zabbix Agent 2 deve estar instalado e configurado"
+          - "nos respectivos hosts para os itens funcionarem."
+          - "══════════════════════════════════════════════════════"

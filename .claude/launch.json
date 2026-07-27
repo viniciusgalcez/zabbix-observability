@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "noc",
+      "runtimeExecutable": "C:/Users/vinicius.galcez/AppData/Local/anaconda3/envs/zabbix-mcp/python.exe",
+      "runtimeArgs": ["-m", "http.server", "8898"],
+      "port": 8898
+    }
+  ]
+}

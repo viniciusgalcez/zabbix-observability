@@ -1,0 +1,58 @@
+---
+# ── Credenciais SNMPv3 — padrão único global (definir com Marcos) ─────────────
+# Marcos aplica a config SNMPv3 nos switches via SSH em massa antes de rodar o playbook.
+# Parâmetros recomendados para CBS350/Catalyst 1200:
+#   snmp-server group ZabbixGroup v3 priv
+#   snmp-server user zabbix_snmp ZabbixGroup v3 auth sha256 <auth_pass> priv aes <priv_pass>
+#
+cisco_snmpv3:
+  username: "zabbix_snmp"
+  auth_passphrase: "ZbxAuth_2026@Net"
+  priv_passphrase: "ZbxPriv_2026@Secure"
+  auth_protocol: 3                     # 3=SHA256
+  priv_protocol: 2                     # 2=AES128
+  security_level: 2                    # 2=authPriv
+
+# ── Switches Cisco — BGP (13 switches) ───────────────────────────────────────
+# 172.18.x.x — Proxy: BGP-SRV-V08
+switches_bgp:
+  - { name: "BGP-SW-01", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-02", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-03", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-04", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-05", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-06", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-07", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-08", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-09", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "BGP-SW-10", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "BGP-SW-11", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "BGP-SW-12", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "BGP-SW-13", ip: "PREENCHER", model: "CBS350 Series" }
+
+# ── Switches Cisco — SCL (17 switches) ───────────────────────────────────────
+# 172.16.x.x — Proxy: SCL-SRV-V08
+switches_scl:
+  - { name: "SCL-SW-01", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-02", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-03", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-04", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-05", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-06", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-07", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-08", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-09", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-10", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-11", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "SCL-SW-12", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "SCL-SW-13", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "SCL-SW-14", ip: "PREENCHER", model: "CBS350-24P" }
+  - { name: "SCL-SW-15", ip: "PREENCHER", model: "CBS350 Series" }
+  - { name: "SCL-SW-16", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SCL-SW-17", ip: "PREENCHER", model: "Catalyst 1200" }
+
+# ── Switches Cisco — SPO (2 switches) ────────────────────────────────────────
+# 172.17.x.x — Proxy: SPO-SRV-V04
+switches_spo:
+  - { name: "SPO-SW-01", ip: "PREENCHER", model: "CBS350-48P" }
+  - { name: "SPO-SW-02", ip: "PREENCHER", model: "CBS350-48P" }

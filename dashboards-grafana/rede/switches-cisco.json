@@ -1,0 +1,716 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix",
+      "description": ""
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "4.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {"type": "grafana", "uid": "-- Grafana --"},
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0,211,255,1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Monitoramento de 31 switches Cisco CBS350 (BGP, SCL, SPO) via SNMPv3",
+  "editable": false,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Resumo",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "panels": []
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Switches Online",
+      "gridPos": {"h": 4, "w": 4, "x": 0, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["sum"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "green"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Switches Offline",
+      "gridPos": {"h": 4, "w": 4, "x": 4, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["count"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "mappings": [
+            {"type": "value", "options": {"0": {"text": "OFFLINE", "color": "red"}, "1": {"text": "OK", "color": "green"}}}
+          ]
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "SNMP agent availability"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Latência ICMP Média (ms)",
+      "gridPos": {"h": 4, "w": 4, "x": 8, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["mean"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 10},
+              {"color": "red", "value": 50}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP response time"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Switches com Perda",
+      "gridPos": {"h": 4, "w": 4, "x": 12, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["count"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 1},
+              {"color": "red", "value": 3}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP loss"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "Switches Monitorados",
+      "gridPos": {"h": 4, "w": 4, "x": 16, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["count"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "fixed", "fixedColor": "blue"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "blue", "value": null}]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "SNMP Disponível",
+      "gridPos": {"h": 4, "w": 4, "x": 20, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["sum"], "fields": "", "values": false},
+        "orientation": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "textMode": "auto"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "SNMP agent availability"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "row",
+      "title": "Disponibilidade",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 5},
+      "panels": []
+    },
+    {
+      "id": 9,
+      "type": "state-timeline",
+      "title": "Status ICMP — todos os switches",
+      "gridPos": {"h": 12, "w": 24, "x": 0, "y": 6},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "mergeValues": true,
+        "showValue": "never",
+        "alignValue": "left",
+        "rowHeight": 0.8,
+        "legend": {"displayMode": "list", "placement": "bottom", "showLegend": true},
+        "tooltip": {"mode": "multi", "sort": "none"}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "custom": {"lineWidth": 0, "fillOpacity": 70},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "green", "value": 1}
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {"text": "DOWN", "color": "red"},
+                "1": {"text": "UP", "color": "green"}
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/BGP"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Switches Cisco/SCL"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Switches Cisco/SPO"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "row",
+      "title": "Latência e Perda",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 18},
+      "panels": []
+    },
+    {
+      "id": 11,
+      "type": "timeseries",
+      "title": "ICMP Response Time (ms)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 19},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["mean", "max", "last"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 10},
+              {"color": "red", "value": 50}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "$switch"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP response time"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "bargauge",
+      "title": "ICMP Loss % por switch",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 19},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["last"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "valueMode": "color"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 1},
+              {"color": "red", "value": 10}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP loss"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": true, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "row",
+      "title": "Interfaces",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 27},
+      "panels": []
+    },
+    {
+      "id": 14,
+      "type": "table",
+      "title": "Status de Interfaces — $switch",
+      "gridPos": {"h": 12, "w": 24, "x": 0, "y": 28},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 2},
+              {"color": "green", "value": 3}
+            ]
+          },
+          "custom": {"align": "auto", "cellOptions": {"type": "color-text"}, "inspect": false, "filterable": true},
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "1": {"text": "Outro", "color": "grey"},
+                "2": {"text": "Half-Duplex", "color": "orange"},
+                "3": {"text": "Full-Duplex", "color": "green"}
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "$switch"},
+          "application": {"filter": ""},
+          "item": {"filter": "/Interface.*Duplex status/"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "row",
+      "title": "Uptime e Temperatura",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 40},
+      "panels": []
+    },
+    {
+      "id": 16,
+      "type": "bargauge",
+      "title": "Uptime por switch",
+      "gridPos": {"h": 10, "w": 12, "x": 0, "y": 41},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["last"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "valueMode": "color"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "dthms",
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "yellow", "value": null},
+              {"color": "green", "value": 604800}
+            ]
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Uptime (hardware)"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "row",
+      "title": "Inventário",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 51},
+      "panels": []
+    },
+    {
+      "id": 18,
+      "type": "table",
+      "title": "Inventário de Switches",
+      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 52},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": [{"displayName": "Host", "desc": false}],
+        "cellHeight": "sm"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {"align": "auto", "cellOptions": {"type": "auto"}, "inspect": false, "filterable": true}
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "Value #D"},
+            "properties": [{"id": "unit", "value": "dthms"}]
+          }
+        ]
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Hardware model name"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Hardware serial number"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Operating system"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "D",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Uptime (hardware)"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "E",
+          "group": {"filter": "Switches Cisco/*"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "System location"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    }
+  ],
+  "refresh": "60s",
+  "schemaVersion": 39,
+  "tags": ["capricornio", "rede", "switches", "cisco"],
+  "templating": {
+    "list": [
+      {
+        "current": {"selected": true, "text": ["All"], "value": ["$__all"]},
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "site",
+        "query": "All,BGP,SCL,SPO",
+        "options": [
+          {"selected": false, "text": "All", "value": "$__all"},
+          {"selected": false, "text": "BGP", "value": "BGP"},
+          {"selected": false, "text": "SCL", "value": "SCL"},
+          {"selected": false, "text": "SPO", "value": "SPO"}
+        ],
+        "type": "custom",
+        "label": "Site"
+      },
+      {
+        "current": {},
+        "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "switch",
+        "options": [],
+        "query": {"group": {"filter": "Switches Cisco/$site"}, "host": {"filter": ""}, "queryType": "hosts"},
+        "refresh": 2,
+        "sort": 1,
+        "type": "query",
+        "label": "Switch"
+      }
+    ]
+  },
+  "time": {"from": "now-3h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Rede — Switches Cisco",
+  "uid": "capri-switches",
+  "version": 1
+}

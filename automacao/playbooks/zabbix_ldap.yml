@@ -1,0 +1,395 @@
+---
+# Configura autenticação LDAP/AD no Zabbix 7.0 via API.
+#
+# Pré-requisitos:
+#   1. Service account capricornio\zabbix criada no AD com senha definida
+#   2. Grupos GG-Zabbix-Admin / GG-Zabbix-User / GG-Zabbix-Viewer criados no AD
+#      em: OU=Grupos,OU=Capricornio,DC=capricornio,DC=corp,DC=br
+#   3. Certificado CA interna em files/certs/certnew.cer
+#
+# O que este playbook faz:
+#   - Instala o certificado CA nos servidores Zabbix (LDAPS)
+#   - Cria os grupos Zabbix: Admins LDAP, Users LDAP, Viewers LDAP
+#   - Cria/atualiza o User Directory AD com JIT provisioning completo
+#   - Habilita LDAP como autenticação padrão com JIT ativo
+#   - Atribui permissões nos host groups: RW para Users LDAP, RO para Viewers LDAP
+#
+# Execução:
+#   ansible-playbook playbooks/zabbix_ldap.yml
+
+- name: Importar certificado CA nos servidores Zabbix
+  hosts: zabbix_server
+  become: true
+
+  tasks:
+    - name: Copiar certificado CA interna
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../files/certs/certnew.cer"
+        dest: /usr/local/share/ca-certificates/capricornio-ca.crt
+        mode: "0644"
+      notify: Atualizar CA do sistema
+
+    - name: Configurar TLS_REQCERT no OpenLDAP (GnuTLS — CA interna)
+      ansible.builtin.lineinfile:
+        path: /etc/ldap/ldap.conf
+        regexp: '^TLS_REQCERT'
+        line: 'TLS_REQCERT allow'
+        create: false
+      notify: Reiniciar Zabbix Server
+
+  handlers:
+    - name: Atualizar CA do sistema
+      ansible.builtin.command:
+        cmd: update-ca-certificates
+      changed_when: true
+
+    - name: Reiniciar Zabbix Server
+      ansible.builtin.service:
+        name: zabbix-server
+        state: restarted
+
+- name: Configurar LDAP no Zabbix 7.0 via API
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"
+
+    ldap_name: "AD Capricornio"
+    ldap_host: "ldaps://172.16.2.142"
+    ldap_port: 636
+    ldap_base_dn: "OU=Internos,OU=Usuarios,OU=Capricornio,DC=capricornio,DC=corp,DC=br"
+    ldap_bind_dn: "capricornio\\zabbix"
+    ldap_bind_password: "5L4LubQ[[JmVyo5"
+    ldap_group_base_dn: "OU=Grupos,OU=Capricornio,DC=capricornio,DC=corp,DC=br"
+
+  tasks:
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Verificar autenticação
+      ansible.builtin.assert:
+        that: _auth.json.result is defined
+        fail_msg: "Falha na autenticação Zabbix: {{ _auth.json.error | default('verifique usuário/senha') }}"
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ── Grupos de usuários LDAP ───────────────────────────────────────────────
+    # gui_access=0: usa autenticação padrão do sistema (LDAP)
+    # Não usar grupo "Internal" (força auth interna) nem "Guests" (desabilitado)
+
+    - name: Criar grupos de usuários LDAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.create"
+          params:
+            name: "{{ item }}"
+            gui_access: "0"
+            users_status: "0"
+          auth: "{{ _token }}"
+          id: 2
+      register: _create_groups
+      failed_when:
+        - _create_groups.json.error is defined
+        - "'already exists' not in (_create_groups.json.error.data | default(''))"
+      loop:
+        - "Admins LDAP"
+        - "Users LDAP"
+        - "Viewers LDAP"
+
+    - name: Buscar IDs dos grupos LDAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.get"
+          params:
+            output: ["usrgrpid", "name"]
+            search:
+              name: "LDAP"
+          auth: "{{ _token }}"
+          id: 3
+      register: _ldap_groups
+
+    - name: Registrar IDs dos grupos LDAP
+      ansible.builtin.set_fact:
+        _ldap_group_ids: "{{ _ldap_groups.json.result | items2dict(key_name='name', value_name='usrgrpid') }}"
+
+    # ── Manter grupo Zabbix administrators com autenticação interna ───────────
+
+    - name: Buscar ID do grupo Zabbix administrators
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.get"
+          params:
+            output: ["usrgrpid"]
+            filter:
+              name: "Zabbix administrators"
+          auth: "{{ _token }}"
+          id: 4
+      register: _zbx_admins
+
+    - name: Forçar autenticação interna no grupo Zabbix administrators
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.update"
+          params:
+            usrgrpid: "{{ _zbx_admins.json.result[0].usrgrpid }}"
+            gui_access: "1"
+          auth: "{{ _token }}"
+          id: 5
+      when: _zbx_admins.json.result | length > 0
+
+    # ── User Directory LDAP ───────────────────────────────────────────────────
+
+    - name: Verificar se User Directory LDAP já existe
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "userdirectory.get"
+          params:
+            output: ["userdirectoryid", "name"]
+            search:
+              name: "{{ ldap_name }}"
+          auth: "{{ _token }}"
+          id: 6
+      register: _ud_get
+
+    - name: Criar User Directory LDAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "userdirectory.create"
+          params:
+            name: "{{ ldap_name }}"
+            idp_type: 1
+            host: "{{ ldap_host }}"
+            port: "{{ ldap_port | string }}"
+            base_dn: "{{ ldap_base_dn }}"
+            search_attribute: "sAMAccountName"
+            bind_dn: "{{ ldap_bind_dn }}"
+            bind_password: "{{ ldap_bind_password }}"
+            start_tls: "0"
+            provision_status: "1"
+            group_name: "CN"
+            group_basedn: "{{ ldap_group_base_dn }}"
+            group_member: "member"
+            group_filter: "(objectClass=group)"
+            group_membership: "memberOf"
+            user_username: "givenName"
+            user_lastname: "sn"
+            provision_groups:
+              - name: "GG-Zabbix-Admin"
+                roleid: "3"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Admins LDAP'] }}"
+              - name: "GG-Zabbix-User"
+                roleid: "2"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Users LDAP'] }}"
+              - name: "GG-Zabbix-Viewer"
+                roleid: "1"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Viewers LDAP'] }}"
+          auth: "{{ _token }}"
+          id: 7
+      register: _ud_create
+      failed_when: _ud_create.json.error is defined
+      when: _ud_get.json.result | length == 0
+
+    - name: Atualizar User Directory LDAP existente
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "userdirectory.update"
+          params:
+            userdirectoryid: "{{ (_ud_get.json.result | first).userdirectoryid }}"
+            host: "{{ ldap_host }}"
+            port: "{{ ldap_port | string }}"
+            base_dn: "{{ ldap_base_dn }}"
+            search_attribute: "sAMAccountName"
+            bind_dn: "{{ ldap_bind_dn }}"
+            bind_password: "{{ ldap_bind_password }}"
+            start_tls: "0"
+            provision_status: "1"
+            group_name: "CN"
+            group_basedn: "{{ ldap_group_base_dn }}"
+            group_member: "member"
+            group_filter: "(objectClass=group)"
+            group_membership: "memberOf"
+            user_username: "givenName"
+            user_lastname: "sn"
+            provision_groups:
+              - name: "GG-Zabbix-Admin"
+                roleid: "3"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Admins LDAP'] }}"
+              - name: "GG-Zabbix-User"
+                roleid: "2"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Users LDAP'] }}"
+              - name: "GG-Zabbix-Viewer"
+                roleid: "1"
+                user_groups:
+                  - usrgrpid: "{{ _ldap_group_ids['Viewers LDAP'] }}"
+          auth: "{{ _token }}"
+          id: 8
+      register: _ud_update
+      failed_when: _ud_update.json.error is defined
+      when: _ud_get.json.result | length > 0
+
+    - name: Set User Directory ID
+      ansible.builtin.set_fact:
+        _ud_id: >-
+          {{
+            (_ud_get.json.result | first).userdirectoryid
+            if _ud_get.json.result | length > 0
+            else _ud_create.json.result.userdirectoryids | first
+          }}
+
+    # ── Ativar LDAP e JIT globalmente ─────────────────────────────────────────
+
+    - name: Buscar ID do grupo Disabled (para desprovisionamento)
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.get"
+          params:
+            output: ["usrgrpid"]
+            filter:
+              name: "Disabled"
+          auth: "{{ _token }}"
+          id: 9
+      register: _disabled_grp
+
+    - name: Ativar LDAP como autenticação padrão com JIT habilitado
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "authentication.update"
+          params:
+            authentication_type: "1"
+            ldap_auth_enabled: "1"
+            ldap_jit_status: "1"
+            ldap_userdirectoryid: "{{ _ud_id }}"
+            disabled_usrgrpid: "{{ _disabled_grp.json.result[0].usrgrpid }}"
+          auth: "{{ _token }}"
+          id: 10
+      register: _auth_update
+      failed_when: _auth_update.json.error is defined
+
+    # ── Permissões nos host groups ────────────────────────────────────────────
+    # Super admin (Admins LDAP): acesso global por role, sem necessidade de rights
+    # Admin (Users LDAP):   READ-WRITE (3) em todos os host groups
+    # User (Viewers LDAP):  READ-ONLY  (2) em todos os host groups
+
+    - name: Buscar todos os host groups
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "hostgroup.get"
+          params:
+            output: ["groupid"]
+          auth: "{{ _token }}"
+          id: 11
+      register: _all_hostgroups
+
+    - name: Aplicar READ-WRITE em todos os host groups para Users LDAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.update"
+          params:
+            usrgrpid: "{{ _ldap_group_ids['Users LDAP'] }}"
+            rights: >-
+              {{ _all_hostgroups.json.result | map(attribute='groupid')
+                 | map('regex_replace', '^(.*)$', '{\"id\": \"\\1\", \"permission\": 3}')
+                 | map('from_yaml') | list }}
+          auth: "{{ _token }}"
+          id: 12
+      register: _rw_perms
+      failed_when: _rw_perms.json.error is defined
+
+    - name: Aplicar READ-ONLY em todos os host groups para Viewers LDAP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "usergroup.update"
+          params:
+            usrgrpid: "{{ _ldap_group_ids['Viewers LDAP'] }}"
+            rights: >-
+              {{ _all_hostgroups.json.result | map(attribute='groupid')
+                 | map('regex_replace', '^(.*)$', '{\"id\": \"\\1\", \"permission\": 2}')
+                 | map('from_yaml') | list }}
+          auth: "{{ _token }}"
+          id: 13
+      register: _ro_perms
+      failed_when: _ro_perms.json.error is defined
+
+    # ── Logout ────────────────────────────────────────────────────────────────
+
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          auth: "{{ _token }}"
+          id: 99

@@ -1,0 +1,158 @@
+---
+# Configura os plugins MSSQL e PostgreSQL do Zabbix Agent 2 nos proxies Linux.
+#
+# Pré-requisito: vars/db_plugins.yml já preenchido (credenciais OK).
+#
+# O Zabbix já está pré-configurado (hosts de DB criados, templates aplicados).
+# Após rodar este playbook os itens começam a coletar automaticamente.
+#
+# Uso:
+#   ansible-playbook playbooks/configure_db_plugins.yml -i inventory/hosts.yml
+
+- name: Configurar plugins MSSQL e PostgreSQL no Zabbix Agent 2 dos proxies
+  hosts: zabbix_proxy
+  become: true
+  vars_files:
+    - ../vars/db_plugins.yml
+
+  tasks:
+
+    # ── Pacotes de plugins (external loadable plugins no Zabbix 7.0) ─────────
+    - name: "[MSSQL] Instalar zabbix-agent2-plugin-mssql"
+      package:
+        name: zabbix-agent2-plugin-mssql
+        state: present
+      when: mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      notify: Restart zabbix-agent2
+
+    - name: "[PostgreSQL] Instalar zabbix-agent2-plugin-postgresql"
+      package:
+        name: zabbix-agent2-plugin-postgresql
+        state: present
+      when: pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      notify: Restart zabbix-agent2
+
+    # Zabbix 7.0: plugins externos instalam configs em plugins.d/ (subdiretório).
+    # O Include padrão do agent (*.conf) não é recursivo — precisa de entrada extra.
+    - name: Ativar Include do subdiretório plugins.d no agent config
+      lineinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        line: "Include=/etc/zabbix/zabbix_agent2.d/plugins.d/*.conf"
+        regexp: '^Include=/etc/zabbix/zabbix_agent2.d/plugins\.d/'
+        insertafter: '^Include=/etc/zabbix/zabbix_agent2.d/\*\.conf'
+      notify: Restart zabbix-agent2
+
+    # ── Limpeza de blocos antigos ─────────────────────────────────────────────
+    - name: "[Limpeza] Remover blocos MSSQL antigos com hífen"
+      blockinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        marker: "# {mark} ANSIBLE MANAGED — MSSQL session {{ item }}"
+        state: absent
+      loop:
+        - "BGP-SRV-V04"
+        - "BGP-SRV-VAPP06"
+        - "SCL-SRV-VAPP02"
+
+    - name: "[Limpeza] Remover blocos MSSQL com Mssql (capitalização antiga)"
+      blockinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        marker: "# {mark} ANSIBLE MANAGED — MSSQL session {{ item }}"
+        state: absent
+      loop:
+        - "BGP_SRV_V04"
+        - "BGP_SRV_VAPP06"
+        - "SCL_SRV_VAPP02"
+      notify: Restart zabbix-agent2
+
+    - name: "[Limpeza] Remover blocos PostgreSQL antigos com hífen"
+      blockinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        marker: "# {mark} ANSIBLE MANAGED — PostgreSQL session {{ item }}"
+        state: absent
+      loop:
+        - "BGP-SRV-VAPP02"
+
+    # ── MSSQL ────────────────────────────────────────────────────────────────
+    - name: "[MSSQL] Configurar sessões no zabbix_agent2.conf"
+      blockinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        marker: "# {mark} ANSIBLE MANAGED — MSSQL session {{ item.name }}"
+        block: |
+          Plugins.MSSQL.Sessions.{{ item.name }}.Uri={{ item.uri }}
+          Plugins.MSSQL.Sessions.{{ item.name }}.User={{ item.user }}
+          Plugins.MSSQL.Sessions.{{ item.name }}.Password={{ item.password }}
+      loop: "{{ mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      notify: Restart zabbix-agent2
+
+    # ── PostgreSQL ───────────────────────────────────────────────────────────
+    - name: "[PostgreSQL] Configurar sessões no zabbix_agent2.conf"
+      blockinfile:
+        path: /etc/zabbix/zabbix_agent2.conf
+        marker: "# {mark} ANSIBLE MANAGED — PostgreSQL session {{ item.name }}"
+        block: |
+          Plugins.PostgreSQL.Sessions.{{ item.name }}.Uri={{ item.uri }}
+          Plugins.PostgreSQL.Sessions.{{ item.name }}.User={{ item.user }}
+          Plugins.PostgreSQL.Sessions.{{ item.name }}.Password={{ item.password }}
+          Plugins.PostgreSQL.Sessions.{{ item.name }}.Database={{ item.database }}
+      loop: "{{ pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      notify: Restart zabbix-agent2
+
+    - name: Verificar sintaxe do zabbix_agent2.conf
+      command: zabbix_agent2 -c /etc/zabbix/zabbix_agent2.conf --print
+      register: agent2_check
+      changed_when: false
+      failed_when: agent2_check.rc != 0
+
+    - name: Garantir que Agent 2 está rodando e habilitado
+      systemd:
+        name: zabbix-agent2
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Restart zabbix-agent2
+      systemd:
+        name: zabbix-agent2
+        state: restarted
+
+  post_tasks:
+    - name: Aguardar Agent 2 aceitar conexões (porta 10050)
+      wait_for:
+        host: 127.0.0.1
+        port: 10050
+        timeout: 30
+
+    - name: "[Teste] Instalar zabbix-get localmente"
+      package:
+        name: zabbix-get
+        state: present
+
+    - name: "[Teste] MSSQL ping via Agent 2"
+      command: zabbix_get -s 127.0.0.1 -p 10050 -k "mssql.ping[{{ item.name }}]"
+      loop: "{{ mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: mssql_test
+      changed_when: false
+      failed_when: false
+
+    - name: "[Teste] Resultado MSSQL — esperado: 1 = conectou"
+      debug:
+        msg: "{{ item.item.name }} ({{ item.item.uri }}): {{ item.stdout if item.stdout else item.stderr | trim }}"
+      loop: "{{ mssql_test.results | default([]) }}"
+      when: mssql_test is defined
+
+    - name: "[Teste] PostgreSQL ping via Agent 2"
+      command: zabbix_get -s 127.0.0.1 -p 10050 -k "pgsql.ping[{{ item.name }}]"
+      loop: "{{ pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: pgsql_test
+      changed_when: false
+      failed_when: false
+
+    - name: "[Teste] Resultado PostgreSQL — esperado: 1 = conectou"
+      debug:
+        msg: "{{ item.item.name }} ({{ item.item.uri }}): {{ item.stdout if item.stdout else item.stderr | trim }}"
+      loop: "{{ pgsql_test.results | default([]) }}"
+      when: pgsql_test is defined

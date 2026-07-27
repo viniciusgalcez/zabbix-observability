@@ -1,0 +1,194 @@
+---
+# Cadastra 32 switches Cisco no Zabbix com SNMPv3 e template "Net Cisco IOS SNMP".
+#
+# Pré-requisitos:
+#   1. Marcos aplicou config SNMPv3 nos switches (usuário, auth, priv) via SSH em massa
+#   2. vars/switches.yml preenchido com IPs reais e credenciais SNMPv3 confirmadas
+#   3. Template "Net Cisco IOS SNMP" importado no Zabbix (já incluso na instalação 7.0)
+#
+# Execução:
+#   ansible-playbook playbooks/zabbix_switches.yml
+#   ou com credenciais em variáveis externas:
+#   ansible-playbook playbooks/zabbix_switches.yml \
+#     -e "snmpv3_auth=SENHA_AUTH snmpv3_priv=SENHA_PRIV"
+
+- name: Cadastrar switches Cisco no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - ../vars/switches.yml
+
+  vars:
+    zabbix_conn: &zabbix_conn
+      ansible_network_os: community.zabbix.zabbix
+      ansible_connection: httpapi
+      ansible_user: Admin
+      ansible_httpapi_pass: "zabbix"      # ALTERAR se já mudou a senha
+      ansible_host: "172.17.2.51"
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_zabbix_url_path: ""
+
+    zabbix_template: "Net Cisco IOS SNMP"
+
+    # Agrupamento por site para iterar nos blocos abaixo
+    _sites:
+      - site: BGP
+        proxy: "BGP-SRV-V08"
+        hosts: "{{ switches_bgp }}"
+      - site: SCL
+        proxy: "SCL-SRV-V08"
+        hosts: "{{ switches_scl }}"
+      - site: SPO
+        proxy: "SPO-SRV-V04"
+        hosts: "{{ switches_spo }}"
+
+  tasks:
+    # ── 1. Criar host groups ─────────────────────────────────────────────────
+    - name: Criar host group "Switches Cisco"
+      vars: *zabbix_conn
+      community.zabbix.zabbix_group:
+        host_groups:
+          - Switches Cisco
+        state: present
+
+    - name: Criar host groups por site
+      vars: *zabbix_conn
+      community.zabbix.zabbix_group:
+        host_groups:
+          - "switches-{{ item }}"
+        state: present
+      loop:
+        - BGP
+        - SCL
+        - SPO
+
+    # ── 2. Registrar switches — BGP ─────────────────────────────────────────
+    - name: Cadastrar switch BGP — {{ item.name }}
+      vars: *zabbix_conn
+      community.zabbix.zabbix_host:
+        host_name: "{{ item.name }}"
+        visible_name: "{{ item.name }} ({{ item.model }})"
+        host_groups:
+          - Switches Cisco
+          - switches-BGP
+        link_templates:
+          - "{{ zabbix_template }}"
+        status: enabled
+        proxy_name: "BGP-SRV-V08"
+        interfaces:
+          - type: 2
+            main: 1
+            useip: 1
+            ip: "{{ item.ip }}"
+            dns: ""
+            port: "161"
+            details:
+              version: 3
+              bulk: 1
+              securityname: "{{ cisco_snmpv3.username }}"
+              securitylevel: "{{ cisco_snmpv3.security_level }}"
+              authprotocol: "{{ cisco_snmpv3.auth_protocol }}"
+              authpassphrase: "{{ cisco_snmpv3.auth_passphrase }}"
+              privprotocol: "{{ cisco_snmpv3.priv_protocol }}"
+              privpassphrase: "{{ cisco_snmpv3.priv_passphrase }}"
+              contextname: ""
+        macros:
+          - macro: "{$SNMP_COMMUNITY}"
+            value: "{{ cisco_snmpv3.username }}"
+        state: present
+      loop: "{{ switches_bgp }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    # ── 3. Registrar switches — SCL ─────────────────────────────────────────
+    - name: Cadastrar switch SCL — {{ item.name }}
+      vars: *zabbix_conn
+      community.zabbix.zabbix_host:
+        host_name: "{{ item.name }}"
+        visible_name: "{{ item.name }} ({{ item.model }})"
+        host_groups:
+          - Switches Cisco
+          - switches-SCL
+        link_templates:
+          - "{{ zabbix_template }}"
+        status: enabled
+        proxy_name: "SCL-SRV-V08"
+        interfaces:
+          - type: 2
+            main: 1
+            useip: 1
+            ip: "{{ item.ip }}"
+            dns: ""
+            port: "161"
+            details:
+              version: 3
+              bulk: 1
+              securityname: "{{ cisco_snmpv3.username }}"
+              securitylevel: "{{ cisco_snmpv3.security_level }}"
+              authprotocol: "{{ cisco_snmpv3.auth_protocol }}"
+              authpassphrase: "{{ cisco_snmpv3.auth_passphrase }}"
+              privprotocol: "{{ cisco_snmpv3.priv_protocol }}"
+              privpassphrase: "{{ cisco_snmpv3.priv_passphrase }}"
+              contextname: ""
+        macros:
+          - macro: "{$SNMP_COMMUNITY}"
+            value: "{{ cisco_snmpv3.username }}"
+        state: present
+      loop: "{{ switches_scl }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    # ── 4. Registrar switches — SPO ─────────────────────────────────────────
+    - name: Cadastrar switch SPO — {{ item.name }}
+      vars: *zabbix_conn
+      community.zabbix.zabbix_host:
+        host_name: "{{ item.name }}"
+        visible_name: "{{ item.name }} ({{ item.model }})"
+        host_groups:
+          - Switches Cisco
+          - switches-SPO
+        link_templates:
+          - "{{ zabbix_template }}"
+        status: enabled
+        proxy_name: "SPO-SRV-V04"
+        interfaces:
+          - type: 2
+            main: 1
+            useip: 1
+            ip: "{{ item.ip }}"
+            dns: ""
+            port: "161"
+            details:
+              version: 3
+              bulk: 1
+              securityname: "{{ cisco_snmpv3.username }}"
+              securitylevel: "{{ cisco_snmpv3.security_level }}"
+              authprotocol: "{{ cisco_snmpv3.auth_protocol }}"
+              authpassphrase: "{{ cisco_snmpv3.auth_passphrase }}"
+              privprotocol: "{{ cisco_snmpv3.priv_protocol }}"
+              privpassphrase: "{{ cisco_snmpv3.priv_passphrase }}"
+              contextname: ""
+        macros:
+          - macro: "{$SNMP_COMMUNITY}"
+            value: "{{ cisco_snmpv3.username }}"
+        state: present
+      loop: "{{ switches_spo }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    # ── 5. Sumário ───────────────────────────────────────────────────────────
+    - name: Sumário do cadastro
+      ansible.builtin.debug:
+        msg: |
+          Cadastro concluído:
+            BGP: {{ switches_bgp | length }} switches → proxy BGP-SRV-V08
+            SCL: {{ switches_scl | length }} switches → proxy SCL-SRV-V08
+            SPO: {{ switches_spo | length }} switches → proxy SPO-SRV-V04
+            Total: {{ switches_bgp | length + switches_scl | length + switches_spo | length }} hosts
+          Template: {{ zabbix_template }}
+          Próximo passo: validar coleta em amostragem por site no Zabbix UI
+          (Monitoring → Hosts → filtrar por group "switches-BGP/SCL/SPO" → Latest data)

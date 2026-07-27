@@ -1,0 +1,5350 @@
+{
+  "macros": [
+    {
+      "template": "Cisco IOS by SNMP",
+      "templateid": "10218",
+      "macros": [
+        {
+          "hostmacroid": "3880",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFALIAS.MATCHES}",
+          "value": ".*",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3876",
+          "hostid": "10218",
+          "macro": "{$IFCONTROL}",
+          "value": "1",
+          "description": "Link status trigger will be fired only for interfaces where the context macro equals \"1\".",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3871",
+          "hostid": "10218",
+          "macro": "{$FAN_WARN_STATUS:\"warning\"}",
+          "value": "2",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3897",
+          "hostid": "10218",
+          "macro": "{$TEMP_CRIT_LOW}",
+          "value": "5",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3885",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12})",
+          "description": "Filters out `loopbacks`, `nulls`, docker `veth` links and `docker0 bridge` by default.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3895",
+          "hostid": "10218",
+          "macro": "{$TEMP_CRIT}",
+          "value": "60",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3886",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+          "value": "^.*$",
+          "description": "Used for network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3889",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3870",
+          "hostid": "10218",
+          "macro": "{$FAN_WARN_STATUS:\"notFunctioning\"}",
+          "value": "6",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3873",
+          "hostid": "10218",
+          "macro": "{$ICMP_RESPONSE_TIME_WARN}",
+          "value": "0.15",
+          "description": "Warning threshold of the average ICMP response time in seconds.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3887",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+          "value": "^6$",
+          "description": "Ignore `notPresent(6)`",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3879",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+          "value": "^2$",
+          "description": "Ignore `down(2)` administrative status",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3891",
+          "hostid": "10218",
+          "macro": "{$PSU_CRIT_STATUS:\"shutdown\"}",
+          "value": "4",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3877",
+          "hostid": "10218",
+          "macro": "{$MEMORY.UTIL.MAX}",
+          "value": "90",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3901",
+          "hostid": "10218",
+          "macro": "{$TEMP_WARN:\"CPU\"}",
+          "value": "70",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3899",
+          "hostid": "10218",
+          "macro": "{$TEMP_DISASTER_STATUS}",
+          "value": "4",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3896",
+          "hostid": "10218",
+          "macro": "{$TEMP_CRIT:\"CPU\"}",
+          "value": "75",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3867",
+          "hostid": "10218",
+          "macro": "{$CPU.UTIL.CRIT}",
+          "value": "90",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3882",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFDESCR.MATCHES}",
+          "value": ".*",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3893",
+          "hostid": "10218",
+          "macro": "{$PSU_WARN_STATUS:\"warning\"}",
+          "value": "2",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3869",
+          "hostid": "10218",
+          "macro": "{$FAN_CRIT_STATUS:\"shutdown\"}",
+          "value": "4",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3894",
+          "hostid": "10218",
+          "macro": "{$SNMP.TIMEOUT}",
+          "value": "5m",
+          "description": "Time interval for the SNMP availability trigger.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3884",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFNAME.MATCHES}",
+          "value": "^.*$",
+          "description": "Used for network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3872",
+          "hostid": "10218",
+          "macro": "{$ICMP_LOSS_WARN}",
+          "value": "20",
+          "description": "Warning threshold of ICMP packet loss in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3883",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3900",
+          "hostid": "10218",
+          "macro": "{$TEMP_WARN}",
+          "value": "50",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3878",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+          "value": "^.*",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3888",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFTYPE.MATCHES}",
+          "value": ".*",
+          "description": "Used in network interface discovery rule filters.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3868",
+          "hostid": "10218",
+          "macro": "{$FAN_CRIT_STATUS:\"critical\"}",
+          "value": "3",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3902",
+          "hostid": "10218",
+          "macro": "{$TEMP_WARN_STATUS}",
+          "value": "2",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3875",
+          "hostid": "10218",
+          "macro": "{$IF.UTIL.MAX}",
+          "value": "90",
+          "description": "Used as a threshold in the interface utilization trigger.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3890",
+          "hostid": "10218",
+          "macro": "{$PSU_CRIT_STATUS:\"critical\"}",
+          "value": "3",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3898",
+          "hostid": "10218",
+          "macro": "{$TEMP_CRIT_STATUS}",
+          "value": "3",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3892",
+          "hostid": "10218",
+          "macro": "{$PSU_WARN_STATUS:\"notFunctioning\"}",
+          "value": "6",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3881",
+          "hostid": "10218",
+          "macro": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+          "value": "^$",
+          "description": "Exclude interfaces with empty alias from LLD discovery.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "3874",
+          "hostid": "10218",
+          "macro": "{$IF.ERRORS.WARN}",
+          "value": "2",
+          "description": "Warning threshold of error packet rate. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "FortiGate by SNMP",
+      "templateid": "10604",
+      "macros": [
+        {
+          "hostmacroid": "6415",
+          "hostid": "10604",
+          "macro": "{$SNMP.TIMEOUT}",
+          "value": "5m",
+          "description": "The time interval for SNMP availability trigger.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6412",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+          "value": "^6$",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6683",
+          "hostid": "10604",
+          "macro": "{$HA.MEMBER.SN.MATCHES}",
+          "value": ".*",
+          "description": "Used in HA member discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6685",
+          "hostid": "10604",
+          "macro": "{$SDWAN.HEALTH.IF.CONTROL}",
+          "value": "1",
+          "description": "Used in \"Health check state is dead\" trigger. Can be used with health check name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6698",
+          "hostid": "10604",
+          "macro": "{$WC.STATE.CONTROL}",
+          "value": "1",
+          "description": "Used in \"Connection down\" trigger. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6398",
+          "hostid": "10604",
+          "macro": "{$ICMP_RESPONSE_TIME_WARN}",
+          "value": "0.15",
+          "description": "Threshold of average ICMP response time for Warning trigger in seconds.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6399",
+          "hostid": "10604",
+          "macro": "{$IF.ERRORS.WARN}",
+          "value": "2",
+          "description": "Threshold of error packet rate for Warning trigger. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6400",
+          "hostid": "10604",
+          "macro": "{$IF.UTIL.MAX}",
+          "value": "95",
+          "description": "Threshold of interface bandwidth utilization for Warning trigger in %. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6395",
+          "hostid": "10604",
+          "macro": "{$CPU.UTIL.CRIT}",
+          "value": "90",
+          "description": "Threshold of CPU utilization for Warning trigger in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6693",
+          "hostid": "10604",
+          "macro": "{$VPN.STATE.CONTROL}",
+          "value": "1",
+          "description": "Used in \"Tunnel down\" trigger. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6397",
+          "hostid": "10604",
+          "macro": "{$ICMP_LOSS_WARN}",
+          "value": "20",
+          "description": "Threshold of ICMP packet loss for Warning trigger in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6401",
+          "hostid": "10604",
+          "macro": "{$IFCONTROL}",
+          "value": "1",
+          "description": "Macro for operational state of interface for \"Link down\" trigger. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6690",
+          "hostid": "10604",
+          "macro": "{$VDOM.NAME.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in Virtual domain discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6410",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^[Ll]o[0-9.]*$)",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6691",
+          "hostid": "10604",
+          "macro": "{$VPN.NAME.MATCHES}",
+          "value": ".*",
+          "description": "Used in VPN tunnel discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6402",
+          "hostid": "10604",
+          "macro": "{$MEMORY.UTIL.MAX}",
+          "value": "90",
+          "description": "Threshold of memory utilization for trigger in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6695",
+          "hostid": "10604",
+          "macro": "{$WC.MEMORY.UTIL.MAX}",
+          "value": "90",
+          "description": "Threshold of WTP memory utilization for trigger in %. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6406",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6404",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+          "value": "^2$",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6681",
+          "hostid": "10604",
+          "macro": "{$DISK.FREE.CRIT}",
+          "value": "10",
+          "description": "Threshold of disk free space for Critical trigger in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6414",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6697",
+          "hostid": "10604",
+          "macro": "{$WC.NAME.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in Wireless discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6694",
+          "hostid": "10604",
+          "macro": "{$WC.CPU.UTIL.CRIT}",
+          "value": "90",
+          "description": "Threshold of WTP CPU utilization for Warning trigger in %. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6699",
+          "hostid": "10604",
+          "macro": "{$WC.UPDATE.CONTROL}",
+          "value": "1",
+          "description": "Used in \"Receiving firmware update\" trigger. Can be used with interface name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6409",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFNAME.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6411",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6407",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFDESCR.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6688",
+          "hostid": "10604",
+          "macro": "{$SDWAN.HEALTH.NAME.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in SD-WAN health-check discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6687",
+          "hostid": "10604",
+          "macro": "{$SDWAN.HEALTH.NAME.MATCHES}",
+          "value": ".*",
+          "description": "Used in SD-WAN health-check discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6684",
+          "hostid": "10604",
+          "macro": "{$HA.MEMBER.SN.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in HA member discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6413",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFTYPE.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6405",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFALIAS.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6403",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+          "value": ".*",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6692",
+          "hostid": "10604",
+          "macro": "{$VPN.NAME.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in VPN tunnel discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6408",
+          "hostid": "10604",
+          "macro": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+          "value": "CHANGE_IF_NEEDED",
+          "description": "Used in Network interface discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6696",
+          "hostid": "10604",
+          "macro": "{$WC.NAME.MATCHES}",
+          "value": ".*",
+          "description": "Used in Wireless discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6689",
+          "hostid": "10604",
+          "macro": "{$VDOM.NAME.MATCHES}",
+          "value": ".*",
+          "description": "Used in Virtual domain discovery. Can be overridden on the host or linked template level.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6686",
+          "hostid": "10604",
+          "macro": "{$SDWAN.HEALTH.IF.LOSS.WARN}",
+          "value": "20",
+          "description": "Threshold of packet loss for Warning trigger in %. Can be used with health check name as context.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6682",
+          "hostid": "10604",
+          "macro": "{$DISK.FREE.WARN}",
+          "value": "20",
+          "description": "Threshold of disk free space for Warning trigger in %.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "Aruba IAP by SNMPv3",
+      "templateid": "10943",
+      "macros": []
+    }
+  ],
+  "triggers": [
+    {
+      "triggerid": "21612",
+      "description": "Cisco IOS: Unavailable by ICMP ping",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        }
+      ]
+    },
+    {
+      "triggerid": "21613",
+      "description": "Cisco IOS: High ICMP ping loss",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "21614",
+      "description": "Cisco IOS: High ICMP ping response time",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "21615",
+      "description": "Cisco IOS: Device has been replaced",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        }
+      ]
+    },
+    {
+      "triggerid": "21616",
+      "description": "Cisco IOS: System name has changed",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        },
+        {
+          "tag": "scope",
+          "value": "security"
+        }
+      ]
+    },
+    {
+      "triggerid": "21617",
+      "description": "Cisco IOS: Operating system description has changed",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        }
+      ]
+    },
+    {
+      "triggerid": "21618",
+      "description": "Cisco IOS: Host has been restarted",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        }
+      ]
+    },
+    {
+      "triggerid": "21619",
+      "description": "Cisco IOS: No SNMP data collection",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        }
+      ]
+    },
+    {
+      "triggerid": "23176",
+      "description": "Unavailable by ICMP ping",
+      "tags": []
+    },
+    {
+      "triggerid": "23177",
+      "description": "High ICMP ping loss",
+      "tags": []
+    },
+    {
+      "triggerid": "23178",
+      "description": "High ICMP ping response time",
+      "tags": []
+    },
+    {
+      "triggerid": "23460",
+      "description": "FortiGate: Unavailable by ICMP ping",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        }
+      ]
+    },
+    {
+      "triggerid": "23461",
+      "description": "FortiGate: High ICMP ping loss",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "23462",
+      "description": "FortiGate: High ICMP ping response time",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "23463",
+      "description": "FortiGate: High CPU utilization",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "23464",
+      "description": "FortiGate: Device has been replaced",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        }
+      ]
+    },
+    {
+      "triggerid": "23465",
+      "description": "FortiGate: System name has changed",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        },
+        {
+          "tag": "scope",
+          "value": "security"
+        }
+      ]
+    },
+    {
+      "triggerid": "23466",
+      "description": "FortiGate: Device has been restarted",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "notice"
+        }
+      ]
+    },
+    {
+      "triggerid": "23467",
+      "description": "FortiGate: Free disk space is too low",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "capacity"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "23468",
+      "description": "FortiGate: High memory utilization",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "capacity"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "23469",
+      "description": "FortiGate: No SNMP data collection",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        }
+      ]
+    },
+    {
+      "triggerid": "23664",
+      "description": "FortiGate: Free disk space is low",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "capacity"
+        },
+        {
+          "tag": "scope",
+          "value": "performance"
+        }
+      ]
+    },
+    {
+      "triggerid": "26020",
+      "description": "System name has changed (new name: {ITEM.VALUE})",
+      "tags": []
+    },
+    {
+      "triggerid": "26021",
+      "description": "No SNMP data collection",
+      "tags": []
+    },
+    {
+      "triggerid": "26023",
+      "description": "Unavailable by ICMP ping",
+      "tags": []
+    },
+    {
+      "triggerid": "26024",
+      "description": "High ICMP ping loss",
+      "tags": []
+    },
+    {
+      "triggerid": "26025",
+      "description": "High ICMP ping response time",
+      "tags": []
+    },
+    {
+      "triggerid": "26031",
+      "description": "High CPU temperature (>{$CPU_TEMPERATURE_ALARM} for 15m)",
+      "tags": []
+    },
+    {
+      "triggerid": "26032",
+      "description": "Disk latency is high (>{$DISK_LATENCY_ALARM} for 15m)",
+      "tags": []
+    },
+    {
+      "triggerid": "26035",
+      "description": "{HOST.NAME} has been restarted (uptime < 10m)",
+      "tags": []
+    },
+    {
+      "triggerid": "39872",
+      "description": "AP indispon\u00edvel via SNMP",
+      "tags": []
+    },
+    {
+      "triggerid": "39873",
+      "description": "AP reiniciado (uptime < 10 minutos)",
+      "tags": []
+    }
+  ],
+  "hosts": [
+    {
+      "hostid": "10931",
+      "host": "SCL-TIN-AP08",
+      "tags": []
+    },
+    {
+      "hostid": "10833",
+      "host": "BGP-ADM-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10815",
+      "host": "SCL-TIN-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10702",
+      "host": "SPO-CPD-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "11007",
+      "host": "SPO-SRV-V04",
+      "tags": []
+    },
+    {
+      "hostid": "10862",
+      "host": "SCL-TEC2-UPS02",
+      "tags": []
+    },
+    {
+      "hostid": "10731",
+      "host": "SCL-CPD-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10782",
+      "host": "SPO-ADM-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10912",
+      "host": "IDRAC-BGP-SRV-FREP",
+      "tags": []
+    },
+    {
+      "hostid": "10814",
+      "host": "BGP-EXP-AP29",
+      "tags": []
+    },
+    {
+      "hostid": "10687",
+      "host": "SCL-SRV-VAPP15",
+      "tags": []
+    },
+    {
+      "hostid": "10991",
+      "host": "BGP-ADM-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "11030",
+      "host": "Service Desk",
+      "tags": []
+    },
+    {
+      "hostid": "11008",
+      "host": "SCL-SRV-V08",
+      "tags": []
+    },
+    {
+      "hostid": "10976",
+      "host": "SCL-ADM-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10879",
+      "host": "BGP-EXP-AP37",
+      "tags": []
+    },
+    {
+      "hostid": "10848",
+      "host": "BGP-EXP-AP12",
+      "tags": []
+    },
+    {
+      "hostid": "10759",
+      "host": "SPO-ADM-AP01-VC",
+      "tags": []
+    },
+    {
+      "hostid": "10878",
+      "host": "BGP-EXP-AP36",
+      "tags": []
+    },
+    {
+      "hostid": "10867",
+      "host": "SCL-NAS-Hyperv",
+      "tags": []
+    },
+    {
+      "hostid": "10699",
+      "host": "SCL-TEC1-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10875",
+      "host": "BGP-EXP-AP30",
+      "tags": []
+    },
+    {
+      "hostid": "10708",
+      "host": "SCL-PRT-CTR03",
+      "tags": []
+    },
+    {
+      "hostid": "10712",
+      "host": "BGP-EXP-AP23",
+      "tags": []
+    },
+    {
+      "hostid": "10882",
+      "host": "BGP-POR-CTR12",
+      "tags": []
+    },
+    {
+      "hostid": "11085",
+      "host": "SPO-SRV-VAPP04",
+      "tags": []
+    },
+    {
+      "hostid": "10820",
+      "host": "SCL-ACA-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10938",
+      "host": "SPO-CPD-CTA01",
+      "tags": []
+    },
+    {
+      "hostid": "10902",
+      "host": "BGP-SRV-VAPP29",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps-homolog"
+        }
+      ]
+    },
+    {
+      "hostid": "10824",
+      "host": "BGP-EXP-AP13",
+      "tags": []
+    },
+    {
+      "hostid": "10763",
+      "host": "SCL-CLD-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10704",
+      "host": "BGP-TEC-AP07",
+      "tags": []
+    },
+    {
+      "hostid": "11042",
+      "host": "AZ-VM-DC-02",
+      "tags": []
+    },
+    {
+      "hostid": "10987",
+      "host": "SCL-TEC1-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10816",
+      "host": "SCL-URD-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10872",
+      "host": "BGP-EXP-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10769",
+      "host": "SPO-Guga-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "11004",
+      "host": "BGP-SRV-VAPP06-DB",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps-homolog"
+        }
+      ]
+    },
+    {
+      "hostid": "10756",
+      "host": "SCL-TIN-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "11102",
+      "host": "SPO-SRV-V02",
+      "tags": []
+    },
+    {
+      "hostid": "11021",
+      "host": "CLP",
+      "tags": []
+    },
+    {
+      "hostid": "10822",
+      "host": "SCL-ADM-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10825",
+      "host": "SCL-TRN-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10779",
+      "host": "SCL-MAN-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10750",
+      "host": "SCL-ACA-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10836",
+      "host": "BGP-EXP-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "11011",
+      "host": "SCL-TIN-TD01",
+      "tags": []
+    },
+    {
+      "hostid": "10897",
+      "host": "BGP-SRV-VAPP11",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "totvs"
+        }
+      ]
+    },
+    {
+      "hostid": "10800",
+      "host": "BGP-TEC-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10916",
+      "host": "SCL-ACA-CLP01",
+      "tags": []
+    },
+    {
+      "hostid": "10827",
+      "host": "BGP-EXP-AP05",
+      "tags": []
+    },
+    {
+      "hostid": "10900",
+      "host": "BGP-SRV-VAPP26",
+      "tags": []
+    },
+    {
+      "hostid": "10784",
+      "host": "BGP-EXP-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10718",
+      "host": "BGP-REV-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10999",
+      "host": "BGP-TEC-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10796",
+      "host": "SCL-PRT-CTR01",
+      "tags": []
+    },
+    {
+      "hostid": "10734",
+      "host": "SCL-Tenda-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10914",
+      "host": "IDRAC-SCL-SRV-FHV03",
+      "tags": []
+    },
+    {
+      "hostid": "11089",
+      "host": "SCL-SRV-V04",
+      "tags": []
+    },
+    {
+      "hostid": "10852",
+      "host": "BGP-EXP-AP26",
+      "tags": []
+    },
+    {
+      "hostid": "10838",
+      "host": "BGP-TEC-SW03",
+      "tags": []
+    },
+    {
+      "hostid": "10746",
+      "host": "SCL-TEC1-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10826",
+      "host": "SCL-TIN-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10860",
+      "host": "BGP-CPD-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10823",
+      "host": "BGP-TEC-UPS03",
+      "tags": []
+    },
+    {
+      "hostid": "10821",
+      "host": "BGP-TRN-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10684",
+      "host": "SCL-SRV-V03",
+      "tags": []
+    },
+    {
+      "hostid": "10864",
+      "host": "BGP-NAS-Hyperv",
+      "tags": []
+    },
+    {
+      "hostid": "10728",
+      "host": "BGP-EXP-AP06",
+      "tags": []
+    },
+    {
+      "hostid": "10794",
+      "host": "SCL-URD-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10788",
+      "host": "BGP-TEC-UPS02",
+      "tags": []
+    },
+    {
+      "hostid": "10683",
+      "host": "SCL-SRV-FHV02",
+      "tags": []
+    },
+    {
+      "hostid": "10941",
+      "host": "SPO-SRV-FAD01",
+      "tags": []
+    },
+    {
+      "hostid": "10695",
+      "host": "SCL-REV-AP06",
+      "tags": []
+    },
+    {
+      "hostid": "10849",
+      "host": "SCL-MAN-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "11006",
+      "host": "BGP-SRV-VAPP02-DB",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "veeam-backup"
+        }
+      ]
+    },
+    {
+      "hostid": "10837",
+      "host": "BGP-QUA-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10084",
+      "host": "Zabbix server",
+      "tags": []
+    },
+    {
+      "hostid": "10906",
+      "host": "BGP-TEC-AP04-VC",
+      "tags": []
+    },
+    {
+      "hostid": "10752",
+      "host": "SCL-URD-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10933",
+      "host": "SCL-TIN-AP10",
+      "tags": []
+    },
+    {
+      "hostid": "10697",
+      "host": "SCL-ACA-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10831",
+      "host": "SCL-ADM-AP03-VC",
+      "tags": []
+    },
+    {
+      "hostid": "10716",
+      "host": "BGP-EXP-AP08",
+      "tags": []
+    },
+    {
+      "hostid": "10886",
+      "host": "BGP-SRV-FHV03",
+      "tags": []
+    },
+    {
+      "hostid": "10839",
+      "host": "SCL-REV-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10846",
+      "host": "BGP-EXP-AP27",
+      "tags": []
+    },
+    {
+      "hostid": "10775",
+      "host": "BGP-EXP-SW03",
+      "tags": []
+    },
+    {
+      "hostid": "10844",
+      "host": "SCL-EXP-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10835",
+      "host": "BGP-EXP-AP19",
+      "tags": []
+    },
+    {
+      "hostid": "10808",
+      "host": "SCL-ACA-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10915",
+      "host": "IDRAC-SPO-SRV-FAD01",
+      "tags": []
+    },
+    {
+      "hostid": "10761",
+      "host": "BGP-ADM-AP02-VC",
+      "tags": []
+    },
+    {
+      "hostid": "10979",
+      "host": "SCL-ENF-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10805",
+      "host": "BGP-POR-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10737",
+      "host": "SCL-ACA-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10993",
+      "host": "BGP-DRH-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "11019",
+      "host": "Systextil",
+      "tags": []
+    },
+    {
+      "hostid": "11009",
+      "host": "BGP-SRV-V08",
+      "tags": []
+    },
+    {
+      "hostid": "10939",
+      "host": "SPO-DCT-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10758",
+      "host": "SPO-CPD-FW01",
+      "tags": []
+    },
+    {
+      "hostid": "10981",
+      "host": "SCL-EXP-PB02",
+      "tags": []
+    },
+    {
+      "hostid": "10726",
+      "host": "SCL-PCP-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10868",
+      "host": "SPO-NAS-Backup",
+      "tags": []
+    },
+    {
+      "hostid": "10698",
+      "host": "SCL-DRH-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10812",
+      "host": "SCL-EXP-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "11016",
+      "host": "NodeRed",
+      "tags": []
+    },
+    {
+      "hostid": "10803",
+      "host": "SCL-TEC2-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10817",
+      "host": "BGP-EXP-AP16",
+      "tags": []
+    },
+    {
+      "hostid": "10727",
+      "host": "BGP-ACA-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10859",
+      "host": "SCL-CLD-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "11088",
+      "host": "BGP-SRV-FREP",
+      "tags": []
+    },
+    {
+      "hostid": "10729",
+      "host": "SCL-TEC1-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10866",
+      "host": "BGP-NAS-03",
+      "tags": []
+    },
+    {
+      "hostid": "10892",
+      "host": "BGP-SRV-VAD01",
+      "tags": []
+    },
+    {
+      "hostid": "11020",
+      "host": "SinergyRH",
+      "tags": []
+    },
+    {
+      "hostid": "11014",
+      "host": "BGP-TEC-UPS04",
+      "tags": []
+    },
+    {
+      "hostid": "10714",
+      "host": "SCL-TEC1-UPS03",
+      "tags": []
+    },
+    {
+      "hostid": "10980",
+      "host": "SCL-EXP-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "11023",
+      "host": "Picanol",
+      "tags": []
+    },
+    {
+      "hostid": "10884",
+      "host": "BGP-SRV-FHV01",
+      "tags": []
+    },
+    {
+      "hostid": "10834",
+      "host": "SPO-CPD-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "11001",
+      "host": "SPO-ADM-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "11015",
+      "host": "Deps",
+      "tags": []
+    },
+    {
+      "hostid": "11024",
+      "host": "Paytrack",
+      "tags": []
+    },
+    {
+      "hostid": "10858",
+      "host": "SCL-TIN-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10910",
+      "host": "IDRAC-BGP-SRV-FHV02",
+      "tags": []
+    },
+    {
+      "hostid": "10740",
+      "host": "SCL-Tenda-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10918",
+      "host": "SCL-ETE-TB01",
+      "tags": []
+    },
+    {
+      "hostid": "11039",
+      "host": "BGP-SRV-VAPP10",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps"
+        }
+      ]
+    },
+    {
+      "hostid": "10773",
+      "host": "SCL-TEC1-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "11010",
+      "host": "SCL-TIN-TMX01",
+      "tags": []
+    },
+    {
+      "hostid": "11022",
+      "host": "Plusoft",
+      "tags": []
+    },
+    {
+      "hostid": "10926",
+      "host": "SCL-SRV-VAPP03",
+      "tags": []
+    },
+    {
+      "hostid": "10891",
+      "host": "BGP-SRV-V06",
+      "tags": []
+    },
+    {
+      "hostid": "10738",
+      "host": "SCL-TEC1-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10735",
+      "host": "SCL-TEC2-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10751",
+      "host": "SPO-Teca-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10830",
+      "host": "SCL-TIN-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10766",
+      "host": "SCL-TEC2-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10982",
+      "host": "SCL-MAN-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10768",
+      "host": "SCL-ALM-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10843",
+      "host": "BGP-CPD-SW05",
+      "tags": []
+    },
+    {
+      "hostid": "10787",
+      "host": "BGP-MAN-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10921",
+      "host": "SCL-SRV-FREP",
+      "tags": []
+    },
+    {
+      "hostid": "10798",
+      "host": "SCL-DRH-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10797",
+      "host": "BGP-EXP-AP07",
+      "tags": []
+    },
+    {
+      "hostid": "10724",
+      "host": "SCL-CPD-FW01",
+      "tags": []
+    },
+    {
+      "hostid": "10932",
+      "host": "SCL-TIN-AP09",
+      "tags": []
+    },
+    {
+      "hostid": "10880",
+      "host": "BGP-NAS-Backup",
+      "tags": []
+    },
+    {
+      "hostid": "10810",
+      "host": "BGP-REV-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10986",
+      "host": "SCL-QLD-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10907",
+      "host": "BGP-TEC-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10792",
+      "host": "SPO-Cipo-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10764",
+      "host": "BGP-EXP-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10813",
+      "host": "SCL-ACA-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10861",
+      "host": "BGP-QUA-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "11036",
+      "host": "IDRAC-SCL-SRV-FREP",
+      "tags": []
+    },
+    {
+      "hostid": "10850",
+      "host": "BGP-POR-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10689",
+      "host": "SCL-SRV-VAPP02",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "dimep"
+        },
+        {
+          "tag": "negocio",
+          "value": "eas-cozinha"
+        }
+      ]
+    },
+    {
+      "hostid": "10790",
+      "host": "BGP-CPD-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10832",
+      "host": "SCL-CPD-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "11026",
+      "host": "Lansweeper",
+      "tags": []
+    },
+    {
+      "hostid": "10994",
+      "host": "BGP-LOG-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10920",
+      "host": "SCL-SRV-FHV03",
+      "tags": []
+    },
+    {
+      "hostid": "10851",
+      "host": "BGP-TRN-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10905",
+      "host": "BGP-TEC-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10785",
+      "host": "BGP-ADM-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10719",
+      "host": "BGP-EXP-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10853",
+      "host": "BGP-REV-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10713",
+      "host": "BGP-ACA-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10911",
+      "host": "IDRAC-BGP-SRV-FHV03",
+      "tags": []
+    },
+    {
+      "hostid": "10934",
+      "host": "SCL-TIN-CLP06",
+      "tags": []
+    },
+    {
+      "hostid": "10876",
+      "host": "BGP-EXP-AP31",
+      "tags": []
+    },
+    {
+      "hostid": "11018",
+      "host": "Microsoft 365",
+      "tags": []
+    },
+    {
+      "hostid": "10709",
+      "host": "BGP-EXP-AP17",
+      "tags": []
+    },
+    {
+      "hostid": "11000",
+      "host": "SPO-ADM-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10903",
+      "host": "BGP-TEC-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10854",
+      "host": "BGP-ADM-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10732",
+      "host": "BGP-ACA-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10711",
+      "host": "SCL-ALM-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10717",
+      "host": "SCL-MAN-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10747",
+      "host": "BGP-EXP-AP18",
+      "tags": []
+    },
+    {
+      "hostid": "10978",
+      "host": "SCL-DRH-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10962",
+      "host": "SPO-DCT-FW01",
+      "tags": []
+    },
+    {
+      "hostid": "10819",
+      "host": "SCL-URD-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10706",
+      "host": "BGP-REV-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10927",
+      "host": "SCL-SRV-VAPP12",
+      "tags": []
+    },
+    {
+      "hostid": "10733",
+      "host": "SCL-Trancoso-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10793",
+      "host": "BGP-EXP-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10753",
+      "host": "SCL-URD-AP05",
+      "tags": []
+    },
+    {
+      "hostid": "10998",
+      "host": "BGP-SEG-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10811",
+      "host": "SCL-URD-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10771",
+      "host": "BGP-TEC-AP05",
+      "tags": []
+    },
+    {
+      "hostid": "10765",
+      "host": "SPO-ADM-AP04",
+      "tags": []
+    },
+    {
+      "hostid": "10774",
+      "host": "BGP-EXP-AP14",
+      "tags": []
+    },
+    {
+      "hostid": "10856",
+      "host": "BGP-EXP-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10840",
+      "host": "BGP-PCP-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10842",
+      "host": "SCL-ADM-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10791",
+      "host": "BGP-TEC-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10977",
+      "host": "SCL-ALM-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10984",
+      "host": "SCL-PJT-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10701",
+      "host": "SCL-ADM-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10928",
+      "host": "SCL-TEC2-CLP01",
+      "tags": []
+    },
+    {
+      "hostid": "10686",
+      "host": "SCL-SRV-VAPP14",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "eas-cozinha"
+        }
+      ]
+    },
+    {
+      "hostid": "10989",
+      "host": "SCL-TIN-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10802",
+      "host": "BGP-EXP-AP10",
+      "tags": []
+    },
+    {
+      "hostid": "10754",
+      "host": "SCL-EXP-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10972",
+      "host": "SCL-SRV-V06",
+      "tags": []
+    },
+    {
+      "hostid": "10786",
+      "host": "SCL-DRH-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10829",
+      "host": "BGP-ENF-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10873",
+      "host": "BGP-EXP-AP15",
+      "tags": []
+    },
+    {
+      "hostid": "10721",
+      "host": "SCL-TEC1-UPS02",
+      "tags": []
+    },
+    {
+      "hostid": "10742",
+      "host": "BGP-TEC-SW04",
+      "tags": []
+    },
+    {
+      "hostid": "10828",
+      "host": "BGP-EXP-AP24",
+      "tags": []
+    },
+    {
+      "hostid": "10685",
+      "host": "SCL-SRV-VAPP01",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "dimep"
+        }
+      ]
+    },
+    {
+      "hostid": "10723",
+      "host": "SPO-Adonis-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10748",
+      "host": "SCL-TEC2-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10855",
+      "host": "SCL-TIN-UPS02",
+      "tags": []
+    },
+    {
+      "hostid": "11017",
+      "host": "Cisco",
+      "tags": []
+    },
+    {
+      "hostid": "10961",
+      "host": "BGP-SRV-VAPP02",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "veeam-backup"
+        }
+      ]
+    },
+    {
+      "hostid": "10767",
+      "host": "SCL-ALM-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "10889",
+      "host": "BGP-SRV-V03",
+      "tags": []
+    },
+    {
+      "hostid": "10757",
+      "host": "SCL-URD-SW01",
+      "tags": []
+    },
+    {
+      "hostid": "11003",
+      "host": "BGP-SRV-V04-DB",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps, totvs, portal-os"
+        }
+      ]
+    },
+    {
+      "hostid": "10865",
+      "host": "BGP-NAS-DB",
+      "tags": []
+    },
+    {
+      "hostid": "10898",
+      "host": "BGP-SRV-VAPP12",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "portal-os"
+        }
+      ]
+    },
+    {
+      "hostid": "10960",
+      "host": "SCL-EAS-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10749",
+      "host": "SCL-REV-AP05",
+      "tags": []
+    },
+    {
+      "hostid": "10739",
+      "host": "SCL-ACA-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10804",
+      "host": "SCL-RST-CTR04",
+      "tags": []
+    },
+    {
+      "hostid": "10745",
+      "host": "BGP-ACA-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "11025",
+      "host": "NDD Print 360",
+      "tags": []
+    },
+    {
+      "hostid": "10985",
+      "host": "SCL-POR-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10929",
+      "host": "SCL-TIN-AP06",
+      "tags": []
+    },
+    {
+      "hostid": "10988",
+      "host": "SCL-TEC1-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10801",
+      "host": "SCL-TEC1-SW03",
+      "tags": []
+    },
+    {
+      "hostid": "11049",
+      "host": "AZ-VM-APP-03",
+      "tags": []
+    },
+    {
+      "hostid": "10806",
+      "host": "BGP-EXP-AP28",
+      "tags": []
+    },
+    {
+      "hostid": "10780",
+      "host": "SCL-TIN-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10904",
+      "host": "BGP-TEC-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10722",
+      "host": "SPO-ADM-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10901",
+      "host": "BGP-SRV-VAPP28",
+      "tags": []
+    },
+    {
+      "hostid": "10894",
+      "host": "BGP-SRV-VAPP04",
+      "tags": []
+    },
+    {
+      "hostid": "10881",
+      "host": "BGP-POR-CTR11",
+      "tags": []
+    },
+    {
+      "hostid": "10874",
+      "host": "BGP-EXP-AP25",
+      "tags": []
+    },
+    {
+      "hostid": "10720",
+      "host": "BGP-EXP-AP34",
+      "tags": []
+    },
+    {
+      "hostid": "10690",
+      "host": "SCL-SRV-VAPP13",
+      "tags": []
+    },
+    {
+      "hostid": "10741",
+      "host": "BGP-CPD-FW01",
+      "tags": []
+    },
+    {
+      "hostid": "10841",
+      "host": "SCL-TEC1-SW04",
+      "tags": []
+    },
+    {
+      "hostid": "10710",
+      "host": "BGP-ADM-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10888",
+      "host": "BGP-SRV-V02",
+      "tags": []
+    },
+    {
+      "hostid": "10908",
+      "host": "BGP-TEC-AP06",
+      "tags": []
+    },
+    {
+      "hostid": "10895",
+      "host": "BGP-SRV-VAPP06",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps-homolog"
+        }
+      ]
+    },
+    {
+      "hostid": "10807",
+      "host": "BGP-CPD-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10983",
+      "host": "SCL-PCP-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "11107",
+      "host": "SPO-SRV-V03",
+      "tags": []
+    },
+    {
+      "hostid": "11101",
+      "host": "SCL-SRV-V07",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "clickhouse"
+        }
+      ]
+    },
+    {
+      "hostid": "10703",
+      "host": "BGP-ADM-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10799",
+      "host": "SCL-TEC2-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10781",
+      "host": "SCL-TEC1-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10990",
+      "host": "SCL-TIN-PB02",
+      "tags": []
+    },
+    {
+      "hostid": "10789",
+      "host": "SCL-MAN-UPS01",
+      "tags": []
+    },
+    {
+      "hostid": "10707",
+      "host": "SCL-RST-CTR02",
+      "tags": []
+    },
+    {
+      "hostid": "10772",
+      "host": "SCL-TEC1-UPS04",
+      "tags": []
+    },
+    {
+      "hostid": "11053",
+      "host": "SPO-SRV-V05",
+      "tags": []
+    },
+    {
+      "hostid": "10937",
+      "host": "SCL-TIN-TMXC01",
+      "tags": []
+    },
+    {
+      "hostid": "11090",
+      "host": "SCL-SRV-V05",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "clickhouse"
+        }
+      ]
+    },
+    {
+      "hostid": "10975",
+      "host": "SCL-ACA-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10743",
+      "host": "SCL-ADM-AP03",
+      "tags": []
+    },
+    {
+      "hostid": "10877",
+      "host": "BGP-EXP-AP32",
+      "tags": []
+    },
+    {
+      "hostid": "10755",
+      "host": "SCL-MAN-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "11005",
+      "host": "SCL-SRV-VAPP02-DB",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "dimep"
+        },
+        {
+          "tag": "negocio",
+          "value": "eas-cozinha"
+        }
+      ]
+    },
+    {
+      "hostid": "10847",
+      "host": "SCL-TEC1-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10963",
+      "host": "CAPRICORNIO-WEB",
+      "tags": []
+    },
+    {
+      "hostid": "10885",
+      "host": "BGP-SRV-FHV02",
+      "tags": []
+    },
+    {
+      "hostid": "10778",
+      "host": "SPO-ADM-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10997",
+      "host": "BGP-QLD-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10760",
+      "host": "SCL-TIN-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10919",
+      "host": "SCL-NAS-Backup",
+      "tags": []
+    },
+    {
+      "hostid": "10770",
+      "host": "BGP-EXP-AP20",
+      "tags": []
+    },
+    {
+      "hostid": "10783",
+      "host": "BGP-EXP-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10913",
+      "host": "IDRAC-SCL-SRV-FHV02",
+      "tags": []
+    },
+    {
+      "hostid": "10909",
+      "host": "IDRAC-BGP-SRV-FHV01",
+      "tags": []
+    },
+    {
+      "hostid": "10995",
+      "host": "BGP-MAN-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10700",
+      "host": "BGP-EXP-AP22",
+      "tags": []
+    },
+    {
+      "hostid": "11029",
+      "host": "Projuris",
+      "tags": []
+    },
+    {
+      "hostid": "10776",
+      "host": "BGP-EXP-AP11",
+      "tags": []
+    },
+    {
+      "hostid": "10715",
+      "host": "BGP-EXP-AP21",
+      "tags": []
+    },
+    {
+      "hostid": "10696",
+      "host": "BGP-EXP-AP09",
+      "tags": []
+    },
+    {
+      "hostid": "10845",
+      "host": "SCL-TIN-AP05",
+      "tags": []
+    },
+    {
+      "hostid": "11027",
+      "host": "Capricornio",
+      "tags": []
+    },
+    {
+      "hostid": "10992",
+      "host": "BGP-ALM-PB01",
+      "tags": []
+    },
+    {
+      "hostid": "10725",
+      "host": "BGP-TEC-REP01",
+      "tags": []
+    },
+    {
+      "hostid": "10818",
+      "host": "BGP-TEC-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "11028",
+      "host": "Base-B",
+      "tags": []
+    },
+    {
+      "hostid": "10899",
+      "host": "BGP-SRV-VAPP18",
+      "tags": []
+    },
+    {
+      "hostid": "10744",
+      "host": "SCL-CPD-SW02",
+      "tags": []
+    },
+    {
+      "hostid": "10883",
+      "host": "BGP-RES-CTR13",
+      "tags": []
+    },
+    {
+      "hostid": "10930",
+      "host": "SCL-TIN-AP07",
+      "tags": []
+    },
+    {
+      "hostid": "10890",
+      "host": "BGP-SRV-V04",
+      "tags": [
+        {
+          "tag": "negocio",
+          "value": "deps, totvs, portal-os"
+        }
+      ]
+    },
+    {
+      "hostid": "10730",
+      "host": "SCL-TIN-AP02",
+      "tags": []
+    },
+    {
+      "hostid": "10795",
+      "host": "BGP-ADM-AP01",
+      "tags": []
+    },
+    {
+      "hostid": "10688",
+      "host": "SCL-SRV-V02",
+      "tags": []
+    },
+    {
+      "hostid": "10996",
+      "host": "BGP-PCP-COLOR01",
+      "tags": []
+    },
+    {
+      "hostid": "10705",
+      "host": "BGP-EXP-AP33",
+      "tags": []
+    },
+    {
+      "hostid": "11040",
+      "host": "AZ-VM-DC-01",
+      "tags": []
+    }
+  ],
+  "services": [
+    {
+      "serviceid": "2",
+      "name": "Aplica\u00e7\u00f5es",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "servi\u00e7os de aplica\u00e7\u00e3o",
+      "uuid": "544db29ebdb54f45afca09ed3495bade",
+      "created_at": "1782730151",
+      "readonly": false
+    },
+    {
+      "serviceid": "3",
+      "name": "Totvs",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e83420aa5e3b4324a3d034313b354566",
+      "created_at": "1782730396",
+      "readonly": false
+    },
+    {
+      "serviceid": "4",
+      "name": "Veeam ONE",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "381154533b1d46b4ac3d246a8a70cf5b",
+      "created_at": "1782730590",
+      "readonly": false
+    },
+    {
+      "serviceid": "47",
+      "name": "Deps Homolog",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "3c4049c6f532473883e2c14c941bdf74",
+      "created_at": "1782741970",
+      "readonly": false
+    },
+    {
+      "serviceid": "48",
+      "name": "Deps Homolog Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cae44d0e46cb4e119ae88a1e113a6152",
+      "created_at": "1782742448",
+      "readonly": false
+    },
+    {
+      "serviceid": "49",
+      "name": "Rede",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "10",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "Disponibilidade dos equipamentos de rede (raiz).",
+      "uuid": "e89ff542ec7c4515ae1b16407415d943",
+      "created_at": "1782847109",
+      "readonly": false
+    },
+    {
+      "serviceid": "50",
+      "name": "Switches Cisco",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "1",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "Disponibilidade dos switches Cisco.",
+      "uuid": "ebe744796ccc49a2b300b3a6ffbc2a75",
+      "created_at": "1782847134",
+      "readonly": false
+    },
+    {
+      "serviceid": "6",
+      "name": "EAS Cozinha",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c08061dbb3ef42f08d1a88b5bb840d69",
+      "created_at": "1782731210",
+      "readonly": false
+    },
+    {
+      "serviceid": "7",
+      "name": "Fact Teares",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "833087cd18a449e6acc6bf1e0e72f4f9",
+      "created_at": "1782731247",
+      "readonly": false
+    },
+    {
+      "serviceid": "8",
+      "name": "Entra Connect",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5487cd5c8e604aba8234a8331cbaa4b5",
+      "created_at": "1782731475",
+      "readonly": false
+    },
+    {
+      "serviceid": "9",
+      "name": "Lansweeper",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "323bc919dd99423abebba51c4ac26ebc",
+      "created_at": "1782731513",
+      "readonly": false
+    },
+    {
+      "serviceid": "10",
+      "name": "NodeRed",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "95380622f3074013a9d1b9ad9c920db9",
+      "created_at": "1782731543",
+      "readonly": false
+    },
+    {
+      "serviceid": "11",
+      "name": "GLPI",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "ddf23f09082e4ca9bd85b525c1cdad4d",
+      "created_at": "1782731656",
+      "readonly": false
+    },
+    {
+      "serviceid": "12",
+      "name": "Veeam Repository",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "bd789875694d4fb4a09317de749eee2f",
+      "created_at": "1782731695",
+      "readonly": false
+    },
+    {
+      "serviceid": "13",
+      "name": "Cisco/Oxidized",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cbd6b1fc8ca346bb91ea85c90f3ff7ff",
+      "created_at": "1782731709",
+      "readonly": false
+    },
+    {
+      "serviceid": "14",
+      "name": "Active Directory",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "2e1b04ccfb3f4d7f9eaf19f5d81ae250",
+      "created_at": "1782731963",
+      "readonly": false
+    },
+    {
+      "serviceid": "15",
+      "name": "DNS",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9e6f347f26bc4ec29ed79fc14013eb66",
+      "created_at": "1782731995",
+      "readonly": false
+    },
+    {
+      "serviceid": "16",
+      "name": "DHCP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b3ac3a1e690f49a1b6c785bef3a788ba",
+      "created_at": "1782732023",
+      "readonly": false
+    },
+    {
+      "serviceid": "17",
+      "name": "RADIUS (NPS)",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b2c4cb8e8f604752917f1db42b3ac685",
+      "created_at": "1782732075",
+      "readonly": false
+    },
+    {
+      "serviceid": "18",
+      "name": "SQL Server",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "be5cfa415e154512aa2ab8358ee6db9a",
+      "created_at": "1782732109",
+      "readonly": false
+    },
+    {
+      "serviceid": "19",
+      "name": "IIS",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "6ff06b9869b24491b74bbe04cf5a3901",
+      "created_at": "1782732144",
+      "readonly": false
+    },
+    {
+      "serviceid": "20",
+      "name": "Hyper-V",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c97e69f69fae4f8c937f90823237f1ee",
+      "created_at": "1782732220",
+      "readonly": false
+    },
+    {
+      "serviceid": "21",
+      "name": "Cluster",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "4e5922cf36cf41828a735ce040a2120f",
+      "created_at": "1782732251",
+      "readonly": false
+    },
+    {
+      "serviceid": "22",
+      "name": "Veeam Backup",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5448874bf61642aab23265433ece1a96",
+      "created_at": "1782734043",
+      "readonly": false
+    },
+    {
+      "serviceid": "23",
+      "name": "Dimep",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "32e665a87072436eb4509feccefd16a0",
+      "created_at": "1782734087",
+      "readonly": false
+    },
+    {
+      "serviceid": "24",
+      "name": "Grafana",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e038a02b65214841ad415f7f52845bfe",
+      "created_at": "1782734204",
+      "readonly": false
+    },
+    {
+      "serviceid": "25",
+      "name": "PostgreSQL",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "3f840101ac104c4d914ea53c8701a95d",
+      "created_at": "1782734375",
+      "readonly": false
+    },
+    {
+      "serviceid": "26",
+      "name": "Clickhouse",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "415f4eff8e93469380c6e4468c6d2bf0",
+      "created_at": "1782734411",
+      "readonly": false
+    },
+    {
+      "serviceid": "27",
+      "name": "Docker",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "dad2af73f9cd4b8d9a62710045afd11d",
+      "created_at": "1782734798",
+      "readonly": false
+    },
+    {
+      "serviceid": "28",
+      "name": "Fastweb",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b8dedbd96f7f40f5b6c7d5f9cece1995",
+      "created_at": "1782734850",
+      "readonly": false
+    },
+    {
+      "serviceid": "29",
+      "name": "Power BI Gateway",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "37c87f6044cc49589e64d0bb80e14a31",
+      "created_at": "1782734890",
+      "readonly": false
+    },
+    {
+      "serviceid": "30",
+      "name": "Identidade",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7a897cae7963466ab794761afbe05526",
+      "created_at": "1782735053",
+      "readonly": false
+    },
+    {
+      "serviceid": "31",
+      "name": "Backup",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d31633f94c404a029434b8c08e3d237d",
+      "created_at": "1782735062",
+      "readonly": false
+    },
+    {
+      "serviceid": "32",
+      "name": "Virtualiza\u00e7\u00e3o",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a5fb4f52fbe249a49d967dddc0980e60",
+      "created_at": "1782735097",
+      "readonly": false
+    },
+    {
+      "serviceid": "33",
+      "name": "Totvs App",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "03db24092306419da9a4f8f55818538d",
+      "created_at": "1782739494",
+      "readonly": false
+    },
+    {
+      "serviceid": "34",
+      "name": "Totvs Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9107c72652984a6a8840d8bcd31329af",
+      "created_at": "1782739537",
+      "readonly": false
+    },
+    {
+      "serviceid": "35",
+      "name": "Dimep APP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "66a7dc1585004d80a47a4e66eab1158d",
+      "created_at": "1782741006",
+      "readonly": false
+    },
+    {
+      "serviceid": "36",
+      "name": "Dimep Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c6c2c2e48cf0417fa73fb1d017f86223",
+      "created_at": "1782741269",
+      "readonly": false
+    },
+    {
+      "serviceid": "37",
+      "name": "EAS Cozinha APP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "307d834c342d47efbe3fba90045d5e2e",
+      "created_at": "1782741339",
+      "readonly": false
+    },
+    {
+      "serviceid": "38",
+      "name": "EAS Cozinha Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "437ac9603c7a45e7a6ccefc1bdd17ee7",
+      "created_at": "1782741388",
+      "readonly": false
+    },
+    {
+      "serviceid": "39",
+      "name": "Veeam Backup APP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e18a3d28c30247748ef1525f5a99bb36",
+      "created_at": "1782741488",
+      "readonly": false
+    },
+    {
+      "serviceid": "40",
+      "name": "Veeam Backup Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5467cf8e227d4fdc894c72386c8fa40c",
+      "created_at": "1782741537",
+      "readonly": false
+    },
+    {
+      "serviceid": "41",
+      "name": "Deps Produ\u00e7\u00e3o",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "bb1d803df2c545cd96b4ee8a49c3647b",
+      "created_at": "1782741595",
+      "readonly": false
+    },
+    {
+      "serviceid": "42",
+      "name": "Deps Produ\u00e7\u00e3o APP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "249876c5add94d258a989b0f7b1ca279",
+      "created_at": "1782741716",
+      "readonly": false
+    },
+    {
+      "serviceid": "43",
+      "name": "Deps Produ\u00e7\u00e3o Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9eeb316aa74b4e1897bc38d7fa86385c",
+      "created_at": "1782741754",
+      "readonly": false
+    },
+    {
+      "serviceid": "44",
+      "name": "Portal de OS",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7a6ee2c93b7e4c50abe0e70240f29296",
+      "created_at": "1782741787",
+      "readonly": false
+    },
+    {
+      "serviceid": "45",
+      "name": "Portal de OS APP",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "606cf659c1ab4277a33e66ed7794d671",
+      "created_at": "1782741831",
+      "readonly": false
+    },
+    {
+      "serviceid": "46",
+      "name": "Portal de OS Banco",
+      "status": "-1",
+      "algorithm": "2",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "abc2bb35f9f24aa7ab6288d4b0c57507",
+      "created_at": "1782741940",
+      "readonly": false
+    },
+    {
+      "serviceid": "51",
+      "name": "Access Points Aruba",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "2",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "Disponibilidade dos access points Aruba.",
+      "uuid": "93b7e23460e14d4c8ffc64a5a6492204",
+      "created_at": "1782847134",
+      "readonly": false
+    },
+    {
+      "serviceid": "52",
+      "name": "Firewalls FortiGate",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "3",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "Disponibilidade dos firewalls FortiGate.",
+      "uuid": "5aa545d1e6274ae1b00f3ffaec48c1db",
+      "created_at": "1782847134",
+      "readonly": false
+    },
+    {
+      "serviceid": "53",
+      "name": "SCL-CPD-FW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "1117e1fd64694643985e2ff809706def",
+      "created_at": "1782847182",
+      "readonly": false
+    },
+    {
+      "serviceid": "54",
+      "name": "BGP-CPD-FW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "8c4047ef528d459cbdf3a630535cad7a",
+      "created_at": "1782847182",
+      "readonly": false
+    },
+    {
+      "serviceid": "55",
+      "name": "SPO-CPD-FW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "06ce6684788344b89662a85383783bb8",
+      "created_at": "1782847182",
+      "readonly": false
+    },
+    {
+      "serviceid": "56",
+      "name": "SPO-DCT-FW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "aee1369c5c414e03a5f8cadace5ae838",
+      "created_at": "1782847182",
+      "readonly": false
+    },
+    {
+      "serviceid": "57",
+      "name": "SCL-CPD-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cff9049bbc73476a97adbc4f8a152ca2",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "58",
+      "name": "BGP-ACA-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "87de2da6626b48c89d2973fe4d1b95ef",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "59",
+      "name": "SCL-TEC2-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e34a7583c09c468181bbf081ae038a6c",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "60",
+      "name": "BGP-TEC-SW04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "58d2ca20ca104609962b007747004eb5",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "61",
+      "name": "SCL-CPD-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "277d856919f04e2ea48d5846bc99e1ba",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "62",
+      "name": "SCL-TEC1-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "3f351a31fcfb43e29cccbfc38b5c1043",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "63",
+      "name": "SCL-TIN-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "ebcd5da78abf44f7ac8d9f104bb7e9c1",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "64",
+      "name": "SCL-URD-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "21facacf5e3443b2a612e0cc74f211ca",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "65",
+      "name": "SCL-ALM-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f02137d9ae1a4125aec45c46d2fdec5f",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "66",
+      "name": "BGP-EXP-SW03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "3a3f5061b75f4232b99fba1a2c47a174",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "67",
+      "name": "SCL-MAN-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "0dc17dd6941540d4830a02f09c628f5f",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "68",
+      "name": "SCL-TIN-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5dd7dbff74514725a21eece34c549f63",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "69",
+      "name": "BGP-EXP-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "833639f8cec1463a85c5fce2e02a116e",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "70",
+      "name": "BGP-CPD-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "095503fb4510432e831237009cd950c4",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "71",
+      "name": "BGP-TEC-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b29fe280bb4b4037b966c2c4264e2156",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "72",
+      "name": "SCL-DRH-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "725fa2e213d1419ab7f988d7df705a91",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "73",
+      "name": "SCL-TEC1-SW03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "458c49b643c04572bebb6b763b84af51",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "74",
+      "name": "SCL-TEC2-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "50e066b1591745698012edfa599b995e",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "75",
+      "name": "BGP-POR-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f3ded35d3dbd4222b08bc3f6be54f41c",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "76",
+      "name": "BGP-CPD-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "8b45815c4d074a00bbdb70e0bf8839f1",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "77",
+      "name": "BGP-REV-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "12ad1db7d0f54b648b0010636a35ee91",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "78",
+      "name": "SCL-ACA-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "db033df3523d427ca767e6aec79d72c9",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "79",
+      "name": "BGP-TEC-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "db40ae007dd043368cb27fd595e2119f",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "80",
+      "name": "BGP-ADM-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5f874196ed594cce84f21178c6c3807f",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "81",
+      "name": "SPO-CPD-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f219761e1db84eb88b5c3fbf74541311",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "82",
+      "name": "BGP-EXP-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "583e0bf9fa294a3d8e08f2c5f5e7e86a",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "83",
+      "name": "BGP-TEC-SW03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "8428a32486ac45549fa18b9b219d911a",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "84",
+      "name": "SCL-TEC1-SW04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7cf3b120d88749598351c59c75955df0",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "85",
+      "name": "SCL-EXP-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d92bfdabbcf442309476e1d58b456814",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "86",
+      "name": "SCL-TEC1-SW02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "efcf1c2044474df781ae9db2d055fae6",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "87",
+      "name": "SCL-CLD-SW01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "bf2d12bd38034700add87474b692f13f",
+      "created_at": "1782847224",
+      "readonly": false
+    },
+    {
+      "serviceid": "88",
+      "name": "BGP-EXP-AP26",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e78be600ff9e489cb40a258ada2c80d0",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "89",
+      "name": "SCL-Trancoso-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e31b330a421f4af49910272db480ccaa",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "90",
+      "name": "BGP-EXP-AP37",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9bdb8893fafd4825a37c9ecefc4db520",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "91",
+      "name": "BGP-ENF-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5680d699c6364f2db8ca76812d3c8a4f",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "92",
+      "name": "SPO-ADM-AP01-VC",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a0fdf84c2e7d45adb78c9d2c15dd6b52",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "93",
+      "name": "BGP-QUA-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "dae98bd959f545a09c7228eabb9b7c0a",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "94",
+      "name": "BGP-TEC-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "3801d8608e58438380893b9fa86048a8",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "95",
+      "name": "SCL-ACA-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cac68d673ef2435682b6c12717c1afd5",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "96",
+      "name": "BGP-ADM-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "78d1dc36acef45198cf73275cbc3e695",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "97",
+      "name": "SCL-DRH-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d5210757738a4b089d553993396ffe80",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "98",
+      "name": "BGP-EXP-AP10",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "4ededa7b23d14153979c6e9317d0de27",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "99",
+      "name": "SPO-DCT-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "40066f444ddc493c81fd7a35c409f0ff",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "100",
+      "name": "SCL-TEC2-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "6dc12b7e430a4aa3bf18f075056ebb30",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "101",
+      "name": "SCL-MAN-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "30244e2cfada444b874a44c7517e3aa4",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "102",
+      "name": "SCL-TEC1-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "ea64830c2da44170bb6c6db7d23c1408",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "103",
+      "name": "BGP-TEC-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5ccd250d3076493f942b0ce1683fbcfd",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "104",
+      "name": "BGP-EXP-AP23",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "6df31f77d6ae4f6dae6909f531cf3b79",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "105",
+      "name": "BGP-EXP-AP12",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e283a5597569493c87d726df75dcf64e",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "106",
+      "name": "SCL-Tenda-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "416bed6fbdbb48bf92aed87519873ba1",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "107",
+      "name": "BGP-EXP-AP06",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "eb18bca980fd413aaab89a5a95f9d12a",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "108",
+      "name": "BGP-EXP-AP31",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e2a1cb8c58b5405684fb2c12675c9b2f",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "109",
+      "name": "BGP-EXP-AP09",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "0e6d6a7d0d91462ca673c7d8578ef47e",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "110",
+      "name": "BGP-PCP-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "98da0096d2b04152a74945e6f1ac8139",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "111",
+      "name": "SPO-ADM-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7c7f6a29c31e42399f87bb7a0d80eb10",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "112",
+      "name": "SCL-TIN-AP07",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "81de71bc032640bbab822c77e838f2e7",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "113",
+      "name": "SCL-REV-AP06",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "06477ed2e4e3461a8be594248a0ca1aa",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "114",
+      "name": "BGP-EXP-AP20",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "370dc4e052124c2ba9131c6b594fe87c",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "115",
+      "name": "BGP-TEC-AP05",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "476e4a1f3def439b86d8825c7abb7c07",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "116",
+      "name": "BGP-EXP-AP07",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9b567881edd74c0fa645eb60173078ed",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "117",
+      "name": "BGP-EXP-AP25",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "010af8a643c4461598c07ef8222d5868",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "118",
+      "name": "SPO-ADM-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "57e66730d683455c83dd89c3c73f3617",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "119",
+      "name": "SPO-Guga-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "fa92624864904389839f2ba0519d4c47",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "120",
+      "name": "BGP-EXP-AP29",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "21788718b2bb445dbe563c089b69fb75",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "121",
+      "name": "SCL-URD-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a923e842655f4294bb2d834397527e9c",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "122",
+      "name": "SPO-ADM-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c699bf9997a74891a307dba345ac58ff",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "123",
+      "name": "BGP-EXP-AP13",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f9d8d76e9e1b4bad8ef136687524a1d4",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "124",
+      "name": "BGP-TRN-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7e7611943f414ec6a6d22c2fa1f94aa6",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "125",
+      "name": "BGP-EXP-AP14",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a29b85789a284992936a15cae593595f",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "126",
+      "name": "BGP-EXP-AP32",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cf71d22b97124aaf9e38683f46e1eab6",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "127",
+      "name": "SCL-TIN-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a47aab5ade7d4d49923059fe338d0afa",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "128",
+      "name": "BGP-EXP-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "35c19e845a1340a2ab40315212af7826",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "129",
+      "name": "SCL-TRN-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e9b20c01002746239314ce8166d16bfc",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "130",
+      "name": "SCL-TIN-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "07b40080598340f0a8987b09a14d860b",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "131",
+      "name": "SCL-TEC1-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c3541eda4a904521868d812e456c5b39",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "132",
+      "name": "BGP-REV-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7680eacc3e914fbba666ced45f2dc2da",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "133",
+      "name": "BGP-EXP-AP16",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d98f8115bd084f29b5bd1e80956c0b0d",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "134",
+      "name": "SCL-PCP-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a63fbe9f1efd4d02b288a4ffb7038b5b",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "135",
+      "name": "SCL-URD-AP05",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "2ae6ce8c4f154e7799d73d25b9200e6e",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "136",
+      "name": "SCL-ALM-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e31db7110e5046fda72ca419f4c1dd11",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "137",
+      "name": "BGP-EXP-AP21",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f79b9721a941440ab5ecaa0a14952818",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "138",
+      "name": "BGP-ADM-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a2de0c6a3bf8424ca68e690dfac87e17",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "139",
+      "name": "SCL-TIN-AP09",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9ad8be9882284774add924e7418a1b17",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "140",
+      "name": "SCL-ACA-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a2dbb0d729e24378b1915ea2c2986ae9",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "141",
+      "name": "BGP-EXP-AP34",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "ba8ea90a015d4d9f97428666d34051bc",
+      "created_at": "1782847302",
+      "readonly": false
+    },
+    {
+      "serviceid": "142",
+      "name": "BGP-EXP-AP18",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "f7a343e45f0b4663adaac541dd96c734",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "143",
+      "name": "BGP-EXP-AP15",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c3b7679bec22450b86e8fa386fd634ce",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "144",
+      "name": "BGP-EXP-AP33",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9e2bd4b794bf45eabedefe973b3641bd",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "145",
+      "name": "SCL-REV-AP05",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d862d2f5ac7d42b5b7995b0e2ccbfe6d",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "146",
+      "name": "BGP-EXP-AP36",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "80c83e4fffdf42f8993b979e8febaaa3",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "147",
+      "name": "SCL-TIN-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "9e28519919b945c2b8a2e6a8336fdaaa",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "148",
+      "name": "SCL-EXP-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "091b4039eeff47e5bba1dcf298478d64",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "149",
+      "name": "SCL-TIN-AP08",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "da7eb250e712476a9294943af19c4ed5",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "150",
+      "name": "SCL-TIN-AP06",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "31c1e636eb6c4f708887c79f84a24c15",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "151",
+      "name": "BGP-MAN-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "4de81b5ba4594cc68b22d373aea7fa0d",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "152",
+      "name": "SCL-URD-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "99376be14bc54474833ebdd02b695b36",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "153",
+      "name": "SCL-ACA-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "cdd6ea64632c4109b0afaffd301b709e",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "154",
+      "name": "SCL-ADM-AP03-VC",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "6b1f51f5e432499fb0cd65aeb30ab7a1",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "155",
+      "name": "BGP-EXP-AP19",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b4d8831f044a4cd4a8768118aa0dad64",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "156",
+      "name": "BGP-EXP-AP11",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "95366b734ffb4a8d86802ee278e76be8",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "157",
+      "name": "SPO-Adonis-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "bca150ea921149ce97e54b58b86dc543",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "158",
+      "name": "SCL-ADM-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "270c354b457c44ddbee7403296b8f4ae",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "159",
+      "name": "SPO-ADM-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "1438e9441348451aab186244e85bb4b7",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "160",
+      "name": "BGP-TEC-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "ff041602e178463bb57eaf5d7fc8b778",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "161",
+      "name": "BGP-ADM-AP02-VC",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "df5ec0a89f10404f819f372a408c7f43",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "162",
+      "name": "SCL-TIN-AP04",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "614ae48fb2ae44ce8b44e57ceacc1a8a",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "163",
+      "name": "BGP-EXP-AP08",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d2ef32c38ca845d3817674c6cbfb9f11",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "164",
+      "name": "SCL-URD-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a1af77aa0b4c441c896a83247e7f8890",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "165",
+      "name": "SCL-ADM-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "eb5682978d8c4b398aed6240389a511b",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "166",
+      "name": "BGP-TRN-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "85758d74a3914ea8aeecbe0f7aa273f7",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "167",
+      "name": "SCL-URD-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c8fa085206dc45f2aadfc8c5d156b1e0",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "168",
+      "name": "BGP-TEC-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "99b5ddaf946042afbd5550b925b8efc3",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "169",
+      "name": "BGP-EXP-AP05",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "6e18cc1bc970420b9195b74e9a66788d",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "170",
+      "name": "SCL-MAN-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b1a87999b5434e879aecbcac799b6149",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "171",
+      "name": "BGP-EXP-AP22",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "c4368c4aa1884a94854c86d3f17f28c1",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "172",
+      "name": "SCL-Tenda-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "5e9100f886dc4d5e802c3062079e9641",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "173",
+      "name": "SCL-ACA-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "1267b081304c4419badd550b14de0e41",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "174",
+      "name": "BGP-EXP-AP27",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "aa40a41e23a945de8a15b2f61ec0e01c",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "175",
+      "name": "BGP-EXP-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "773a0ab2cf034b8d81d2927661247686",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "176",
+      "name": "BGP-QUA-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "13086a0696d34cadb182ec9998b6906f",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "177",
+      "name": "SCL-TIN-AP10",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "63affd57c4374d48a2418310519a4878",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "178",
+      "name": "BGP-TEC-AP04-VC",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "df9318ff72954173a10e0b6caea7193c",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "179",
+      "name": "BGP-EXP-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "455cb3161806414584196b65e8ae8074",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "180",
+      "name": "BGP-EXP-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "27ccb4c5574c44998f7c8acdb3d50c9b",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "181",
+      "name": "BGP-ADM-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "b08aef82ad234fb195be99c0b2929477",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "182",
+      "name": "SPO-Cipo-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "1231f810e98a4c71a6c23bd30fa067dd",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "183",
+      "name": "BGP-TEC-AP07",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "0657fe7eae224cfda12644f9d8ab1616",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "184",
+      "name": "SPO-Teca-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "a22dd904cbe649d7bd2ebd05d7ff194e",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "185",
+      "name": "BGP-EXP-AP30",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "54eef0ae5b184c7eb83c42aca9e2ad7a",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "186",
+      "name": "SCL-TEC1-AP03",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "96551271a33f435b997ef85534dccc8c",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "187",
+      "name": "SCL-EAS-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "d8da2a5a5a2747cf9b1908ad04369a36",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "188",
+      "name": "BGP-ACA-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "e5a194a039194ac4872b3b236faa9bf8",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "189",
+      "name": "BGP-TEC-AP06",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "41eb8b5a49704f7caf6bc168611f9364",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "190",
+      "name": "SCL-ADM-AP02",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "430c28cb01094e42bbc6a6abd0f0a577",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "191",
+      "name": "BGP-REV-AP01",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "37fcd705245f451f8c1f238f211c7fc6",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "192",
+      "name": "BGP-EXP-AP28",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "dc442dd0b7b944138d6178b0fa62adac",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "193",
+      "name": "BGP-EXP-AP24",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "0914a8c942c9492ea96253f4e048d338",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "194",
+      "name": "SCL-TIN-AP05",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "7ccc41525abb4ba2903fa8a5400d155d",
+      "created_at": "1782847373",
+      "readonly": false
+    },
+    {
+      "serviceid": "195",
+      "name": "BGP-EXP-AP17",
+      "status": "-1",
+      "algorithm": "1",
+      "sortorder": "0",
+      "weight": "0",
+      "propagation_rule": "0",
+      "propagation_value": "0",
+      "description": "",
+      "uuid": "27404f6b0c7f4b3db0e2d4beea97cf00",
+      "created_at": "1782847373",
+      "readonly": false
+    }
+  ],
+  "slas": [
+    {
+      "slaid": "3",
+      "name": "SLA Cr\u00edtico",
+      "period": "2",
+      "slo": "99.9",
+      "effective_date": "1782691200",
+      "timezone": "America/Sao_Paulo",
+      "status": "1",
+      "description": ""
+    },
+    {
+      "slaid": "4",
+      "name": "SLA Padr\u00e3o",
+      "period": "2",
+      "slo": "99",
+      "effective_date": "1782691200",
+      "timezone": "America/Sao_Paulo",
+      "status": "1",
+      "description": ""
+    },
+    {
+      "slaid": "5",
+      "name": "SLA Rede",
+      "period": "2",
+      "slo": "99",
+      "effective_date": "1780272000",
+      "timezone": "America/Sao_Paulo",
+      "status": "1",
+      "description": "Disponibilidade dos equipamentos de rede (switches, APs, firewalls) em hor\u00e1rio comercial seg-sex 08:00-18:00."
+    }
+  ]
+}

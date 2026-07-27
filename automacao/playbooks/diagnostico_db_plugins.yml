@@ -1,0 +1,90 @@
+---
+# Diagnóstico de conectividade dos plugins MSSQL e PostgreSQL nos proxies.
+# Uso:
+#   ansible-playbook playbooks/diagnostico_db_plugins.yml -i inventory/hosts.yml
+
+- name: Diagnóstico de conectividade dos plugins de banco de dados
+  hosts: zabbix_proxy
+  become: true
+  vars_files:
+    - ../vars/db_plugins.yml
+
+  tasks:
+
+    - name: Instalar netcat (nc) se ausente
+      package:
+        name: netcat-openbsd
+        state: present
+
+    # ── Teste de porta TCP ────────────────────────────────────────────────────
+
+    - name: "[Diagnóstico] Teste de porta TCP nos bancos MSSQL"
+      shell: "nc -zv -w 5 {{ item.uri | regex_replace('sqlserver://', '') }} 1433 2>&1 || true"
+      loop: "{{ mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: mssql_nc
+      changed_when: false
+
+    - name: "[Diagnóstico] Resultado TCP MSSQL"
+      debug:
+        msg: "{{ item.item.name }} ({{ item.item.uri }}): {{ item.stdout | trim }}"
+      loop: "{{ mssql_nc.results | default([]) }}"
+      when: mssql_nc is defined
+
+    - name: "[Diagnóstico] Teste de porta TCP nos bancos PostgreSQL"
+      shell: >
+        nc -zv -w 5
+        {{ item.uri | regex_replace('postgresql://', '') | regex_replace(':5432.*', '') }}
+        {{ item.uri | regex_replace('.*:', '') | regex_replace('/.*', '') }}
+        2>&1 || true
+      loop: "{{ pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: pgsql_nc
+      changed_when: false
+
+    - name: "[Diagnóstico] Resultado TCP PostgreSQL"
+      debug:
+        msg: "{{ item.item.name }} ({{ item.item.uri }}): {{ item.stdout | trim }}"
+      loop: "{{ pgsql_nc.results | default([]) }}"
+      when: pgsql_nc is defined
+
+    # ── Teste via zabbix_get ──────────────────────────────────────────────────
+
+    - name: "[Diagnóstico] mssql.ping via Agent 2"
+      command: "zabbix_get -s 127.0.0.1 -p 10050 -k 'mssql.ping[{{ item.name }}]'"
+      loop: "{{ mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: mssql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: mssql_ping
+      changed_when: false
+      failed_when: false
+
+    - name: "[Diagnóstico] Resultado mssql.ping"
+      debug:
+        msg: "{{ item.item.name }}: {{ item.stdout | trim }} (esperado: 1)"
+      loop: "{{ mssql_ping.results | default([]) }}"
+      when: mssql_ping is defined
+
+    - name: "[Diagnóstico] pgsql.ping via Agent 2"
+      command: "zabbix_get -s 127.0.0.1 -p 10050 -k 'pgsql.ping[{{ item.name }}]'"
+      loop: "{{ pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list }}"
+      when: pgsql_sessions | selectattr('proxy', 'equalto', inventory_hostname) | list | length > 0
+      register: pgsql_ping
+      changed_when: false
+      failed_when: false
+
+    - name: "[Diagnóstico] Resultado pgsql.ping"
+      debug:
+        msg: "{{ item.item.name }}: {{ item.stdout | trim }} (esperado: 1)"
+      loop: "{{ pgsql_ping.results | default([]) }}"
+      when: pgsql_ping is defined
+
+    # ── Log do Agent 2 ────────────────────────────────────────────────────────
+
+    - name: "[Diagnóstico] Últimas linhas relevantes do log do Agent 2"
+      shell: "tail -50 /var/log/zabbix/zabbix_agent2.log | grep -iE 'error|mssql|pgsql|plugin' | tail -20 || echo '(nenhuma linha relevante encontrada)'"
+      register: agent2_log
+      changed_when: false
+
+    - name: "[Diagnóstico] Log Agent 2"
+      debug:
+        msg: "{{ agent2_log.stdout_lines }}"

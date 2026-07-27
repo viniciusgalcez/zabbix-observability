@@ -1,0 +1,638 @@
+---
+# Prepara o Zabbix para receber toda a infraestrutura Capricórnio:
+#   - Host groups por categoria e site
+#   - Macros globais (SNMP, limiares, e-mail)
+#   - Regras de descoberta de rede por site (ICMP + SNMP)
+#   - Ações de auto-classificação por sysDescr (SNMP) e metadata (agentes)
+#
+# Execute APÓS: playbooks/zabbix_register_proxies.yml
+# Ajuste as subnets em discovery_subnets antes de rodar.
+#
+# ansible-playbook playbooks/zabbix_infra_setup.yml
+
+- name: Configurar estrutura de monitoramento no Zabbix
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    zabbix_api_url: "http://172.17.2.51/api_jsonrpc.php"
+    zabbix_admin_user: "Admin"
+    zabbix_admin_password: "zabbix"   # alterar se já trocou a senha
+
+    zabbix_conn: &zabbix_conn
+      ansible_network_os: community.zabbix.zabbix
+      ansible_connection: httpapi
+      ansible_user: Admin
+      ansible_httpapi_pass: "zabbix"
+      ansible_host: "172.17.2.51"
+      ansible_httpapi_port: 80
+      ansible_httpapi_use_ssl: false
+      ansible_httpapi_validate_certs: false
+      ansible_zabbix_url_path: ""
+
+    # ── Host groups ────────────────────────────────────────────────────────
+    host_groups:
+      - "Switches Cisco/BGP"
+      - "Switches Cisco/SCL"
+      - "Switches Cisco/SPO"
+      - "Switches Cisco/DCT"
+      - "Switches Cisco/FIA"
+      - "Firewalls/BGP"
+      - "Firewalls/SCL"
+      - "Firewalls/SPO"
+      - "Firewalls/DCT"
+      - "Firewalls/FIA"
+      - "NAS QNAP/BGP"
+      - "NAS QNAP/SCL"
+      - "NAS QNAP/SPO"
+      - "UPS/BGP"
+      - "UPS/SCL"
+      - "UPS/SPO"
+      - "Links WAN/BGP"
+      - "Links WAN/SCL"
+      - "Links WAN/SPO"
+      - "Access Points Aruba/BGP"
+      - "Access Points Aruba/SCL"
+      - "Access Points Aruba/SPO"
+      - "Servidores Windows/BGP"
+      - "Servidores Windows/SCL"
+      - "Servidores Windows/SPO"
+      - "Servidores Linux"
+      - "Hyper-V/BGP"
+      - "Hyper-V/SCL"
+      - "iDRAC Dell/BGP"
+      - "iDRAC Dell/SCL"
+      - "iDRAC Dell/SPO"
+      - "Bancos de Dados"
+      - "Aplicações e URLs"
+      - "Certificados SSL"
+      - "Equipamentos Especiais"
+      - "Em Classificação"   # hosts descobertos aguardando triagem
+
+    # ── Macros globais ─────────────────────────────────────────────────────
+    global_macros:
+      # SNMPv3 — Cisco, QNAP, iDRAC (padrão único global — preencher após Marcos configurar)
+      - macro: "{$SNMP.USERNAME}"
+        value: "zabbix_snmp"
+        description: "SNMPv3 security name — Cisco, QNAP, iDRAC"
+      - macro: "{$SNMP.AUTH.PASSPHRASE}"
+        value: "ZbxAuth_2026@Net"
+        description: "SNMPv3 auth passphrase (SHA-256) — padrão global Capricórnio"
+      - macro: "{$SNMP.PRIV.PASSPHRASE}"
+        value: "ZbxPriv_2026@Secure"
+        description: "SNMPv3 priv passphrase (AES-128) — padrão global Capricórnio"
+      # SNMPv2c — UPS Phoenixtec e APC Smart-UPS
+      - macro: "{$SNMP.COMMUNITY}"
+        value: "Mizv.tN4=2TN2X*"
+        description: "SNMPv2c community UPS Phoenixtec (BGP 9, SCL 15) e APC Smart-UPS (3 unid.)"
+      # SNMPv1 legado — Cisco (substituir por v3 após migração)
+      - macro: "{$SNMP.COMMUNITY.CISCO.LEGACY}"
+        value: "ZfkMgZ47+z"
+        description: "SNMPv1 community Cisco — legado, remover após migração SNMPv3"
+      # WAGO CLPs — SNMP com community específica
+      - macro: "{$SNMP.COMMUNITY.WAGO}"
+        value: "CaPriCLP@"
+        description: "SNMPv2c community CLPs WAGO (SCL, 3 unid.)"
+      # Limiares de alerta padrão
+      - macro: "{$CPU.UTIL.CRIT}"
+        value: "90"
+        description: "Utilização CPU crítico (%)"
+      - macro: "{$MEMORY.UTIL.MAX}"
+        value: "90"
+        description: "Utilização memória crítico (%)"
+      - macro: "{$IF.UTIL.MAX}"
+        value: "80"
+        description: "Utilização interface alerta (%)"
+      - macro: "{$IF.ERRORS.WARN}"
+        value: "2"
+        description: "Taxa de erros de interface para alerta (pps)"
+      - macro: "{$DISK.PFREE.MIN.WARN}"
+        value: "20"
+        description: "Espaço livre em disco alerta (%)"
+      - macro: "{$DISK.PFREE.MIN.CRIT}"
+        value: "10"
+        description: "Espaço livre em disco crítico (%)"
+      - macro: "{$UPS.BATTERY.CAPACITY.MIN.WARN}"
+        value: "40"
+        description: "Capacidade bateria UPS alerta (%)"
+      - macro: "{$CERT.EXPIRY.WARN}"
+        value: "30"
+        description: "Dias para expiração de certificado SSL — alerta"
+      # Alertas
+      - macro: "{$ALERT.EMAIL}"
+        value: "infraestrutura.n2@capricornio.com.br"
+        description: "E-mail alertas High e Disaster"
+
+    # ── Subnets de descoberta por site ─────────────────────────────────────
+    # DCT e FIA não têm proxy próprio — confirmar com Samuel qual proxy cobre cada site
+    # antes de ativar as discovery rules desses dois sites.
+    discovery_rules:
+      - name: "Descoberta — Rede BGP"
+        proxy: "BGP-SRV-V08"
+        iprange: "172.18.23.0/24"
+        delay: "3600"
+      - name: "Descoberta — Rede SCL"
+        proxy: "SCL-SRV-V08"
+        iprange: "172.16.23.0/24"
+        delay: "3600"
+      - name: "Descoberta — Rede SPO"
+        proxy: "SPO-SRV-V04"
+        iprange: "172.17.23.0/24"
+        delay: "3600"
+      # DCT (172.19.23.0/24) e FIA (172.21.23.0/24): proxy a confirmar
+      # Descomentar e ajustar o proxy após confirmação:
+      # - name: "Descoberta — Rede DCT"
+      #   proxy: "PROXY_A_CONFIRMAR"
+      #   iprange: "172.19.23.0/24"
+      #   delay: "3600"
+      # - name: "Descoberta — Rede FIA"
+      #   proxy: "PROXY_A_CONFIRMAR"
+      #   iprange: "172.21.23.0/24"
+      #   delay: "3600"
+
+  tasks:
+    # ──────────────────────────────────────────────────────────────────────────
+    # 1. AUTENTICAÇÃO
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Autenticar na API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.login"
+          params:
+            username: "{{ zabbix_admin_user }}"
+            password: "{{ zabbix_admin_password }}"
+          id: 1
+      register: _auth
+
+    - name: Set auth token
+      ansible.builtin.set_fact:
+        _token: "{{ _auth.json.result }}"
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 2. HOST GROUPS
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Criar host groups
+      vars: *zabbix_conn
+      community.zabbix.zabbix_group:
+        host_groups:
+          - "{{ item }}"
+        state: present
+      loop: "{{ host_groups }}"
+      loop_control:
+        label: "{{ item }}"
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 3. MACROS GLOBAIS
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Configurar macros globais
+      vars: *zabbix_conn
+      community.zabbix.zabbix_globalmacro:
+        macro_name: "{{ item.macro }}"
+        macro_value: "{{ item.value }}"
+        macro_description: "{{ item.description }}"
+        state: present
+      loop: "{{ global_macros }}"
+      loop_control:
+        label: "{{ item.macro }}"
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 4. BUSCAR IDs DOS PROXIES (necessário para discovery rules)
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Buscar proxies registrados
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ _token }}"
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "proxy.get"
+          params:
+            output: ["proxyid", "name"]
+          id: 10
+      register: _proxies_result
+
+    - name: Set mapa de proxies (nome → ID)
+      ansible.builtin.set_fact:
+        _proxy_map: "{{ _proxies_result.json.result | items2dict(key_name='name', value_name='proxyid') }}"
+
+    - name: Confirmar proxies encontrados
+      ansible.builtin.assert:
+        that:
+          - "'BGP-SRV-V08' in _proxy_map"
+          - "'SCL-SRV-V08' in _proxy_map"
+          - "'SPO-SRV-V04' in _proxy_map"
+        fail_msg: >
+          Um ou mais proxies não encontrados no Zabbix.
+          Execute primeiro: ansible-playbook playbooks/zabbix_register_proxies.yml
+          Proxies encontrados: {{ _proxy_map.keys() | list }}
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 5. REGRAS DE DESCOBERTA DE REDE
+    # Uma regra por site: descobre qualquer dispositivo via ICMP + SNMP sysDescr.
+    # O sysDescr retornado (ex: "CBS350", "FortiGate") é usado pelas Actions (passo 6).
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: "Verificar se discovery rule já existe — {{ item.name }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ _token }}"
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.get"
+          params:
+            output: ["druleid", "name"]
+            filter:
+              name: "{{ item.name }}"
+          id: 1
+      register: _drule_check
+      failed_when: _drule_check.json.error is defined
+      loop: "{{ discovery_rules }}"
+      loop_control:
+        label: "{{ item.name }}"
+
+    - name: "Criar discovery rule — {{ item.item.name }}"
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ _token }}"
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "drule.create"
+          params:
+            name: "{{ item.item.name }}"
+            iprange: "{{ item.item.iprange }}"
+            delay: "{{ item.item.delay }}"
+            proxyid: "{{ _proxy_map[item.item.proxy] }}"
+            dchecks:
+              - type: "12"
+                name: "ICMP ping"
+              - type: "2"
+                name: "SNMP sysDescr (SNMPv3)"
+                ports: "161"
+                snmpversion: "3"
+                snmpv3_securityname: "zabbix_snmp"
+                snmpv3_securitylevel: "2"
+                snmpv3_authprotocol: "1"
+                snmpv3_authpassphrase: "ZbxAuth_2026@Net"
+                snmpv3_privprotocol: "1"
+                snmpv3_privpassphrase: "ZbxPriv_2026@Secure"
+                key_: ".1.3.6.1.2.1.1.1.0"
+            status: "0"
+          id: 1
+      register: _drule_create
+      failed_when: _drule_create.json.error is defined
+      when: item.json.result | default([]) | length == 0
+      loop: "{{ _drule_check.results }}"
+      loop_control:
+        label: "{{ item.item.name }}"
+
+    - name: Debug resultado das discovery rules criadas
+      ansible.builtin.debug:
+        msg: "{{ item.item.item.name }}: {{ item.json | default('skipped') }}"
+      loop: "{{ _drule_create.results | default([]) }}"
+      loop_control:
+        label: "{{ item.item.item.name | default('skipped') }}"
+      when: _drule_create is defined
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 6. AÇÕES DE AUTO-CLASSIFICAÇÃO POR SYSDESCR (dispositivos SNMP)
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Criar ação catch-all — adicionar todo host descoberto via ICMP
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ _token }}"
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "action.create"
+          params:
+            name: "Discovery: Adicionar todos os hosts descobertos"
+            eventsource: 1
+            status: 0
+            filter:
+              evaltype: 0
+              conditions:
+                - conditiontype: "12"
+                  operator: "0"
+                  value: "0"
+            operations:
+              - operationtype: "2"
+              - operationtype: "4"
+                opgroup:
+                  - groupid: "{{ _group_ids['Em Classificação'] }}"
+          id: 1
+      register: _catchall_action
+      failed_when:
+        - _catchall_action.json.error is defined
+        - "'already exists' not in (_catchall_action.json.error.data | default(''))"
+
+    - name: Criar ação de discovery — Switches Cisco
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: Switches Cisco"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "CBS350"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "Cisco IOS by SNMP"
+        state: present
+
+    - name: Criar ação de discovery — Firewalls FortiGate
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: Firewalls FortiGate"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "FortiGate"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "FortiGate by SNMP"
+        state: present
+
+    - name: Criar ação de discovery — NAS QNAP
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: NAS QNAP"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "QNAP"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "SNMP QNAP"
+        state: present
+
+    - name: Criar ação de discovery — UPS APC
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: UPS APC"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "APC"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "APC UPS by SNMP"
+        state: present
+
+    - name: Criar ação de discovery — Aruba APs
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: Access Points Aruba"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "Aruba"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "HP Enterprise Wireless Switch by SNMP"
+        state: present
+
+    - name: Criar ação de discovery — Dell iDRAC
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Discovery: Dell iDRAC"
+        event_source: "discovery"
+        status: enabled
+        conditions:
+          - type: "received_value"
+            operator: "contains"
+            value: "iDRAC"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Em Classificação"
+          - type: "link_to_template"
+            templates:
+              - "Dell iDRAC by SNMP"
+        state: present
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 7. AÇÕES DE AUTO-REGISTRO (agentes ativos Windows e Linux)
+    # O agente deve ser instalado com HostMetadata contendo o tipo:
+    #   windows-server | windows-workstation | linux-server | hyperv | mssql | postgresql
+    # O hostname deve seguir o padrão: BGP-* | SCL-* | SPO-*
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Criar ação de auto-registro — Windows Server (BGP)
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Windows Server BGP"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "windows-server"
+          - type: "host_name"
+            operator: "matches"
+            value: "^BGP-"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Servidores Windows/BGP"
+          - type: "link_to_template"
+            templates:
+              - "Windows by Zabbix agent active"
+        state: present
+
+    - name: Criar ação de auto-registro — Windows Server (SCL)
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Windows Server SCL"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "windows-server"
+          - type: "host_name"
+            operator: "matches"
+            value: "^SCL-"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Servidores Windows/SCL"
+          - type: "link_to_template"
+            templates:
+              - "Windows by Zabbix agent active"
+        state: present
+
+    - name: Criar ação de auto-registro — Windows Server (SPO)
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Windows Server SPO"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "windows-server"
+          - type: "host_name"
+            operator: "matches"
+            value: "^SPO-"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Servidores Windows/SPO"
+          - type: "link_to_template"
+            templates:
+              - "Windows by Zabbix agent active"
+        state: present
+
+    - name: Criar ação de auto-registro — Linux Server
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Linux Server"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "linux-server"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Servidores Linux"
+          - type: "link_to_template"
+            templates:
+              - "Linux by Zabbix agent active"
+        state: present
+
+    - name: Criar ação de auto-registro — Hyper-V (BGP)
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Hyper-V BGP"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "hyperv"
+          - type: "host_name"
+            operator: "matches"
+            value: "^BGP-"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Hyper-V/BGP"
+          - type: "link_to_template"
+            templates:
+              - "Windows by Zabbix agent active"
+        state: present
+
+    - name: Criar ação de auto-registro — Hyper-V (SCL)
+      vars: *zabbix_conn
+      community.zabbix.zabbix_action:
+        esc_period: "1h"
+        name: "Auto-registro: Hyper-V SCL"
+        event_source: "auto_registration"
+        status: enabled
+        conditions:
+          - type: "host_metadata"
+            operator: "contains"
+            value: "hyperv"
+          - type: "host_name"
+            operator: "matches"
+            value: "^SCL-"
+        operations:
+          - type: "add_to_host_group"
+            host_groups:
+              - "Hyper-V/SCL"
+          - type: "link_to_template"
+            templates:
+              - "Windows by Zabbix agent active"
+        state: present
+
+    # ──────────────────────────────────────────────────────────────────────────
+    # 8. LOGOUT
+    # ──────────────────────────────────────────────────────────────────────────
+    - name: Logout da API Zabbix
+      ansible.builtin.uri:
+        url: "{{ zabbix_api_url }}"
+        method: POST
+        headers:
+          Authorization: "Bearer {{ _token }}"
+        body_format: json
+        body:
+          jsonrpc: "2.0"
+          method: "user.logout"
+          params: []
+          id: 99
+
+    - name: Sumário da configuração
+      ansible.builtin.debug:
+        msg: |
+          ══════════════════════════════════════════════════════════
+          Setup de infraestrutura Zabbix concluído
+          ══════════════════════════════════════════════════════════
+          ✓ {{ host_groups | length }} host groups criados
+          ✓ {{ global_macros | length }} macros globais configuradas
+          ✓ 3 regras de descoberta de rede (BGP, SCL, SPO)
+          ✓ 6 ações de auto-classificação SNMP (sysDescr)
+          ✓ 5 ações de auto-registro de agentes (Windows/Linux/Hyper-V)
+
+          Próximos passos:
+          ► Marcos configura SNMP nos dispositivos (ver manual)
+          ► Marcos instala Zabbix Agent 2 nos servidores (ver manual)
+          ► Atualizar subnets em discovery_rules após confirmar com Marcos
+          ► Atualizar {$SNMP.AUTH.PASSPHRASE} e {$SNMP.PRIV.PASSPHRASE}
+            quando Marcos definir a credencial SNMPv3 global
+          ► Verificar descoberta em: Monitoring → Discovery → Discovery status
+          ══════════════════════════════════════════════════════════

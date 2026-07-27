@@ -1,0 +1,11 @@
+---
+# Executa todos os componentes na ordem correta:
+# 1. Hardening base (todos os hosts)
+# 2. Zabbix Server + Web
+# 3. Grafana
+# 4. Zabbix Proxies
+
+- import_playbook: hardening.yml
+- import_playbook: zabbix_server.yml
+- import_playbook: grafana.yml
+- import_playbook: zabbix_proxy.yml

@@ -1,0 +1,107 @@
+---
+# Configura o Zabbix Agent 2 nos proxies para auto-monitoramento.
+#
+# O Agent 2 já está instalado e rodando (configure_db_plugins.yml já rodou).
+# Este playbook ajusta SOMENTE as diretivas Server/ServerActive/Hostname
+# sem sobrescrever o restante do config (DB plugin sessions preservadas).
+#
+# Cada proxy monitora a si mesmo: o processo proxy faz poll no agente local.
+# O Zabbix Server também fica autorizado para checks diretos/diagnósticos.
+#
+# Hosts criados no Zabbix (já feito via API):
+#   SPO-SRV-V04 (id=11007) — grupo Servidores Linux/SPO — proxy SPO-SRV-V04
+#   SCL-SRV-V08 (id=11008) — grupo Servidores Linux/SCL — proxy SCL-SRV-V08
+#   BGP-SRV-V08 (id=11009) — grupo Servidores Linux/BGP — proxy BGP-SRV-V08
+#
+# Uso:
+#   ansible-playbook playbooks/configure_proxy_monitoring.yml -i inventory/hosts.yml
+
+- name: Configurar auto-monitoramento nos proxies Zabbix
+  hosts: zabbix_proxy
+  become: true
+
+  vars:
+    zabbix_server_ip: "172.17.2.51"
+    agent_conf: /etc/zabbix/zabbix_agent2.conf
+
+  tasks:
+
+    # ── Diretivas base do agente ──────────────────────────────────────────────
+
+    - name: Configurar Server (proxy local + Zabbix Server + próprio IP)
+      lineinfile:
+        path: "{{ agent_conf }}"
+        regexp: '^Server='
+        # ansible_host = IP do proxy. O processo proxy conecta ao agente usando
+        # o IP da interface cadastrada no Zabbix (seu próprio IP), não 127.0.0.1.
+        line: "Server=127.0.0.1,{{ zabbix_server_ip }},{{ ansible_host }}"
+        insertafter: '^# Server='
+      notify: Restart zabbix-agent2
+
+    - name: Configurar ServerActive (proxy local)
+      lineinfile:
+        path: "{{ agent_conf }}"
+        regexp: '^ServerActive='
+        line: "ServerActive=127.0.0.1"
+        insertafter: '^# ServerActive='
+      notify: Restart zabbix-agent2
+
+    - name: Configurar Hostname
+      lineinfile:
+        path: "{{ agent_conf }}"
+        regexp: '^Hostname='
+        line: "Hostname={{ inventory_hostname }}"
+        insertafter: '^# Hostname='
+      notify: Restart zabbix-agent2
+
+    # ── Validação e serviço ───────────────────────────────────────────────────
+
+    - name: Verificar sintaxe do zabbix_agent2.conf
+      command: zabbix_agent2 -c {{ agent_conf }} --print
+      register: agent2_check
+      changed_when: false
+      failed_when: agent2_check.rc != 0
+
+    - name: Garantir que Agent 2 está rodando e habilitado
+      systemd:
+        name: zabbix-agent2
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Restart zabbix-agent2
+      systemd:
+        name: zabbix-agent2
+        state: restarted
+
+  post_tasks:
+
+    - name: Aguardar Agent 2 aceitar conexões (porta 10050)
+      wait_for:
+        host: 127.0.0.1
+        port: 10050
+        timeout: 30
+
+    - name: "[Teste] Instalar zabbix-get localmente"
+      package:
+        name: zabbix-get
+        state: present
+
+    - name: "[Teste] agent.ping local (127.0.0.1)"
+      command: zabbix_get -s 127.0.0.1 -p 10050 -k "agent.ping"
+      register: ping_result
+      changed_when: false
+      failed_when: ping_result.rc != 0
+
+    - name: "[Teste] agent.hostname local"
+      command: zabbix_get -s 127.0.0.1 -p 10050 -k "agent.hostname"
+      register: hostname_result
+      changed_when: false
+      failed_when: hostname_result.rc != 0
+
+    - name: "[Teste] Resultado"
+      debug:
+        msg:
+          - "Host          : {{ inventory_hostname }} ({{ ansible_host }})"
+          - "agent.ping    : {{ ping_result.stdout | trim }} (esperado: 1)"
+          - "agent.hostname: {{ hostname_result.stdout | trim }} (esperado: {{ inventory_hostname }})"

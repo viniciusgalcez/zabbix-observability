@@ -1,0 +1,66 @@
+---
+- name: Instalar e configurar Grafana com plugin Zabbix
+  hosts: grafana
+  become: true
+
+  pre_tasks:
+    - name: Atualizar cache de pacotes (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Atualizar cache de pacotes (RedHat/CentOS)
+      ansible.builtin.yum:
+        update_cache: true
+      when: ansible_os_family == "RedHat"
+
+  roles:
+    - role: grafana.grafana.grafana
+
+  post_tasks:
+    - name: Instalar plugin Zabbix (grafana cli com --homepath)
+      ansible.builtin.command:
+        cmd: >
+          grafana cli
+          --homepath /usr/share/grafana
+          --pluginsDir /var/lib/grafana/plugins
+          plugins install alexanderzobnin-zabbix-app
+        creates: /var/lib/grafana/plugins/alexanderzobnin-zabbix-app
+      notify: Reiniciar Grafana
+
+    - name: Forçar reinício pendente antes das chamadas à API
+      ansible.builtin.meta: flush_handlers
+
+    - name: Aguardar Grafana iniciar
+      ansible.builtin.wait_for:
+        port: 3000
+        timeout: 60
+
+    - name: Sincronizar senha admin do Grafana
+      ansible.builtin.command:
+        cmd: >
+          grafana cli
+          --homepath /usr/share/grafana
+          admin reset-admin-password "{{ grafana_ini.security.admin_password }}"
+      no_log: true
+      changed_when: false
+
+    - name: Habilitar plugin Zabbix no Grafana via API
+      ansible.builtin.uri:
+        url: "http://localhost:3000/api/plugins/alexanderzobnin-zabbix-app/settings"
+        method: POST
+        user: "{{ grafana_ini.security.admin_user }}"
+        password: "{{ grafana_ini.security.admin_password }}"
+        force_basic_auth: true
+        body_format: json
+        body:
+          enabled: true
+          pinned: true
+        status_code: [200, 400]
+
+  handlers:
+    - name: Reiniciar Grafana
+      ansible.builtin.service:
+        name: grafana-server
+        state: restarted

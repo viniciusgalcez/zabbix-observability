@@ -1,0 +1,70 @@
+---
+# Pré-requisitos antes de rodar este playbook:
+#   1. Marcos criou service account zabbix@capricornio.corp.br no AD com senha definida
+#   2. Marcos criou grupos GG-Zabbix-Admin / GG-Zabbix-User / GG-Zabbix-Viewer no AD
+#   3. Certificado CA interna exportado em files/certs/certnew.cer
+#   4. Confirmar OU dos grupos com Marcos e atualizar group_vars/grafana.yml
+#
+# Execução:
+#   ansible-playbook playbooks/grafana_ldap.yml
+#   ou com senha em vault:
+#   ansible-playbook playbooks/grafana_ldap.yml --ask-vault-pass
+
+- name: Configurar autenticação LDAP no Grafana
+  hosts: grafana
+  become: true
+
+  tasks:
+    - name: Importar certificado da CA interna
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../files/certs/certnew.cer"
+        dest: /etc/grafana/ldap-ca.crt
+        owner: root
+        group: grafana
+        mode: "0640"
+      notify: Reiniciar Grafana
+
+    - name: Atualizar confiança do sistema no certificado CA
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../files/certs/certnew.cer"
+        dest: /usr/local/share/ca-certificates/capricornio-ca.crt
+        mode: "0644"
+      notify: Atualizar CA do sistema
+
+    - name: Configurar ldap.toml
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/../templates/grafana-ldap.toml.j2"
+        dest: /etc/grafana/ldap.toml
+        owner: root
+        group: grafana
+        mode: "0640"
+      notify: Reiniciar Grafana
+
+    - name: Habilitar LDAP no grafana.ini
+      community.general.ini_file:
+        path: /etc/grafana/grafana.ini
+        section: "auth.ldap"
+        option: "{{ item.key }}"
+        value: "{{ item.value }}"
+        mode: "0640"
+      loop:
+        - { key: enabled,        value: "true" }
+        - { key: config_file,    value: "/etc/grafana/ldap.toml" }
+        - { key: allow_sign_up,  value: "true" }
+      notify: Reiniciar Grafana
+
+    - name: Aguardar Grafana iniciar
+      ansible.builtin.wait_for:
+        port: 3000
+        timeout: 60
+
+  handlers:
+    - name: Reiniciar Grafana
+      ansible.builtin.service:
+        name: grafana-server
+        state: restarted
+
+    - name: Atualizar CA do sistema
+      ansible.builtin.command:
+        cmd: update-ca-certificates
+      changed_when: true

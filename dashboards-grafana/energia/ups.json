@@ -1,0 +1,1025 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix",
+      "description": ""
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "13.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "4.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {"type": "grafana", "uid": "-- Grafana --"},
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0,211,255,1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Monitoramento de 27 UPS (24 Phoenixtec + 3 APC) nos sites BGP, SCL e SPO",
+  "editable": false,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "id": 1,
+      "type": "row",
+      "title": "Painel de Emergência",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 0},
+      "panels": []
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "UPS em Bateria",
+      "gridPos": {"h": 4, "w": 4, "x": 0, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {"type": "value", "options": {"5": {"text": "EM BATERIA", "color": "red", "index": 0}}},
+            {"type": "value", "options": {"4": {"text": "BYPASS", "color": "orange", "index": 1}}},
+            {"type": "value", "options": {"3": {"text": "Normal", "color": "green", "index": 2}}},
+            {"type": "special", "options": {"match": "null+nan", "result": {"text": "?", "color": "grey", "index": 3}}}
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output source"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Output status"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "Bateria Crítica (<20%)",
+      "gridPos": {"h": 4, "w": 4, "x": 4, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["min"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "yellow", "value": 20},
+              {"color": "green", "value": 50}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery charge remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery capacity"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Autonomia Mínima",
+      "gridPos": {"h": 4, "w": 4, "x": 8, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["min"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "m",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "orange", "value": 10},
+              {"color": "green", "value": 30}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Estimated minutes remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery runtime remaining"},
+          "functions": [
+            {"id": "scale", "params": ["0.01667"], "def": {"name": "scale", "params": [{"name": "factor", "type": "float"}], "defaultParams": ["1"]}}
+          ],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Alarmes Ativos",
+      "gridPos": {"h": 4, "w": 4, "x": 12, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["sum"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "red", "value": 1}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Active alarms count"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "Temperatura Alta (°C)",
+      "gridPos": {"h": 4, "w": 4, "x": 16, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["max"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 35},
+              {"color": "red", "value": 40}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery temperature"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery temperature"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "UPS Monitorados",
+      "gridPos": {"h": 4, "w": 4, "x": 20, "y": 1},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["count"], "fields": "", "values": false},
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "blue", "value": null}]
+          },
+          "color": {"mode": "fixed", "fixedColor": "blue"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "ICMP ping"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "row",
+      "title": "Carga de Bateria",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 5},
+      "panels": []
+    },
+    {
+      "id": 9,
+      "type": "bargauge",
+      "title": "Carga de Bateria % — todos os UPS",
+      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 6},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "minVizWidth": 0,
+        "minVizHeight": 10,
+        "valueMode": "color",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "orange", "value": 20},
+              {"color": "yellow", "value": 50},
+              {"color": "green", "value": 80}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery charge remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery capacity"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "type": "bargauge",
+      "title": "Autonomia Estimada (min)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "minVizWidth": 0,
+        "minVizHeight": 10,
+        "valueMode": "color",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "m",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "orange", "value": 10},
+              {"color": "green", "value": 30}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Estimated minutes remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "type": "bargauge",
+      "title": "Carga de Saída %",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "reduceOptions": {"calcs": ["lastNotNull"], "fields": "", "values": false},
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "minVizWidth": 0,
+        "minVizHeight": 10,
+        "valueMode": "color",
+        "text": {}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 70},
+              {"color": "red", "value": 85}
+            ]
+          },
+          "color": {"mode": "thresholds"}
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output load"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "Output load"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "row",
+      "title": "Histórico e Tensão",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 24},
+      "panels": []
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "Carga de Bateria % (histórico)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 25},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["last", "min"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 50},
+              {"color": "red", "value": 20}
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery charge remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery capacity"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "Tensão de Entrada (V)",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 25},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["last", "min"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "volt",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Input voltage"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Input voltage"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "timeseries",
+      "title": "Temperatura da Bateria (°C)",
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 33},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["last", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "celsius",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 35},
+              {"color": "red", "value": 40}
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery temperature"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Battery temperature"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "type": "timeseries",
+      "title": "Carga de Saída % (histórico)",
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 33},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "tooltip": {"mode": "multi", "sort": "none"},
+        "legend": {
+          "calcs": ["last", "max"],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "color": {"mode": "palette-classic"},
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "showPoints": "never",
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "orange", "value": 70},
+              {"color": "red", "value": 85}
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output load"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "$ups"},
+          "application": {"filter": ""},
+          "item": {"filter": "Output load"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "row",
+      "title": "Histórico de Eventos de Energia",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 41},
+      "panels": []
+    },
+    {
+      "id": 18,
+      "type": "state-timeline",
+      "title": "Fonte de Saída — histórico 24h",
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 42},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "rowHeight": 0.9,
+        "mergeValues": true,
+        "showValue": "auto",
+        "alignValue": "left",
+        "tooltip": {"mode": "single", "sort": "none"},
+        "legend": {"displayMode": "list", "placement": "bottom", "showLegend": true}
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [
+            {"type": "value", "options": {"3": {"text": "Normal", "color": "green", "index": 0}}},
+            {"type": "value", "options": {"5": {"text": "Bateria", "color": "red", "index": 1}}},
+            {"type": "value", "options": {"4": {"text": "Bypass", "color": "orange", "index": 2}}},
+            {"type": "value", "options": {"2": {"text": "Sem saída", "color": "grey", "index": 3}}},
+            {"type": "value", "options": {"1": {"text": "Outro", "color": "blue", "index": 4}}}
+          ],
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          }
+        },
+        "overrides": []
+      },
+      "timeFrom": "now-24h",
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output source"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "row",
+      "title": "Status Detalhado",
+      "collapsed": false,
+      "gridPos": {"h": 1, "w": 24, "x": 0, "y": 50},
+      "panels": []
+    },
+    {
+      "id": 20,
+      "type": "table",
+      "title": "Status Completo de todos os UPS",
+      "gridPos": {"h": 10, "w": 24, "x": 0, "y": 51},
+      "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+      "options": {
+        "cellHeight": "sm",
+        "footer": {"show": false, "reducer": ["sum"], "countRows": false, "fields": ""},
+        "showHeader": true
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [{"color": "green", "value": null}]
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {"id": "byName", "options": "UPS: Battery charge remaining"},
+            "properties": [
+              {"id": "unit", "value": "percent"},
+              {"id": "displayName", "value": "Carga Bateria"},
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {"color": "red", "value": null},
+                    {"color": "yellow", "value": 20},
+                    {"color": "green", "value": 50}
+                  ]
+                }
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          },
+          {
+            "matcher": {"id": "byName", "options": "UPS: Estimated minutes remaining"},
+            "properties": [
+              {"id": "unit", "value": "m"},
+              {"id": "displayName", "value": "Autonomia (min)"},
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {"color": "red", "value": null},
+                    {"color": "orange", "value": 10},
+                    {"color": "green", "value": 30}
+                  ]
+                }
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          },
+          {
+            "matcher": {"id": "byName", "options": "UPS: Output load"},
+            "properties": [
+              {"id": "unit", "value": "percent"},
+              {"id": "displayName", "value": "Carga Saída"},
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {"color": "green", "value": null},
+                    {"color": "yellow", "value": 70},
+                    {"color": "red", "value": 85}
+                  ]
+                }
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          },
+          {
+            "matcher": {"id": "byName", "options": "UPS: Output source"},
+            "properties": [
+              {"id": "displayName", "value": "Fonte Saída"},
+              {
+                "id": "mappings",
+                "value": [
+                  {"type": "value", "options": {"3": {"text": "Normal", "color": "green", "index": 0}}},
+                  {"type": "value", "options": {"5": {"text": "Bateria", "color": "red", "index": 1}}},
+                  {"type": "value", "options": {"4": {"text": "Bypass", "color": "orange", "index": 2}}},
+                  {"type": "value", "options": {"2": {"text": "Sem saída", "color": "grey", "index": 3}}},
+                  {"type": "value", "options": {"1": {"text": "Outro", "color": "blue", "index": 4}}}
+                ]
+              },
+              {"id": "custom.displayMode", "value": "color-background"}
+            ]
+          }
+        ]
+      },
+      "transformations": [
+        {"id": "merge", "options": {}}
+      ],
+      "targets": [
+        {
+          "refId": "A",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Battery charge remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "B",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Estimated minutes remaining"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "C",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output load"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        },
+        {
+          "refId": "D",
+          "group": {"filter": "UPS/$site"},
+          "host": {"filter": "*"},
+          "application": {"filter": ""},
+          "item": {"filter": "UPS: Output source"},
+          "functions": [],
+          "options": {"showDisabledItems": false, "skipEmptyValues": false, "useZabbixValueMapping": false},
+          "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"}
+        }
+      ]
+    }
+  ],
+  "refresh": "60s",
+  "schemaVersion": 39,
+  "tags": ["capricornio", "ups", "energia"],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "site",
+        "options": [
+          {"selected": false, "text": "All", "value": "$__all"},
+          {"selected": false, "text": "BGP", "value": "BGP"},
+          {"selected": false, "text": "SCL", "value": "SCL"},
+          {"selected": false, "text": "SPO", "value": "SPO"}
+        ],
+        "query": "All,BGP,SCL,SPO",
+        "type": "custom",
+        "label": "Site"
+      },
+      {
+        "current": {},
+        "datasource": {"type": "alexanderzobnin-zabbix-datasource", "uid": "${DS_ZABBIX}"},
+        "definition": "",
+        "hide": 0,
+        "includeAll": true,
+        "multi": true,
+        "name": "ups",
+        "options": [],
+        "query": {"group": {"filter": "UPS/$site"}, "host": {"filter": ""}, "queryType": "hosts"},
+        "refresh": 2,
+        "sort": 1,
+        "type": "query",
+        "label": "UPS"
+      }
+    ]
+  },
+  "time": {"from": "now-3h", "to": "now"},
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Energia — UPS Capricórnio",
+  "uid": "capri-ups",
+  "version": 1
+}

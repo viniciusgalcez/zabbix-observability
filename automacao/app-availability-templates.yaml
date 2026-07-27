@@ -1,0 +1,2637 @@
+zabbix_export:
+  version: '7.0'
+  template_groups:
+    - uuid: 6d0ad8ebaadd459a935330918411756a
+      name: 'Templates/Applications'
+    - uuid: 387360cb8040458095150a6c060e991f
+      name: 'Templates/Roles'
+  templates:
+    - uuid: acdc547172234d0c948e7b047e294304
+      template: 'App Zabbix Agent Availability'
+      name: 'App Zabbix Agent Availability'
+      description: 'Detecta indisponibilidade do agente/host via simple check na porta 10050 (executado pelo proxy). Base da dependencia anti-tempestade dos demais alertas.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 19c62a0771714bf387f60e22e2e7ec3d
+          name: 'Agente acessivel (porta TCP 10050)'
+          type: SIMPLE
+          key: 'net.tcp.service[tcp,{HOST.CONN},{$ZBX.AGENT.PORT}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'zabbix-agent'
+          triggers:
+            - uuid: d033225951b445128cf6bb56f04c0c87
+              expression: 'max(/App Zabbix Agent Availability/net.tcp.service[tcp,{HOST.CONN},{$ZBX.AGENT.PORT}],#3)=0'
+              name: 'Agente ou host inacessivel em {HOST.NAME}'
+              priority: HIGH
+              description: 'Porta 10050 do agente inacessivel a partir do proxy: agente parado ou host fora do ar.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$ZBX.AGENT.PORT}'
+          value: '10050'
+          description: 'Porta TCP do Zabbix agent testada para disponibilidade.'
+    - uuid: 9ab1e997ef0b425e9660916beb700ae6
+      template: 'App DHCP Server por Zabbix agent'
+      name: 'App DHCP Server por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$DHCP.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: dde47bca2bc543c687e49b2baae04508
+          name: 'DHCP Server: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$DHCP.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'dhcp'
+          triggers:
+            - uuid: 0b68c5314a384a7db01894ca91d23923
+              expression: 'min(/App DHCP Server por Zabbix agent/service.info[{$DHCP.SERVICE},state],#3)<>0'
+              name: 'DHCP Server parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$DHCP.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$DHCP.SERVICE}'
+          value: 'DHCPServer'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: a4cb3baa81614ca386587e4d46234359
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 9432848b4b954dc68ee9627afa63cf38
+      template: 'App DNS Server por Zabbix agent'
+      name: 'App DNS Server por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$DNS.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 4b90420746e940daaacc1787c483fccf
+          name: 'DNS Server: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$DNS.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'dns'
+          triggers:
+            - uuid: 5d6b684909c6471f9e1a7fe2ae74453e
+              expression: 'min(/App DNS Server por Zabbix agent/service.info[{$DNS.SERVICE},state],#3)<>0'
+              name: 'DNS Server parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$DNS.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$DNS.SERVICE}'
+          value: 'DNS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 2b830b4873c24c7e9fda9e7116f7f9a1
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: e6eedff3dd5d4c20aaaa9edf199aabca
+      template: 'App Print Spooler por Zabbix agent'
+      name: 'App Print Spooler por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$SPOOLER.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 4d7be5953fb74462a668e3e04e36fad3
+          name: 'Spooler de impressao: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$SPOOLER.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'spooler'
+          triggers:
+            - uuid: 48b28e25640d4a1187067bb303c8f464
+              expression: 'min(/App Print Spooler por Zabbix agent/service.info[{$SPOOLER.SERVICE},state],#3)<>0'
+              name: 'Spooler de impressao parado em {HOST.NAME}'
+              priority: WARNING
+              description: 'Componente indisponivel: {$SPOOLER.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$SPOOLER.SERVICE}'
+          value: 'Spooler'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 2594aef98e004ccdab3b7c8c7c9ce894
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 6ce027c4a7a24991beaea8410f29f94f
+      template: 'App Active Directory DS por Zabbix agent'
+      name: 'App Active Directory DS por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$ADDS.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 8ea767db294e45d6aacf08c0563c7b88
+          name: 'Active Directory (NTDS): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ADDS.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'active-directory'
+          triggers:
+            - uuid: c2bcdbd350f345bcba37650aed15d908
+              expression: 'min(/App Active Directory DS por Zabbix agent/service.info[{$ADDS.SERVICE},state],#3)<>0'
+              name: 'Active Directory (NTDS) parado em {HOST.NAME}'
+              priority: DISASTER
+              description: 'Componente indisponivel: {$ADDS.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$ADDS.SERVICE}'
+          value: 'NTDS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 01a64db5b33b4e5bbed7044dae0eca55
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 20ba6691eae246baa58b9c571a48e38f
+      template: 'App AD Certificate Services por Zabbix agent'
+      name: 'App AD Certificate Services por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$ADCS.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 2ff93f9c93674a6cb0d9c79786723920
+          name: 'Autoridade Certificadora (CA): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ADCS.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'ad-cs'
+          triggers:
+            - uuid: 3f13d62395bf4a6fa8a384c061341d5d
+              expression: 'min(/App AD Certificate Services por Zabbix agent/service.info[{$ADCS.SERVICE},state],#3)<>0'
+              name: 'Autoridade Certificadora (CA) parada em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$ADCS.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$ADCS.SERVICE}'
+          value: 'CertSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: fbbadb2c3d3a44198592106d697a62c6
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: b48c258f1a964a33980f7257c5c52836
+      template: 'App NPS RADIUS por Zabbix agent'
+      name: 'App NPS RADIUS por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$NPS.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: c8359d924bd945e79b3925b492d18d68
+          name: 'Network Policy Server (RADIUS): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$NPS.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'radius'
+          triggers:
+            - uuid: 9032701f1981413d9ae9de9da0988ef1
+              expression: 'min(/App NPS RADIUS por Zabbix agent/service.info[{$NPS.SERVICE},state],#3)<>0'
+              name: 'Network Policy Server (RADIUS) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$NPS.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$NPS.SERVICE}'
+          value: 'IAS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: c462ac66548749c4aa3600bb7cdc1d9d
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: cb7512fd8bf24bffaed1edf6f25c15d8
+      template: 'App SQL Server por Zabbix agent'
+      name: 'App SQL Server por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$MSSQL.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: fc8d63fd9b17472e8a7be73b595af9f0
+          name: 'SQL Server: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$MSSQL.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'mssql'
+          triggers:
+            - uuid: db41b0b4aafa4e578c995dec2d360fa5
+              expression: 'min(/App SQL Server por Zabbix agent/service.info[{$MSSQL.SERVICE},state],#3)<>0'
+              name: 'SQL Server parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$MSSQL.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$MSSQL.SERVICE}'
+          value: 'MSSQLSERVER'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: e69028cde5624222a22fa07c549dcb92
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 90cf29955e03426783a86849e4fff47e
+      template: 'App SQL Server Agent por Zabbix agent'
+      name: 'App SQL Server Agent por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$MSSQLAGENT.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 492a1fa68af54f3a9f710630b07a5121
+          name: 'SQL Server Agent: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$MSSQLAGENT.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'mssql'
+          triggers:
+            - uuid: 1c8a66a0a05645128925d539b9eda67f
+              expression: 'min(/App SQL Server Agent por Zabbix agent/service.info[{$MSSQLAGENT.SERVICE},state],#3)<>0'
+              name: 'SQL Server Agent parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente indisponivel: {$MSSQLAGENT.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$MSSQLAGENT.SERVICE}'
+          value: 'SQLSERVERAGENT'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 1c3a2163bf9243b69b0c35f7efce869c
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: b42fae9315684346b54be68f8eba0bdb
+      template: 'App IIS por Zabbix agent'
+      name: 'App IIS por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$IIS.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 31cbb83623994df2a3970b298119317a
+          name: 'IIS (W3SVC): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$IIS.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'iis'
+          triggers:
+            - uuid: 65fc4653fccf40078a0a27e4dcf150bf
+              expression: 'min(/App IIS por Zabbix agent/service.info[{$IIS.SERVICE},state],#3)<>0'
+              name: 'IIS (W3SVC) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$IIS.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$IIS.SERVICE}'
+          value: 'W3SVC'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 2545728893294c95a47e91fbf1fd81d6
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 048442d611a14c568c708698a71f2985
+      template: 'App Hyper-V por Zabbix agent'
+      name: 'App Hyper-V por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$HYPERV.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 0516c1448d3f480ba882ee9bc2743d16
+          name: 'Hyper-V VM Management: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$HYPERV.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'hyper-v'
+          triggers:
+            - uuid: f76e221b4d11448f9c5c0d793d0ab92c
+              expression: 'min(/App Hyper-V por Zabbix agent/service.info[{$HYPERV.SERVICE},state],#3)<>0'
+              name: 'Hyper-V VM Management parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$HYPERV.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$HYPERV.SERVICE}'
+          value: 'vmms'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 37cf823787634dea9bbf055ac99150fb
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: ad322363c3094eac8abd84e3af2a960e
+      template: 'App Failover Cluster por Zabbix agent'
+      name: 'App Failover Cluster por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$CLUSTER.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: f7f0e10b98f94002acb25738d9f52df3
+          name: 'Servico de Cluster: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$CLUSTER.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'cluster'
+          triggers:
+            - uuid: 4becb3f8f8df4625ac7b9a082fb7fa98
+              expression: 'min(/App Failover Cluster por Zabbix agent/service.info[{$CLUSTER.SERVICE},state],#3)<>0'
+              name: 'Servico de Cluster parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$CLUSTER.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$CLUSTER.SERVICE}'
+          value: 'ClusSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 06397ad7ba874e9b8de7f36cd0a54296
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 0838a05ca119442eaaf192964c7c7d7c
+      template: 'App Power BI Gateway por Zabbix agent'
+      name: 'App Power BI Gateway por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$PBIGW.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 03618c98f87040eea4bb5b80ce9da331
+          name: 'Power BI Gateway: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$PBIGW.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'powerbi'
+          triggers:
+            - uuid: e53be89514674823b979a5da027ac195
+              expression: 'min(/App Power BI Gateway por Zabbix agent/service.info[{$PBIGW.SERVICE},state],#3)<>0'
+              name: 'Power BI Gateway parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente indisponivel: {$PBIGW.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$PBIGW.SERVICE}'
+          value: 'PBIEgwService'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: ca5ec894b38e4a6ab8fd44e03d5b807a
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 04a72deb9b1b4395a914efed18328b7c
+      template: 'App Zabbix Proxy por Zabbix agent'
+      name: 'App Zabbix Proxy por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$ZBXPROXY.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 7c5239c13cb54a609e925fc202d70fbb
+          name: 'Servico Zabbix Proxy: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ZBXPROXY.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'zabbix-proxy'
+          triggers:
+            - uuid: aeb4060729f947d5832bcf405c3faa47
+              expression: 'min(/App Zabbix Proxy por Zabbix agent/service.info[{$ZBXPROXY.SERVICE},state],#3)<>0'
+              name: 'Servico Zabbix Proxy parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$ZBXPROXY.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$ZBXPROXY.SERVICE}'
+          value: 'Zabbix Proxy'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: bcaf7aeefef5457db4d907a9aacf9271
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 1952744c8c7c4468a8df1e025bb730b9
+      template: 'App Dimep por Zabbix agent'
+      name: 'App Dimep por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$DIMEP.SERVICE} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: c3b70403f79f4621b98ea24eb5bebc13
+          name: 'Dimep (NewAccess): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$DIMEP.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'dimep'
+          triggers:
+            - uuid: c762c3fd8f1d430e933968aebbedac83
+              expression: 'min(/App Dimep por Zabbix agent/service.info[{$DIMEP.SERVICE},state],#3)<>0'
+              name: 'Dimep (NewAccess) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$DIMEP.SERVICE}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$DIMEP.SERVICE}'
+          value: 'NewAccess.Communication.Service'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: a2bf3220993a4ab38c0ac6fd6abd39c6
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 87f97510d8ea40fd8a8ac10bd6056b32
+      template: 'App Clipnet por Zabbix agent'
+      name: 'App Clipnet por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$CLIPNET.FIREBIRD} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 973b265669554eb9bee8cc0d7561962f
+          name: 'Clipnet (Firebird): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$CLIPNET.FIREBIRD},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'clipnet'
+          triggers:
+            - uuid: d99d829417e74ba59ebd7c5b28a6735c
+              expression: 'min(/App Clipnet por Zabbix agent/service.info[{$CLIPNET.FIREBIRD},state],#3)<>0'
+              name: 'Clipnet (Firebird) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$CLIPNET.FIREBIRD}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$CLIPNET.FIREBIRD}'
+          value: 'FirebirdServerDefaultInstance'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 958114f8885b401f97f23481a784c4fc
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: e6be26773c6a43ddb74475a5ab276f9d
+      template: 'App Deps Homolog por Zabbix agent'
+      name: 'App Deps Homolog por Zabbix agent'
+      description: 'Disponibilidade via Zabbix Agent. Ajuste o servico na macro {$DEPS.HOMOLOG.SVC} por host se necessario.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 128b21ba412547a086b2c1844b8b191a
+          name: 'Deps Integrador (homolog): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$DEPS.HOMOLOG.SVC},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'deps-homolog-app'
+          triggers:
+            - uuid: 4446b44272194340a8cd208959732fcc
+              expression: 'min(/App Deps Homolog por Zabbix agent/service.info[{$DEPS.HOMOLOG.SVC},state],#3)<>0'
+              name: 'Deps Integrador (homolog) parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente indisponivel: {$DEPS.HOMOLOG.SVC}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$DEPS.HOMOLOG.SVC}'
+          value: 'DepsIntegrador'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: f35759c86e9843b7bc5474b7e794be65
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 0d617d5c13a74cab8fbf888af8d5ac41
+      template: 'App Veeam ONE por Zabbix agent'
+      name: 'App Veeam ONE por Zabbix agent'
+      description: 'Disponibilidade do Veeam ONE: Monitoring, Reporting e Analytics.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 96754743a1294e36a6392c801a9026a9
+          name: 'Veeam ONE Monitoring: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAMONE.DCS},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-one'
+          triggers:
+            - uuid: 7fb5dd9076544d31b7b251f93f9bbed2
+              expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.DCS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.RSS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.OAS},state],#3)<>0'
+              name: 'Veeam ONE fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: ffd78949f2884d47804d7fc96ddb06a5
+              expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.DCS},state],#3)<>0'
+              name: 'Veeam ONE Monitoring (VeeamDCS) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAMONE.DCS}.'
+              dependencies:
+                - name: 'Veeam ONE fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.DCS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.RSS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.OAS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 5ddff69d23364d6092dad913dfa0cade
+          name: 'Veeam ONE Reporting: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAMONE.RSS},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-one'
+          triggers:
+            - uuid: 52537bb3b6d9495ebe8043f87e98bcba
+              expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.RSS},state],#3)<>0'
+              name: 'Veeam ONE Reporting (VeeamRSS) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAMONE.RSS}.'
+              dependencies:
+                - name: 'Veeam ONE fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.DCS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.RSS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.OAS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 1267a771d04f491bb658c33783b7b438
+          name: 'Veeam ONE Analytics: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAMONE.OAS},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-one'
+          triggers:
+            - uuid: 45c04e60a0474d63b000b8e31b76281b
+              expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.OAS},state],#3)<>0'
+              name: 'Veeam ONE Analytics (VeeamOAS) parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAMONE.OAS}.'
+              dependencies:
+                - name: 'Veeam ONE fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.DCS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.RSS},state],#3)<>0 and min(/App Veeam ONE por Zabbix agent/service.info[{$VEEAMONE.OAS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$VEEAMONE.DCS}'
+          value: 'VeeamDCS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAMONE.RSS}'
+          value: 'VeeamRSS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAMONE.OAS}'
+          value: 'VeeamOAS'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 1c63b2f204d543b8a70d516049719a64
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 25de92d4e8eb48a4a63730efa060fa95
+      template: 'App Fact Teares por Zabbix agent'
+      name: 'App Fact Teares por Zabbix agent'
+      description: 'Disponibilidade dos servicos Fact / Portal Teares (Dashboard).'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: f5c2c3db797f48cdb433c58a038065ce
+          name: 'Portal Teares (Producao): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$FACT.PORTAL},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'fact'
+          triggers:
+            - uuid: 52f586dcc5714e5b9331ab434498f1c6
+              expression: 'min(/App Fact Teares por Zabbix agent/service.info[{$FACT.PORTAL},state],#3)<>0 and min(/App Fact Teares por Zabbix agent/service.info[{$FACT.AGENT},state],#3)<>0'
+              name: 'Fact Teares fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: b5e32fe723be420d8dcc433c67a7e3ca
+              expression: 'min(/App Fact Teares por Zabbix agent/service.info[{$FACT.PORTAL},state],#3)<>0'
+              name: 'Portal Teares parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$FACT.PORTAL}.'
+              dependencies:
+                - name: 'Fact Teares fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Fact Teares por Zabbix agent/service.info[{$FACT.PORTAL},state],#3)<>0 and min(/App Fact Teares por Zabbix agent/service.info[{$FACT.AGENT},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 119bf5b657c64fee920e5fb8ff622d19
+          name: 'Coletor FACT (web): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$FACT.AGENT},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'fact'
+          triggers:
+            - uuid: 8f15fb29ca2f47479abb3a1a50d10cb6
+              expression: 'min(/App Fact Teares por Zabbix agent/service.info[{$FACT.AGENT},state],#3)<>0'
+              name: 'Coletor FACT (web) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$FACT.AGENT}.'
+              dependencies:
+                - name: 'Fact Teares fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Fact Teares por Zabbix agent/service.info[{$FACT.PORTAL},state],#3)<>0 and min(/App Fact Teares por Zabbix agent/service.info[{$FACT.AGENT},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$FACT.PORTAL}'
+          value: 'Portal_Teares'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$FACT.AGENT}'
+          value: 'FACT_Coletor_Web'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 2b51de2ae5dc46a5a6efac61367a8cbe
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 86590105349248a3834b97196d6728c4
+      template: 'App Entra Connect Sync por Zabbix agent'
+      name: 'App Entra Connect Sync por Zabbix agent'
+      description: 'Disponibilidade do Microsoft Entra Connect: sync, health agent e updater.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 09b00b87de664efc8e51c5826b914bae
+          name: 'Entra Connect Sync: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ADSYNC.SERVICE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'entra-connect'
+          triggers:
+            - uuid: 3ff387884ec748599c4123e32318486a
+              expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.SERVICE},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.HEALTH},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.UPDATER},state],#3)<>0'
+              name: 'Entra Connect Sync fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 62b1cac318d14faa8162d2beb5f4056f
+              expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.SERVICE},state],#3)<>0'
+              name: 'Microsoft Entra Connect Sync parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$ADSYNC.SERVICE}.'
+              dependencies:
+                - name: 'Entra Connect Sync fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.SERVICE},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.HEALTH},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.UPDATER},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 24fc9c715f564e6a91a5533413608a04
+          name: 'Entra Connect Health Agent: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ADSYNC.HEALTH},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'entra-connect'
+          triggers:
+            - uuid: 0e8abea6bea946bf9576b5abdd7bc85e
+              expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.HEALTH},state],#3)<>0'
+              name: 'Entra Connect Health Agent parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$ADSYNC.HEALTH}.'
+              dependencies:
+                - name: 'Entra Connect Sync fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.SERVICE},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.HEALTH},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.UPDATER},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: d6790cae49254035b86457f4b7855a5d
+          name: 'Entra Connect Agent Updater: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$ADSYNC.UPDATER},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'entra-connect'
+          triggers:
+            - uuid: 5fd19178e257442487be51f67de1be3b
+              expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.UPDATER},state],#3)<>0'
+              name: 'Entra Connect Agent Updater parado em {HOST.NAME}'
+              priority: WARNING
+              description: 'Componente parado: {$ADSYNC.UPDATER}.'
+              dependencies:
+                - name: 'Entra Connect Sync fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.SERVICE},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.HEALTH},state],#3)<>0 and min(/App Entra Connect Sync por Zabbix agent/service.info[{$ADSYNC.UPDATER},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$ADSYNC.SERVICE}'
+          value: 'ADSync'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$ADSYNC.HEALTH}'
+          value: 'AzureADConnectHealthAgent'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$ADSYNC.UPDATER}'
+          value: 'AzureADConnectAgentUpdater'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 6664af44055543b4ab1239a7458e20f8
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 87e8086edd5d45c6a8f899b2c4ecefa1
+      template: 'App Lansweeper por Zabbix agent'
+      name: 'App Lansweeper por Zabbix agent'
+      description: 'Disponibilidade do Lansweeper: server, agent e auto-update.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 022ae9b67d21482083586e147f2a639e
+          name: 'Lansweeper Server: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$LANSWEEPER.SERVER},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'lansweeper'
+          triggers:
+            - uuid: 2bab0aad4d6142338b9054d29b6635db
+              expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.SERVER},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.AGENT},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.UPDATE},state],#3)<>0'
+              name: 'Lansweeper fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 6d4fc7ac01fe4a23b946f8bc6082f245
+              expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.SERVER},state],#3)<>0'
+              name: 'Lansweeper Server parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$LANSWEEPER.SERVER}.'
+              dependencies:
+                - name: 'Lansweeper fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.SERVER},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.AGENT},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.UPDATE},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 11300994955f42f493ad7c15c350e7f1
+          name: 'Lansweeper Agent: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$LANSWEEPER.AGENT},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'lansweeper'
+          triggers:
+            - uuid: 2e70641f146b4712973bdd166071e030
+              expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.AGENT},state],#3)<>0'
+              name: 'Lansweeper Agent parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$LANSWEEPER.AGENT}.'
+              dependencies:
+                - name: 'Lansweeper fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.SERVER},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.AGENT},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.UPDATE},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: f28b8b3b80764d29ba5b8994cfb28431
+          name: 'Lansweeper Auto-update: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$LANSWEEPER.UPDATE},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'lansweeper'
+          triggers:
+            - uuid: 6a7d54be6ff648fc9ad754cb66d9febb
+              expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.UPDATE},state],#3)<>0'
+              name: 'Lansweeper Auto-update parado em {HOST.NAME}'
+              priority: WARNING
+              description: 'Componente parado: {$LANSWEEPER.UPDATE}.'
+              dependencies:
+                - name: 'Lansweeper fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.SERVER},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.AGENT},state],#3)<>0 and min(/App Lansweeper por Zabbix agent/service.info[{$LANSWEEPER.UPDATE},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$LANSWEEPER.SERVER}'
+          value: 'lansweeperservice'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$LANSWEEPER.AGENT}'
+          value: 'LansweeperAgentService'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$LANSWEEPER.UPDATE}'
+          value: 'lansweeperautoupdate'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 162e5dec6e074f09aede9d60dcea9598
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 2073bd49afe243d7870271fc41a5d120
+      template: 'App NodeRed por Zabbix agent'
+      name: 'App NodeRed por Zabbix agent'
+      description: 'Disponibilidade da stack IoT em servicos Windows: Node-RED (Inst 1/2/3/QA), Mosquitto (MQTT) e Grafana. Host: SCL-SRV-VAPP03.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 82b32f20d42a469db67300a35ae0220b
+          name: 'Node-RED Inst 1: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$NODERED.SVC1},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'node-red'
+          triggers:
+            - uuid: d661346970f141a69de8ebb79d10b18f
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              name: 'NodeRed fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 95f6e38a8a6044e98a4740883cccd701
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0'
+              name: 'Node-RED Inst 1 parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$NODERED.SVC1}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 4547f19a3ce248dca6a8c8c56c808087
+          name: 'Node-RED Inst 2: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$NODERED.SVC2},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'node-red'
+          triggers:
+            - uuid: 221f0ea6cdc048f690ca49f80ccfd335
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0'
+              name: 'Node-RED Inst 2 parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$NODERED.SVC2}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 3c116cf3433a4ad0b883210d6ffad6ab
+          name: 'Node-RED Inst 3: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$NODERED.SVC3},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'node-red'
+          triggers:
+            - uuid: ef39f0f89765450bb3c9d21ccf2530ad
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0'
+              name: 'Node-RED Inst 3 parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$NODERED.SVC3}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: d380e802eca2496eb7bad99eb8ed05d3
+          name: 'Node-RED QA: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$NODERED.SVCQA},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'node-red'
+          triggers:
+            - uuid: a33cc870635940b19f5e1ec003991eab
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0'
+              name: 'Node-RED QA parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$NODERED.SVCQA}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 732ed7beccfc4f8b8b7c5840e126fbc0
+          name: 'Mosquitto (MQTT): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$MOSQUITTO.SVC},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'mosquitto'
+          triggers:
+            - uuid: 3c37dd321efd4ff081b1487a4003f48e
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0'
+              name: 'Mosquitto parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$MOSQUITTO.SVC}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 9716720634414e20b06ccecd64266572
+          name: 'Grafana (Windows): estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$GRAFANA.WIN.SVC},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'grafana'
+          triggers:
+            - uuid: 7783c8414c6b45e5ba475893bd4d6ab4
+              expression: 'min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              name: 'Grafana parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$GRAFANA.WIN.SVC}.'
+              dependencies:
+                - name: 'NodeRed fora do ar em {HOST.NAME}'
+                  expression: 'min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC1},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC2},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVC3},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$NODERED.SVCQA},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$MOSQUITTO.SVC},state],#3)<>0 and min(/App NodeRed por Zabbix agent/service.info[{$GRAFANA.WIN.SVC},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$NODERED.SVC1}'
+          value: 'noderedsvc1'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$NODERED.SVC2}'
+          value: 'noderedsvc2'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$NODERED.SVC3}'
+          value: 'noderedsvc3'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$NODERED.SVCQA}'
+          value: 'noderedsvcqa'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$MOSQUITTO.SVC}'
+          value: 'mosquitto'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$GRAFANA.WIN.SVC}'
+          value: 'Grafana'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 3a83fdb8aa8647f9adcff0c5f3d9a9d4
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 569a23caebf5497c85c7406ae1cff4b4
+      template: 'App Veeam Backup por Zabbix agent'
+      name: 'App Veeam Backup por Zabbix agent'
+      description: 'Disponibilidade dos servicos do Veeam Backup & Replication. Host: BGP-SRV-VAPP02.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: ceb028579b2f4cc39e7347be5264aa53
+          name: 'Veeam Backup Service: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.BACKUP},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: 209f2f3d54564b9c9a3c28ba0c0a3e6d
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              name: 'Veeam Backup fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: a4325a5d37734b088be392e84d496cf9
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0'
+              name: 'Veeam Backup Service parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAM.BACKUP}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: def7c490e7ef4ee3aac6f2c521edd9cb
+          name: 'Veeam Data Mover: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.TRANSPORT},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: b8d9b6f7e72d48b9af668a7155c92e24
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0'
+              name: 'Veeam Data Mover parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAM.TRANSPORT}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 4869ccb07e5a404abff46e9fea0ff866
+          name: 'Veeam Broker: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.BROKER},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: eab1b76b19464ba692661588eb4fa1c9
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0'
+              name: 'Veeam Broker parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.BROKER}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: fe88ca40a2d24fc68d89fc671c4fee60
+          name: 'Veeam Guest Catalog: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.CATALOG},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: 1024f134dbc446ffb4ce63bab3f7ff68
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0'
+              name: 'Veeam Guest Catalog parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.CATALOG}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: ca01763e5be7490db1f9c330faf0d455
+          name: 'Veeam Enterprise Manager: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.ENTMGR},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: 968f65ea76e34ebb82abf981753b8fa8
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0'
+              name: 'Veeam Enterprise Manager parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.ENTMGR}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 130e3dcbc1e542dcbfff537a6676fdb8
+          name: 'Veeam Mount Service: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.MOUNT},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: a85d5c6310f54f1e95f731d4dee2c8dd
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0'
+              name: 'Veeam Mount Service parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.MOUNT}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 996d347a78bd4fbf87c869158e0b0b1c
+          name: 'Veeam vPower NFS: estado do servico'
+          type: ZABBIX_PASSIVE
+          key: 'service.info[{$VEEAM.NFS},state]'
+          delay: 1m
+          value_type: UNSIGNED
+          valuemap:
+            name: 'Windows service state'
+          tags:
+            - tag: component
+              value: 'veeam-backup'
+          triggers:
+            - uuid: 308b9284503d44a7927ed04d297a2071
+              expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              name: 'Veeam vPower NFS parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.NFS}.'
+              dependencies:
+                - name: 'Veeam Backup fora do ar em {HOST.NAME}'
+                  expression: 'min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BACKUP},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.TRANSPORT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.BROKER},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.CATALOG},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.ENTMGR},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.MOUNT},state],#3)<>0 and min(/App Veeam Backup por Zabbix agent/service.info[{$VEEAM.NFS},state],#3)<>0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$VEEAM.BACKUP}'
+          value: 'VeeamBackupSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.TRANSPORT}'
+          value: 'VeeamTransportSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.BROKER}'
+          value: 'VeeamBrokerSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.CATALOG}'
+          value: 'VeeamCatalogSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.ENTMGR}'
+          value: 'VeeamEnterpriseManagerSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.MOUNT}'
+          value: 'VeeamMountSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+        - macro: '{$VEEAM.NFS}'
+          value: 'VeeamNFSSvc'
+          description: 'Nome do servico Windows (Get-Service -Name ...).'
+      valuemaps:
+        - uuid: 6596350bb49c41dab6a0d774583344f1
+          name: 'Windows service state'
+          mappings:
+            - value: '0'
+              newvalue: 'Running'
+            - value: '1'
+              newvalue: 'Paused'
+            - value: '2'
+              newvalue: 'Start pending'
+            - value: '3'
+              newvalue: 'Pause pending'
+            - value: '4'
+              newvalue: 'Continue pending'
+            - value: '5'
+              newvalue: 'Stop pending'
+            - value: '6'
+              newvalue: 'Stopped'
+            - value: '7'
+              newvalue: 'Unknown'
+            - value: '255'
+              newvalue: 'No such service'
+    - uuid: 04262cef9a2f4d0f97b48394541d141a
+      template: 'App Veeam Repository Linux'
+      name: 'App Veeam Repository Linux'
+      description: 'Disponibilidade dos servicos Veeam em repositorio Linux (systemd / agent2).'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 4904e4c3603d4a41b94c57854a6cf04d
+          name: 'Veeam Data Mover: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'veeam'
+          triggers:
+            - uuid: 7fa9f63fff9e40519a8710893e3b3b7f
+              expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              name: 'Veeam Repository fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 5af18a2d91d340f089f58464ee196eb7
+              expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3'
+              name: 'Veeam Data Mover parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAM.UNIT.TRANSPORT}.'
+              dependencies:
+                - name: 'Veeam Repository fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 625183f8fc7b4c18954de7ed16b467c9
+          name: 'Veeam Immutability: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'veeam'
+          triggers:
+            - uuid: 62849577676e459599154d87558996f7
+              expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3'
+              name: 'Veeam Immutability Service parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$VEEAM.UNIT.IMMU}.'
+              dependencies:
+                - name: 'Veeam Repository fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: c2a67d6aa74d4dc78dc7a57a4eb282aa
+          name: 'Veeam Deployer: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'veeam'
+          triggers:
+            - uuid: 9e0aeb7cd6a94d21a67d9367bb4d4efa
+              expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3'
+              name: 'Veeam Deployer parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.UNIT.DEPLOY}.'
+              dependencies:
+                - name: 'Veeam Repository fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: c9a813c75aa64d32b1828852afcb3403
+          name: 'Veeam Environment: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'veeam'
+          triggers:
+            - uuid: ae3486e75ba34f3bb754240752cb876a
+              expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              name: 'Veeam Environment parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$VEEAM.UNIT.ENV}.'
+              dependencies:
+                - name: 'Veeam Repository fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.TRANSPORT}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.IMMU}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.DEPLOY}",ActiveState],#3,"ne","active")=3 and count(/App Veeam Repository Linux/systemd.unit.info["{$VEEAM.UNIT.ENV}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$VEEAM.UNIT.TRANSPORT}'
+          value: 'veeamtransport.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$VEEAM.UNIT.IMMU}'
+          value: 'veeamimmurepo.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$VEEAM.UNIT.DEPLOY}'
+          value: 'veeamdeployment.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$VEEAM.UNIT.ENV}'
+          value: 'veeamenvironment.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 3a7369d819b247a0ba881b3304f0d26f
+      template: 'App Cisco Dashboard e Oxidized Linux'
+      name: 'App Cisco Dashboard e Oxidized Linux'
+      description: 'Disponibilidade do Cisco Business Dashboard e do Oxidized (backup de config de rede) - Linux/systemd.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: eb0678c098ff46b5b930895712398379
+          name: 'Cisco Business Dashboard: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$CBD.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'cisco-dashboard'
+          triggers:
+            - uuid: ab83dcf90db14deba1334ec9bb0e5519
+              expression: 'count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$CBD.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$OXIDIZED.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Cisco Dashboard e Oxidized fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: b0edb976f4d44bc6806c18a66fc507a9
+              expression: 'count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$CBD.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Cisco Business Dashboard parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$CBD.UNIT}.'
+              dependencies:
+                - name: 'Cisco Dashboard e Oxidized fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$CBD.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$OXIDIZED.UNIT}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 4ee764c83fb94cf4a1f24fca1da4fbe5
+          name: 'Oxidized (backup de rede): estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$OXIDIZED.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'oxidized'
+          triggers:
+            - uuid: c972a1be2b6545eda7a9f9b4f6c27958
+              expression: 'count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$OXIDIZED.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Oxidized parado em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$OXIDIZED.UNIT}.'
+              dependencies:
+                - name: 'Cisco Dashboard e Oxidized fora do ar em {HOST.NAME}'
+                  expression: 'count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$CBD.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App Cisco Dashboard e Oxidized Linux/systemd.unit.info["{$OXIDIZED.UNIT}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$CBD.UNIT}'
+          value: 'cisco-business-dashboard.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$OXIDIZED.UNIT}'
+          value: 'oxidized.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 24a35cd442ca49e194a51b6ffd38f869
+      template: 'App GLPI Linux'
+      name: 'App GLPI Linux'
+      description: 'Disponibilidade da stack web do GLPI (Apache, PHP-FPM e MySQL) - Linux/systemd. Host: AZ-VM-APP-03.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: ec1a1c6b3eff4a189856ca7a02506669
+          name: 'GLPI Apache (web): estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'apache'
+          triggers:
+            - uuid: f8327f1e4d01444eaf2632fc9816844a
+              expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'GLPI fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: d91ed53156a149a9a92de1f7a3739fdb
+              expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'GLPI Apache parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$GLPI.APACHE.UNIT}.'
+              dependencies:
+                - name: 'GLPI fora do ar em {HOST.NAME}'
+                  expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: d9d5a1d11da34fe491a2b49585720b5b
+          name: 'GLPI PHP-FPM: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'php-fpm'
+          triggers:
+            - uuid: 7a2a1916a3e44415a5018e20c694d9bb
+              expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'GLPI PHP-FPM parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$GLPI.PHP.UNIT}.'
+              dependencies:
+                - name: 'GLPI fora do ar em {HOST.NAME}'
+                  expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: fc3d9d9e8bd04d63bc06ba1400a1c1b5
+          name: 'GLPI MySQL: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'mysql'
+          triggers:
+            - uuid: 3e5b49446e3542f59d232783fb6e94c3
+              expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'GLPI MySQL parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$GLPI.DB.UNIT}.'
+              dependencies:
+                - name: 'GLPI fora do ar em {HOST.NAME}'
+                  expression: 'count(/App GLPI Linux/systemd.unit.info["{$GLPI.APACHE.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.PHP.UNIT}",ActiveState],#3,"ne","active")=3 and count(/App GLPI Linux/systemd.unit.info["{$GLPI.DB.UNIT}",ActiveState],#3,"ne","active")=3'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$GLPI.APACHE.UNIT}'
+          value: 'apache2.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$GLPI.PHP.UNIT}'
+          value: 'php8.4-fpm.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+        - macro: '{$GLPI.DB.UNIT}'
+          value: 'mysql.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: ec158affabbe464da58a03f77c8e30b1
+      template: 'App Grafana Linux'
+      name: 'App Grafana Linux'
+      description: 'Disponibilidade do Grafana - Linux/systemd.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 9d8c223811e6426697fc121847c4cdaa
+          name: 'Grafana: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$GRAFANA.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'grafana'
+          triggers:
+            - uuid: f1d1ee3c1c3a474cbff6c5c7450ac0a3
+              expression: 'count(/App Grafana Linux/systemd.unit.info["{$GRAFANA.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Grafana parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$GRAFANA.UNIT}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$GRAFANA.UNIT}'
+          value: 'grafana-server.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: a4d8ce767ec14f5f920b7a738db87add
+      template: 'App Clickhouse Linux'
+      name: 'App Clickhouse Linux'
+      description: 'Disponibilidade do ClickHouse - Linux/systemd.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: ba3170f0566e4049b3615e78e82405e7
+          name: 'ClickHouse Server: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$CLICKHOUSE.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'clickhouse'
+          triggers:
+            - uuid: 2137de88e6524c24bfd072b1b2bfba05
+              expression: 'count(/App Clickhouse Linux/systemd.unit.info["{$CLICKHOUSE.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'ClickHouse Server parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$CLICKHOUSE.UNIT}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$CLICKHOUSE.UNIT}'
+          value: 'clickhouse-server.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 7b32d35c19f8435385b88829724d87fc
+      template: 'App Docker Linux'
+      name: 'App Docker Linux'
+      description: 'Disponibilidade do daemon Docker (systemd). Para monitorar containers, use tambem o template oficial Docker by Zabbix agent 2.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: c03aa391aaee4dbc9eee5f49a2334e59
+          name: 'Docker daemon: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$DOCKER.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'docker'
+          triggers:
+            - uuid: a4536181014e40a18276b23c571e949f
+              expression: 'count(/App Docker Linux/systemd.unit.info["{$DOCKER.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Docker daemon parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$DOCKER.UNIT}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$DOCKER.UNIT}'
+          value: 'docker.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 05a899512de542169d0f5e1c2e9a04c6
+      template: 'App Fastweb Linux'
+      name: 'App Fastweb Linux'
+      description: 'Disponibilidade do agendador cron que executa a integracao Fastweb - Linux/systemd. Host: SPO-SRV-V05.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: d9f55b577a4840ffa84c30b1db53f12c
+          name: 'Cron (agendador Fastweb): estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$FASTWEB.CRON.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'fastweb'
+          triggers:
+            - uuid: b660ed23d4be4e9b955f207934b83d5c
+              expression: 'count(/App Fastweb Linux/systemd.unit.info["{$FASTWEB.CRON.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'Cron (Fastweb) parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$FASTWEB.CRON.UNIT}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$FASTWEB.CRON.UNIT}'
+          value: 'cron.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 54eac67d32e6432c9c08704cc7e7d9e0
+      template: 'App PostgreSQL Linux'
+      name: 'App PostgreSQL Linux'
+      description: 'Disponibilidade do PostgreSQL - Linux/systemd. Host: spo-srv-v02 (DB do Zabbix).'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 2d31ca01fb4440a896795e40372b4ffa
+          name: 'PostgreSQL: estado da unit'
+          type: ZABBIX_ACTIVE
+          key: 'systemd.unit.info["{$POSTGRES.UNIT}",ActiveState]'
+          delay: 1m
+          value_type: CHAR
+          tags:
+            - tag: component
+              value: 'postgresql'
+          triggers:
+            - uuid: 83a3d19e497a4a6d97458a322659afbb
+              expression: 'count(/App PostgreSQL Linux/systemd.unit.info["{$POSTGRES.UNIT}",ActiveState],#3,"ne","active")=3'
+              name: 'PostgreSQL parado em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente indisponivel: {$POSTGRES.UNIT}.'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$POSTGRES.UNIT}'
+          value: 'postgresql.service'
+          description: 'Nome da unit systemd (systemctl list-units --type=service).'
+    - uuid: 9ceea403d7f540b68d41ff6a5dabada5
+      template: 'App EAS Cozinha por Zabbix agent'
+      name: 'App EAS Cozinha por Zabbix agent'
+      description: 'Disponibilidade dos processos EAS-Cozinha (proc.num). Host: SCL-SRV-VAPP14. Confirme os nomes dos processos nas macros.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 9d978e0b2ae2482ca2e3a54c0bc7cf7c
+          name: 'EAS TexHost: numero de processos'
+          type: ZABBIX_PASSIVE
+          key: 'proc.num[{$EAS.TEXHOST}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'eas-cozinha'
+          triggers:
+            - uuid: 19ff6b8267b846869922e7276e521940
+              expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXHOST}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXCOM}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXDOSIF}],#3)=0'
+              name: 'EAS Cozinha fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 01107cfc73b64a139af20160918b40e8
+              expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXHOST}],#3)=0'
+              name: 'EAS TexHost fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$EAS.TEXHOST}.'
+              dependencies:
+                - name: 'EAS Cozinha fora do ar em {HOST.NAME}'
+                  expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXHOST}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXCOM}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXDOSIF}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: c729da6ba354475696a0f54d52f3f3cf
+          name: 'EAS TexCom: numero de processos'
+          type: ZABBIX_PASSIVE
+          key: 'proc.num[{$EAS.TEXCOM}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'eas-cozinha'
+          triggers:
+            - uuid: ddfea33052fc46ce840ac088735654b3
+              expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXCOM}],#3)=0'
+              name: 'EAS TexCom fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$EAS.TEXCOM}.'
+              dependencies:
+                - name: 'EAS Cozinha fora do ar em {HOST.NAME}'
+                  expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXHOST}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXCOM}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXDOSIF}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: babb678cb1224676894607d7d8141630
+          name: 'EAS TexDosif: numero de processos'
+          type: ZABBIX_PASSIVE
+          key: 'proc.num[{$EAS.TEXDOSIF}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'eas-cozinha'
+          triggers:
+            - uuid: d8397cbdbc00426185315dba014b2537
+              expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXDOSIF}],#3)=0'
+              name: 'EAS TexDosif fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$EAS.TEXDOSIF}.'
+              dependencies:
+                - name: 'EAS Cozinha fora do ar em {HOST.NAME}'
+                  expression: 'max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXHOST}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXCOM}],#3)=0 and max(/App EAS Cozinha por Zabbix agent/proc.num[{$EAS.TEXDOSIF}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$EAS.TEXHOST}'
+          value: 'TexHost.exe'
+          description: 'Nome do processo (tasklist / Get-Process).'
+        - macro: '{$EAS.TEXCOM}'
+          value: 'TexCom.exe'
+          description: 'Nome do processo (tasklist / Get-Process).'
+        - macro: '{$EAS.TEXDOSIF}'
+          value: 'Texdosif.exe'
+          description: 'Nome do processo (tasklist / Get-Process).'
+    - uuid: e9e08c13e3514ef2803c0b0d247cd3b0
+      template: 'App Totvs por Zabbix agent'
+      name: 'App Totvs por Zabbix agent'
+      description: 'Disponibilidade dos componentes Totvs por porta TCP em escuta (net.tcp.listen). Host: BGP-SRV-VAPP11.'
+      groups:
+        - name: 'Templates/Applications'
+      items:
+        - uuid: 6aea23977c614d9488c006b0a02096e6
+          name: 'Totvs License Server: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.LICENSE}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: 9180e96deb1647f498deaea5199ad692
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              name: 'Totvs fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Todos os componentes parados (aplicacao indisponivel). Veja em Latest data.'
+              tags:
+                - tag: scope
+                  value: availability
+                - tag: aggregate
+                  value: '1'
+            - uuid: 61986a761f594f23a7692a1e89d4851b
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0'
+              name: 'Totvs License Server fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$TOTVS.PORT.LICENSE}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: df0972173004489a8dbfc9bc985c1389
+          name: 'Totvs DBAccess Master: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.DBMASTER}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: b2f12fa8d7434ecaafc0a714f642261c
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0'
+              name: 'Totvs DBAccess Master fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$TOTVS.PORT.DBMASTER}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 28eee4b9d1cc4685903e128fc429db32
+          name: 'Totvs DBAccess Slave: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.DBSLAVE}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: e5989b8e9b45422c9e17de76e1621280
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0'
+              name: 'Totvs DBAccess Slave fora do ar em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$TOTVS.PORT.DBSLAVE}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: bcc4272b338247749da313c54f84d386
+          name: 'Totvs Broker Smartclient: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.BROKER}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: 6c41c7ddf63e40389a4a9148d96e18a2
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0'
+              name: 'Totvs Broker Smartclient fora do ar em {HOST.NAME}'
+              priority: HIGH
+              description: 'Componente parado: {$TOTVS.PORT.BROKER}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: bbba20bf962c430d859c8f462fd2ee45
+          name: 'Totvs App Server Monitor: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.MONITOR}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: 6c9478605a70485692d8c913def296ba
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0'
+              name: 'Totvs Monitor fora do ar em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$TOTVS.PORT.MONITOR}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+        - uuid: 068d4090a39c46f4a1b6a3cec76d1cd6
+          name: 'Totvs TSS NF-e: porta em escuta'
+          type: ZABBIX_PASSIVE
+          key: 'net.tcp.listen[{$TOTVS.PORT.TSS}]'
+          delay: 1m
+          value_type: UNSIGNED
+          tags:
+            - tag: component
+              value: 'totvs'
+          triggers:
+            - uuid: 92520258de754f6090f1c2b8358ad69a
+              expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              name: 'Totvs TSS NF-e fora do ar em {HOST.NAME}'
+              priority: AVERAGE
+              description: 'Componente parado: {$TOTVS.PORT.TSS}.'
+              dependencies:
+                - name: 'Totvs fora do ar em {HOST.NAME}'
+                  expression: 'max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.LICENSE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBMASTER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.DBSLAVE}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.BROKER}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.MONITOR}],#3)=0 and max(/App Totvs por Zabbix agent/net.tcp.listen[{$TOTVS.PORT.TSS}],#3)=0'
+              tags:
+                - tag: scope
+                  value: availability
+      macros:
+        - macro: '{$TOTVS.PORT.LICENSE}'
+          value: '17501'
+          description: 'Porta TCP do componente.'
+        - macro: '{$TOTVS.PORT.DBMASTER}'
+          value: '17100'
+          description: 'Porta TCP do componente.'
+        - macro: '{$TOTVS.PORT.DBSLAVE}'
+          value: '17101'
+          description: 'Porta TCP do componente.'
+        - macro: '{$TOTVS.PORT.BROKER}'
+          value: '17200'
+          description: 'Porta TCP do componente.'
+        - macro: '{$TOTVS.PORT.MONITOR}'
+          value: '17210'
+          description: 'Porta TCP do componente.'
+        - macro: '{$TOTVS.PORT.TSS}'
+          value: '1307'
+          description: 'Porta TCP do componente.'
+    - uuid: a238a00d283c4584bfd1864818608930
+      template: 'Role - Controlador de Dominio Primario On-Prem'
+      name: 'Role - Controlador de Dominio Primario On-Prem'
+      description: 'DC primario on-premises: DHCP, Spooler, DNS, AD DS e RADIUS.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App DHCP Server por Zabbix agent'
+        - name: 'App Print Spooler por Zabbix agent'
+        - name: 'App DNS Server por Zabbix agent'
+        - name: 'App Active Directory DS por Zabbix agent'
+        - name: 'App NPS RADIUS por Zabbix agent'
+    - uuid: aa6ffbe19aa14d1cacb782a73549d9cc
+      template: 'Role - Controlador de Dominio Secundario'
+      name: 'Role - Controlador de Dominio Secundario'
+      description: 'DC secundario: DNS e AD DS (sem DHCP/RADIUS).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App DNS Server por Zabbix agent'
+        - name: 'App Active Directory DS por Zabbix agent'
+    - uuid: 9b94cbae99eb41718e3758608e9d89de
+      template: 'Role - Controlador de Dominio Secundario com CA'
+      name: 'Role - Controlador de Dominio Secundario com CA'
+      description: 'DC secundario com Autoridade Certificadora: DNS, AD DS e AD CS (sem DHCP/RADIUS).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App DNS Server por Zabbix agent'
+        - name: 'App Active Directory DS por Zabbix agent'
+        - name: 'App AD Certificate Services por Zabbix agent'
+    - uuid: b0e4c2d20530426da830b6101d32d7fb
+      template: 'Role - Controlador de Dominio Azure'
+      name: 'Role - Controlador de Dominio Azure'
+      description: 'DC em VM Azure (sem DHCP/Spooler): AD DS, DNS e RADIUS.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Active Directory DS por Zabbix agent'
+        - name: 'App DNS Server por Zabbix agent'
+        - name: 'App NPS RADIUS por Zabbix agent'
+    - uuid: 629b5b90a71a438e9073988b25f14c71
+      template: 'Role - Servidor Hyper-V'
+      name: 'Role - Servidor Hyper-V'
+      description: 'No de virtualizacao Hyper-V em cluster: Hyper-V e Failover Cluster.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Hyper-V por Zabbix agent'
+        - name: 'App Failover Cluster por Zabbix agent'
+    - uuid: 567d72ac03ac47d4aba46784c3ad2746
+      template: 'Role - Zabbix Proxy'
+      name: 'Role - Zabbix Proxy'
+      description: 'Servidor que roda o servico Zabbix Proxy.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Zabbix Proxy por Zabbix agent'
+    - uuid: 5a3b36a64d4e428fb963b776e1842c74
+      template: 'Role - SQL Server'
+      name: 'Role - SQL Server'
+      description: 'Servidor de banco SQL Server: instancia e agent.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App SQL Server por Zabbix agent'
+        - name: 'App SQL Server Agent por Zabbix agent'
+    - uuid: 7ffb1f181890473ebbba0ba9726f813c
+      template: 'Role - Servidor IIS'
+      name: 'Role - Servidor IIS'
+      description: 'Servidor de aplicacao web IIS.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App IIS por Zabbix agent'
+    - uuid: d9a94b188ce04e7dba197e52ec578328
+      template: 'Role - Veeam Backup'
+      name: 'Role - Veeam Backup'
+      description: 'Servidor de backup Veeam (B&R): Backup, Data Mover, Broker, Catalog, Enterprise Manager, Mount e vPower NFS.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Veeam Backup por Zabbix agent'
+    - uuid: db1728132b5c468abeea6bfe1a7cf06a
+      template: 'Role - Entra Connect e Gateways'
+      name: 'Role - Entra Connect e Gateways'
+      description: 'Servidor de sincronia Entra Connect, Lansweeper e Power BI Gateway.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Entra Connect Sync por Zabbix agent'
+        - name: 'App Power BI Gateway por Zabbix agent'
+        - name: 'App Lansweeper por Zabbix agent'
+    - uuid: 512cb4f7b76e483b866c90822c41ba79
+      template: 'Role - Veeam ONE'
+      name: 'Role - Veeam ONE'
+      description: 'Servidor Veeam ONE (monitoracao): Monitoring, Reporting e Analytics.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Veeam ONE por Zabbix agent'
+    - uuid: acc7dcb9d59748d6a865c709d68c4f9d
+      template: 'Role - Dimep'
+      name: 'Role - Dimep'
+      description: 'Servidor Dimep (NewAccess Communication Service).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Dimep por Zabbix agent'
+    - uuid: f4129925d4e041fd9e9e8f4a8a0a3baf
+      template: 'Role - NodeRed'
+      name: 'Role - NodeRed'
+      description: 'Servidor da stack IoT: Node-RED, Mosquitto e Grafana (servicos Windows).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App NodeRed por Zabbix agent'
+    - uuid: 608c7b389f9d4d2d914480c6e40be560
+      template: 'Role - EAS Cozinha'
+      name: 'Role - EAS Cozinha'
+      description: 'Servidor EAS-Cozinha (processos TexHost, TexCom, TexDosif, InfoTint).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App EAS Cozinha por Zabbix agent'
+    - uuid: e53c20a3df914289895a4cdb03ec0f64
+      template: 'Role - Totvs'
+      name: 'Role - Totvs'
+      description: 'Servidor Totvs (componentes por porta TCP: license, DBAccess, broker, monitor, TSS).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Totvs por Zabbix agent'
+    - uuid: 22328259840c4114bb0bdd421671efde
+      template: 'Role - Fact Teares'
+      name: 'Role - Fact Teares'
+      description: 'Servidor Fact / Portal Teares (Dashboard).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Fact Teares por Zabbix agent'
+    - uuid: 7b357292b0d54990922424616b1f635b
+      template: 'Role - Veeam Repository Linux'
+      name: 'Role - Veeam Repository Linux'
+      description: 'Repositorio Veeam em Linux (systemd): data mover, imutabilidade, deployer e environment.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Veeam Repository Linux'
+    - uuid: 7e2c9205796c41a99771a7acadd86c08
+      template: 'Role - Cisco Dashboard e Oxidized Linux'
+      name: 'Role - Cisco Dashboard e Oxidized Linux'
+      description: 'Servidor Linux com Cisco Business Dashboard e Oxidized (backup de rede).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Cisco Dashboard e Oxidized Linux'
+    - uuid: f570867a138049a8beeb70a29008c767
+      template: 'Role - GLPI Linux'
+      name: 'Role - GLPI Linux'
+      description: 'Servidor GLPI em Linux (AZ-VM-APP-03): Apache, PHP-FPM e MySQL.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App GLPI Linux'
+    - uuid: 5472529e742d4f2c845fbd75fe77341a
+      template: 'Role - Grafana Linux'
+      name: 'Role - Grafana Linux'
+      description: 'Servidor Grafana em Linux.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Grafana Linux'
+    - uuid: d9736d38e68641c0978ccadaa60bd5d3
+      template: 'Role - Clickhouse Linux'
+      name: 'Role - Clickhouse Linux'
+      description: 'Servidor ClickHouse em Linux.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Clickhouse Linux'
+    - uuid: 945b2d88ec1d4952b9ed54c84d3427be
+      template: 'Role - Docker Linux'
+      name: 'Role - Docker Linux'
+      description: 'Host Docker em Linux (daemon up via systemd). Containers: linkar tambem o template oficial Docker by Zabbix agent 2.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Docker Linux'
+    - uuid: eeb83c3aeaac455a8c49e8cf8d843eff
+      template: 'Role - Fastweb Linux'
+      name: 'Role - Fastweb Linux'
+      description: 'Servidor Linux da integracao Fastweb (via cron).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Fastweb Linux'
+    - uuid: e697c32e84634079a4ef3764c75befe0
+      template: 'Role - PostgreSQL Linux'
+      name: 'Role - PostgreSQL Linux'
+      description: 'Servidor PostgreSQL em Linux.'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App PostgreSQL Linux'
+    - uuid: f3cff839386447738d97d7fccb72cfa1
+      template: 'Role - Clipnet'
+      name: 'Role - Clipnet'
+      description: 'Servidor Clipnet (banco Firebird - FirebirdServerDefaultInstance).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Clipnet por Zabbix agent'
+    - uuid: be9ebd5afa78487887cb32c0dd7065c8
+      template: 'Role - Deps Homolog'
+      name: 'Role - Deps Homolog'
+      description: 'Servidor de homologacao Deps (servico DepsIntegrador).'
+      groups:
+        - name: 'Templates/Roles'
+      templates:
+        - name: 'App Deps Homolog por Zabbix agent'
