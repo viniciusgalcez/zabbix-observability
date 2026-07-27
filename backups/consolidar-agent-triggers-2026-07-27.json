@@ -1,0 +1,45 @@
+{
+  "descricao": "Consolidacao de triggers duplicados 'Zabbix agent is not available'. Desativa o trigger MANUAL (templateid=0, agent.ping nodata) nos hosts que tambem tem a versao do TEMPLATE (zabbix[host,agent,available]) ativa. Objetivo: 1 unico alarme de agent-down por host.",
+  "data": "2026-07-27",
+  "metodo_reverter": "Para reativar: trigger.update status=0 em cada triggerid da lista 'desativar'. Para restaurar dependencias: 49640 -> [38118,39126], 49765 -> [38212,39134].",
+  "NAO_DESATIVAR": {
+    "triggerid": "50172",
+    "host": "AZ-VM-APP-03-DB",
+    "motivo": "unico trigger de agent-down do host (sem versao de template); e pai da dependencia do MySQL 50262"
+  },
+  "dependencias_ajustadas": [
+    { "child": "49640", "host": "BGP-SRV-VAPP12", "antes": ["38118", "39126"], "depois": ["39126"] },
+    { "child": "49765", "host": "BGP-SRV-VAPP29", "antes": ["38212", "39134"], "depois": ["39134"] }
+  ],
+  "desativar_status_1": [
+    { "triggerid": "25236", "host": "SCL-SRV-FHV02", "template_mantido": "39082" },
+    { "triggerid": "25391", "host": "SCL-SRV-V03", "template_mantido": "39084" },
+    { "triggerid": "25414", "host": "SCL-SRV-VAPP01", "template_mantido": "39086" },
+    { "triggerid": "25443", "host": "SCL-SRV-VAPP14", "template_mantido": "39088" },
+    { "triggerid": "25472", "host": "SCL-SRV-VAPP15", "template_mantido": "39090" },
+    { "triggerid": "25515", "host": "SCL-SRV-V02", "template_mantido": "39092" },
+    { "triggerid": "25544", "host": "SCL-SRV-VAPP02", "template_mantido": "39094" },
+    { "triggerid": "25575", "host": "SCL-SRV-VAPP13", "template_mantido": "39096" },
+    { "triggerid": "37791", "host": "BGP-SRV-FHV01", "template_mantido": "39098" },
+    { "triggerid": "37814", "host": "BGP-SRV-FHV02", "template_mantido": "39100" },
+    { "triggerid": "37837", "host": "BGP-SRV-FHV03", "template_mantido": "39102" },
+    { "triggerid": "37888", "host": "BGP-SRV-V02", "template_mantido": "39106" },
+    { "triggerid": "37911", "host": "BGP-SRV-V03", "template_mantido": "39108" },
+    { "triggerid": "37934", "host": "BGP-SRV-V04", "template_mantido": "39110" },
+    { "triggerid": "38026", "host": "BGP-SRV-VAPP04", "template_mantido": "39118" },
+    { "triggerid": "38049", "host": "BGP-SRV-VAPP06", "template_mantido": "39120" },
+    { "triggerid": "38095", "host": "BGP-SRV-VAPP11", "template_mantido": "39124" },
+    { "triggerid": "38118", "host": "BGP-SRV-VAPP12", "template_mantido": "39126" },
+    { "triggerid": "38141", "host": "BGP-SRV-VAPP18", "template_mantido": "39128" },
+    { "triggerid": "38164", "host": "BGP-SRV-VAPP26", "template_mantido": "39130" },
+    { "triggerid": "38189", "host": "BGP-SRV-VAPP28", "template_mantido": "39132" },
+    { "triggerid": "38212", "host": "BGP-SRV-VAPP29", "template_mantido": "39134" },
+    { "triggerid": "38565", "host": "SCL-ETE-TB01", "template_mantido": "39136" },
+    { "triggerid": "38647", "host": "SCL-SRV-FHV03", "template_mantido": "39138" },
+    { "triggerid": "38793", "host": "SCL-SRV-VAPP03", "template_mantido": "39150" },
+    { "triggerid": "38816", "host": "SCL-SRV-VAPP12", "template_mantido": "39152" },
+    { "triggerid": "38948", "host": "SCL-TIN-TMXC01", "template_mantido": "39158" },
+    { "triggerid": "39112", "host": "BGP-SRV-V06", "template_mantido": "37957", "obs": "aqui o manual e o zabbix[...]/5m; template mantido e o agent.ping/30m" },
+    { "triggerid": "44265", "host": "SCL-SRV-V06", "template_mantido": "44251" }
+  ]
+}
