@@ -1,0 +1,38 @@
+{
+  "descricao": "Backup ANTES de criar dependencias de trigger (correlacao #1: servico depende de host-down). Estado original: todos sem dependencias.",
+  "data": "2026-07-27",
+  "metodo_reverter": "Para cada triggerid abaixo, rodar trigger.update com 'dependencies': [] para voltar ao estado original.",
+  "mudancas_aplicadas_ok": [
+    { "child": "48796", "child_desc": "Docker: Service is down", "host": "SCL-SRV-V07", "parents_add": ["48760"] },
+    { "child": "49639", "child_desc": "IIS (W3SVC) parado", "host": "BGP-SRV-VAPP10", "parents_add": ["46452"] },
+    { "child": "49640", "child_desc": "IIS (W3SVC) parado", "host": "BGP-SRV-VAPP12", "parents_add": ["38118", "39126"] },
+    { "child": "49765", "child_desc": "IIS (W3SVC) parado", "host": "BGP-SRV-VAPP29", "parents_add": ["38212", "39134"] }
+  ],
+  "bloqueado_trigger_descoberto_LLD": [
+    { "child": "46239", "child_desc": "Apache: Service is down", "host": "SCL-SRV-VAPP12", "motivo": "trigger descoberto por LLD; dependencia so via prototipo do template" },
+    { "child": "46241", "child_desc": "Apache: Process is not running", "host": "SCL-SRV-VAPP12", "motivo": "idem" },
+    { "child": "48088", "child_desc": "Apache: Service is down", "host": "BGP-SRV-VAPP04", "motivo": "idem" },
+    { "child": "48090", "child_desc": "Apache: Process is not running", "host": "BGP-SRV-VAPP04", "motivo": "idem" }
+  ],
+  "deixado_para_o_usuario_configurar": [
+    { "child": "50262", "child_desc": "MySQL: Service is down", "host": "AZ-VM-APP-03-DB", "parent_esperado": "50172 (Linux: Zabbix agent is not available)" }
+  ],
+  "nao_se_aplica_sem_host_down": [
+    { "triggerid": "44851", "desc": "PostgreSQL: Service is down", "host": "BGP-SRV-VAPP02-DB", "motivo": "monitorado remoto, sem trigger de host-down; o proprio servico e o sinal de disponibilidade" },
+    { "triggerid": "50288", "desc": "ClickHouse: Service is down", "host": "CLICKHOUSE-172.16.2.145", "motivo": "idem (porta/ODBC)" },
+    { "triggerid": "44703", "desc": "MSSQL: Service is unavailable", "host": "BGP-SRV-V04-DB", "motivo": "ODBC remoto, sem host-down" },
+    { "triggerid": "44759", "desc": "MSSQL: Service is unavailable", "host": "BGP-SRV-VAPP06-DB", "motivo": "ODBC remoto, sem host-down" },
+    { "triggerid": "44815", "desc": "MSSQL: Service is unavailable", "host": "SCL-SRV-VAPP02-DB", "motivo": "ODBC remoto, sem host-down" }
+  ],
+  "estado_original_dos_triggers_alvo": [
+    { "triggerid": "46239", "dependencies": [] },
+    { "triggerid": "46241", "dependencies": [] },
+    { "triggerid": "48088", "dependencies": [] },
+    { "triggerid": "48090", "dependencies": [] },
+    { "triggerid": "48796", "dependencies": [] },
+    { "triggerid": "49639", "dependencies": [] },
+    { "triggerid": "49640", "dependencies": [] },
+    { "triggerid": "49765", "dependencies": [] },
+    { "triggerid": "50262", "dependencies": [] }
+  ]
+}
