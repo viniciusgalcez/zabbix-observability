@@ -1,0 +1,13 @@
+{
+  "_backup": "Estado das dependencias das triggers de app (Web cenario falhou) ANTES de adicionar dependencia da trigger de indisponibilidade do MSSQL",
+  "_data": "2026-07-28",
+  "_contexto": "Correlacao app->banco via dependencia de trigger. Deps->BGP-SRV-V04 (44703), Deps Qa->BGP-SRV-VAPP06 (44759).",
+  "triggers": [
+    {"triggerid": "45792", "description": "Web cenario falhou: Deps - Cross Connection", "dependencies": []},
+    {"triggerid": "45793", "description": "Web cenario falhou: Deps - Home", "dependencies": [{"triggerid": "45222", "description": "MSSQL: DB 'DepsNet_prd': State is {ITEM.VALUE}"}]},
+    {"triggerid": "45794", "description": "Web cenario falhou: Deps - Vivo", "dependencies": []},
+    {"triggerid": "45795", "description": "Web cenario falhou: Deps API", "dependencies": [{"triggerid": "45222", "description": "MSSQL: DB 'DepsNet_prd': State is {ITEM.VALUE}"}]},
+    {"triggerid": "50129", "description": "Web cenario falhou: Deps API Qa.", "dependencies": []},
+    {"triggerid": "50130", "description": "Web cenario falhou: Deps Qa", "dependencies": []}
+  ]
+}
