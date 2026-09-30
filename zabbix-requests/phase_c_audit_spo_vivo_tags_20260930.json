@@ -1,0 +1,45 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value", "flags", "templateid", "expression", "recovery_expression", "comments"],
+        "triggerids": ["50308", "55144"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"],
+        "selectDependencies": ["triggerid", "description"],
+        "expandExpression": true
+      }
+    },
+    "save": "backups/phase_c_spo_vivo_cause_before_tags_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "cause_eventid"],
+        "eventids": ["18116214"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_c_spo_vivo_open_cause_event_tags_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "flags", "templateid", "priority", "status", "value"],
+        "hostids": ["10758"],
+        "selectTags": "extend",
+        "inherited": false,
+        "filter": {"flags": "4"},
+        "search": {"description": "ISP1_VIVO"},
+        "startSearch": false
+      }
+    },
+    "save": "backups/phase_c_spo_isp1_vivo_discovered_triggers_sample_20260930.json",
+    "quiet": true
+  }
+]

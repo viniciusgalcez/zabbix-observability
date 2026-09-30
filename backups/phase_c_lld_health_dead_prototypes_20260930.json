@@ -1,0 +1,22 @@
+[
+  {
+    "triggerid": "23666",
+    "description": "FortiGate: SD-WAN [{#HNAME}]:[{#IFNAME}]: Health check state is dead",
+    "priority": "4",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "{#IFNAME}"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "{#IFNAME}"
+      }
+    ]
+  }
+]

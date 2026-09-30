@@ -1,0 +1,5 @@
+[
+  {"arguments":{"method":"trigger.get","params":{"output":["triggerid","description","templateid","flags","status","value"],"triggerids":["43262","42710","43188"],"selectDiscoveryRule":"extend","selectDependencies":"extend","selectHosts":["hostid","host"]}},"save":"backups/audit_spo_vivo_sample_discovered_triggers_for_dependency_20260930.json","quiet":true},
+  {"arguments":{"method":"triggerprototype.get","params":{"output":"extend","hostids":["10758"],"search":{"description":"Health check state is dead"},"selectDependencies":"extend","selectDiscoveryRule":"extend","selectHosts":["hostid","host"]}},"save":"backups/audit_spo_vivo_health_prototypes_for_dependency_20260930.json","quiet":true},
+  {"arguments":{"method":"triggerprototype.get","params":{"output":"extend","hostids":["10758"],"search":{"description":"Tunnel down"},"selectDependencies":"extend","selectDiscoveryRule":"extend","selectHosts":["hostid","host"]}},"save":"backups/audit_spo_vivo_vpn_prototypes_for_dependency_20260930.json","quiet":true}
+]

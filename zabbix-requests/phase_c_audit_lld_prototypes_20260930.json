@@ -1,0 +1,41 @@
+[
+  {
+    "arguments": {
+      "method": "template.get",
+      "params": {
+        "output": ["templateid", "host", "name"],
+        "filter": {"host": "FortiGate by SNMP"}
+      }
+    },
+    "save": "backups/phase_c_template_fortigate_id_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {
+        "output": ["triggerid", "description", "expression", "priority", "status", "templateid"],
+        "templateids": ["10604"],
+        "selectTags": "extend",
+        "search": {"description": "High packets loss"},
+        "limit": 20
+      }
+    },
+    "save": "backups/phase_c_lld_packet_loss_prototypes_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {
+        "output": ["triggerid", "description", "priority", "status"],
+        "templateids": ["10604"],
+        "selectTags": "extend",
+        "search": {"description": "Health check state is dead"},
+        "limit": 20
+      }
+    },
+    "save": "backups/phase_c_lld_health_dead_prototypes_20260930.json",
+    "quiet": true
+  }
+]

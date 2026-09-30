@@ -1,0 +1,42 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {"output": "extend", "selectFilter": "extend", "selectOperations": "extend", "sortfield": "correlationid"}
+    },
+    "save": "backups/backup_all_correlations_before_link_roadmap_phase0_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "configuration.export",
+      "params": {"format": "json", "options": {"templates": ["10604"]}}
+    },
+    "save": "backups/backup_template_10604_fortigate_before_link_roadmap_phase0_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {"output": "extend", "search": {"name": "Teams"}, "searchByAny": true, "selectFilter": "extend", "selectOperations": "extend", "selectRecoveryOperations": "extend", "selectUpdateOperations": "extend", "sortfield": "actionid"}
+    },
+    "save": "backups/backup_teams_actions_before_link_roadmap_phase0_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "mediatype.get",
+      "params": {"output": "extend", "search": {"name": "Teams"}, "searchByAny": true, "selectMessageTemplates": "extend", "selectActions": ["actionid", "name", "status"]}
+    },
+    "save": "backups/backup_teams_mediatypes_before_link_roadmap_phase0_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {"output": "extend", "triggerids": ["43212", "53814", "53811", "45644", "45473", "42706", "54995"], "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectFunctions": "extend", "selectDiscoveryRule": "extend", "expandExpression": true, "expandDescription": true}
+    },
+    "save": "backups/backup_p0_link_triggers_before_link_roadmap_phase0_20260930.json",
+    "quiet": true
+  }
+]

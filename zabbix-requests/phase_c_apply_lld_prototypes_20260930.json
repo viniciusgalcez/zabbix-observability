@@ -1,0 +1,35 @@
+[
+  {
+    "arguments": {
+      "method": "triggerprototype.update",
+      "params": {
+        "triggerid": "23665",
+        "tags": [
+          {"tag": "sdwan-if", "value": "{#IFNAME}"},
+          {"tag": "depends-on", "value": "{#IFNAME}"},
+          {"tag": "scope", "value": "performance"},
+          {"tag": "class", "value": "network"},
+          {"tag": "component", "value": "sd-wan"}
+        ]
+      }
+    },
+    "save": "backups/phase_c_apply_prototype_23665_scope_performance_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.update",
+      "params": {
+        "triggerid": "23666",
+        "tags": [
+          {"tag": "alert-type", "value": "hk-state"},
+          {"tag": "depends-on", "value": "{#IFNAME}"},
+          {"tag": "sdwan-if", "value": "{#IFNAME}"},
+          {"tag": "scope", "value": "availability"},
+          {"tag": "class", "value": "network"},
+          {"tag": "component", "value": "sd-wan"}
+        ]
+      }
+    },
+    "save": "backups/phase_c_apply_prototype_23666_scope_availability_20260930.json"
+  }
+]

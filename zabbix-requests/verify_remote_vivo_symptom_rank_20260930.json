@@ -1,0 +1,47 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "name", "cause_eventid", "acknowledged"],
+        "eventids": [
+          "18499653",
+          "18499652",
+          "18499622",
+          "18499621",
+          "18499620",
+          "18499373",
+          "18499372",
+          "18499349",
+          "18499343",
+          "18499342",
+          "18499293",
+          "18499288",
+          "18499284",
+          "18499276",
+          "18499275",
+          "18499274",
+          "18499273",
+          "18116214"
+        ],
+        "selectAcknowledges": ["action", "clock", "message"]
+      }
+    },
+    "save": "backups/verify_remote_vivo_symptom_rank_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "cause_eventid"],
+        "selectTags": ["tag", "value"],
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 300
+      }
+    },
+    "save": "backups/verify_open_problems_after_vivo_rank_20260930.json",
+    "quiet": true
+  }
+]

@@ -1,0 +1,4097 @@
+[
+  {
+    "correlationid": "12",
+    "name": "LINK VIVO SCL: fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F or G)",
+      "eval_formula": "A and (B or C or D or E or F or G)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "P2MTZ",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "23",
+    "name": "FIA ISP2 (CLARO BANDA LARGA): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B and (C or D or E or F or G)",
+      "eval_formula": "A and B and (C or D or E or F or G)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "31",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "lan3",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP2-CLARO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "24",
+    "name": "BRAS ISP1 (CLARO): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "eval_formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BRAS_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "98",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "wan",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-CLARO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "15",
+    "name": "SCL ALGAR: fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E)",
+      "eval_formula": "A and (B or C or D or E)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SCL_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "ISP2-ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "25",
+    "name": "DENIM ISP2: fechar pontas remotas (VPN_DENIM-02) - sintomas novos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "17",
+    "name": "SPO VIVO: fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F or G)",
+      "eval_formula": "A and (B or C or D or E or F or G)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "ISP1-VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "26",
+    "name": "DENIM ISP2: fechar pontas remotas (VPN_DENIM-02) - sintomas ja abertos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "DENIM_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "18",
+    "name": "DENIM ISP1: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "eval_formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "99",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "wan",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-FLEXUS",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "19",
+    "name": "DENIM ISP2: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B and (C or D or E or F or G)",
+      "eval_formula": "A and B and (C or D or E or F or G)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "99",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "lan3",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "ISP2-ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "7",
+    "name": "LINK CROSSCNT BGP: fechar sintomas enquanto LINK CROSSCNT ESTIVER DOWN",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F)",
+      "eval_formula": "A and (B or C or D or E or F)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BGP_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "CROSSCNT",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BGPISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "BGP_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "BGP_ISP1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "20",
+    "name": "BGP CROSSCNT (ISP1): fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F)",
+      "eval_formula": "A and (B or C or D or E or F)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BGP_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "CROSSCNT",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BGPISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "BGP_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "BGP_ISP1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "36",
+    "name": "SCL VPN ISP1 (VIVO): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SCL_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "AZ_SCL_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO2_T1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "SCL1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "4",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "M"
+        },
+        {
+          "type": "4",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "N"
+        },
+        {
+          "type": "4",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "O"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "P"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "11",
+    "name": "LINK VIVO SCL: fechar sintomas novos enquanto LINK VIVO ESTIVER DOWN",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "eval_formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "28",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "14",
+    "name": "SCL ALGAR: fechar sintomas enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F)",
+      "eval_formula": "A and ((B and (C or D)) or E or F)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SCL_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "28",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP2-ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "16",
+    "name": "SPO VIVO: fechar sintomas enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "eval_formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "29",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "8",
+    "name": "LINK ALGAR SPO: fechar sintomas enquanto LINK ALGAR ESTIVER DOWN",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F)",
+      "eval_formula": "A and ((B and (C or D)) or E or F)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "29",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "SYSTEXTIL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "13",
+    "name": "LINK ALGAR SPO: fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F)",
+      "eval_formula": "A and (B or C or D or E or F)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SPO_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "SPO_ALGAR",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "MTZISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "MTZ_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "SYSTEXTIL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "22",
+    "name": "FIA ISP1 (CLARO DEDICADO): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "eval_formula": "A and B and (C or D or E or F or G or H or I or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "31",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "wan",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-CLARO-DEDICADO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "27",
+    "name": "DENIM ISP1: fechar pontas remotas (VPN_DENIM-01) - sintomas novos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "28",
+    "name": "DENIM ISP1: fechar pontas remotas (VPN_DENIM-01) - sintomas ja abertos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "DENIM_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "29",
+    "name": "FIA ISP1: fechar pontas remotas (FIACAO1) - sintomas novos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "30",
+    "name": "FIA ISP1: fechar pontas remotas (FIACAO1) - sintomas ja abertos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "FIA_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "31",
+    "name": "FIA ISP2: fechar pontas remotas (FIACAO2) - sintomas novos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "32",
+    "name": "FIA ISP2: fechar pontas remotas (FIACAO2) - sintomas ja abertos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "FIA_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "33",
+    "name": "BRAS ISP1: fechar pontas remotas (BRAS-01) - sintomas novos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BRAS_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "34",
+    "name": "BRAS ISP1: fechar pontas remotas (BRAS-01) - sintomas ja abertos",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and B",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BRAS_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "39",
+    "name": "BGP VPN ISP1 (CROSSCNT): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or (I and (J or K or L)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or (I and (J or K or L)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BGP_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BGP_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BGPISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "BGP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "BGP_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_BGP_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "BGP-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO_T1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "40",
+    "name": "BGP VPN ISP1 (CROSSCNT): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or (I and (J or K or L)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or (I and (J or K or L)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BGP_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BGP_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BGPISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "BGP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "BGP_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "AZ_BGP_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "BGP-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO_T1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "37",
+    "name": "BRAS isolado (visao dos hubs): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BRAS_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-0",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "38",
+    "name": "BRAS isolado (visao dos hubs): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BRAS_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-0",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "41",
+    "name": "BGP VPN ISP2 (VIVO): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BGP_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BGP_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BGPISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "BGP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "BGP_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_BGP_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "BGP-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "42",
+    "name": "BGP VPN ISP2 (VIVO): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BGP_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BGP_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BGPISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "BGP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "BGP_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "AZ_BGP_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "BGP-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "44",
+    "name": "SCL VPN ISP2 (ALGAR): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J or (K and L))))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J or (K and L))))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SCL_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "SCL_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCL2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "AZ_SCL_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "47",
+    "name": "SPO VPN ISP2 (ALGAR): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "SPO_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_MTZ_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "SPO-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "49",
+    "name": "FIA VPN saida 1: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "FIA_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "54",
+    "name": "DENIM VPN saida 1: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "DENIM_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "DENIM_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "51",
+    "name": "FIA VPN saida 2: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F)) or G or H or I)",
+      "eval_formula": "(A or B) and ((C and (D or E or F)) or G or H or I)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "FIA_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "53",
+    "name": "DENIM VPN saida 1: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "DENIM_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "55",
+    "name": "DENIM VPN saida 2: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F)) or G)",
+      "eval_formula": "(A or B) and ((C and (D or E or F)) or G)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "DENIM_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "56",
+    "name": "DENIM VPN saida 2: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F)) or G)",
+      "eval_formula": "(A or B) and ((C and (D or E or F)) or G)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "DENIM_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "DENIM_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "57",
+    "name": "BRAS VPN saida 1: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BRAS_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BRAS_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "58",
+    "name": "BRAS VPN saida 1: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BRAS_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BRAS_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-01",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "45",
+    "name": "SPO VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_MTZ_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "AZ_MTZ_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "SPO-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO_T1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "M"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "59",
+    "name": "BRAS VPN saida 2: fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D or E)) or F)",
+      "eval_formula": "A and ((B and (C or D or E)) or F)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BRAS_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "BRAS-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "60",
+    "name": "BRAS VPN saida 2: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D or E)) or F)",
+      "eval_formula": "A and ((B and (C or D or E)) or F)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BRAS_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "BRAS-02",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "61",
+    "name": "DENIM isolado (visao dos hubs): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "DENIM_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "62",
+    "name": "DENIM isolado (visao dos hubs): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "DENIM_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-DENIM-CAPRI-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "63",
+    "name": "FIA isolado (visao dos hubs): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "FIA_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "64",
+    "name": "FIA isolado (visao dos hubs): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "FIA_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "65",
+    "name": "AZURE isolado (visao dos hubs): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "AZ_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "_AZ_W",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "AZ-VM-FW-01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "AZ_",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "66",
+    "name": "AZURE isolado (visao dos hubs): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or (C and (D or E)))",
+      "eval_formula": "A and (B or (C and (D or E)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "AZ_VPN_HUBS",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "_AZ_W",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "AZ-VM-FW-01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "AZ_",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "E"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "3",
+    "name": "LINK VIVO BGP: fechar sintomas enquanto LINK VIVO ESTIVER DOWN",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F or G or H or I or J or K or L)",
+      "eval_formula": "A and (B or C or D or E or F or G or H or I or J or K or L)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "BGP_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "ISP2_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "BGPISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "BGP_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "BGP_ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "BGP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "AZ_BGP_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "SYSTEXTIL1ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "SYSTEXTIL2ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "21",
+    "name": "BGP VIVO (ISP2): fechar sintomas abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F or G or H or I or J or K or L)",
+      "eval_formula": "A and (B or C or D or E or F or G or H or I or J or K or L)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "BGP_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "ISP2_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BGPISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "BGP_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "BGP_ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "BGP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "AZ_BGP_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "SYSTEXTIL1ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "SYSTEXTIL2ISP2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "35",
+    "name": "SCL VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SCL_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "AZ_SCL_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO2_T1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "SCL1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "5",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "M"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "N"
+        },
+        {
+          "type": "5",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "O"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "P"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "43",
+    "name": "SCL VPN ISP2 (ALGAR): fechar sintomas novos enquanto causa ativa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J or (K and L))))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J or (K and L))))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SCL_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "SCL_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "SCL2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_SCL_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "ISP2_ALGAR",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "50",
+    "name": "FIA VPN saida 1: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "eval_formula": "(A or B) and ((C and (D or E or F or G or H or I)) or J)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "FIA_WAN1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "FIA_ISP1",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_BGP",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "48",
+    "name": "SPO VPN ISP2 (ALGAR): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or (H and (I or J)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SPO_ISP2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "SPO_ALGAR",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "MTZISP2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "P2MTZ2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "MTZ_AZ_W2",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "AZ_MTZ_W1_W2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "SPO-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "SPO_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "46",
+    "name": "SPO VPN ISP1 (VIVO): fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SPO_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "AZ_MTZ_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "AZ_MTZ_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "SPO-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO_T1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "M"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "52",
+    "name": "FIA VPN saida 2: fechar sintomas ja abertos ao disparar causa",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and ((C and (D or E or F)) or G or H or I)",
+      "eval_formula": "(A or B) and ((C and (D or E or F)) or G or H or I)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "FIA_WAN2_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "FIA_ISP2",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "VPN-BGP-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN-MTZ-02",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "BGP_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "SPO_SCL_FIACAO2",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  }
+]

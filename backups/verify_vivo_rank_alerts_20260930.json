@@ -1,0 +1,20 @@
+[
+  {
+    "alertid": "83864",
+    "eventid": "18116214",
+    "clock": "1790593700",
+    "status": "1",
+    "error": "",
+    "mediatypeid": "53",
+    "sendto": "https://defaultd2c9c2b5ff834631809b8f520e4912.d0.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/29/workflows/f5d6fbc8ac0844669cf3543d378ecee2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QMqkSwsXgGHljpELxXXuWk1RccX880RmFVPi_3IAcYA"
+  },
+  {
+    "alertid": "83863",
+    "eventid": "18116214",
+    "clock": "1790593400",
+    "status": "2",
+    "error": "Sending failed: Bad Request: chat not found",
+    "mediatypeid": "65",
+    "sendto": "-1005145663126"
+  }
+]

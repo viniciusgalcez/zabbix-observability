@@ -1,0 +1,392 @@
+[
+  {
+    "itemid": "93105",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Bits received",
+    "key_": "net.if.in[ifHCInOctets.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "6048"
+  },
+  {
+    "itemid": "93243",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Bits sent",
+    "key_": "net.if.out[ifHCOutOctets.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "8"
+  },
+  {
+    "itemid": "93013",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Inbound packets discarded",
+    "key_": "net.if.in.discards[ifInDiscards.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93059",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Inbound packets with errors",
+    "key_": "net.if.in.errors[ifInErrors.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93381",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Interface type",
+    "key_": "net.if.type[ifType.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711358",
+    "lastvalue": "135"
+  },
+  {
+    "itemid": "93335",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Operational status",
+    "key_": "net.if.status[ifOperStatus.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "2"
+  },
+  {
+    "itemid": "93151",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Outbound packets discarded",
+    "key_": "net.if.out.discards[ifOutDiscards.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93197",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Outbound packets with errors",
+    "key_": "net.if.out.errors[ifOutErrors.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711418",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93289",
+    "name": "Interface ISP1_VIVO(ISP1-VIVO): Speed",
+    "key_": "net.if.speed[ifHighSpeed.17]",
+    "status": "1",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790711358",
+    "lastvalue": "2000000000"
+  },
+  {
+    "itemid": "93527",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state",
+    "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1"
+  },
+  {
+    "itemid": "93427",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Jitter",
+    "key_": "sdwan_health.jitter[fgVWLHealthCheckLinkJitter.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93447",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Latency",
+    "key_": "sdwan_health.latency[fgVWLHealthCheckLinkLatency.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93467",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Packets loss",
+    "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "100"
+  },
+  {
+    "itemid": "93487",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Packets received per second",
+    "key_": "sdwan_health.received[fgVWLHealthCheckLinkPacketRecv.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93507",
+    "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Packets sent per second",
+    "key_": "sdwan_health.sent[fgVWLHealthCheckLinkPacketSend.13]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1.9669133651363946"
+  },
+  {
+    "itemid": "93529",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state",
+    "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1"
+  },
+  {
+    "itemid": "93429",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Jitter",
+    "key_": "sdwan_health.jitter[fgVWLHealthCheckLinkJitter.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93449",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Latency",
+    "key_": "sdwan_health.latency[fgVWLHealthCheckLinkLatency.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93469",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Packets loss",
+    "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "100"
+  },
+  {
+    "itemid": "93489",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Packets received per second",
+    "key_": "sdwan_health.received[fgVWLHealthCheckLinkPacketRecv.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93509",
+    "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Packets sent per second",
+    "key_": "sdwan_health.sent[fgVWLHealthCheckLinkPacketSend.9]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1.9669133651363946"
+  },
+  {
+    "itemid": "93540",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state",
+    "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1"
+  },
+  {
+    "itemid": "93440",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Jitter",
+    "key_": "sdwan_health.jitter[fgVWLHealthCheckLinkJitter.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93460",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Latency",
+    "key_": "sdwan_health.latency[fgVWLHealthCheckLinkLatency.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93480",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Packets loss",
+    "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "100"
+  },
+  {
+    "itemid": "93500",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Packets received per second",
+    "key_": "sdwan_health.received[fgVWLHealthCheckLinkPacketRecv.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93520",
+    "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Packets sent per second",
+    "key_": "sdwan_health.sent[fgVWLHealthCheckLinkPacketSend.11]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1.9669133651363946"
+  },
+  {
+    "itemid": "93528",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state",
+    "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1"
+  },
+  {
+    "itemid": "93428",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Jitter",
+    "key_": "sdwan_health.jitter[fgVWLHealthCheckLinkJitter.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93448",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Latency",
+    "key_": "sdwan_health.latency[fgVWLHealthCheckLinkLatency.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93468",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Packets loss",
+    "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "100"
+  },
+  {
+    "itemid": "93488",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Packets received per second",
+    "key_": "sdwan_health.received[fgVWLHealthCheckLinkPacketRecv.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93508",
+    "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Packets sent per second",
+    "key_": "sdwan_health.sent[fgVWLHealthCheckLinkPacketSend.15]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1.9669133651363946"
+  },
+  {
+    "itemid": "93524",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state",
+    "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "1"
+  },
+  {
+    "itemid": "93424",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Jitter",
+    "key_": "sdwan_health.jitter[fgVWLHealthCheckLinkJitter.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93444",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Latency",
+    "key_": "sdwan_health.latency[fgVWLHealthCheckLinkLatency.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93464",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Packets loss",
+    "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "100"
+  },
+  {
+    "itemid": "93484",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Packets received per second",
+    "key_": "sdwan_health.received[fgVWLHealthCheckLinkPacketRecv.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0"
+  },
+  {
+    "itemid": "93504",
+    "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Packets sent per second",
+    "key_": "sdwan_health.sent[fgVWLHealthCheckLinkPacketSend.17]",
+    "status": "0",
+    "state": "0",
+    "error": "",
+    "lastclock": "1790772799",
+    "lastvalue": "0.9834566825681973"
+  }
+]

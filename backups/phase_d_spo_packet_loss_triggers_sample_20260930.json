@@ -1,0 +1,496 @@
+[
+  {
+    "triggerid": "43231",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43232",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP2_ALGAR]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP2_ALGAR"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "43233",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W2_W1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W2_W1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W2_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43234",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43235",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43236",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43237",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43238",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43239",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP2_SCLISP2]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP2_SCLISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_SCLISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43240",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP2_ALGAR]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP2_ALGAR"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "43241",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP2_ALGAR]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP2_ALGAR"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP2_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "43242",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43244",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP2_ALGAR]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP2_ALGAR"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP2_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "43245",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP2_BGPISP1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_BGPISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP2_BGPISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43246",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43247",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43248",
+    "description": "FortiGate: SD-WAN [HK_ISP2]:[ISP2_ALGAR]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP2_ALGAR"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "43249",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP2_SCLISP1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP2_SCLISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_SCLISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43250",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "47628",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP2_BGPISP2]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP2_BGPISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_BGPISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "50823",
+    "description": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "51775",
+    "description": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-02]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-02"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "51807",
+    "description": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "51828",
+    "description": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP2_BRAS-02]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP2_BRAS-02"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_BRAS-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54100",
+    "description": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO1"
+      }
+    ]
+  },
+  {
+    "triggerid": "54114",
+    "description": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO2]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO2"
+      }
+    ]
+  }
+]

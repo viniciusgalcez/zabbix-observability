@@ -1,0 +1,1735 @@
+[
+  {
+    "triggerid": "44702",
+    "description": "MSSQL: Percentage of work tables available from the work table cache is low",
+    "event_name": "MSSQL: Percentage of work tables available from the work table cache is low (below {$MSSQL.WORKTABLES_FROM_CACHE_RATIO.MIN.CRIT}% for 5m)",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1778850840",
+    "hosts": [
+      {
+        "hostid": "11003",
+        "host": "BGP-SRV-V04-DB",
+        "name": "BGP-SRV-V04 (MSSQL)"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ]
+  },
+  {
+    "triggerid": "45473",
+    "description": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP1_MTZISP1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1779203342",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "link",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "45813",
+    "description": "SCL-TIN-UTL01: cenário web indisponível",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1785131804",
+    "hosts": [
+      {
+        "hostid": "11021",
+        "host": "CLP",
+        "name": "CLP (Web)"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "53697",
+    "description": "Sem papel: Tray 2 em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "1",
+    "lastchange": "1786969244",
+    "hosts": [
+      {
+        "hostid": "10996",
+        "host": "BGP-PCP-COLOR01",
+        "name": "BGP-PCP-COLOR01"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "53547",
+    "description": "Toner baixo 10%: Toner preto em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "1",
+    "lastchange": "1787245831",
+    "hosts": [
+      {
+        "hostid": "10983",
+        "host": "SCL-PCP-COLOR01",
+        "name": "SCL-PCP-COLOR01"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "33269",
+    "description": "UPS: Active alarms on {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1788444005",
+    "hosts": [
+      {
+        "hostid": "10812",
+        "host": "SCL-EXP-UPS01",
+        "name": "SCL-EXP-UPS01 (Phoenixtec UPS)"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "37570",
+    "description": "Unavailable by ICMP ping",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1788455397",
+    "hosts": [
+      {
+        "hostid": "10713",
+        "host": "BGP-ACA-AP01",
+        "name": "BGP-ACA-AP01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "slahost",
+        "value": "{HOST.HOST}"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "sla",
+        "value": "hostdown"
+      }
+    ]
+  },
+  {
+    "triggerid": "53551",
+    "description": "Toner baixo 10%: Toner amarelo em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "1",
+    "lastchange": "1788544231",
+    "hosts": [
+      {
+        "hostid": "10983",
+        "host": "SCL-PCP-COLOR01",
+        "name": "SCL-PCP-COLOR01"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "53811",
+    "description": "FortiGate: Interface lan3(ISP2-): Link down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1789120758",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2-"
+      }
+    ]
+  },
+  {
+    "triggerid": "54995",
+    "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1789141400",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01",
+        "name": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn2"
+      }
+    ]
+  },
+  {
+    "triggerid": "53814",
+    "description": "FortiGate: Interface lan2(): Link down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1789413377",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "triggerid": "53566",
+    "description": "Toner baixo 10%: Toner ciano em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "1",
+    "lastchange": "1790276741",
+    "hosts": [
+      {
+        "hostid": "10993",
+        "host": "BGP-DRH-COLOR01",
+        "name": "BGP-DRH-COLOR01"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "53637",
+    "description": "Toner baixo 10%: Toner em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "1",
+    "lastchange": "1790704230",
+    "hosts": [
+      {
+        "hostid": "10982",
+        "host": "SCL-MAN-PB01",
+        "name": "SCL-MAN-PB01"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "42706",
+    "description": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790711264",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "43212",
+    "description": "FortiGate: Interface dmz(): Link down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790711298",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "13486",
+    "description": "Zabbix server: More than 100 items have been missing data for over 10 minutes",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790759811",
+    "hosts": [
+      {
+        "hostid": "10084",
+        "host": "Zabbix server",
+        "name": "Zabbix server"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ]
+  },
+  {
+    "triggerid": "54365",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767737",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01",
+        "name": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54375",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767737",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01",
+        "name": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "55004",
+    "description": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767742",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01",
+        "name": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "55010",
+    "description": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767742",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01",
+        "name": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "AZ_MTZ_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "54331",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767750",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01",
+        "name": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "55204",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767756",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01",
+        "name": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "50824",
+    "description": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767759",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "50823",
+    "description": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767759",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54991",
+    "description": "FortiGate: VPN AZ_MTZ_W1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767760",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01",
+        "name": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "53820",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767761",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "53829",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767761",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "54802",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767780",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54099",
+    "description": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767784",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54314",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767791",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01",
+        "name": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54324",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767791",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01",
+        "name": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "42704",
+    "description": "FortiGate: VPN P2MTZ1SCL2: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "51770",
+    "description": "FortiGate: VPN MTZISP1_BRAS-01: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42702",
+    "description": "FortiGate: VPN P2MTZ1SCL1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42710",
+    "description": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42712",
+    "description": "FortiGate: VPN P2MTZ1BGP1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "50821",
+    "description": "FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42344",
+    "description": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767982",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42376",
+    "description": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP1_MTZISP1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767982",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "42369",
+    "description": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767982",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "BGPISP2_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43256",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "51808",
+    "description": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43267",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43236",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43234",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43237",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43238",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43242",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43246",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43247",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43255",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43257",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43231",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43270",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "51807",
+    "description": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "43262",
+    "description": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "54101",
+    "description": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43250",
+    "description": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43235",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43266",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "54100",
+    "description": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: High packets loss",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43254",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43258",
+    "description": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state is dead",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "42415",
+    "description": "FortiGate: VPN BGPISP2_MTZISP1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790768007",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42411",
+    "description": "FortiGate: VPN BGPISP1_MTZISP1: Tunnel down",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "3",
+    "lastchange": "1790768007",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01",
+        "name": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "51487",
+    "description": "Temperature sensor 1 is above warning threshold (79C)",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790773362",
+    "hosts": [
+      {
+        "hostid": "10818",
+        "host": "BGP-TEC-SW02",
+        "name": "BGP-TEC-SW02 (CBS350-48P-4X)"
+      }
+    ],
+    "tags": []
+  },
+  {
+    "triggerid": "53638",
+    "description": "Toner vazio: Toner em {HOST.NAME}",
+    "event_name": "",
+    "value": "1",
+    "status": "0",
+    "priority": "2",
+    "lastchange": "1790775930",
+    "hosts": [
+      {
+        "hostid": "10982",
+        "host": "SCL-MAN-PB01",
+        "name": "SCL-MAN-PB01"
+      }
+    ],
+    "tags": []
+  }
+]

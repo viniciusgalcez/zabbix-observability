@@ -1,0 +1,381 @@
+[
+  {
+    "eventid": "17779567",
+    "source": "0",
+    "object": "0",
+    "objectid": "55144",
+    "clock": "1790408059",
+    "value": "1",
+    "acknowledged": "0",
+    "ns": "985244429",
+    "name": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "severity": "4",
+    "r_eventid": "0",
+    "c_eventid": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "suppressed": "0",
+    "cause_eventid": "0",
+    "acknowledges": [],
+    "opdata": "",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_BRAGANCA"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ_TO_AZURE"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_BRAS"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_DENIM"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_SAOCARLOS_FIACAO"
+      },
+      {
+        "tag": "interface",
+        "value": "SPO_SCL_FIACAO1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18116214",
+    "source": "0",
+    "object": "0",
+    "objectid": "50308",
+    "clock": "1790593399",
+    "value": "1",
+    "acknowledged": "0",
+    "ns": "148260667",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "severity": "4",
+    "r_eventid": "0",
+    "c_eventid": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "suppressed": "0",
+    "cause_eventid": "0",
+    "acknowledges": [],
+    "opdata": "",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "health-check",
+        "value": "sla_internet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499624",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767990",
+    "value": "1",
+    "acknowledged": "0",
+    "ns": "782129370",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "severity": "3",
+    "r_eventid": "18500471",
+    "c_eventid": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "suppressed": "0",
+    "cause_eventid": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1684",
+        "userid": "32",
+        "clock": "1790772493",
+        "message": "",
+        "action": "1",
+        "old_severity": "0",
+        "new_severity": "0",
+        "suppress_until": "0",
+        "taskid": "0",
+        "username": "MCP",
+        "name": "MCP Read Only",
+        "surname": ""
+      }
+    ],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499651",
+    "source": "0",
+    "object": "0",
+    "objectid": "43262",
+    "clock": "1790767999",
+    "value": "1",
+    "acknowledged": "0",
+    "ns": "987202928",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state is dead",
+    "severity": "4",
+    "r_eventid": "0",
+    "c_eventid": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "suppressed": "0",
+    "cause_eventid": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ_TO_AZURE"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ],
+    "urls": []
+  }
+]

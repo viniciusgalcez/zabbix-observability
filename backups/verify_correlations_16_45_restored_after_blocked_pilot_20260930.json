@@ -1,0 +1,184 @@
+[
+  {
+    "correlationid": "16",
+    "name": "SPO VIVO: fechar sintomas enquanto causa ativa",
+    "description": "",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "eval_formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "29",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "45",
+    "name": "SPO VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+    "description": "Também aceita a causa física SPO_VIVO para correlacionar os mesmos sintomas de VPN.",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or (J and (K or L or M)))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "AZ_MTZ_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "AZ_MTZ_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "VPN-MTZ-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SPO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "SPO-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "5",
+          "value": "BGP_SCL_FIACAO_T1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "M"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  }
+]

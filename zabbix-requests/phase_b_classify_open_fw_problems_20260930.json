@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "cause_eventid", "acknowledged"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 500
+      }
+    },
+    "save": "backups/phase_b_all_fw_open_problems_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "clock", "severity", "cause_eventid", "value"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "source": 0,
+        "object": 0,
+        "value": 1,
+        "selectHosts": ["hostid", "host"],
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 200
+      }
+    },
+    "save": "backups/phase_b_fw_problem_events_raw_20260930.json",
+    "quiet": true
+  }
+]

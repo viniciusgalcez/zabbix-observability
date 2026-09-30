@@ -1,0 +1,402 @@
+[
+  {
+    "correlationid": "12",
+    "name": "LINK VIVO SCL: fechar sintomas abertos ao disparar causa",
+    "description": "Quando a causa HK_VIVO dispara (apos debounce), fecha sintomas ja abertos no cascade SCL VIVO. Necessario porque a causa dispara depois dos sintomas.",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and (B or C or D or E or F or G)",
+      "eval_formula": "A and (B or C or D or E or F or G)",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "P2MTZ",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "36",
+    "name": "SCL VPN ISP1 (VIVO): fechar sintomas ja abertos ao disparar causa",
+    "description": "Causa SCL_ISP1_VPN. Rede de seguranca: quando a causa abre, fecha sintomas que ja estavam abertos. Também aceita a causa física HK_VIVO para correlacionar os mesmos sintomas de VPN.",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "conditions": [
+        {
+          "type": "5",
+          "value": "SCL_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "4",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "4",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "4",
+          "value": "AZ_SCL_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "4",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "4",
+          "value": "FIACAO2_T1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "4",
+          "value": "SCL1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "4",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "4",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "4",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "4",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "M"
+        },
+        {
+          "type": "4",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "N"
+        },
+        {
+          "type": "4",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "O"
+        },
+        {
+          "type": "4",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "P"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "0"
+      }
+    ]
+  },
+  {
+    "correlationid": "11",
+    "name": "LINK VIVO SCL: fechar sintomas novos enquanto LINK VIVO ESTIVER DOWN",
+    "description": "Causa HK_VIVO (SCL ISP1_VIVO). Fecha sintomas novos (ISP1_VIVO, SCLISP1, SCL_AZ_W1, VPN_SCL, P2MTZ*SCL) enquanto a causa estiver ativa.",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "eval_formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "28",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "HK_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "H"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  },
+  {
+    "correlationid": "35",
+    "name": "SCL VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+    "description": "Causa SCL_ISP1_VPN. Fecha sintomas de tunel/health-check que dependem da saida VIVO do SCL, nas duas pontas (SCL, BGP, SPO, DENIM, FIA, BRAS, Azure), enquanto a causa estiver aberta. Também aceita a causa física HK_VIVO para correlacionar os mesmos sintomas de VPN.",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "eval_formula": "(A or B) and (C or D or E or F or G or H or I or J or K or (L and M and N) or (O and P))",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SCL_ISP1_VPN",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "4",
+          "value": "HK_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "SCLISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "SCL_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "AZ_SCL_W1_W1",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "VPN_DENIM-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "FIACAO2_T1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        },
+        {
+          "type": "5",
+          "value": "SCL1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "I"
+        },
+        {
+          "type": "5",
+          "value": "VPN-SCL-01",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "J"
+        },
+        {
+          "type": "5",
+          "value": "VPN_SCL",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "K"
+        },
+        {
+          "type": "5",
+          "value": "SCL-CPD-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "L"
+        },
+        {
+          "type": "5",
+          "value": "GLPI",
+          "tag": "health-check",
+          "operator": "0",
+          "formulaid": "M"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "0",
+          "formulaid": "N"
+        },
+        {
+          "type": "5",
+          "value": "BR-SCL-FIA-FW01",
+          "tag": "slahost",
+          "operator": "0",
+          "formulaid": "O"
+        },
+        {
+          "type": "5",
+          "value": "hostdown",
+          "tag": "sla",
+          "operator": "0",
+          "formulaid": "P"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  }
+]

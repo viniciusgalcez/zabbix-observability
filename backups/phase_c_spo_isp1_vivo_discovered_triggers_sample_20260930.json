@@ -1,0 +1,298 @@
+[
+  {
+    "triggerid": "43050",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Ethernet has changed to lower speed than it was before",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "1",
+    "status": "1",
+    "value": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ]
+  },
+  {
+    "triggerid": "43096",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High bandwidth usage",
+    "event_name": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High bandwidth usage (>{$IF.UTIL.MAX:\"ISP1_VIVO\"}%)",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "1",
+    "value": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ]
+  },
+  {
+    "triggerid": "43142",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High error rate",
+    "event_name": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High error rate (>{$IF.ERRORS.WARN:\"ISP1_VIVO\"} for 5m)",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "1",
+    "value": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ]
+  },
+  {
+    "triggerid": "43188",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Link down",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "3",
+    "status": "1",
+    "value": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1-VIVO"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "43231",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43234",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43235",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43236",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43247",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "2",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43251",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "4",
+    "status": "1",
+    "value": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43254",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43255",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43256",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ]
+  },
+  {
+    "triggerid": "43267",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead",
+    "event_name": "",
+    "flags": "4",
+    "templateid": "0",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  }
+]

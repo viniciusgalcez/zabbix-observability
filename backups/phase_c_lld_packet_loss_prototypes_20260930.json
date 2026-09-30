@@ -1,0 +1,20 @@
+[
+  {
+    "triggerid": "23665",
+    "description": "FortiGate: SD-WAN [{#HNAME}]:[{#IFNAME}]: High packets loss",
+    "expression": "{33596}>{$SDWAN.HEALTH.IF.LOSS.WARN:\"{#HNAME}\"}",
+    "priority": "2",
+    "status": "0",
+    "templateid": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "{#IFNAME}"
+      },
+      {
+        "tag": "depends-on",
+        "value": "{#IFNAME}"
+      }
+    ]
+  }
+]

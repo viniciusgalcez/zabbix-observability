@@ -1,0 +1,5 @@
+[
+  {"arguments":{"method":"problem.get","params":{"output":"extend","hostids":["10758"],"selectTags":"extend","sortfield":"eventid","sortorder":"DESC","limit":100}},"save":"backups/verify_spo_vivo_live_problems_final_20260930.json","quiet":true},
+  {"arguments":{"method":"trigger.get","params":{"output":["triggerid","description","value","status","state","error"],"triggerids":["50308","55144"]}},"save":"backups/verify_spo_vivo_cause_triggers_final_20260930.json","quiet":true},
+  {"arguments":{"method":"correlation.get","params":{"output":["correlationid","name","status"],"correlationids":["16","17","45","46"]}},"save":"backups/verify_spo_vivo_correlations_final_20260930.json","quiet":true}
+]

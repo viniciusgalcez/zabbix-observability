@@ -1,0 +1,48 @@
+[
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          "18507049",
+          "18507048",
+          "18507047",
+          "18507046",
+          "18507045",
+          "18507042",
+          "18507039",
+          "18507037",
+          "18507036",
+          "18116214"
+        ],
+        "output": "extend",
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"]
+      }
+    },
+    "save": "backups/backup_new_spo_vivo_symptoms_before_rank_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da saida Vivo apos desligar close_new. Causa: 18116214 SPO_VIVO.",
+        "eventids": [
+          "18507049",
+          "18507048",
+          "18507047",
+          "18507046",
+          "18507045",
+          "18507042",
+          "18507039",
+          "18507037",
+          "18507036"
+        ]
+      }
+    },
+    "save": "backups/apply_rank_new_spo_vivo_symptoms_after_close_new_off_20260930.json"
+  }
+]

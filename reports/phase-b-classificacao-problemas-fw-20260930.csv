@@ -1,0 +1,58 @@
+eventid,host,name,severity,clock_local,age_hours,cause_eventid,link_cause,depends_on,classe,stale_gt_24h
+18499653,BGP-CPD-FW01,FortiGate: VPN BGPISP2_MTZISP1: Tunnel down,3,30/09/2026 08:33:27,3.1,18116214,,BGPISP2_MTZISP1,sintoma_ranqueado_spo_vivo,no
+18499652,BGP-CPD-FW01,FortiGate: VPN BGPISP1_MTZISP1: Tunnel down,3,30/09/2026 08:33:27,3.1,18116214,,BGPISP1_MTZISP1,sintoma_ranqueado_spo_vivo,no
+18499651,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZ_AZ_W1_W1,sintoma_ranqueado_spo_vivo,no
+18499650,SPO-CPD-FW01,FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_SCLISP2,sintoma_ranqueado_spo_vivo,no
+18499649,SPO-CPD-FW01,FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_SCLISP1,sintoma_ranqueado_spo_vivo,no
+18499648,SPO-CPD-FW01,FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499647,SPO-CPD-FW01,FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BGPISP1,sintoma_ranqueado_spo_vivo,no
+18499646,SPO-CPD-FW01,FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499645,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,SPO_SCL_FIACAO1,sintoma_ranqueado_spo_vivo,no
+18499644,SPO-CPD-FW01,FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499643,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BRAS-01,sintoma_ranqueado_spo_vivo,no
+18499642,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,SPO_SCL_FIACAO1,sintoma_ranqueado_spo_vivo,no
+18499641,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BRAS-01,sintoma_ranqueado_spo_vivo,no
+18499640,SPO-CPD-FW01,FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BGPISP2,sintoma_ranqueado_spo_vivo,no
+18499639,SPO-CPD-FW01,FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead,4,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499638,SPO-CPD-FW01,FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BGPISP1,sintoma_ranqueado_spo_vivo,no
+18499637,SPO-CPD-FW01,FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499636,SPO-CPD-FW01,FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_SCLISP2,sintoma_ranqueado_spo_vivo,no
+18499635,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZ_AZ_W1_W1,sintoma_ranqueado_spo_vivo,no
+18499634,SPO-CPD-FW01,FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_SCLISP1,sintoma_ranqueado_spo_vivo,no
+18499633,SPO-CPD-FW01,FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,MTZISP1_BGPISP2,sintoma_ranqueado_spo_vivo,no
+18499632,SPO-CPD-FW01,FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499631,SPO-CPD-FW01,FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499630,SPO-CPD-FW01,FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499629,SPO-CPD-FW01,FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss,2,30/09/2026 08:33:19,3.1,18116214,,ISP1_VIVO,sintoma_ranqueado_spo_vivo,no
+18499622,BGP-CPD-FW01,FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP1_MTZISP1]: Health check state is dead,4,30/09/2026 08:33:02,3.1,18116214,,BGPISP1_MTZISP1,sintoma_ranqueado_spo_vivo,no
+18499621,BGP-CPD-FW01,FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: Health check state is dead,4,30/09/2026 08:33:02,3.1,18116214,,BGPISP2_MTZISP1,sintoma_ranqueado_spo_vivo,no
+18499620,BGP-CPD-FW01,FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: High packets loss,2,30/09/2026 08:33:02,3.1,18116214,,BGPISP2_MTZISP1,sintoma_ranqueado_spo_vivo,no
+18499614,SPO-CPD-FW01,FortiGate: VPN MTZISP1_BRAS-01: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,MTZISP1_BRAS-01,sintoma_ranqueado_spo_vivo,no
+18499613,SPO-CPD-FW01,FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,MTZ_AZ_W1_W1,sintoma_ranqueado_spo_vivo,no
+18499612,SPO-CPD-FW01,FortiGate: VPN P2MTZ1BGP1: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,P2MTZ1BGP1,sintoma_ranqueado_spo_vivo,no
+18499611,SPO-CPD-FW01,FortiGate: VPN P2MTZ1BGP2: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,P2MTZ1BGP2,sintoma_ranqueado_spo_vivo,no
+18499610,SPO-CPD-FW01,FortiGate: VPN P2MTZ1SCL2: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,P2MTZ1SCL2,sintoma_ranqueado_spo_vivo,no
+18499609,SPO-CPD-FW01,FortiGate: VPN P2MTZ1SCL1: Tunnel down,3,30/09/2026 08:32:44,3.2,18116214,,P2MTZ1SCL1,sintoma_ranqueado_spo_vivo,no
+18499373,BR-SCL-FIA-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead,4,30/09/2026 08:29:51,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18499372,BR-SCL-FIA-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss,2,30/09/2026 08:29:51,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18499356,SPO-CPD-FW01,FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down,3,30/09/2026 08:29:44,3.2,18116214,,BGP_SCL_FIACAO_T1,sintoma_ranqueado_spo_vivo,no
+18499349,BRAS-CPD-FW01,FortiGate: VPN VPN_SPO: Tunnel down,3,30/09/2026 08:29:40,3.2,18116214,,VPN_SPO,sintoma_ranqueado_spo_vivo,no
+18499343,BRAS-CPD-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead,4,30/09/2026 08:29:21,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18499342,BRAS-CPD-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss,2,30/09/2026 08:29:21,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18499330,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state is dead,4,30/09/2026 08:29:19,3.2,18116214,,VPN_DENIM-01,sintoma_ranqueado_spo_vivo,no
+18499306,SPO-CPD-FW01,FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: High packets loss,2,30/09/2026 08:29:19,3.2,18116214,,VPN_DENIM-01,sintoma_ranqueado_spo_vivo,no
+18499293,AZ-VM-FW-01,FortiGate: VPN AZ_MTZ_W1: Tunnel down,3,30/09/2026 08:29:20,3.2,18116214,,AZ_MTZ_W1,sintoma_ranqueado_spo_vivo,no
+18499288,BR-DENIM-CAPRI-FW01,FortiGate: VPN VPN_SPO: Tunnel down,3,30/09/2026 08:29:16,3.2,18116214,,VPN_SPO,sintoma_ranqueado_spo_vivo,no
+18499284,BR-SCL-FIA-FW01,FortiGate: VPN VPN_SPO: Tunnel down,3,30/09/2026 08:29:10,3.2,18116214,,VPN_SPO,sintoma_ranqueado_spo_vivo,no
+18499276,AZ-VM-FW-01,FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: Health check state is dead,4,30/09/2026 08:29:02,3.2,18116214,,AZ_MTZ_W1_W1,sintoma_ranqueado_spo_vivo,no
+18499275,AZ-VM-FW-01,FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: High packets loss,2,30/09/2026 08:29:02,3.2,18116214,,AZ_MTZ_W1_W1,sintoma_ranqueado_spo_vivo,no
+18499274,BR-DENIM-CAPRI-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead,4,30/09/2026 08:28:57,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18499273,BR-DENIM-CAPRI-FW01,FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss,2,30/09/2026 08:28:57,3.2,18116214,,VPN-MTZ-01,sintoma_ranqueado_spo_vivo,no
+18379687,SPO-CPD-FW01,FortiGate: Interface dmz(): Link down,3,29/09/2026 16:48:18,18.9,0,,,independente_rede,no
+18379641,SPO-CPD-FW01,FortiGate: VPN SYSTEXTIL_W1: Tunnel down,3,29/09/2026 16:47:44,18.9,0,,SYSTEXTIL_W1,independente_rede,no
+18116214,SPO-CPD-FW01,SPO: Link HK_ISP1 (VIVO) DOWN,4,28/09/2026 08:03:19,51.6,0,SPO_VIVO,,causa_spo_vivo,no
+17779567,SPO-CPD-FW01,SPO: tuneis VPN pela saida 1 (VIVO) instaveis,4,26/09/2026 04:34:19,103.1,18116214,SPO_ISP1_VPN,,sintoma_ranqueado_spo_vivo,no
+17498586,BRAS-CPD-FW01,FortiGate: Interface lan2(): Link down,1,14/09/2026 16:16:17,379.4,0,,,independente_rede,yes
+17441868,AZ-VM-FW-01,FortiGate: VPN az-to-oci-vpn2: Tunnel down,1,11/09/2026 12:43:20,455.0,0,,az-to-oci-vpn2,independente_rede,yes
+17437418,BRAS-CPD-FW01,FortiGate: Interface lan3(ISP2-): Link down,1,11/09/2026 06:59:18,460.7,0,,ISP2-,independente_rede,yes
+13501111,BGP-CPD-FW01,FortiGate: SD-WAN [HK_8.8.8.8]:[port3]: High packets loss,1,19/05/2026 12:09:02,3215.5,15827427,,,sintoma_outra_causa,yes

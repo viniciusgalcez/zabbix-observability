@@ -1,0 +1,18 @@
+[
+  {
+    "hostid": "10758",
+    "host": "SPO-CPD-FW01",
+    "name": "SPO-CPD-FW01",
+    "status": "0",
+    "proxyid": "1",
+    "interfaces": [
+      {
+        "interfaceid": "102",
+        "ip": "172.17.23.6",
+        "dns": "",
+        "type": "2",
+        "main": "1"
+      }
+    ]
+  }
+]

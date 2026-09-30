@@ -1,0 +1,414 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55133",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "SCL_ISP1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "scl"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55133_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55141",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "BGP_ISP1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "bgp"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55141_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55142",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "BGP_ISP2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "bgp"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55142_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55143",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "SCL_ISP2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "scl"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55143_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55144",
+        "tags": [
+          {
+            "tag": "carrier",
+            "value": "vivo"
+          },
+          {
+            "tag": "class",
+            "value": "network"
+          },
+          {
+            "tag": "component",
+            "value": "vpn"
+          },
+          {
+            "tag": "depends-on",
+            "value": "SPO_VIVO"
+          },
+          {
+            "tag": "link-id",
+            "value": "spo.vivo.isp1.vpn-agg"
+          },
+          {
+            "tag": "link-cause",
+            "value": "SPO_ISP1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "spo"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55144_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55145",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "SPO_ISP2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "spo"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55145_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55149",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "BRAS_WAN1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "bras"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55149_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55150",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "BRAS_WAN2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "bras"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55150_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55151",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "FIA_WAN1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "fia"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55151_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55152",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "FIA_WAN2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "fia"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55152_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55153",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "DENIM_WAN1_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "denim"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55153_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55154",
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "DENIM_WAN2_VPN"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "vpn"
+          },
+          {
+            "tag": "site",
+            "value": "denim"
+          }
+        ]
+      }
+    },
+    "save": "backups/phase_d_strip_teams_agg_55154_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "16",
+        "status": 1
+      }
+    },
+    "save": "backups/phase_e_disable_correlation_16_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "45",
+        "status": 1
+      }
+    },
+    "save": "backups/phase_e_disable_correlation_45_20260930.json"
+  }
+]

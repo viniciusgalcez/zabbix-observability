@@ -1,0 +1,38 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value", "error", "state"],
+        "triggerids": ["50308", "55144"],
+        "selectTags": "extend",
+        "selectDependencies": ["triggerid", "description"]
+      }
+    },
+    "save": "backups/phase_c_verify_spo_vivo_tags_after_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": ["correlationid", "name", "status"],
+        "correlationids": ["16", "17", "45", "46"]
+      }
+    },
+    "save": "backups/phase_c_verify_spo_vivo_correlations_still_enabled_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "flags", "templateid"],
+        "triggerids": ["43231", "43234"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_c_sample_discovered_loss_tags_20260930.json",
+    "quiet": true
+  }
+]

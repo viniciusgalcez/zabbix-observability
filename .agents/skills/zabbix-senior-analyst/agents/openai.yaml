@@ -1,0 +1,8 @@
+interface:
+  display_name: "Analista Sênior Zabbix"
+  short_description: "Diagnóstico e mudanças seguras no Zabbix"
+  brand_color: "#D40000"
+  default_prompt: "Use $zabbix-senior-analyst para diagnosticar e corrigir este problema no Zabbix com backup e validação completa."
+
+policy:
+  allow_implicit_invocation: true

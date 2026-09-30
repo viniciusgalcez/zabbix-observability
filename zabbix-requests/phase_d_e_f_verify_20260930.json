@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "actionids": ["22"],
+        "output": ["actionid", "name", "status", "esc_period", "pause_symptoms"],
+        "selectFilter": "extend"
+      }
+    },
+    "save": "backups/phase_d_verify_action_22_after_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": ["correlationid", "name", "status"],
+        "correlationids": ["16", "17", "45", "46"],
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/phase_e_verify_spo_vivo_correlations_after_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {
+        "output": ["triggerid", "description"],
+        "triggerids": ["23665", "23666"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_c_verify_prototypes_after_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description"],
+        "triggerids": ["50308", "55144"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_d_verify_spo_cause_aggregate_notify_20260930.json",
+    "quiet": true
+  }
+]

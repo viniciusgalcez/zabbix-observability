@@ -1,0 +1,26 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name"],
+        "triggerids": ["55133", "55141", "55142", "55143", "55144", "55145", "55149", "55150", "55151", "55152", "55153", "55154"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_d_aggregates_tags_before_strip_teams_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name"],
+        "triggerids": ["47620", "47636", "50305", "50306", "50307", "50308", "54332", "54333", "54334", "54451", "54452"],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase_d_verify_physical_causes_have_notify_teams_20260930.json",
+    "quiet": true
+  }
+]

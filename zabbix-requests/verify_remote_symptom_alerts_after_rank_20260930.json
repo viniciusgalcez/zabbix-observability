@@ -1,0 +1,32 @@
+[
+  {
+    "arguments": {
+      "method": "alert.get",
+      "params": {
+        "output": ["alertid", "eventid", "clock", "status", "mediatypeid", "error"],
+        "eventids": [
+          "18499653",
+          "18499652",
+          "18499622",
+          "18499621",
+          "18499620",
+          "18499373",
+          "18499372",
+          "18499349",
+          "18499343",
+          "18499342",
+          "18499293",
+          "18499288",
+          "18499284",
+          "18499276",
+          "18499275",
+          "18499274",
+          "18499273"
+        ],
+        "limit": 50
+      }
+    },
+    "save": "backups/verify_remote_symptom_alerts_after_rank_20260930.json",
+    "quiet": true
+  }
+]

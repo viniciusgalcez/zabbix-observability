@@ -1,0 +1,7 @@
+[
+  {"arguments":{"method":"host.get","params":{"output":["hostid","host","name","status","proxyid"],"filter":{"host":"SPO-CPD-FW01"},"selectInterfaces":["interfaceid","ip","dns","type","main"]}},"save":"backups/audit_spo_vivo_host_live_20260930.json","quiet":true},
+  {"arguments":{"method":"trigger.get","params":{"output":"extend","triggerids":["50308","55144","42710","42707"],"expandExpression":true,"expandDescription":true,"selectHosts":["hostid","host","name"],"selectItems":["itemid","name","key_","lastvalue","lastclock","status","state","error"],"selectTags":"extend","selectDependencies":"extend"}},"save":"backups/audit_spo_vivo_cause_triggers_live_20260930.json","quiet":true},
+  {"arguments":{"method":"problem.get","params":{"output":"extend","hostids":["10758"],"selectTags":"extend","selectAcknowledges":"extend","selectSuppressionData":"extend","sortfield":"eventid","sortorder":"DESC","limit":100}},"save":"backups/audit_spo_vivo_open_problems_live_20260930.json","quiet":true},
+  {"arguments":{"method":"correlation.get","params":{"output":"extend","correlationids":["16","17","45","46"],"selectFilter":"extend","selectOperations":"extend"}},"save":"backups/audit_spo_vivo_correlations_live_20260930.json","quiet":true},
+  {"arguments":{"method":"action.get","params":{"output":"extend","actionids":["22"],"selectFilter":"extend","selectOperations":"extend","selectRecoveryOperations":"extend"}},"save":"backups/audit_spo_vivo_teams_action_live_20260930.json","quiet":true}
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "wan-link"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "55144",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1.vpn-agg"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+[
+  {
+    "arguments": {
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "hosts": ["10758"]
+        }
+      }
+    },
+    "save": "backups/phase_c_export_spo_cpd_fw01_before_tags_20260930.json",
+    "quiet": true
+  }
+]

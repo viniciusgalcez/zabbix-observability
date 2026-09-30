@@ -1,0 +1,56 @@
+[
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": "extend",
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/backup_six_pilot_residual_events_before_close_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "action": 1
+      }
+    },
+    "save": "backups/apply_close_six_pilot_residual_events_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/verify_six_pilot_residual_events_closed_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "selectTags": "extend",
+        "sortfield": "eventid",
+        "sortorder": "DESC",
+        "limit": 100
+      }
+    },
+    "save": "backups/verify_scl_open_problems_after_pilot_cleanup_20260930.json",
+    "quiet": true
+  }
+]

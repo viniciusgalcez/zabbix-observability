@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {"output": "extend", "itemids": ["92133", "93359", "91217", "92207", "110657", "110660", "112617"], "selectHosts": "extend", "selectPreprocessing": "extend", "selectTags": "extend"}
+    },
+    "save": "backups/audit_p0_link_items_runtime_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "history.get",
+      "params": {"output": "extend", "history": 0, "itemids": ["91217", "92207"], "time_from": 1790122800, "sortfield": ["clock", "ns"], "sortorder": "DESC", "limit": 500}
+    },
+    "save": "backups/audit_p0_packet_loss_history_7d_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "history.get",
+      "params": {"output": "extend", "history": 3, "itemids": ["92133", "93359", "110657", "110660", "112617"], "time_from": 1790122800, "sortfield": ["clock", "ns"], "sortorder": "DESC", "limit": 1000}
+    },
+    "save": "backups/audit_p0_link_status_history_7d_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "High packets loss"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}
+    },
+    "save": "backups/audit_template_10604_packet_loss_prototypes_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "Link down"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}
+    },
+    "save": "backups/audit_template_10604_link_down_prototypes_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "triggerprototype.get",
+      "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "Tunnel down"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}
+    },
+    "save": "backups/audit_template_10604_tunnel_down_prototypes_20260930.json",
+    "quiet": true
+  }
+]

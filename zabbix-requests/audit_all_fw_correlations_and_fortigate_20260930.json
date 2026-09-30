@@ -1,0 +1,55 @@
+[
+  {
+    "arguments": {
+      "method": "hostgroup.get",
+      "params": {
+        "output": ["groupid", "name"],
+        "search": {"name": "Firewalls"},
+        "startSearch": true
+      }
+    },
+    "save": "backups/audit_firewall_groups_exact_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": ["correlationid", "name", "status"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/audit_all_correlations_before_fw_rank_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "cause_eventid"],
+        "selectTags": "extend",
+        "tags": [{"tag": "link-cause", "operator": 5}],
+        "evaltype": 0
+      }
+    },
+    "save": "backups/audit_open_problems_with_link_cause_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "cause_eventid"],
+        "selectTags": "extend",
+        "search": {"name": "FortiGate"},
+        "startSearch": true,
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 300
+      }
+    },
+    "save": "backups/audit_open_fortigate_problems_20260930.json",
+    "quiet": true
+  }
+]

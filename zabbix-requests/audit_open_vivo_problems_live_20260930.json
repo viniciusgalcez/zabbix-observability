@@ -1,0 +1,46 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "cause_eventid", "acknowledged"],
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 200
+      }
+    },
+    "save": "backups/audit_open_problems_live_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10758"],
+        "selectTags": "extend",
+        "selectAcknowledges": ["userid", "action", "clock", "message"],
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 200
+      }
+    },
+    "save": "backups/audit_spo_fw01_open_problems_live_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "value", "status", "state", "error", "priority"],
+        "hostids": ["10758"],
+        "filter": {"value": 1},
+        "selectTags": "extend",
+        "expandDescription": true
+      }
+    },
+    "save": "backups/audit_spo_fw01_problem_triggers_live_20260930.json",
+    "quiet": true
+  }
+]
