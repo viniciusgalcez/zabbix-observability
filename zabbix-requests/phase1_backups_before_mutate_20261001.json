@@ -1,0 +1,67 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": "extend",
+        "itemids": ["42682"],
+        "selectPreprocessing": "extend",
+        "selectDiscoveryRule": ["itemid", "name", "key_"]
+      }
+    },
+    "save": "backups/phase1_template_speed_prototype_42682_before_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "templates": ["10343"],
+          "hosts": ["10713", "11088", "10978", "11039"]
+        }
+      }
+    },
+    "save": "backups/phase1_export_hosts_template_before_fix_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": "extend",
+        "itemids": ["108972", "110116", "104688", "104689", "104690", "104691", "104692"],
+        "selectPreprocessing": "extend",
+        "selectTriggers": ["triggerid", "description", "status", "state"]
+      }
+    },
+    "save": "backups/phase1_items_full_before_mutate_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": "extend",
+        "triggerids": ["51071"],
+        "selectHosts": ["hostid", "host"]
+      }
+    },
+    "save": "backups/phase1_trigger_51071_before_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": ["17297217"],
+        "output": "extend",
+        "selectHosts": ["hostid", "host"],
+        "select_acknowledges": "extend"
+      }
+    },
+    "save": "backups/phase1_event_17297217_before_close_20261001.json",
+    "quiet": true
+  }
+]

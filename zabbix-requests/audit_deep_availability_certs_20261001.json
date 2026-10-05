@@ -1,0 +1,44 @@
+[
+  {
+    "arguments": {
+      "method": "hostinterface.get",
+      "params": {
+        "output": ["interfaceid", "hostid", "type", "ip", "dns", "port", "main", "available", "error"],
+        "filter": {"available": 2},
+        "selectHosts": ["hostid", "host", "name", "status"]
+      }
+    },
+    "save": "backups/audit_deep_interfaces_unavailable_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "hostid", "units", "lastvalue", "lastclock", "status", "state"],
+        "search": {"key_": "cert.date|ssl.cert|website.cert|cert.expire|https.certificate"},
+        "searchWildcardsEnabled": true,
+        "filter": {"status": 0},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 300
+      }
+    },
+    "save": "backups/audit_deep_cert_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "name", "severity", "clock", "cause_eventid"],
+        "search": {"name": "*unavailable*|*Unreachable*|*No SNMP*|*agent is not*|*ICMP ping*|*nodata*|*No data*"},
+        "searchWildcardsEnabled": true,
+        "recent": true,
+        "selectTags": "extend",
+        "limit": 200
+      }
+    },
+    "save": "backups/audit_deep_collect_problems_20261001.json",
+    "quiet": true
+  }
+]

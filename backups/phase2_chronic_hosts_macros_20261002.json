@@ -1,0 +1,68 @@
+[
+  {
+    "hostid": "11178",
+    "host": "AZ-VM-FW-01",
+    "macros": []
+  },
+  {
+    "hostid": "11171",
+    "host": "BRAS-CPD-FW01",
+    "macros": [
+      {
+        "macro": "{$FGATE.API.FQDN}",
+        "value": "172.23.10.1",
+        "description": ""
+      },
+      {
+        "macro": "{$FGATE.API.PORT}",
+        "value": "8443",
+        "description": ""
+      },
+      {
+        "macro": "{$FGATE.SCHEME}",
+        "value": "https",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "hostid": "10758",
+    "host": "SPO-CPD-FW01",
+    "macros": [
+      {
+        "macro": "{$FGATE.API.FQDN}",
+        "value": "172.17.23.6",
+        "description": ""
+      },
+      {
+        "macro": "{$FGATE.API.PORT}",
+        "value": "8443",
+        "description": ""
+      },
+      {
+        "macro": "{$FGATE.API.TOKEN}",
+        "description": ""
+      },
+      {
+        "macro": "{$FGATE.SCHEME}",
+        "value": "https",
+        "description": ""
+      },
+      {
+        "macro": "{$VPN.STATE.CONTROL:\"SYSTEXTIL_W2\"}",
+        "value": "0",
+        "description": "Exceção permanente 2026-09-28: SYSTEXTIL_W2 é inoperante (never used). Tunnel sempre down independente do link VIVO. Alerta suprimido para evitar ruído permanente no NOC."
+      },
+      {
+        "macro": "{$VPN.STATE.CONTROL:\"VPN-AYKO-MSS-01\"}",
+        "value": "0",
+        "description": "Exceção aprovada em 2026-09-16: evita falso positivo causado por múltiplas referências SNMP do túnel AYKO. O firewall, a interface e os demais túneis permanecem monitorados."
+      },
+      {
+        "macro": "{$VPN.STATE.CONTROL:\"VPN-AYKO-MSS-02\"}",
+        "value": "0",
+        "description": "Exceção aprovada em 2026-09-16: evita falso positivo causado por múltiplas referências SNMP do túnel AYKO. O firewall, a interface e os demais túneis permanecem monitorados."
+      }
+    ]
+  }
+]

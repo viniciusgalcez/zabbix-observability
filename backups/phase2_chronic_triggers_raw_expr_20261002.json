@@ -1,0 +1,62 @@
+[
+  {
+    "triggerid": "43212",
+    "description": "FortiGate: Interface dmz(): Link down",
+    "expression": "{$IFCONTROL:\"dmz\"}=1 and {85353}=2 and ({85354}<>{85355})",
+    "recovery_expression": "{85353}<>2 or {$IFCONTROL:\"dmz\"}=0",
+    "status": "0",
+    "value": "1",
+    "flags": "4",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "53811",
+    "description": "FortiGate: Interface lan3(ISP2-): Link down",
+    "expression": "{$IFCONTROL:\"lan3\"}=1 and {104019}=2 and ({104020}<>{104021})",
+    "recovery_expression": "{104019}<>2 or {$IFCONTROL:\"lan3\"}=0",
+    "status": "0",
+    "value": "1",
+    "flags": "4",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "53814",
+    "description": "FortiGate: Interface lan2(): Link down",
+    "expression": "{$IFCONTROL:\"lan2\"}=1 and {104028}=2 and ({104029}<>{104030})",
+    "recovery_expression": "{104028}<>2 or {$IFCONTROL:\"lan2\"}=0",
+    "status": "0",
+    "value": "1",
+    "flags": "4",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54995",
+    "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "expression": "{$VPN.STATE.CONTROL:\"az-to-oci-vpn2\"}=1 and {106951}=1 and {106952}=1",
+    "recovery_expression": "{106953}<>1 or {$VPN.STATE.CONTROL:\"az-to-oci-vpn2\"}=0",
+    "status": "0",
+    "value": "1",
+    "flags": "4",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ]
+  }
+]

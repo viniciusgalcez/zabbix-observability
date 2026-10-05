@@ -1,0 +1,64 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "r_eventid",
+          "cause_eventid",
+          "acknowledged"
+        ],
+        "selectTags": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/vivo_scl_fw01_open_problems_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/vivo_all_fw_open_problems_now_20261001.json",
+    "quiet": true
+  }
+]

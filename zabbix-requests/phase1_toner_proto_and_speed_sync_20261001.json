@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": ["itemid", "name", "hostid", "templateid"],
+        "itemids": ["104339", "42682", "96489"],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_prototypes_sync_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": "extend",
+        "itemids": ["96489"],
+        "selectPreprocessing": "extend",
+        "selectDiscoveryRule": ["itemid", "name", "key_"]
+      }
+    },
+    "save": "backups/phase1_toner_prototype_96489_before_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "template.get",
+      "params": {
+        "output": ["templateid", "host", "name"],
+        "templateids": ["11002"],
+        "selectDiscoveries": ["itemid", "name", "key_"]
+      }
+    },
+    "save": "backups/phase1_ricoh_template_11002_discoveries_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "name"],
+        "eventids": ["17297217"]
+      }
+    },
+    "save": "backups/phase1_verify_icmp_still_in_problems_20261001.json",
+    "quiet": true
+  }
+]

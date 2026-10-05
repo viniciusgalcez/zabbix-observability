@@ -1,0 +1,56 @@
+[
+  {
+    "name": "tpl_toner_proto_96476",
+    "tool": "zabbix_api_request",
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "itemids": ["96476"],
+        "output": ["itemid","name","key_","hostid","templateid","value_type","status","state","delay","units","description"],
+        "selectPreprocessing": "extend"
+      },
+      "save_as": "backups/phase1_toner_tpl_prototype_96476_before_20261001.json"
+    }
+  },
+  {
+    "name": "speed_items_now",
+    "tool": "zabbix_api_request",
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": ["104688","104689","104690","104691","104692"],
+        "output": ["itemid","name","key_","status","state","error","templateid","flags"],
+        "selectPreprocessing": "extend"
+      },
+      "save_as": "backups/phase1_verify_speed_items_after_proto_sync_20261001.json"
+    }
+  },
+  {
+    "name": "toner_item_now",
+    "tool": "zabbix_api_request",
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": ["110116"],
+        "output": ["itemid","name","key_","status","state","error","templateid","flags","value_type"],
+        "selectPreprocessing": "extend"
+      },
+      "save_as": "backups/phase1_verify_toner_item_before_proto_fix_20261001.json"
+    }
+  },
+  {
+    "name": "icmp_problems_host",
+    "tool": "zabbix_api_request",
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": ["10713"],
+        "output": "extend",
+        "recent": true,
+        "sortfield": ["eventid"],
+        "sortorder": "DESC"
+      },
+      "save_as": "backups/phase1_verify_icmp_host_problems_20261001.json"
+    }
+  }
+]

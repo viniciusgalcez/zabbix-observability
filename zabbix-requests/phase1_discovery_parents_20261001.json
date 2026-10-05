@@ -1,0 +1,69 @@
+[
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error"],
+        "hostids": ["11088"]
+      }
+    },
+    "save": "backups/phase1_frep_all_lld_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastvalue", "flags", "master_itemid"],
+        "hostids": ["11039"],
+        "search": {"name": "queue"},
+        "searchWildcardsEnabled": true,
+        "startSearch": false,
+        "selectTriggers": ["triggerid", "description", "status", "state"]
+      }
+    },
+    "save": "backups/phase1_vapp10_queue_by_name_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastvalue", "value_type", "flags"],
+        "hostids": ["10978"],
+        "search": {"name": "Toner"},
+        "searchWildcardsEnabled": true,
+        "selectPreprocessing": "extend",
+        "selectTriggers": ["triggerid", "description", "status", "state"]
+      }
+    },
+    "save": "backups/phase1_color01_toner_by_name_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "template.get",
+      "params": {
+        "output": ["templateid", "host", "name"],
+        "search": {"name": "Impressoras RICOH"},
+        "searchWildcardsEnabled": true,
+        "selectDiscoveries": ["itemid", "name", "key_"]
+      }
+    },
+    "save": "backups/phase1_ricoh_template_discoveries_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastvalue", "flags"],
+        "itemids": ["104688"],
+        "selectDiscoveryRule": ["itemid", "name", "key_"],
+        "selectItemDiscovery": ["parent_itemid"]
+      }
+    },
+    "save": "backups/phase1_frep_speed_item_discovery_parent_20261001.json",
+    "quiet": true
+  }
+]

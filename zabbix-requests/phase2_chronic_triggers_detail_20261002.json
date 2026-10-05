@@ -1,0 +1,48 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "53814",
+          "53811",
+          "54995",
+          "43212"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "priority",
+          "value",
+          "status",
+          "state",
+          "manual_close",
+          "flags",
+          "templateid",
+          "comments",
+          "expression"
+        ],
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "selectItems": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "lastclock",
+          "status",
+          "state",
+          "error",
+          "units"
+        ],
+        "selectTags": "extend",
+        "expandExpression": true
+      }
+    },
+    "save": "backups/phase2_chronic_roots_triggers_detail_20261002.json",
+    "quiet": true
+  }
+]

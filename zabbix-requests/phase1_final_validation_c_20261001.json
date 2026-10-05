@@ -1,0 +1,141 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": [
+          "eventid",
+          "name",
+          "objectid",
+          "severity",
+          "clock",
+          "r_eventid"
+        ],
+        "eventids": [
+          "17297217"
+        ]
+      }
+    },
+    "save": "backups/phase1_verify_icmp_event_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10713"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "r_eventid"
+        ],
+        "recent": true
+      }
+    },
+    "save": "backups/phase1_verify_icmp_host_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "hostids": [
+          "10713"
+        ],
+        "output": [
+          "hostid",
+          "host",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "save": "backups/phase1_verify_ap_host_status_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "hostid",
+          "status",
+          "state",
+          "error"
+        ],
+        "filter": {
+          "status": "0",
+          "state": "1"
+        },
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "countOutput": true
+      }
+    },
+    "save": "backups/phase1_recount_unsupported_enabled_count_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "hostid",
+          "status",
+          "state",
+          "error"
+        ],
+        "filter": {
+          "status": "0",
+          "state": "1"
+        },
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "limit": 100
+      }
+    },
+    "save": "backups/phase1_recount_unsupported_enabled_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692",
+          "110116",
+          "108972"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "status",
+          "state",
+          "error"
+        ]
+      }
+    },
+    "save": "backups/phase1_targets_status_final_20261001.json",
+    "quiet": true
+  }
+]

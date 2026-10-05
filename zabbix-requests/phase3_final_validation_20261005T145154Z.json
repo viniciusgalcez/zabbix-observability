@@ -1,0 +1,41 @@
+{
+  "mysql_status": "disabled — plugin ainda resolve DSN placeholder; host macro={$MYSQL.DSN}=tcp://127.0.0.1:3306",
+  "mysql": {
+    "itemid": "107176",
+    "status": "0",
+    "key_": "mysql.extra_metric.discovery",
+    "state": "1",
+    "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name."
+  },
+  "fad_status": "disabled — colisão com Template App NDD Print (service.info estáticos); macro NOT_MATCHES ajustada",
+  "fad": {
+    "itemid": "85275",
+    "status": "1",
+    "state": "0",
+    "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n"
+  },
+  "lld_bad_enabled_in_scope": [],
+  "hv_tpl_status": [
+    {
+      "itemid": "42488",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "0"
+    },
+    {
+      "itemid": "87847",
+      "key_": "hyperv.discover.vms",
+      "status": "1"
+    },
+    {
+      "itemid": "87848",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1"
+    }
+  ],
+  "spo_v02_templates": [
+    "Linux by Zabbix agent active"
+  ],
+  "az_templates": [
+    "MySQL by Zabbix agent 2"
+  ]
+}

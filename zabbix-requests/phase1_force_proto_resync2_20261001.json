@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "96476",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "// sanitize SNMP toner sentinel (-2/negatives)\nvar n = Number(value);\nif (value === '' || value === null || isNaN(n) || n < 0) {\n  return '0';\n}\nreturn String(n);",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_toner_proto_96476_resync2_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "42682",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "// sanitize interface speed sentinel (-1/negatives)\nif (value === '' || value === '-1' || isNaN(Number(value)) || Number(value) < 0) {\n  return '0';\n}\nreturn value;",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "1",
+            "params": "1000000",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "20",
+            "params": "1h",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_speed_proto_42682_resync2_20261001.json",
+    "quiet": true
+  }
+]

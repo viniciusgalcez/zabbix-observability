@@ -1,0 +1,20 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "96476",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "var n = Number(value);\nif (value === '' || value === null || isNaN(n) || n < 0) {\n  return '0';\n}\nreturn String(n);",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_toner_prototype_96476_js_sanitize_20261001.json",
+    "quiet": true
+  }
+]

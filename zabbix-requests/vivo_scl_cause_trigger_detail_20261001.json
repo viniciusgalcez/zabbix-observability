@@ -1,0 +1,82 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50306",
+          "50308"
+        ],
+        "output": "extend",
+        "selectTags": "extend",
+        "selectItems": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "lastclock",
+          "status",
+          "state",
+          "error",
+          "value_type"
+        ],
+        "selectFunctions": "extend",
+        "expandExpression": true
+      }
+    },
+    "save": "backups/vivo_scl_spo_cause_triggers_detail_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "lastclock",
+          "status",
+          "state",
+          "error",
+          "units"
+        ],
+        "search": {
+          "name": "ISP1_VIVO"
+        },
+        "searchWildcardsEnabled": true,
+        "limit": 40
+      }
+    },
+    "save": "backups/vivo_scl_items_isp1_vivo_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "objectids": [
+          "50306"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "clock",
+          "r_eventid"
+        ],
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "limit": 5
+      }
+    },
+    "save": "backups/vivo_scl_50306_recent_problems_20261001.json",
+    "quiet": true
+  }
+]

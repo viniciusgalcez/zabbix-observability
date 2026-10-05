@@ -1,0 +1,45 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"],
+        "search": {"description": "sem conectividade"},
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_fw_sem_conectividade_triggers_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"],
+        "search": {"description": "instaveis"},
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_fw_instaveis_triggers_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value"],
+        "triggerids": ["50308", "55144"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"]
+      }
+    },
+    "save": "backups/audit_spo_vivo_triggers_tags_for_roadmap_20260930.json",
+    "quiet": true
+  }
+]

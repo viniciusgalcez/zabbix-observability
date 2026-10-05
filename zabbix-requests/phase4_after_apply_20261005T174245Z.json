@@ -1,0 +1,26 @@
+{
+  "backup": "backups\\phase4_unknown_triggers_before_20261005T174245Z.json",
+  "global_before": 834,
+  "global_after": 269,
+  "triggers_disabled": 565,
+  "errors": [],
+  "per_host_unknown_after": {
+    "BGP-SRV-VAPP10": 0,
+    "SCL-TEC2-SW01": 0,
+    "SCL-CPD-SW01": 0,
+    "SPO-CPD-SW01": 0,
+    "SCL-TEC1-SW02": 0,
+    "SCL-TEC1-SW03": 0
+  },
+  "vol_steps": [
+    {
+      "global_macros": [],
+      "unknown_vol_triggers": 0
+    }
+  ],
+  "mssql_steps": [
+    {
+      "disabled_items": 0
+    }
+  ]
+}

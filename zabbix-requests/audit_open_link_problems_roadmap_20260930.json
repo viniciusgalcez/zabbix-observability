@@ -1,0 +1,22 @@
+[
+  {
+    "arguments": {"method": "problem.get", "params": {"output": "extend", "source": 0, "object": 0, "search": {"name": "Link down"}, "selectTags": "extend", "sortfield": "eventid", "sortorder": "DESC"}},
+    "save": "backups/audit_open_link_down_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": "extend", "source": 0, "object": 0, "search": {"name": "Tunnel down"}, "selectTags": "extend", "sortfield": "eventid", "sortorder": "DESC"}},
+    "save": "backups/audit_open_tunnel_down_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": "extend", "source": 0, "object": 0, "search": {"name": "High packets loss"}, "selectTags": "extend", "sortfield": "eventid", "sortorder": "DESC"}},
+    "save": "backups/audit_open_packet_loss_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": "extend", "source": 0, "object": 0, "search": {"name": "Health check state is dead"}, "selectTags": "extend", "sortfield": "eventid", "sortorder": "DESC"}},
+    "save": "backups/audit_open_health_dead_20260930.json",
+    "quiet": true
+  }
+]

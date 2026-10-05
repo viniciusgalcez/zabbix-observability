@@ -1,0 +1,214 @@
+{
+  "backup": "backups\\phase3d_before_apply_20261005T144809Z.json",
+  "steps": [
+    {
+      "3D.6": "tpl 42488 key -> perf_instance.discovery[PhysicalDisk]"
+    },
+    {
+      "3D.6": "re-enabled 84289,85156"
+    },
+    {
+      "3D.2_proxy_error": "proxy.update: {\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1/timeout_zabbix_agent\\\": cannot be empty.\"\n}"
+    },
+    {
+      "3D.2": "walk+lld re-enabled delay=10m"
+    },
+    {
+      "3D.7": "FAD01 SERVICE.NAME.NOT_MATCHES=^(?:RemoteRegistry|MMCSS|gupdate|SysmonLog|clr_optimization_v.+|sppsvc|gpsvc|Pml Driver HPZ12|Net Driver HPZ12|MapsBroker|IntelAudioService|Intel\\(R\\) TPM Provisioning Service|dbupdate|DoSvc|CDPUserSvc_.+|WpnUserService_.+|OneSyncSvc_.+|WbioSrvc|BITS|tiledatamodelsvc|GISvc|ShellHWDetection|TrustedInstaller|TabletInputService|CDPSvc|wuauserv|edgeupdate|cbdhsvc_.+|MDCoreSvc|GoogleUpdaterService.*|GoogleUpdaterInternalService.*|iphlpsvc|VeeamGuestHelper|CsInstallService|testenodered)$|nddPrint.*|DCSServer; discovery enabled"
+    },
+    {
+      "3D.3": "DSN=tcp://127.0.0.1:3306; extra_metric enabled; replication stays disabled"
+    },
+    {
+      "3D.4": "unlinked PostgreSQL by Zabbix agent from SPO-SRV-V02 (no pgsql plugin)"
+    },
+    {
+      "3D.5": "WMI AppPool disabled on broken hosts; VAPP12 confirmed off"
+    },
+    {
+      "3D.1": "Template Hyper-V Host 2 discovery DISABLED until loadable module on agents 7.0.26; host rules remain off"
+    }
+  ],
+  "phys_tpl": [
+    {
+      "itemid": "42488",
+      "key_": "perf_instance.discovery[PhysicalDisk]",
+      "status": "0"
+    }
+  ],
+  "hv_tpl": [
+    {
+      "itemid": "87847",
+      "key_": "hyperv.discover.vms",
+      "status": "1"
+    },
+    {
+      "itemid": "87848",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1"
+    }
+  ],
+  "rules_after": [
+    {
+      "itemid": "52328",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.10.65' from [[172.16.23.9]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10731",
+          "host": "SCL-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "52428",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.6.80' from [[172.16.23.29]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10735",
+          "host": "SCL-TEC2-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "53528",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.15.10' from [[172.17.23.15]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10834",
+          "host": "SPO-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "84289",
+      "key_": "perf_instance.discovery[PhysicalDisk]",
+      "status": "0",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10918",
+          "host": "SCL-ETE-TB01"
+        }
+      ]
+    },
+    {
+      "itemid": "85156",
+      "key_": "perf_instance.discovery[PhysicalDisk]",
+      "status": "0",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10937",
+          "host": "SCL-TIN-TMXC01"
+        }
+      ]
+    },
+    {
+      "itemid": "85275",
+      "key_": "service.discovery",
+      "status": "0",
+      "state": "0",
+      "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n",
+      "hosts": [
+        {
+          "hostid": "10941",
+          "host": "SPO-SRV-FAD01"
+        }
+      ]
+    },
+    {
+      "itemid": "107176",
+      "key_": "mysql.extra_metric.discovery",
+      "status": "0",
+      "state": "1",
+      "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "107177",
+      "key_": "mysql.replication.discovery[\"{$MYSQL.DSN}\",\"{$MYSQL.USER}\",\"{$MYSQL.PASSWORD}\"]",
+      "status": "1",
+      "state": "1",
+      "error": "Cannot fetch data: Cannot fetch data.: error getting slave or replica status: Error 1227 (42000): Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "108884",
+      "key_": "wmi.getall[root\\webAdministration, select Name from ApplicationPool]",
+      "status": "1",
+      "state": "1",
+      "error": "Exception occurred. (Invalid namespace )",
+      "hosts": [
+        {
+          "hostid": "10898",
+          "host": "BGP-SRV-VAPP12"
+        }
+      ]
+    }
+  ],
+  "walk_after": [
+    {
+      "itemid": "52305",
+      "key_": "net.if.walk",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.10.65' from [[172.16.23.9]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10731",
+          "host": "SCL-CPD-SW01"
+        }
+      ],
+      "lastclock": "0"
+    },
+    {
+      "itemid": "52405",
+      "key_": "net.if.walk",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.6.80' from [[172.16.23.29]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10735",
+          "host": "SCL-TEC2-SW01"
+        }
+      ],
+      "lastclock": "0"
+    },
+    {
+      "itemid": "53505",
+      "key_": "net.if.walk",
+      "status": "0",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.15.10' from [[172.17.23.15]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10834",
+          "host": "SPO-CPD-SW01"
+        }
+      ],
+      "lastclock": "0"
+    }
+  ]
+}

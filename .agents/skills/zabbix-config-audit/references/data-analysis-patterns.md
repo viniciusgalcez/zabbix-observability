@@ -2,6 +2,8 @@
 
 Estas são consultas para responder perguntas sobre o que o Zabbix já coletou — não sobre a configuração em si. Use quando o usuário perguntar algo como "como está a tendência de disco no servidor X", "qual host gera mais alerta", "qual a disponibilidade do serviço Y este mês".
 
+Para **erros de coleta / unsupported / LLD / Unknown**, use o módulo P0 em [collection-health.md](collection-health.md) antes de analisar tendência — dado de item `state=1` não deve ser interpolado.
+
 ## Tendência de capacidade (disco, memória, CPU)
 
 ```

@@ -1,0 +1,824 @@
+{
+  "stamp": "20261005T174901Z",
+  "now": 1791222541,
+  "counts": {
+    "unsupported_enabled": 4,
+    "unsupported_all_state1": 5761,
+    "lld_unsupported_enabled": 1,
+    "lld_unsupported_all_state1": 24,
+    "unknown_triggers_enabled": 90,
+    "hosts_enabled": 321
+  },
+  "unsupported_enabled_items": [
+    {
+      "itemid": "108967",
+      "name": "AppPool DefaultAppPool current queue size",
+      "key_": "perf_counter_en[\"\\HTTP Service Request Queues(DefaultAppPool)\\CurrentQueueSize\"]",
+      "type": "0",
+      "error": "Timeout occurred while gathering data.",
+      "hosts": [
+        {
+          "hostid": "11039",
+          "host": "BGP-SRV-VAPP10",
+          "name": "BGP-SRV-VAPP10 (Deps)"
+        }
+      ],
+      "lastclock": "0"
+    },
+    {
+      "itemid": "108974",
+      "name": "AppPool DepsAPI current queue size",
+      "key_": "perf_counter_en[\"\\HTTP Service Request Queues(DepsAPI)\\CurrentQueueSize\"]",
+      "type": "0",
+      "error": "Timeout occurred while gathering data.",
+      "hosts": [
+        {
+          "hostid": "11039",
+          "host": "BGP-SRV-VAPP10",
+          "name": "BGP-SRV-VAPP10 (Deps)"
+        }
+      ],
+      "lastclock": "0"
+    },
+    {
+      "itemid": "108973",
+      "name": "AppPool DepsNet current queue size",
+      "key_": "perf_counter_en[\"\\HTTP Service Request Queues(DepsNet)\\CurrentQueueSize\"]",
+      "type": "0",
+      "error": "Timeout occurred while gathering data.",
+      "hosts": [
+        {
+          "hostid": "11039",
+          "host": "BGP-SRV-VAPP10",
+          "name": "BGP-SRV-VAPP10 (Deps)"
+        }
+      ],
+      "lastclock": "0"
+    },
+    {
+      "itemid": "111905",
+      "name": "AppPool DepsWS current queue size",
+      "key_": "perf_counter_en[\"\\HTTP Service Request Queues(DepsWS)\\CurrentQueueSize\"]",
+      "type": "0",
+      "error": "Timeout occurred while gathering data.",
+      "hosts": [
+        {
+          "hostid": "11039",
+          "host": "BGP-SRV-VAPP10",
+          "name": "BGP-SRV-VAPP10 (Deps)"
+        }
+      ],
+      "lastclock": "0"
+    }
+  ],
+  "lld_unsupported_enabled": [
+    {
+      "itemid": "69789",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "delay": "1h",
+      "status": "0",
+      "state": "1",
+      "error": "Timeout while retrieving data from \"172.17.2.19:161\".",
+      "hosts": [
+        {
+          "hostid": "10868",
+          "host": "SPO-NAS-Backup",
+          "name": "SPO-NAS-Backup"
+        }
+      ]
+    }
+  ],
+  "unknown_triggers_sample_count": 90,
+  "proxies": [
+    {
+      "proxyid": "3",
+      "name": "BGP-SRV-V08",
+      "operating_mode": "0",
+      "address": "127.0.0.1",
+      "port": "10051",
+      "lastaccess": "1791222543",
+      "version": "70026",
+      "compatibility": "1",
+      "state": "2"
+    },
+    {
+      "proxyid": "1",
+      "name": "SPO-SRV-V04",
+      "operating_mode": "0",
+      "address": "127.0.0.1",
+      "port": "10051",
+      "lastaccess": "1791222542",
+      "version": "70026",
+      "compatibility": "1",
+      "state": "2"
+    },
+    {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08",
+      "operating_mode": "0",
+      "address": "127.0.0.1",
+      "port": "10051",
+      "lastaccess": "1791222542",
+      "version": "70026",
+      "compatibility": "1",
+      "state": "2"
+    }
+  ],
+  "interfaces_unavailable": [
+    {
+      "interfaceid": "84",
+      "hostid": "10740",
+      "type": "2",
+      "ip": "172.16.23.140",
+      "port": "161",
+      "available": "2",
+      "error": "Cannot connect to \"172.16.23.140:161\": Timeout.",
+      "hosts": [
+        {
+          "hostid": "10740",
+          "host": "SCL-Tenda-AP01",
+          "name": "SCL-Tenda-AP01",
+          "status": "0"
+        }
+      ]
+    },
+    {
+      "interfaceid": "78",
+      "hostid": "10734",
+      "type": "2",
+      "ip": "172.16.23.141",
+      "port": "161",
+      "available": "2",
+      "error": "Cannot connect to \"172.16.23.141:161\": Timeout.",
+      "hosts": [
+        {
+          "hostid": "10734",
+          "host": "SCL-Tenda-AP02",
+          "name": "SCL-Tenda-AP02",
+          "status": "0"
+        }
+      ]
+    }
+  ],
+  "problems": {
+    "total": 153,
+    "roots": 116,
+    "symptoms": 37,
+    "roots_ge_7d": 58,
+    "roots_ge_7d_unack": 58
+  },
+  "fw": {
+    "hosts": 7,
+    "problems": 93,
+    "roots": 56,
+    "roots_notify_teams": [
+      {
+        "eventid": "18116214",
+        "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+        "clock": "1790593399"
+      }
+    ],
+    "roots_link_cause": [
+      {
+        "eventid": "18116214",
+        "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+        "tags": [
+          {
+            "tag": "class",
+            "value": "network"
+          },
+          {
+            "tag": "component",
+            "value": "sd-wan"
+          },
+          {
+            "tag": "health-check",
+            "value": "HK_ISP1"
+          },
+          {
+            "tag": "health-check",
+            "value": "HK_ SynergyRH"
+          },
+          {
+            "tag": "health-check",
+            "value": "HK_Systextil_Web"
+          },
+          {
+            "tag": "health-check",
+            "value": "HK_TEAMS"
+          },
+          {
+            "tag": "health-check",
+            "value": "sla_internet"
+          },
+          {
+            "tag": "infra",
+            "value": "firewall"
+          },
+          {
+            "tag": "interface",
+            "value": "ISP1_VIVO"
+          },
+          {
+            "tag": "link",
+            "value": "ISP1"
+          },
+          {
+            "tag": "link-cause",
+            "value": "SPO_VIVO"
+          },
+          {
+            "tag": "notify",
+            "value": "teams"
+          },
+          {
+            "tag": "notify",
+            "value": "telegram"
+          },
+          {
+            "tag": "scope",
+            "value": "availability"
+          },
+          {
+            "tag": "service",
+            "value": "internet"
+          },
+          {
+            "tag": "site",
+            "value": "spo"
+          },
+          {
+            "tag": "slahost",
+            "value": "SPO-CPD-FW01"
+          },
+          {
+            "tag": "target",
+            "value": "fortigate"
+          },
+          {
+            "tag": "target",
+            "value": "fortinet"
+          }
+        ]
+      }
+    ]
+  },
+  "correlations": [
+    {
+      "correlationid": "17",
+      "name": "SPO VIVO: fechar sintomas abertos ao disparar causa",
+      "status": "0"
+    },
+    {
+      "correlationid": "16",
+      "name": "SPO VIVO: fechar sintomas enquanto causa ativa",
+      "status": "0"
+    },
+    {
+      "correlationid": "45",
+      "name": "SPO VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+      "status": "0"
+    },
+    {
+      "correlationid": "46",
+      "name": "SPO VPN ISP1 (VIVO): fechar sintomas ja abertos ao disparar causa",
+      "status": "0"
+    }
+  ],
+  "action_22": [
+    {
+      "actionid": "22",
+      "name": "Notificar MS Teams",
+      "eventsource": "0",
+      "status": "0",
+      "esc_period": "5m",
+      "pause_suppressed": "1",
+      "notify_if_canceled": "0",
+      "pause_symptoms": "1",
+      "filter": {
+        "evaltype": "3",
+        "formula": "A",
+        "eval_formula": "A",
+        "conditions": [
+          {
+            "conditiontype": "26",
+            "operator": "0",
+            "value": "teams",
+            "value2": "notify",
+            "formulaid": "A"
+          }
+        ]
+      },
+      "operations": [
+        {
+          "operationid": "42",
+          "actionid": "22",
+          "operationtype": "0",
+          "esc_period": "0",
+          "esc_step_from": "2",
+          "esc_step_to": "2",
+          "evaltype": "0",
+          "opconditions": [],
+          "opmessage": {
+            "default_msg": "0",
+            "subject": "{HOST.NAME} · {EVENT.NAME}",
+            "message": "Estado: INCIDENTE ATIVO\nSeveridade: {EVENT.SEVERITY}\nHost: {HOST.NAME}\nEndereco: {HOST.CONN}\nInicio: {EVENT.DATE} {EVENT.TIME}\nDado operacional: {EVENT.OPDATA}\nValor atual: {ITEM.LASTVALUE}\nEvento: {EVENT.ID}\nContexto: alerta enviado pelo Zabbix para troubleshooting no Teams",
+            "mediatypeid": "53"
+          },
+          "opmessage_grp": [],
+          "opmessage_usr": [
+            {
+              "userid": "1"
+            }
+          ]
+        }
+      ],
+      "recovery_operations": [
+        {
+          "operationid": "44",
+          "actionid": "22",
+          "operationtype": "11",
+          "evaltype": "0",
+          "opconditions": [],
+          "opmessage": {
+            "default_msg": "0",
+            "subject": "{HOST.NAME} · {EVENT.NAME}",
+            "message": "Estado: RESOLVIDO\nSeveridade: {EVENT.SEVERITY}\nHost: {HOST.NAME}\nEndereco: {HOST.CONN}\nDuracao: {EVENT.DURATION}\nResolvido em: {EVENT.RECOVERY.DATE} {EVENT.RECOVERY.TIME}\nEvento: {EVENT.ID}\nContexto: normalizado apos validacao do Zabbix",
+            "mediatypeid": "0"
+          }
+        }
+      ]
+    }
+  ],
+  "internal_actions": [
+    {
+      "actionid": "4",
+      "name": "Report not supported items",
+      "status": "1",
+      "eventsource": "3"
+    },
+    {
+      "actionid": "5",
+      "name": "Report not supported low level discovery rules",
+      "status": "1",
+      "eventsource": "3"
+    },
+    {
+      "actionid": "6",
+      "name": "Report unknown triggers",
+      "status": "1",
+      "eventsource": "3"
+    }
+  ],
+  "hosts_no_template_nonweb": [
+    {
+      "host": "Azure Microsoft SQL database master",
+      "groups": [
+        "Databases"
+      ]
+    }
+  ],
+  "snmp": {
+    "version_counts": {
+      "3": 145,
+      "1": 26,
+      "2": 58
+    },
+    "v1_v2_enabled_hosts": [
+      {
+        "host": "SCL-TEC1-UPS01",
+        "ip": "172.16.23.201",
+        "version": "1"
+      },
+      {
+        "host": "BGP-TEC-REP01",
+        "ip": "172.18.23.162",
+        "version": "2"
+      },
+      {
+        "host": "SCL-PRT-CTR03",
+        "ip": "172.16.23.158",
+        "version": "2"
+      },
+      {
+        "host": "SCL-RST-CTR02",
+        "ip": "172.16.23.157",
+        "version": "2"
+      },
+      {
+        "host": "BGP-CPD-SW05",
+        "ip": "172.18.23.21",
+        "version": "2"
+      },
+      {
+        "host": "BGP-EXP-REP01",
+        "ip": "172.18.23.164",
+        "version": "2"
+      },
+      {
+        "host": "SPO-CPD-UPS01",
+        "ip": "172.17.23.220",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TEC1-UPS03",
+        "ip": "172.16.23.209",
+        "version": "1"
+      },
+      {
+        "host": "SPO-CPD-FW01",
+        "ip": "172.17.23.6",
+        "version": "2"
+      },
+      {
+        "host": "SCL-CPD-FW01",
+        "ip": "172.16.23.6",
+        "version": "2"
+      },
+      {
+        "host": "SCL-TIN-TD01",
+        "ip": "172.16.113.10",
+        "version": "2"
+      },
+      {
+        "host": "BGP-CPD-FW01",
+        "ip": "172.18.23.6",
+        "version": "2"
+      },
+      {
+        "host": "SCL-MAN-UPS01",
+        "ip": "172.16.23.212",
+        "version": "1"
+      },
+      {
+        "host": "SCL-PJT-COLOR01",
+        "ip": "172.16.4.6",
+        "version": "2"
+      },
+      {
+        "host": "BR-SCL-FIA-FW01",
+        "ip": "172.20.23.6",
+        "version": "2"
+      },
+      {
+        "host": "SCL-DRH-UPS01",
+        "ip": "172.16.23.214",
+        "version": "1"
+      },
+      {
+        "host": "SCL-ALM-UPS01",
+        "ip": "172.16.23.215",
+        "version": "1"
+      },
+      {
+        "host": "SCL-ADM-REP01",
+        "ip": "172.16.23.165",
+        "version": "2"
+      },
+      {
+        "host": "SCL-MAN-REP01",
+        "ip": "172.16.23.166",
+        "version": "2"
+      },
+      {
+        "host": "SCL-TEC1-UPS02",
+        "ip": "172.16.23.202",
+        "version": "1"
+      },
+      {
+        "host": "SCL-REV-REP01",
+        "ip": "172.16.23.160",
+        "version": "2"
+      },
+      {
+        "host": "BGP-TEC-UPS01",
+        "ip": "172.18.23.206",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TIN-REP01",
+        "ip": "172.16.23.164",
+        "version": "2"
+      },
+      {
+        "host": "BGP-TEC-UPS02",
+        "ip": "172.18.23.205",
+        "version": "1"
+      },
+      {
+        "host": "AZ-VM-FW-01",
+        "ip": "10.10.1.254",
+        "version": "2"
+      },
+      {
+        "host": "SPO-NAS-Backup",
+        "ip": "172.17.2.19",
+        "version": "2"
+      },
+      {
+        "host": "BGP-LOG-PB02",
+        "ip": "172.18.4.9",
+        "version": "2"
+      },
+      {
+        "host": "SCL-CLD-UPS01",
+        "ip": "172.16.23.210",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TEC1-UPS04",
+        "ip": "172.16.23.208",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TEC2-UPS01",
+        "ip": "172.16.23.204",
+        "version": "1"
+      },
+      {
+        "host": "BGP-EXP-UPS01",
+        "ip": "172.18.23.201",
+        "version": "1"
+      },
+      {
+        "host": "SCL-EXP-UPS01",
+        "ip": "172.16.23.206",
+        "version": "1"
+      },
+      {
+        "host": "BGP-TEC-UPS03",
+        "ip": "172.18.23.203",
+        "version": "1"
+      },
+      {
+        "host": "SCL-ACA-UPS01",
+        "ip": "172.16.23.207",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TIN-UPS01",
+        "ip": "172.16.23.203",
+        "version": "1"
+      },
+      {
+        "host": "SCL-CPD-UPS01",
+        "ip": "172.16.23.220",
+        "version": "1"
+      },
+      {
+        "host": "BGP-REV-UPS01",
+        "ip": "172.18.23.209",
+        "version": "1"
+      },
+      {
+        "host": "BGP-ADM-UPS01",
+        "ip": "172.18.23.202",
+        "version": "1"
+      },
+      {
+        "host": "BGP-ACA-UPS01",
+        "ip": "172.18.23.208",
+        "version": "1"
+      },
+      {
+        "host": "BGP-POR-UPS01",
+        "ip": "172.18.23.207",
+        "version": "1"
+      },
+      {
+        "host": "BGP-CPD-UPS01",
+        "ip": "172.18.23.220",
+        "version": "1"
+      },
+      {
+        "host": "BGP-NAS-Backup",
+        "ip": "172.18.2.205",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-SPO-SRV-FAD01",
+        "ip": "172.17.2.199",
+        "version": "2"
+      },
+      {
+        "host": "BGP-NAS-03",
+        "ip": "172.18.8.205",
+        "version": "2"
+      },
+      {
+        "host": "BGP-NAS-Hyperv",
+        "ip": "172.18.2.20",
+        "version": "2"
+      },
+      {
+        "host": "BGP-NAS-DB",
+        "ip": "172.18.2.21",
+        "version": "2"
+      },
+      {
+        "host": "SCL-URD-UPS01",
+        "ip": "172.16.23.213",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TIN-UPS02",
+        "ip": "172.16.23.211",
+        "version": "1"
+      },
+      {
+        "host": "SCL-TEC2-UPS02",
+        "ip": "172.16.23.205",
+        "version": "1"
+      },
+      {
+        "host": "SCL-NAS-Hyperv",
+        "ip": "172.16.2.20",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-SCL-SRV-FHV02",
+        "ip": "172.16.2.199",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-SCL-SRV-FHV03",
+        "ip": "172.16.2.198",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-BGP-SRV-FHV01",
+        "ip": "172.18.2.199",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-BGP-SRV-FHV02",
+        "ip": "172.18.2.198",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-BGP-SRV-FHV03",
+        "ip": "172.18.2.197",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-BGP-SRV-FREP",
+        "ip": "172.18.8.196",
+        "version": "2"
+      },
+      {
+        "host": "SCL-NAS-Backup",
+        "ip": "172.16.8.22",
+        "version": "2"
+      },
+      {
+        "host": "SCL-MAN-PB01",
+        "ip": "172.16.4.5",
+        "version": "2"
+      },
+      {
+        "host": "SCL-PCP-COLOR01",
+        "ip": "172.16.4.20",
+        "version": "2"
+      },
+      {
+        "host": "SCL-ACA-COLOR01",
+        "ip": "172.16.4.10",
+        "version": "2"
+      },
+      {
+        "host": "SCL-ADM-COLOR01",
+        "ip": "172.16.4.3",
+        "version": "2"
+      },
+      {
+        "host": "SCL-ALM-PB01",
+        "ip": "172.16.4.15",
+        "version": "2"
+      },
+      {
+        "host": "SCL-DRH-COLOR01",
+        "ip": "172.16.4.4",
+        "version": "2"
+      },
+      {
+        "host": "SCL-ENF-PB01",
+        "ip": "172.16.4.23",
+        "version": "2"
+      },
+      {
+        "host": "SCL-EXP-PB01",
+        "ip": "172.16.4.8",
+        "version": "2"
+      },
+      {
+        "host": "SCL-EXP-PB02",
+        "ip": "172.16.4.17",
+        "version": "2"
+      },
+      {
+        "host": "SPO-ADM-COLOR01",
+        "ip": "172.17.4.7",
+        "version": "2"
+      },
+      {
+        "host": "BGP-DRH-COLOR01",
+        "ip": "172.18.4.5",
+        "version": "2"
+      },
+      {
+        "host": "BGP-ADM-PB01",
+        "ip": "172.18.4.3",
+        "version": "2"
+      },
+      {
+        "host": "BGP-SEG-PB01",
+        "ip": "172.18.4.7",
+        "version": "2"
+      },
+      {
+        "host": "SCL-QLD-PB01",
+        "ip": "172.16.4.9",
+        "version": "2"
+      },
+      {
+        "host": "BGP-ALM-PB01",
+        "ip": "172.18.4.4",
+        "version": "2"
+      },
+      {
+        "host": "BGP-LOG-PB01",
+        "ip": "172.18.4.10",
+        "version": "2"
+      },
+      {
+        "host": "BGP-MAN-PB01",
+        "ip": "172.18.4.6",
+        "version": "2"
+      },
+      {
+        "host": "BGP-PCP-COLOR01",
+        "ip": "172.18.4.8",
+        "version": "2"
+      },
+      {
+        "host": "SCL-TIN-PB01",
+        "ip": "172.16.4.11",
+        "version": "2"
+      },
+      {
+        "host": "SCL-TEC1-COLOR01",
+        "ip": "172.16.4.13",
+        "version": "2"
+      },
+      {
+        "host": "BGP-TEC-PB01",
+        "ip": "172.18.4.11",
+        "version": "2"
+      },
+      {
+        "host": "IDRAC-SCL-SRV-FREP",
+        "ip": "172.16.8.197",
+        "version": "2"
+      },
+      {
+        "host": "SCL-TEC2-PB01",
+        "ip": "172.16.4.14",
+        "version": "2"
+      }
+    ],
+    "v1_v2_count": 84
+  },
+  "httptests_count": 40,
+  "drules": [
+    {
+      "druleid": "2",
+      "name": "Local network",
+      "iprange": "192.168.0.1-254",
+      "delay": "1h",
+      "status": "1"
+    },
+    {
+      "druleid": "6",
+      "name": "Descoberta — Rede BGP",
+      "iprange": "172.18.23.0/24",
+      "delay": "3600",
+      "status": "0"
+    },
+    {
+      "druleid": "7",
+      "name": "Descoberta — Rede SCL",
+      "iprange": "172.16.23.0/24",
+      "delay": "3600",
+      "status": "0"
+    },
+    {
+      "druleid": "8",
+      "name": "Descoberta — Rede SPO",
+      "iprange": "172.17.23.0/24",
+      "delay": "3600",
+      "status": "0"
+    }
+  ],
+  "classificacao_groups": []
+}

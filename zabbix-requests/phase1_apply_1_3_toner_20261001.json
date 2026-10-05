@@ -1,0 +1,20 @@
+[
+  {
+    "arguments": {
+      "method": "item.update",
+      "params": {
+        "itemid": "110116",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "if (value === '-2' || Number(value) < 0) {\n  throw 'toner sentinel';\n}\nreturn value;",
+            "error_handler": "1",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_toner_magenta_discard_sentinel_20261001.json",
+    "quiet": true
+  }
+]

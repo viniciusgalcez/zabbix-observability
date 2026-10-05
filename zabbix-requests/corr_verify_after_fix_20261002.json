@@ -1,0 +1,67 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true
+      }
+    },
+    "save": "backups/corr_fw_problems_after_fix_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "correlationids": [
+          "16",
+          "45"
+        ],
+        "output": [
+          "correlationid",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "save": "backups/corr_16_45_verify_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50308"
+        ],
+        "output": [
+          "triggerid",
+          "status",
+          "value",
+          "manual_close",
+          "description"
+        ]
+      }
+    },
+    "save": "backups/corr_50308_verify_20261002.json",
+    "quiet": true
+  }
+]

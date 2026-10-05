@@ -1,0 +1,41 @@
+[
+  {
+    "arguments": {
+      "method": "task.create",
+      "params": {
+        "type": "6",
+        "request": {
+          "itemid": "96461"
+        }
+      }
+    },
+    "save": "backups/phase1_task_lld_toner_96461_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "task.create",
+      "params": {
+        "type": "6",
+        "request": {
+          "itemid": "104289"
+        }
+      }
+    },
+    "save": "backups/phase1_task_lld_speed_104289_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "task.create",
+      "params": {
+        "type": "6",
+        "request": {
+          "itemid": "110116"
+        }
+      }
+    },
+    "save": "backups/phase1_task_checknow_toner_item_20261001.json",
+    "quiet": true
+  }
+]

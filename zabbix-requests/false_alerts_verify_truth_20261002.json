@@ -1,0 +1,136 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "hostids": [
+          "10758"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "prevvalue",
+          "lastclock",
+          "status",
+          "state",
+          "error"
+        ],
+        "search": {
+          "name": "*ISP1_VIVO*"
+        },
+        "searchWildcardsEnabled": true,
+        "limit": 60
+      }
+    },
+    "save": "backups/false_alerts_spo_isp1_vivo_items_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "42344",
+          "42369",
+          "42376",
+          "42398",
+          "42411",
+          "42415",
+          "42706",
+          "42722",
+          "42745",
+          "43212",
+          "43231",
+          "43234",
+          "43235",
+          "43236",
+          "43237",
+          "43238",
+          "43242",
+          "43246",
+          "43247",
+          "43250",
+          "43254",
+          "43255",
+          "43256",
+          "43257",
+          "43258",
+          "43262",
+          "43266",
+          "43267",
+          "43270",
+          "45473",
+          "47633",
+          "50308",
+          "50821",
+          "50823",
+          "50824",
+          "51770",
+          "51807",
+          "51808",
+          "53811",
+          "53814",
+          "53820",
+          "53829",
+          "54099",
+          "54100",
+          "54101",
+          "54314",
+          "54324",
+          "54331",
+          "54365",
+          "54375",
+          "54802",
+          "54991",
+          "54995",
+          "55004",
+          "55010",
+          "55127",
+          "55128",
+          "55144",
+          "55204",
+          "55827",
+          "55829",
+          "55830",
+          "55831",
+          "55835",
+          "55839",
+          "55840",
+          "55848"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "priority",
+          "status",
+          "state",
+          "lastchange",
+          "error"
+        ],
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/false_alerts_open_problem_trigger_values_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50308"
+        ],
+        "output": "extend",
+        "selectTags": "extend",
+        "expandExpression": true
+      }
+    },
+    "save": "backups/false_alerts_spo_50308_full_20261002.json",
+    "quiet": true
+  }
+]

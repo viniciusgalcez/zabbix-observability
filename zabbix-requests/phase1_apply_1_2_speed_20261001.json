@@ -1,0 +1,32 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "42682",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "if (value === '' || value === '-1' || isNaN(Number(value)) || Number(value) < 0) {\n  return '0';\n}\nreturn value;",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "1",
+            "params": "1000000",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "20",
+            "params": "1h",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_speed_prototype_42682_js_sanitize_20261001.json",
+    "quiet": true
+  }
+]

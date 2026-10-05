@@ -1,0 +1,14 @@
+[
+  {
+    "globalmacroid": "11",
+    "macro": "{$IF.UTIL.MAX}",
+    "value": "80",
+    "description": "Utilização interface alerta (%)"
+  },
+  {
+    "globalmacroid": "12",
+    "macro": "{$IF.ERRORS.WARN}",
+    "value": "2",
+    "description": "Taxa de erros de interface para alerta (pps)"
+  }
+]

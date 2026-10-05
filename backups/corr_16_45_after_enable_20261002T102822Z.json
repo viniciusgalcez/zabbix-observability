@@ -1,0 +1,23 @@
+{
+  "correlations": [
+    {
+      "correlationid": "16",
+      "name": "SPO VIVO: fechar sintomas enquanto causa ativa",
+      "status": "0"
+    },
+    {
+      "correlationid": "45",
+      "name": "SPO VPN ISP1 (VIVO): fechar sintomas novos enquanto causa ativa",
+      "status": "0"
+    }
+  ],
+  "trigger": [
+    {
+      "triggerid": "50308",
+      "status": "0",
+      "value": "1",
+      "manual_close": "1",
+      "description": "SPO: Saida de internet 1 (VIVO) sem conectividade"
+    }
+  ]
+}

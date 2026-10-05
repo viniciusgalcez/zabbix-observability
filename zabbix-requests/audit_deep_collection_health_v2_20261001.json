@@ -1,0 +1,108 @@
+[
+  {
+    "arguments": {
+      "method": "proxy.get",
+      "params": {
+        "output": ["proxyid", "host", "status", "lastaccess", "description"]
+      }
+    },
+    "save": "backups/audit_deep_proxies_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "hostinterface.get",
+      "params": {
+        "output": ["interfaceid", "hostid", "type", "ip", "dns", "port", "main", "available", "error", "details"],
+        "filter": {"type": 2},
+        "selectHosts": ["hostid", "host", "name", "status"]
+      }
+    },
+    "save": "backups/audit_deep_snmp_interfaces_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "httptest.get",
+      "params": {
+        "output": ["httptestid", "name", "status", "verify_peer", "verify_host", "delay"],
+        "selectSteps": ["httpstepid", "name", "url"],
+        "selectHosts": ["hostid", "host", "name"]
+      }
+    },
+    "save": "backups/audit_deep_httptests_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "priority", "value", "status", "state", "error", "lastchange"],
+        "filter": {"state": 1, "status": 0},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_deep_triggers_unknown_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "drule.get",
+      "params": {
+        "output": ["druleid", "name", "iprange", "delay", "status"]
+      }
+    },
+    "save": "backups/audit_deep_discovery_rules_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastclock", "delay"],
+        "filter": {"state": 1},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_deep_lld_unsupported_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid"],
+        "countOutput": true,
+        "filter": {"state": 1, "status": 0}
+      }
+    },
+    "save": "backups/audit_deep_unsupported_enabled_count_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid"],
+        "countOutput": true,
+        "filter": {"state": 1}
+      }
+    },
+    "save": "backups/audit_deep_unsupported_all_count_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": ["hostid", "host", "name", "status", "available", "snmp_available", "ipmi_available", "jmx_available", "error", "snmp_error"],
+        "filter": {"status": 0},
+        "selectInterfaces": ["type", "available", "error", "ip", "port"]
+      }
+    },
+    "save": "backups/audit_deep_hosts_availability_20261001.json",
+    "quiet": true
+  }
+]

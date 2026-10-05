@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid",
+          "r_eventid"
+        ],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase2_fw_problems_active_only_20261002.json",
+    "quiet": true
+  }
+]

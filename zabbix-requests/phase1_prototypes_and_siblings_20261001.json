@@ -1,0 +1,152 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": "extend",
+        "itemids": [
+          "104339"
+        ],
+        "selectPreprocessing": "extend",
+        "selectDiscoveryRule": [
+          "itemid",
+          "name",
+          "key_"
+        ]
+      }
+    },
+    "save": "backups/phase1_frep_speed_prototype_104339_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": "extend",
+        "itemids": [
+          "108972",
+          "110116"
+        ],
+        "selectPreprocessing": "extend",
+        "selectTriggers": "extend",
+        "selectHosts": [
+          "hostid",
+          "host"
+        ]
+      }
+    },
+    "save": "backups/phase1_vapp10_toner_items_full_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "error",
+          "lastvalue",
+          "flags"
+        ],
+        "hostids": [
+          "11039"
+        ],
+        "search": {
+          "key_": "CurrentQueueSize"
+        },
+        "startSearch": false,
+        "selectTriggers": [
+          "triggerid",
+          "description",
+          "status",
+          "state"
+        ]
+      }
+    },
+    "save": "backups/phase1_vapp10_currentqueuesize_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "error",
+          "lastvalue",
+          "value_type",
+          "flags"
+        ],
+        "hostids": [
+          "10978"
+        ],
+        "search": {
+          "key_": "printer.toner"
+        },
+        "startSearch": true,
+        "selectPreprocessing": "extend",
+        "selectTriggers": [
+          "triggerid",
+          "description",
+          "status",
+          "state"
+        ]
+      }
+    },
+    "save": "backups/phase1_color01_toner_keys_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "value_type",
+          "status",
+          "templateid"
+        ],
+        "discoveryids": [
+          "104289"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_frep_lld_104289_prototypes_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "template.get",
+      "params": {
+        "output": [
+          "templateid",
+          "host",
+          "name"
+        ],
+        "filter": {
+          "host": [
+            "Linux by Zabbix agent active"
+          ]
+        },
+        "selectDiscoveries": [
+          "itemid",
+          "name",
+          "key_"
+        ]
+      }
+    },
+    "save": "backups/phase1_linux_template_discoveries_20261001.json",
+    "quiet": true
+  }
+]

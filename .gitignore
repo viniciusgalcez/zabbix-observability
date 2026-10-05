@@ -27,3 +27,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Credenciais locais do Teams Incident Hub
+teams_incident_hub/.env

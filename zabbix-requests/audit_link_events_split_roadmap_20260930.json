@@ -1,0 +1,42 @@
+[
+  {
+    "arguments": {"method": "event.get", "params": {"output": ["eventid", "clock", "r_eventid", "name", "severity", "correlationid", "c_eventid"], "source": 0, "object": 0, "value": 1, "time_from": 1788231600, "search": {"name": "Link down"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC", "limit": 2000}},
+    "save": "backups/audit_events_link_down_september_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "event.get", "params": {"output": ["eventid", "clock", "r_eventid", "name", "severity", "correlationid", "c_eventid"], "source": 0, "object": 0, "value": 1, "time_from": 1788231600, "search": {"name": "Tunnel down"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC", "limit": 2000}},
+    "save": "backups/audit_events_tunnel_down_september_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "event.get", "params": {"output": ["eventid", "clock", "r_eventid", "name", "severity", "correlationid", "c_eventid"], "source": 0, "object": 0, "value": 1, "time_from": 1788231600, "search": {"name": "High packets loss"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC", "limit": 2000}},
+    "save": "backups/audit_events_packet_loss_september_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "event.get", "params": {"output": ["eventid", "clock", "r_eventid", "name", "severity", "correlationid", "c_eventid"], "source": 0, "object": 0, "value": 1, "time_from": 1788231600, "search": {"name": "Health check state is dead"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC", "limit": 2000}},
+    "save": "backups/audit_events_health_dead_september_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": ["eventid", "clock", "name", "severity", "correlationid"], "source": 0, "object": 0, "search": {"name": "Link down"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC"}},
+    "save": "backups/audit_open_link_down_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": ["eventid", "clock", "name", "severity", "correlationid"], "source": 0, "object": 0, "search": {"name": "Tunnel down"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC"}},
+    "save": "backups/audit_open_tunnel_down_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": ["eventid", "clock", "name", "severity", "correlationid"], "source": 0, "object": 0, "search": {"name": "High packets loss"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC"}},
+    "save": "backups/audit_open_packet_loss_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "problem.get", "params": {"output": ["eventid", "clock", "name", "severity", "correlationid"], "source": 0, "object": 0, "search": {"name": "Health check state is dead"}, "selectHosts": ["hostid", "host", "name"], "selectTags": "extend", "sortfield": ["clock", "eventid"], "sortorder": "DESC"}},
+    "save": "backups/audit_open_health_dead_20260930.json",
+    "quiet": true
+  }
+]

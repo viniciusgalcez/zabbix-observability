@@ -1,0 +1,52 @@
+{
+  "disabled": 179,
+  "errors": [],
+  "global_after": 90,
+  "top_after": [
+    [
+      "BGP-NAS-Hyperv",
+      17
+    ],
+    [
+      "SCL-CPD-SW02",
+      15
+    ],
+    [
+      "SCL-NAS-Hyperv",
+      9
+    ],
+    [
+      "BGP-NAS-Backup",
+      9
+    ],
+    [
+      "BGP-NAS-03",
+      9
+    ],
+    [
+      "SCL-NAS-Backup",
+      9
+    ],
+    [
+      "BGP-NAS-DB",
+      9
+    ],
+    [
+      "SPO-NAS-Backup",
+      9
+    ],
+    [
+      "AZ-VM-APP-03-DB",
+      2
+    ],
+    [
+      "CLICKHOUSE-172.16.2.145",
+      1
+    ],
+    [
+      "BGP-SRV-V06",
+      1
+    ]
+  ],
+  "macro_unknown_disabled": 7
+}

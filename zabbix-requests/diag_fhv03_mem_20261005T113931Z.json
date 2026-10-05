@@ -1,0 +1,335 @@
+{
+  "host": {
+    "hostid": "10886",
+    "host": "BGP-SRV-FHV03",
+    "name": "BGP-SRV-FHV03 (Hyper-V 03)",
+    "status": "0",
+    "interfaces": [
+      {
+        "interfaceid": "229",
+        "ip": "172.18.2.203",
+        "available": "1",
+        "error": ""
+      }
+    ]
+  },
+  "problems_all": [
+    {
+      "eventid": "18623731",
+      "source": "0",
+      "object": "0",
+      "objectid": "49158",
+      "clock": "1791191244",
+      "ns": "176490800",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "Hyper-V Host Memory pressure 100%",
+      "acknowledged": "0",
+      "severity": "4",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Memory (101 % 100 %)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "16021099",
+      "source": "0",
+      "object": "0",
+      "objectid": "49157",
+      "clock": "1783424664",
+      "ns": "531072500",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "Hyper-V Host Memory pressure 90-100%",
+      "acknowledged": "0",
+      "severity": "2",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Memory (101 % *UNKNOWN*)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    }
+  ],
+  "problems_memory": [
+    {
+      "eventid": "18623731",
+      "source": "0",
+      "object": "0",
+      "objectid": "49158",
+      "clock": "1791191244",
+      "ns": "176490800",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "Hyper-V Host Memory pressure 100%",
+      "acknowledged": "0",
+      "severity": "4",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Memory (101 % 100 %)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "16021099",
+      "source": "0",
+      "object": "0",
+      "objectid": "49157",
+      "clock": "1783424664",
+      "ns": "531072500",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "Hyper-V Host Memory pressure 90-100%",
+      "acknowledged": "0",
+      "severity": "2",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Memory (101 % *UNKNOWN*)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    }
+  ],
+  "triggers_memory_related": [
+    {
+      "triggerid": "49157",
+      "description": "Hyper-V Host Memory pressure 90-100%",
+      "expression": "last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=90 and last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])<100",
+      "priority": "2",
+      "value": "1",
+      "lastchange": "1783424664",
+      "status": "1",
+      "state": "0",
+      "error": "",
+      "items": [
+        {
+          "itemid": "105504",
+          "name": "Hyper-V Average memory pressure",
+          "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+          "units": "%",
+          "status": "0",
+          "value_type": "0",
+          "state": "0",
+          "error": "",
+          "lastclock": "1791200364",
+          "lastvalue": "101",
+          "prevvalue": "101.233333"
+        }
+      ]
+    },
+    {
+      "triggerid": "49158",
+      "description": "Hyper-V Host Memory pressure 100%",
+      "expression": "last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=100",
+      "priority": "4",
+      "value": "1",
+      "lastchange": "1791191244",
+      "status": "0",
+      "state": "0",
+      "error": "",
+      "items": [
+        {
+          "itemid": "105504",
+          "name": "Hyper-V Average memory pressure",
+          "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+          "units": "%",
+          "status": "0",
+          "value_type": "0",
+          "state": "0",
+          "error": "",
+          "lastclock": "1791200364",
+          "lastvalue": "101",
+          "prevvalue": "101.233333"
+        }
+      ]
+    }
+  ],
+  "items_memory": [],
+  "history_util": {},
+  "events_memory": [
+    {
+      "eventid": "18623731",
+      "source": "0",
+      "object": "0",
+      "objectid": "49158",
+      "clock": "1791191244",
+      "value": "1",
+      "acknowledged": "0",
+      "ns": "176490800",
+      "name": "Hyper-V Host Memory pressure 100%",
+      "severity": "4",
+      "r_eventid": "0",
+      "c_eventid": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "suppressed": "0",
+      "cause_eventid": "0",
+      "acknowledges": [],
+      "relatedObject": {
+        "triggerid": "49158",
+        "expression": "{96677}>=100",
+        "description": "Hyper-V Host Memory pressure 100%",
+        "url": "",
+        "status": "0",
+        "value": "1",
+        "priority": "4",
+        "lastchange": "1791191244",
+        "comments": "",
+        "error": "",
+        "templateid": "40289",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "0",
+        "opdata": "Memory ({ITEM.LASTVALUE1} {ITEM.VALUE1})",
+        "event_name": "",
+        "uuid": "",
+        "url_name": ""
+      },
+      "opdata": "Memory (101 % 100 %)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "16021099",
+      "source": "0",
+      "object": "0",
+      "objectid": "49157",
+      "clock": "1783424664",
+      "value": "1",
+      "acknowledged": "0",
+      "ns": "531072500",
+      "name": "Hyper-V Host Memory pressure 90-100%",
+      "severity": "2",
+      "r_eventid": "0",
+      "c_eventid": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "suppressed": "0",
+      "cause_eventid": "0",
+      "acknowledges": [],
+      "relatedObject": {
+        "triggerid": "49157",
+        "expression": "{96676}>=90 and {96676}<100",
+        "description": "Hyper-V Host Memory pressure 90-100%",
+        "url": "",
+        "status": "1",
+        "value": "1",
+        "priority": "2",
+        "lastchange": "1783424664",
+        "comments": "",
+        "error": "",
+        "templateid": "40288",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "0",
+        "recovery_expression": "",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "0",
+        "opdata": "Memory ({ITEM.LASTVALUE1} {ITEM.VALUE1})",
+        "event_name": "",
+        "uuid": "",
+        "url_name": ""
+      },
+      "opdata": "Memory (101 % *UNKNOWN*)",
+      "tags": [
+        {
+          "tag": "application",
+          "value": "Hyper-V Host"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v"
+        },
+        {
+          "tag": "target",
+          "value": "hyper-v-host"
+        }
+      ],
+      "urls": []
+    }
+  ],
+  "now": 1791200372
+}

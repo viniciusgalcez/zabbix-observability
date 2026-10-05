@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import time
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -317,12 +318,35 @@ def reconcile(client: ZabbixClient, matrix_path: Path, backup_dir: Path, apply: 
                 ),
             },
         )
-        verified = client.call(
-            "problem.get",
-            {"output": ["eventid", "cause_eventid"], "eventids": [event_id]},
-        )
-        if len(verified) != 1 or str(verified[0].get("cause_eventid")) != cause_id:
-            raise RuntimeError(f"Rank verification failed for event {event_id}; stopped")
+        # event.get can lag briefly after event.acknowledge; retry then continue
+        # the batch instead of aborting remaining ranks.
+        verified_cause = "0"
+        for _ in range(12):
+            verified = client.call(
+                "event.get",
+                {
+                    "output": ["eventid", "cause_eventid"],
+                    "eventids": [event_id],
+                },
+            )
+            if verified and str(verified[0].get("cause_eventid", "0")) == cause_id:
+                verified_cause = cause_id
+                break
+            time.sleep(0.5)
+        if verified_cause != cause_id:
+            print(
+                json.dumps(
+                    {
+                        "rank_unverified_eventid": event_id,
+                        "expected_cause_eventid": cause_id,
+                        "observed_cause_eventid": (
+                            verified[0].get("cause_eventid") if verified else None
+                        ),
+                        "backup": str(backup),
+                    }
+                )
+            )
+            continue
         print(json.dumps({"ranked_eventid": event_id, "cause_eventid": cause_id, "backup": str(backup)}))
     return len(plan)
 

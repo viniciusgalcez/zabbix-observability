@@ -1,0 +1,94 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "itemids": [
+          "96476",
+          "96489",
+          "42682",
+          "104339"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "hostid",
+          "templateid"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_after_toner_apply_protos_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "110116",
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692",
+          "108972"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "hostid",
+          "status",
+          "state",
+          "error",
+          "lastvalue",
+          "lastclock"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_after_toner_apply_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "task.create",
+      "params": [
+        {
+          "type": "6",
+          "request": {
+            "itemid": "110116"
+          }
+        },
+        {
+          "type": "6",
+          "request": {
+            "itemid": "104688"
+          }
+        }
+      ]
+    },
+    "save": "backups/phase1_task_checknow_toner_speed_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10713"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "severity_orig",
+          "clock"
+        ],
+        "recent": true
+      }
+    },
+    "save": "backups/phase1_verify_icmp_host_problems_20261001.json",
+    "quiet": true
+  }
+]

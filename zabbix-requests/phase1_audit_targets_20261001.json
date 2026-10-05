@@ -1,0 +1,166 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": [
+          "hostid",
+          "host",
+          "name",
+          "status",
+          "description",
+          "proxyid",
+          "proxy_hostid"
+        ],
+        "filter": {
+          "host": [
+            "BGP-ACA-AP01",
+            "BGP-SRV-FREP",
+            "SCL-DRH-COLOR01",
+            "BGP-SRV-VAPP10"
+          ]
+        },
+        "selectInterfaces": [
+          "interfaceid",
+          "type",
+          "ip",
+          "dns",
+          "port",
+          "main",
+          "available",
+          "error",
+          "details"
+        ],
+        "selectParentTemplates": [
+          "templateid",
+          "name"
+        ],
+        "selectTags": "extend",
+        "selectInventory": [
+          "name",
+          "alias",
+          "notes",
+          "location",
+          "type",
+          "os"
+        ]
+      }
+    },
+    "save": "backups/phase1_hosts_before_fix_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": "extend",
+        "itemids": [
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692",
+          "108972",
+          "110116"
+        ],
+        "selectPreprocessing": "extend",
+        "selectTriggers": [
+          "triggerid",
+          "description",
+          "status",
+          "state",
+          "value",
+          "priority"
+        ],
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ]
+      }
+    },
+    "save": "backups/phase1_items_before_fix_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          "17297217"
+        ],
+        "output": "extend",
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "selectTags": "extend",
+        "select_acknowledges": "extend"
+      }
+    },
+    "save": "backups/phase1_icmp_event_17297217_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "error",
+          "lastvalue",
+          "lastclock",
+          "value_type",
+          "delay"
+        ],
+        "host": "BGP-ACA-AP01",
+        "search": {
+          "key_": "icmpping"
+        },
+        "searchWildcardsEnabled": true,
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/phase1_bgp_aca_ap01_icmp_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": [
+          "triggerid",
+          "description",
+          "expression",
+          "status",
+          "state",
+          "value",
+          "priority",
+          "comments"
+        ],
+        "itemids": [
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692",
+          "108972",
+          "110116"
+        ],
+        "expandExpression": true,
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/phase1_triggers_linked_to_items_20261001.json",
+    "quiet": true
+  }
+]

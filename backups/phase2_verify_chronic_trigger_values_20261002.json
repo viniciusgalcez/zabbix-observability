@@ -1,0 +1,62 @@
+[
+  {
+    "triggerid": "43212",
+    "description": "FortiGate: Interface dmz(): Link down",
+    "value": "0",
+    "status": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "value": "1",
+    "status": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "53811",
+    "description": "FortiGate: Interface lan3(ISP2-): Link down",
+    "value": "0",
+    "status": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "53814",
+    "description": "FortiGate: Interface lan2(): Link down",
+    "value": "0",
+    "status": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54995",
+    "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "value": "0",
+    "status": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ]
+  }
+]

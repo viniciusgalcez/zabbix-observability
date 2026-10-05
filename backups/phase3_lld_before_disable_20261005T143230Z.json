@@ -1,0 +1,2351 @@
+[
+  {
+    "itemid": "52328",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10731",
+    "name": "Network interfaces discovery",
+    "key_": "net.if.discovery",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "40652",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "Discovering interfaces from IF-MIB.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "52305",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.1.80' from [[172.16.23.9]:161]: timed out",
+    "hosts": [
+      {
+        "hostid": "10731",
+        "host": "SCL-CPD-SW01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "52333",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets discarded",
+        "key_": "net.if.in.discards[ifInDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52334",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets with errors",
+        "key_": "net.if.in.errors[ifInErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52335",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits received",
+        "key_": "net.if.in[ifHCInOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52336",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets discarded",
+        "key_": "net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52337",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets with errors",
+        "key_": "net.if.out.errors[ifOutErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52338",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits sent",
+        "key_": "net.if.out[ifHCOutOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52339",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Speed",
+        "key_": "net.if.speed[ifHighSpeed.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52340",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Operational status",
+        "key_": "net.if.status[ifOperStatus.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52341",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Interface type",
+        "key_": "net.if.type[ifType.{#SNMPINDEX}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+      "conditions": [
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+          "formulaid": "B"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFALIAS.MATCHES}",
+          "formulaid": "C"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+          "formulaid": "D"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "8",
+          "value": "{$NET.IF.IFDESCR.MATCHES}",
+          "formulaid": "E"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "9",
+          "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+          "formulaid": "F"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "8",
+          "value": "{$NET.IF.IFNAME.MATCHES}",
+          "formulaid": "G"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "9",
+          "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "formulaid": "H"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+          "formulaid": "I"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+          "formulaid": "J"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "8",
+          "value": "{$NET.IF.IFTYPE.MATCHES}",
+          "formulaid": "K"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "9",
+          "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+          "formulaid": "L"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "52428",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10735",
+    "name": "Network interfaces discovery",
+    "key_": "net.if.discovery",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "40652",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "Discovering interfaces from IF-MIB.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "52405",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.6.80' from [[172.16.23.29]:161]: timed out",
+    "hosts": [
+      {
+        "hostid": "10735",
+        "host": "SCL-TEC2-SW01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "52433",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets discarded",
+        "key_": "net.if.in.discards[ifInDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52434",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets with errors",
+        "key_": "net.if.in.errors[ifInErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52435",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits received",
+        "key_": "net.if.in[ifHCInOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52436",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets discarded",
+        "key_": "net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52437",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets with errors",
+        "key_": "net.if.out.errors[ifOutErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52438",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits sent",
+        "key_": "net.if.out[ifHCOutOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52439",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Speed",
+        "key_": "net.if.speed[ifHighSpeed.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52440",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Operational status",
+        "key_": "net.if.status[ifOperStatus.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "52441",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Interface type",
+        "key_": "net.if.type[ifType.{#SNMPINDEX}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+      "conditions": [
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+          "formulaid": "B"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFALIAS.MATCHES}",
+          "formulaid": "C"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+          "formulaid": "D"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "8",
+          "value": "{$NET.IF.IFDESCR.MATCHES}",
+          "formulaid": "E"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "9",
+          "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+          "formulaid": "F"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "8",
+          "value": "{$NET.IF.IFNAME.MATCHES}",
+          "formulaid": "G"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "9",
+          "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "formulaid": "H"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+          "formulaid": "I"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+          "formulaid": "J"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "8",
+          "value": "{$NET.IF.IFTYPE.MATCHES}",
+          "formulaid": "K"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "9",
+          "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+          "formulaid": "L"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "53528",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10834",
+    "name": "Network interfaces discovery",
+    "key_": "net.if.discovery",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "40652",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "Discovering interfaces from IF-MIB.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "53505",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.18.100' from [[172.17.23.15]:161]: timed out",
+    "hosts": [
+      {
+        "hostid": "10834",
+        "host": "SPO-CPD-SW01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "53533",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets discarded",
+        "key_": "net.if.in.discards[ifInDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53534",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets with errors",
+        "key_": "net.if.in.errors[ifInErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53535",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits received",
+        "key_": "net.if.in[ifHCInOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53536",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets discarded",
+        "key_": "net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53537",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets with errors",
+        "key_": "net.if.out.errors[ifOutErrors.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53538",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Bits sent",
+        "key_": "net.if.out[ifHCOutOctets.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53539",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Speed",
+        "key_": "net.if.speed[ifHighSpeed.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53540",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Operational status",
+        "key_": "net.if.status[ifOperStatus.{#SNMPINDEX}]"
+      },
+      {
+        "itemid": "53541",
+        "name": "Interface {#IFNAME}({#IFALIAS}): Interface type",
+        "key_": "net.if.type[ifType.{#SNMPINDEX}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+      "conditions": [
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#IFADMINSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+          "formulaid": "B"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFALIAS.MATCHES}",
+          "formulaid": "C"
+        },
+        {
+          "macro": "{#IFALIAS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+          "formulaid": "D"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "8",
+          "value": "{$NET.IF.IFDESCR.MATCHES}",
+          "formulaid": "E"
+        },
+        {
+          "macro": "{#IFDESCR}",
+          "operator": "9",
+          "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+          "formulaid": "F"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "8",
+          "value": "{$NET.IF.IFNAME.MATCHES}",
+          "formulaid": "G"
+        },
+        {
+          "macro": "{#IFNAME}",
+          "operator": "9",
+          "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "formulaid": "H"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "8",
+          "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+          "formulaid": "I"
+        },
+        {
+          "macro": "{#IFOPERSTATUS}",
+          "operator": "9",
+          "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+          "formulaid": "J"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "8",
+          "value": "{$NET.IF.IFTYPE.MATCHES}",
+          "formulaid": "K"
+        },
+        {
+          "macro": "{#IFTYPE}",
+          "operator": "9",
+          "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+          "formulaid": "L"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "84289",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10918",
+    "name": "Physical disks discovery",
+    "key_": "perf_instance_en.discovery[PhysicalDisk]",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "42488",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "261",
+    "description": "Discovery of installed physical disks.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Cannot obtain object's localized name.",
+    "hosts": [
+      {
+        "hostid": "10918",
+        "host": "SCL-ETE-TB01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "84301",
+        "name": "{#DEVNAME}: Average disk read queue length",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk Read Queue Length\",60]"
+      },
+      {
+        "itemid": "84302",
+        "name": "{#DEVNAME}: Disk read request avg waiting time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk sec/Read\",60]"
+      },
+      {
+        "itemid": "84303",
+        "name": "{#DEVNAME}: Disk write request avg waiting time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk sec/Write\",60]"
+      },
+      {
+        "itemid": "84304",
+        "name": "{#DEVNAME}: Average disk write queue length",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk Write Queue Length\",60]"
+      },
+      {
+        "itemid": "84305",
+        "name": "{#DEVNAME}: Disk average queue size (avgqu-sz)",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Current Disk Queue Length\",60]"
+      },
+      {
+        "itemid": "84306",
+        "name": "{#DEVNAME}: Disk read rate",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Disk Reads/sec\",60]"
+      },
+      {
+        "itemid": "84307",
+        "name": "{#DEVNAME}: Disk write rate",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Disk Writes/sec\",60]"
+      },
+      {
+        "itemid": "84308",
+        "name": "{#DEVNAME}: Disk utilization by idle time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\% Idle Time\",60]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "macro": "{#DEVNAME}",
+          "operator": "8",
+          "value": "{$VFS.DEV.DEVNAME.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#DEVNAME}",
+          "operator": "9",
+          "value": "{$VFS.DEV.DEVNAME.NOT_MATCHES}",
+          "formulaid": "B"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "85156",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10937",
+    "name": "Physical disks discovery",
+    "key_": "perf_instance_en.discovery[PhysicalDisk]",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "42488",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "280",
+    "description": "Discovery of installed physical disks.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Cannot obtain object's localized name.",
+    "hosts": [
+      {
+        "hostid": "10937",
+        "host": "SCL-TIN-TMXC01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "85168",
+        "name": "{#DEVNAME}: Average disk read queue length",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk Read Queue Length\",60]"
+      },
+      {
+        "itemid": "85169",
+        "name": "{#DEVNAME}: Disk read request avg waiting time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk sec/Read\",60]"
+      },
+      {
+        "itemid": "85170",
+        "name": "{#DEVNAME}: Disk write request avg waiting time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk sec/Write\",60]"
+      },
+      {
+        "itemid": "85171",
+        "name": "{#DEVNAME}: Average disk write queue length",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Avg. Disk Write Queue Length\",60]"
+      },
+      {
+        "itemid": "85172",
+        "name": "{#DEVNAME}: Disk average queue size (avgqu-sz)",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Current Disk Queue Length\",60]"
+      },
+      {
+        "itemid": "85173",
+        "name": "{#DEVNAME}: Disk read rate",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Disk Reads/sec\",60]"
+      },
+      {
+        "itemid": "85174",
+        "name": "{#DEVNAME}: Disk write rate",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\Disk Writes/sec\",60]"
+      },
+      {
+        "itemid": "85175",
+        "name": "{#DEVNAME}: Disk utilization by idle time",
+        "key_": "perf_counter_en[\"\\PhysicalDisk({#DEVNAME})\\% Idle Time\",60]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "macro": "{#DEVNAME}",
+          "operator": "8",
+          "value": "{$VFS.DEV.DEVNAME.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#DEVNAME}",
+          "operator": "9",
+          "value": "{$VFS.DEV.DEVNAME.NOT_MATCHES}",
+          "formulaid": "B"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "88015",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10683",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87847",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "31",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10683",
+        "host": "SCL-SRV-FHV02"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "88017",
+        "name": "Replication Data {#VM.NAME}",
+        "key_": "hyperv.vm.data[${#VM.ID}]"
+      },
+      {
+        "itemid": "88018",
+        "name": "Replication enabled for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.enabled[{#VM.ID}]"
+      },
+      {
+        "itemid": "88019",
+        "name": "Replication frequency {#VM.NAME}",
+        "key_": "hyperv.vm.replication.frequency[{#VM.ID}]"
+      },
+      {
+        "itemid": "88020",
+        "name": "Replication health for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.health[{#VM.ID}]"
+      },
+      {
+        "itemid": "88021",
+        "name": "Replication last sync {#VM.NAME}",
+        "key_": "hyperv.vm.replication.last.sync[{#VM.ID}]"
+      },
+      {
+        "itemid": "88022",
+        "name": "Replication mode for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.mode[{#VM.ID}]"
+      },
+      {
+        "itemid": "88023",
+        "name": "Replication primary server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.primary.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "88024",
+        "name": "Replication replica server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.replica.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "88025",
+        "name": "Replication state for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.state[{#VM.ID}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "88016",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10683",
+    "name": "Hyper-V VM Disk Discovery",
+    "key_": "hyperv.discover.vms.data",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87848",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "87985",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discovery.vms",
+    "hosts": [
+      {
+        "hostid": "10683",
+        "host": "SCL-SRV-FHV02"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "88057",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10920",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87847",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "263",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10920",
+        "host": "SCL-SRV-FHV03"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "88059",
+        "name": "Replication Data {#VM.NAME}",
+        "key_": "hyperv.vm.data[${#VM.ID}]"
+      },
+      {
+        "itemid": "88060",
+        "name": "Replication enabled for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.enabled[{#VM.ID}]"
+      },
+      {
+        "itemid": "88061",
+        "name": "Replication frequency {#VM.NAME}",
+        "key_": "hyperv.vm.replication.frequency[{#VM.ID}]"
+      },
+      {
+        "itemid": "88062",
+        "name": "Replication health for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.health[{#VM.ID}]"
+      },
+      {
+        "itemid": "88063",
+        "name": "Replication last sync {#VM.NAME}",
+        "key_": "hyperv.vm.replication.last.sync[{#VM.ID}]"
+      },
+      {
+        "itemid": "88064",
+        "name": "Replication mode for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.mode[{#VM.ID}]"
+      },
+      {
+        "itemid": "88065",
+        "name": "Replication primary server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.primary.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "88066",
+        "name": "Replication replica server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.replica.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "88067",
+        "name": "Replication state for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.state[{#VM.ID}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "88058",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10920",
+    "name": "Hyper-V VM Disk Discovery",
+    "key_": "hyperv.discover.vms.data",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87848",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "88027",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discovery.vms",
+    "hosts": [
+      {
+        "hostid": "10920",
+        "host": "SCL-SRV-FHV03"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "88099",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10941",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "0",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "284",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10941",
+        "host": "SPO-SRV-FAD01"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105434",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10884",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87847",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "227",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10884",
+        "host": "BGP-SRV-FHV01"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "105436",
+        "name": "Replication Data {#VM.NAME}",
+        "key_": "hyperv.vm.data[${#VM.ID}]"
+      },
+      {
+        "itemid": "105437",
+        "name": "Replication enabled for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.enabled[{#VM.ID}]"
+      },
+      {
+        "itemid": "105438",
+        "name": "Replication frequency {#VM.NAME}",
+        "key_": "hyperv.vm.replication.frequency[{#VM.ID}]"
+      },
+      {
+        "itemid": "105439",
+        "name": "Replication health for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.health[{#VM.ID}]"
+      },
+      {
+        "itemid": "105440",
+        "name": "Replication last sync {#VM.NAME}",
+        "key_": "hyperv.vm.replication.last.sync[{#VM.ID}]"
+      },
+      {
+        "itemid": "105441",
+        "name": "Replication mode for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.mode[{#VM.ID}]"
+      },
+      {
+        "itemid": "105442",
+        "name": "Replication primary server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.primary.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105443",
+        "name": "Replication replica server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.replica.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105444",
+        "name": "Replication state for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.state[{#VM.ID}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105435",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10884",
+    "name": "Hyper-V VM Disk Discovery",
+    "key_": "hyperv.discover.vms.data",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87848",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "105404",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discovery.vms",
+    "hosts": [
+      {
+        "hostid": "10884",
+        "host": "BGP-SRV-FHV01"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105476",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10885",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87847",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "228",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10885",
+        "host": "BGP-SRV-FHV02"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "105478",
+        "name": "Replication Data {#VM.NAME}",
+        "key_": "hyperv.vm.data[${#VM.ID}]"
+      },
+      {
+        "itemid": "105479",
+        "name": "Replication enabled for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.enabled[{#VM.ID}]"
+      },
+      {
+        "itemid": "105480",
+        "name": "Replication frequency {#VM.NAME}",
+        "key_": "hyperv.vm.replication.frequency[{#VM.ID}]"
+      },
+      {
+        "itemid": "105481",
+        "name": "Replication health for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.health[{#VM.ID}]"
+      },
+      {
+        "itemid": "105482",
+        "name": "Replication last sync {#VM.NAME}",
+        "key_": "hyperv.vm.replication.last.sync[{#VM.ID}]"
+      },
+      {
+        "itemid": "105483",
+        "name": "Replication mode for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.mode[{#VM.ID}]"
+      },
+      {
+        "itemid": "105484",
+        "name": "Replication primary server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.primary.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105485",
+        "name": "Replication replica server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.replica.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105486",
+        "name": "Replication state for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.state[{#VM.ID}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105477",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10885",
+    "name": "Hyper-V VM Disk Discovery",
+    "key_": "hyperv.discover.vms.data",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87848",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "105446",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discovery.vms",
+    "hosts": [
+      {
+        "hostid": "10885",
+        "host": "BGP-SRV-FHV02"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105532",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10886",
+    "name": "Hyper-V VM Discovery",
+    "key_": "hyperv.discover.vms",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87847",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "229",
+    "description": "HyperV Guest VM Discovery\r\nRequires PowerShell script installed on HyperV Host.",
+    "inventory_link": "0",
+    "lifetime": "15d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "30s",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "1",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discover.vms",
+    "hosts": [
+      {
+        "hostid": "10886",
+        "host": "BGP-SRV-FHV03"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "105534",
+        "name": "Replication Data {#VM.NAME}",
+        "key_": "hyperv.vm.data[${#VM.ID}]"
+      },
+      {
+        "itemid": "105535",
+        "name": "Replication enabled for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.enabled[{#VM.ID}]"
+      },
+      {
+        "itemid": "105536",
+        "name": "Replication frequency {#VM.NAME}",
+        "key_": "hyperv.vm.replication.frequency[{#VM.ID}]"
+      },
+      {
+        "itemid": "105537",
+        "name": "Replication health for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.health[{#VM.ID}]"
+      },
+      {
+        "itemid": "105538",
+        "name": "Replication last sync {#VM.NAME}",
+        "key_": "hyperv.vm.replication.last.sync[{#VM.ID}]"
+      },
+      {
+        "itemid": "105539",
+        "name": "Replication mode for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.mode[{#VM.ID}]"
+      },
+      {
+        "itemid": "105540",
+        "name": "Replication primary server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.primary.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105541",
+        "name": "Replication replica server for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.replica.server[{#VM.ID}]"
+      },
+      {
+        "itemid": "105542",
+        "name": "Replication state for {#VM.NAME}",
+        "key_": "hyperv.vm.replication.state[{#VM.ID}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "105533",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "10886",
+    "name": "Hyper-V VM Disk Discovery",
+    "key_": "hyperv.discover.vms.data",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "87848",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "105502",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric hyperv.discovery.vms",
+    "hosts": [
+      {
+        "hostid": "10886",
+        "host": "BGP-SRV-FHV03"
+      }
+    ],
+    "parameters": [],
+    "items": [],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "106824",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "11102",
+    "name": "Database discovery",
+    "key_": "pgsql.discovery.db[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{$PG.DATABASE}\"]",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "32404",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "400",
+    "description": "Discovers databases (DB) in the database management system (DBMS), except:\r\n- templates;\r\n- default \"postgres\" DB;\r\n- DBs that do not allow connections.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Unknown metric pgsql.discovery.db",
+    "hosts": [
+      {
+        "hostid": "11102",
+        "host": "SPO-SRV-V02"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "106825",
+        "name": "DB [{#DBNAME}]: Database size",
+        "key_": "pgsql.db.size[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{$PG.DATABASE}\",\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106826",
+        "name": "DB [{#DBNAME}]: Get dbstat",
+        "key_": "pgsql.dbstat.get_metrics[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106827",
+        "name": "DB [{#DBNAME}]: Get frozen XID",
+        "key_": "pgsql.frozenxid[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106828",
+        "name": "DB [{#DBNAME}]: Num of locks total",
+        "key_": "pgsql.locks.total[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106829",
+        "name": "DB [{#DBNAME}]: Get queries",
+        "key_": "pgsql.queries.get_metrics[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106830",
+        "name": "DB [{#DBNAME}]: Get scans",
+        "key_": "pgsql.scans[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106831",
+        "name": "DB [{#DBNAME}]: Blocks hit per second",
+        "key_": "pgsql.dbstat.blks_hit.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106832",
+        "name": "DB [{#DBNAME}]: Disk blocks read per second",
+        "key_": "pgsql.dbstat.blks_read.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106833",
+        "name": "DB [{#DBNAME}]: Detected conflicts per second",
+        "key_": "pgsql.dbstat.conflicts.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106834",
+        "name": "DB [{#DBNAME}]: Detected deadlocks per second",
+        "key_": "pgsql.dbstat.deadlocks.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106835",
+        "name": "DB [{#DBNAME}]: Temp_bytes written per second",
+        "key_": "pgsql.dbstat.temp_bytes.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106836",
+        "name": "DB [{#DBNAME}]: Temp_files created per second",
+        "key_": "pgsql.dbstat.temp_files.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106837",
+        "name": "DB [{#DBNAME}]: Tuples deleted per second",
+        "key_": "pgsql.dbstat.tup_deleted.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106838",
+        "name": "DB [{#DBNAME}]: Tuples fetched per second",
+        "key_": "pgsql.dbstat.tup_fetched.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106839",
+        "name": "DB [{#DBNAME}]: Tuples inserted per second",
+        "key_": "pgsql.dbstat.tup_inserted.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106840",
+        "name": "DB [{#DBNAME}]: Tuples returned per second",
+        "key_": "pgsql.dbstat.tup_returned.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106841",
+        "name": "DB [{#DBNAME}]: Tuples updated per second",
+        "key_": "pgsql.dbstat.tup_updated.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106842",
+        "name": "DB [{#DBNAME}]: Commits per second",
+        "key_": "pgsql.dbstat.xact_commit.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106843",
+        "name": "DB [{#DBNAME}]: Rollbacks per second",
+        "key_": "pgsql.dbstat.xact_rollback.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106844",
+        "name": "DB [{#DBNAME}]: Frozen XID before autovacuum, %",
+        "key_": "pgsql.frozenxid.prc_before_av[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106845",
+        "name": "DB [{#DBNAME}]: Frozen XID before stop, %",
+        "key_": "pgsql.frozenxid.prc_before_stop[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106846",
+        "name": "DB [{#DBNAME}]: Queries slow maintenance count",
+        "key_": "pgsql.queries.mro.slow_count[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106847",
+        "name": "DB [{#DBNAME}]: Queries max maintenance time",
+        "key_": "pgsql.queries.mro.time_max[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106848",
+        "name": "DB [{#DBNAME}]: Queries sum maintenance time",
+        "key_": "pgsql.queries.mro.time_sum[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106849",
+        "name": "DB [{#DBNAME}]: Queries slow query count",
+        "key_": "pgsql.queries.query.slow_count[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106850",
+        "name": "DB [{#DBNAME}]: Queries max query time",
+        "key_": "pgsql.queries.query.time_max[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106851",
+        "name": "DB [{#DBNAME}]: Queries sum query time",
+        "key_": "pgsql.queries.query.time_sum[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106852",
+        "name": "DB [{#DBNAME}]: Queries slow transaction count",
+        "key_": "pgsql.queries.tx.slow_count[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106853",
+        "name": "DB [{#DBNAME}]: Queries max transaction time",
+        "key_": "pgsql.queries.tx.time_max[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106854",
+        "name": "DB [{#DBNAME}]: Queries sum transaction time",
+        "key_": "pgsql.queries.tx.time_sum[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106855",
+        "name": "DB [{#DBNAME}]: Index scans per second",
+        "key_": "pgsql.scans.idx.rate[\"{#DBNAME}\"]"
+      },
+      {
+        "itemid": "106856",
+        "name": "DB [{#DBNAME}]: Sequential scans per second",
+        "key_": "pgsql.scans.seq.rate[\"{#DBNAME}\"]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "A",
+      "conditions": [
+        {
+          "macro": "{#DBNAME}",
+          "operator": "8",
+          "value": "{$PG.LLD.FILTER.DBNAME}",
+          "formulaid": "A"
+        }
+      ]
+    }
+  },
+  {
+    "itemid": "107176",
+    "type": "18",
+    "snmp_oid": "",
+    "hostid": "11139",
+    "name": "MariaDB discovery",
+    "key_": "mysql.extra_metric.discovery",
+    "delay": "0",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "33147",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "0",
+    "description": "Used for additional metrics if MariaDB is used.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "107132",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name.",
+    "hosts": [
+      {
+        "hostid": "11139",
+        "host": "AZ-VM-APP-03-DB"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "107178",
+        "name": "Binlog commits",
+        "key_": "mysql.binlog_commits[{#SINGLETON}]"
+      },
+      {
+        "itemid": "107179",
+        "name": "Binlog group commits",
+        "key_": "mysql.binlog_group_commits[{#SINGLETON}]"
+      },
+      {
+        "itemid": "107181",
+        "name": "Master GTID wait count",
+        "key_": "mysql.master_gtid_wait_count[{#SINGLETON}]"
+      },
+      {
+        "itemid": "107182",
+        "name": "Master GTID wait timeouts",
+        "key_": "mysql.master_gtid_wait_timeouts[{#SINGLETON}]"
+      },
+      {
+        "itemid": "107183",
+        "name": "Master GTID wait time",
+        "key_": "mysql.master_gtid_wait_time[{#SINGLETON}]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "107177",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "11139",
+    "name": "Replication discovery",
+    "key_": "mysql.replication.discovery[\"{$MYSQL.DSN}\",\"{$MYSQL.USER}\",\"{$MYSQL.PASSWORD}\"]",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "30679",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "411",
+    "description": "If \"show slave status\" returns Master_Host, \"Replication: *\" items are created.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Cannot fetch data: Cannot fetch data.: error getting slave or replica status: Error 1227 (42000): Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation.",
+    "hosts": [
+      {
+        "hostid": "11139",
+        "host": "AZ-VM-APP-03-DB"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "107184",
+        "name": "Replication Slave status {#MASTER_HOST}",
+        "key_": "mysql.replication.get_slave_status[\"{$MYSQL.DSN}\",\"{$MYSQL.USER}\",\"{$MYSQL.PASSWORD}\",\"{#MASTER_HOST}\"]"
+      },
+      {
+        "itemid": "107185",
+        "name": "Replication Seconds Behind Master {#MASTER_HOST}",
+        "key_": "mysql.replication.seconds_behind_master[\"{#MASTER_HOST}\"]"
+      },
+      {
+        "itemid": "107186",
+        "name": "Replication Slave IO Running {#MASTER_HOST}",
+        "key_": "mysql.replication.slave_io_running[\"{#MASTER_HOST}\"]"
+      },
+      {
+        "itemid": "107187",
+        "name": "Replication Slave SQL Running {#MASTER_HOST}",
+        "key_": "mysql.replication.slave_sql_running[\"{#MASTER_HOST}\"]"
+      },
+      {
+        "itemid": "107188",
+        "name": "Replication Slave SQL Running State {#MASTER_HOST}",
+        "key_": "mysql.replication.slave_sql_running_state[\"{#MASTER_HOST}\"]"
+      }
+    ],
+    "filter": {
+      "evaltype": "0",
+      "formula": "",
+      "eval_formula": "",
+      "conditions": []
+    }
+  },
+  {
+    "itemid": "108884",
+    "type": "0",
+    "snmp_oid": "",
+    "hostid": "10898",
+    "name": "Application pools discovery",
+    "key_": "wmi.getall[root\\webAdministration, select Name from ApplicationPool]",
+    "delay": "1h",
+    "history": "31d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "4",
+    "trapper_hosts": "",
+    "units": "",
+    "logtimefmt": "",
+    "templateid": "31005",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "1",
+    "interfaceid": "241",
+    "description": "",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "discover": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "1",
+    "error": "Exception occurred. (Invalid namespace )",
+    "hosts": [
+      {
+        "hostid": "10898",
+        "host": "BGP-SRV-VAPP12"
+      }
+    ],
+    "parameters": [],
+    "items": [
+      {
+        "itemid": "108885",
+        "name": "AppPool {#APPPOOL} state",
+        "key_": "perf_counter_en[\"\\APP_POOL_WAS({#APPPOOL})\\Current Application Pool State\"]"
+      },
+      {
+        "itemid": "108886",
+        "name": "{#APPPOOL} Uptime",
+        "key_": "perf_counter_en[\"\\APP_POOL_WAS({#APPPOOL})\\Current Application Pool Uptime\"]"
+      },
+      {
+        "itemid": "108887",
+        "name": "AppPool {#APPPOOL} recycles",
+        "key_": "perf_counter_en[\"\\APP_POOL_WAS({#APPPOOL})\\Total Application Pool Recycles\"]"
+      },
+      {
+        "itemid": "108888",
+        "name": "AppPool {#APPPOOL} current queue size",
+        "key_": "perf_counter_en[\"\\HTTP Service Request Queues({#APPPOOL})\\CurrentQueueSize\"]"
+      }
+    ],
+    "filter": {
+      "evaltype": "1",
+      "formula": "",
+      "eval_formula": "A and B",
+      "conditions": [
+        {
+          "macro": "{#APPPOOL}",
+          "operator": "8",
+          "value": "{$IIS.APPPOOL.MATCHES}",
+          "formulaid": "A"
+        },
+        {
+          "macro": "{#APPPOOL}",
+          "operator": "9",
+          "value": "{$IIS.APPPOOL.NOT_MATCHES}",
+          "formulaid": "B"
+        }
+      ]
+    }
+  }
+]

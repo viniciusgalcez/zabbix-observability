@@ -1,0 +1,2791 @@
+{
+  "SCL-TEC1-SW02": {
+    "hostid": "10847",
+    "unknown_triggers": 144,
+    "items_to_disable": {},
+    "triggers_to_disable": {
+      "26850": {
+        "description": "Cisco IOS: Device has been replaced",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC1-SW02/system.hw.serialnumber,#1): item is not supported."
+      },
+      "26852": {
+        "description": "Cisco IOS: Operating system description has changed",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC1-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+      },
+      "35568": {
+        "description": "Cisco IOS: Interface gi2/0/45(SCL-TEC1-UPS02): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.97],15m): item is disabled."
+      },
+      "35569": {
+        "description": "Cisco IOS: Interface gi2/0/16(T810-102): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.68],15m): item is disabled."
+      },
+      "35570": {
+        "description": "Cisco IOS: Interface gi1/0/45(T810-063): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.45],15m): item is disabled."
+      },
+      "35572": {
+        "description": "Cisco IOS: Interface gi1/0/36(T810-087): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.36],15m): item is disabled."
+      },
+      "35574": {
+        "description": "Cisco IOS: Interface gi2/0/13(T810-098): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.65],15m): item is disabled."
+      },
+      "35576": {
+        "description": "Cisco IOS: Interface gi1/0/6(T810-089): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.6],15m): item is disabled."
+      },
+      "35577": {
+        "description": "Cisco IOS: Interface gi1/0/1(T810-057): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.1],15m): item is disabled."
+      },
+      "35581": {
+        "description": "Cisco IOS: Interface gi1/0/20(T810-070): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.20],15m): item is disabled."
+      },
+      "35584": {
+        "description": "Cisco IOS: Interface gi1/0/16(T810-066): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.16],15m): item is disabled."
+      },
+      "35585": {
+        "description": "Cisco IOS: Interface gi1/0/44(T810-072): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.44],15m): item is disabled."
+      },
+      "35586": {
+        "description": "Cisco IOS: Interface gi2/0/12(T810-105): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.64],15m): item is disabled."
+      },
+      "35587": {
+        "description": "Cisco IOS: Interface gi2/0/23(Tear 121 (TOYOTA)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.75],15m): item is disabled."
+      },
+      "35589": {
+        "description": "Cisco IOS: Interface gi1/0/19(T810-083): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.19],15m): item is disabled."
+      },
+      "35590": {
+        "description": "Cisco IOS: Interface gi1/0/4(T810-073): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.4],15m): item is disabled."
+      },
+      "35591": {
+        "description": "Cisco IOS: Interface gi1/0/2(T810-088): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.2],15m): item is disabled."
+      },
+      "35592": {
+        "description": "Cisco IOS: Interface gi2/0/15(T810-099): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.67],15m): item is disabled."
+      },
+      "35593": {
+        "description": "Cisco IOS: Interface gi2/0/25(T810-107): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.77],15m): item is disabled."
+      },
+      "35594": {
+        "description": "Cisco IOS: Interface gi1/0/35(T810-068): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.35],15m): item is disabled."
+      },
+      "35595": {
+        "description": "Cisco IOS: Interface gi2/0/29(T810-118): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.81],15m): item is disabled."
+      },
+      "35596": {
+        "description": "Cisco IOS: Interface gi2/0/3(T810-108): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.55],15m): item is disabled."
+      },
+      "35597": {
+        "description": "Cisco IOS: Interface gi1/0/11(T910-121): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.11],15m): item is disabled."
+      },
+      "35598": {
+        "description": "Cisco IOS: Interface gi2/0/27(T810-110): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.79],15m): item is disabled."
+      },
+      "35599": {
+        "description": "Cisco IOS: Interface gi2/0/9(T810-079): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.61],15m): item is disabled."
+      },
+      "35602": {
+        "description": "Cisco IOS: Interface gi2/0/1(T810-109): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.53],15m): item is disabled."
+      },
+      "35603": {
+        "description": "Cisco IOS: Interface gi1/0/10(T810-077): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.10],15m): item is disabled."
+      },
+      "35605": {
+        "description": "Cisco IOS: Interface gi1/0/38(T810-085): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.38],15m): item is disabled."
+      },
+      "35608": {
+        "description": "Cisco IOS: Interface gi2/0/10(T810-096): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.62],15m): item is disabled."
+      },
+      "35609": {
+        "description": "Cisco IOS: Interface gi2/0/22(T810-114): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.74],15m): item is disabled."
+      },
+      "35610": {
+        "description": "Cisco IOS: Interface te1/0/3(Uplink SCL-CPD-SW01 - gi1/0/10): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.51],15m): item is disabled."
+      },
+      "35612": {
+        "description": "Cisco IOS: Interface gi1/0/29(T810-056): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.29],15m): item is disabled."
+      },
+      "35613": {
+        "description": "Cisco IOS: Interface gi1/0/26(T810-090): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.26],15m): item is disabled."
+      },
+      "35614": {
+        "description": "Cisco IOS: Interface gi1/0/5(T810-060): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.5],15m): item is disabled."
+      },
+      "35616": {
+        "description": "Cisco IOS: Interface gi2/0/4(T810-103): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.56],15m): item is disabled."
+      },
+      "35618": {
+        "description": "Cisco IOS: Interface gi1/0/8(T810-075): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.8],15m): item is disabled."
+      },
+      "35621": {
+        "description": "Cisco IOS: Interface gi1/0/12(T810-054): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.12],15m): item is disabled."
+      },
+      "35625": {
+        "description": "Cisco IOS: Interface gi1/0/14(T810-058): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.14],15m): item is disabled."
+      },
+      "35626": {
+        "description": "Cisco IOS: Interface gi1/0/15(T810-065): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.15],15m): item is disabled."
+      },
+      "35627": {
+        "description": "Cisco IOS: Interface gi1/0/24(T810-080): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.24],15m): item is disabled."
+      },
+      "35628": {
+        "description": "Cisco IOS: Interface gi2/0/6(T810-111): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.58],15m): item is disabled."
+      },
+      "35630": {
+        "description": "Cisco IOS: Interface gi1/0/46(T810-094): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.46],15m): item is disabled."
+      },
+      "35631": {
+        "description": "Cisco IOS: Interface gi1/0/33(T810-067): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.33],15m): item is disabled."
+      },
+      "35634": {
+        "description": "Cisco IOS: Interface gi1/0/34(T810-086): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.34],15m): item is disabled."
+      },
+      "35635": {
+        "description": "Cisco IOS: Interface gi2/0/18(T810-091): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.70],15m): item is disabled."
+      },
+      "35636": {
+        "description": "Cisco IOS: Interface gi1/0/23(T810-082): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.23],15m): item is disabled."
+      },
+      "35638": {
+        "description": "Cisco IOS: Interface gi2/0/14(T810-097): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.66],15m): item is disabled."
+      },
+      "35639": {
+        "description": "Cisco IOS: Interface gi1/0/39(T810-061): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.39],15m): item is disabled."
+      },
+      "35641": {
+        "description": "Cisco IOS: Interface gi2/0/2(T810-113): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.54],15m): item is disabled."
+      },
+      "35644": {
+        "description": "Cisco IOS: Interface gi2/0/31(T810-112): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.83],15m): item is disabled."
+      },
+      "35646": {
+        "description": "Cisco IOS: Interface gi2/0/17(T810-092): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.69],15m): item is disabled."
+      },
+      "35647": {
+        "description": "Cisco IOS: Interface gi2/0/8(T910-115): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.60],15m): item is disabled."
+      },
+      "35648": {
+        "description": "Cisco IOS: Interface gi1/0/17(T810-064): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.17],15m): item is disabled."
+      },
+      "35650": {
+        "description": "Cisco IOS: Interface gi2/0/47(SCL-TEC1-SW04 - gi1/0/24): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.99],15m): item is disabled."
+      },
+      "35652": {
+        "description": "Cisco IOS: Interface gi2/0/28(T810-104): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.80],15m): item is disabled."
+      },
+      "35653": {
+        "description": "Cisco IOS: Interface gi1/0/31(T810-071): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.31],15m): item is disabled."
+      },
+      "35654": {
+        "description": "Cisco IOS: Interface gi1/0/3(T810-081): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.3],15m): item is disabled."
+      },
+      "35655": {
+        "description": "Cisco IOS: Interface gi2/0/46(T910-120): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.98],15m): item is disabled."
+      },
+      "35656": {
+        "description": "Cisco IOS: Interface gi2/0/24(SCL-TEC1-AP03): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.76],15m): item is disabled."
+      },
+      "35657": {
+        "description": "Cisco IOS: Interface gi1/0/40(T810-095): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.40],15m): item is disabled."
+      },
+      "35658": {
+        "description": "Cisco IOS: Interface gi2/0/34(T810-084): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.86],15m): item is disabled."
+      },
+      "35659": {
+        "description": "Cisco IOS: Interface gi1/0/21(T810-074): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.21],15m): item is disabled."
+      },
+      "35660": {
+        "description": "Cisco IOS: Interface gi2/0/20(T810-101): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.72],15m): item is disabled."
+      },
+      "35661": {
+        "description": "Cisco IOS: Interface gi1/0/37(T810-076): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.37],15m): item is disabled."
+      },
+      "35662": {
+        "description": "Cisco IOS: Interface gi1/0/42(T810-093): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.42],15m): item is disabled."
+      },
+      "35663": {
+        "description": "Cisco IOS: Interface gi1/0/28(T810-052): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.28],15m): item is disabled."
+      },
+      "35664": {
+        "description": "Cisco IOS: Interface gi1/0/32(T910-119): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.32],15m): item is disabled."
+      },
+      "35665": {
+        "description": "Cisco IOS: Interface gi2/0/36(T910-116): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.88],15m): item is disabled."
+      },
+      "35666": {
+        "description": "Cisco IOS: Interface gi1/0/41(T810-078): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.41],15m): item is disabled."
+      },
+      "35668": {
+        "description": "Cisco IOS: Interface gi1/0/13(T810-059): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.13],15m): item is disabled."
+      },
+      "35669": {
+        "description": "Cisco IOS: Interface gi2/0/26(T810-106): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.78],15m): item is disabled."
+      },
+      "35671": {
+        "description": "Cisco IOS: Interface gi2/0/37(T810-100): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.89],15m): item is disabled."
+      },
+      "35676": {
+        "description": "Cisco IOS: Interface gi2/0/5(T810-117): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.57],15m): item is disabled."
+      },
+      "35680": {
+        "description": "Cisco IOS: Interface gi2/0/45(SCL-TEC1-UPS02): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.97],5m): item is not supported."
+      },
+      "35681": {
+        "description": "Cisco IOS: Interface gi2/0/16(T810-102): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.68],5m): item is not supported."
+      },
+      "35682": {
+        "description": "Cisco IOS: Interface gi1/0/45(T810-063): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.45],5m): item is not supported."
+      },
+      "35684": {
+        "description": "Cisco IOS: Interface gi1/0/36(T810-087): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.36],5m): item is not supported."
+      },
+      "35686": {
+        "description": "Cisco IOS: Interface gi2/0/13(T810-098): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.65],5m): item is not supported."
+      },
+      "35688": {
+        "description": "Cisco IOS: Interface gi1/0/6(T810-089): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.6],5m): item is not supported."
+      },
+      "35689": {
+        "description": "Cisco IOS: Interface gi1/0/1(T810-057): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.1],5m): item is not supported."
+      },
+      "35693": {
+        "description": "Cisco IOS: Interface gi1/0/20(T810-070): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.20],5m): item is not supported."
+      },
+      "35696": {
+        "description": "Cisco IOS: Interface gi1/0/16(T810-066): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.16],5m): item is not supported."
+      },
+      "35697": {
+        "description": "Cisco IOS: Interface gi1/0/44(T810-072): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.44],5m): item is not supported."
+      },
+      "35698": {
+        "description": "Cisco IOS: Interface gi2/0/12(T810-105): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.64],5m): item is not supported."
+      },
+      "35699": {
+        "description": "Cisco IOS: Interface gi2/0/23(Tear 121 (TOYOTA)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.75],5m): item is not supported."
+      },
+      "35701": {
+        "description": "Cisco IOS: Interface gi1/0/19(T810-083): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.19],5m): item is not supported."
+      },
+      "35702": {
+        "description": "Cisco IOS: Interface gi1/0/4(T810-073): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.4],5m): item is not supported."
+      },
+      "35703": {
+        "description": "Cisco IOS: Interface gi1/0/2(T810-088): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.2],5m): item is not supported."
+      },
+      "35704": {
+        "description": "Cisco IOS: Interface gi2/0/15(T810-099): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.67],5m): item is not supported."
+      },
+      "35705": {
+        "description": "Cisco IOS: Interface gi2/0/25(T810-107): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.77],5m): item is not supported."
+      },
+      "35706": {
+        "description": "Cisco IOS: Interface gi1/0/35(T810-068): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.35],5m): item is not supported."
+      },
+      "35707": {
+        "description": "Cisco IOS: Interface gi2/0/29(T810-118): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.81],5m): item is not supported."
+      },
+      "35708": {
+        "description": "Cisco IOS: Interface gi2/0/3(T810-108): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.55],5m): item is not supported."
+      },
+      "35709": {
+        "description": "Cisco IOS: Interface gi1/0/11(T910-121): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.11],5m): item is not supported."
+      },
+      "35710": {
+        "description": "Cisco IOS: Interface gi2/0/27(T810-110): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.79],5m): item is not supported."
+      },
+      "35711": {
+        "description": "Cisco IOS: Interface gi2/0/9(T810-079): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.61],5m): item is not supported."
+      },
+      "35714": {
+        "description": "Cisco IOS: Interface gi2/0/1(T810-109): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.53],5m): item is not supported."
+      },
+      "35715": {
+        "description": "Cisco IOS: Interface gi1/0/10(T810-077): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.10],5m): item is not supported."
+      },
+      "35717": {
+        "description": "Cisco IOS: Interface gi1/0/38(T810-085): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.38],5m): item is not supported."
+      },
+      "35720": {
+        "description": "Cisco IOS: Interface gi2/0/10(T810-096): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.62],5m): item is not supported."
+      },
+      "35721": {
+        "description": "Cisco IOS: Interface gi2/0/22(T810-114): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.74],5m): item is not supported."
+      },
+      "35722": {
+        "description": "Cisco IOS: Interface te1/0/3(Uplink SCL-CPD-SW01 - gi1/0/10): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.51],5m): item is not supported."
+      },
+      "35724": {
+        "description": "Cisco IOS: Interface gi1/0/29(T810-056): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.29],5m): item is not supported."
+      },
+      "35725": {
+        "description": "Cisco IOS: Interface gi1/0/26(T810-090): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.26],5m): item is not supported."
+      },
+      "35726": {
+        "description": "Cisco IOS: Interface gi1/0/5(T810-060): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.5],5m): item is not supported."
+      },
+      "35728": {
+        "description": "Cisco IOS: Interface gi2/0/4(T810-103): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.56],5m): item is not supported."
+      },
+      "35730": {
+        "description": "Cisco IOS: Interface gi1/0/8(T810-075): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.8],5m): item is not supported."
+      },
+      "35733": {
+        "description": "Cisco IOS: Interface gi1/0/12(T810-054): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.12],5m): item is not supported."
+      },
+      "35737": {
+        "description": "Cisco IOS: Interface gi1/0/14(T810-058): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.14],5m): item is not supported."
+      },
+      "35738": {
+        "description": "Cisco IOS: Interface gi1/0/15(T810-065): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.15],5m): item is not supported."
+      },
+      "35739": {
+        "description": "Cisco IOS: Interface gi1/0/24(T810-080): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.24],5m): item is not supported."
+      },
+      "35740": {
+        "description": "Cisco IOS: Interface gi2/0/6(T810-111): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.58],5m): item is not supported."
+      },
+      "35742": {
+        "description": "Cisco IOS: Interface gi1/0/46(T810-094): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.46],5m): item is not supported."
+      },
+      "35743": {
+        "description": "Cisco IOS: Interface gi1/0/33(T810-067): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.33],5m): item is not supported."
+      },
+      "35746": {
+        "description": "Cisco IOS: Interface gi1/0/34(T810-086): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.34],5m): item is not supported."
+      },
+      "35747": {
+        "description": "Cisco IOS: Interface gi2/0/18(T810-091): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.70],5m): item is not supported."
+      },
+      "35748": {
+        "description": "Cisco IOS: Interface gi1/0/23(T810-082): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.23],5m): item is not supported."
+      },
+      "35750": {
+        "description": "Cisco IOS: Interface gi2/0/14(T810-097): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.66],5m): item is not supported."
+      },
+      "35751": {
+        "description": "Cisco IOS: Interface gi1/0/39(T810-061): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.39],5m): item is not supported."
+      },
+      "35753": {
+        "description": "Cisco IOS: Interface gi2/0/2(T810-113): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.54],5m): item is not supported."
+      },
+      "35756": {
+        "description": "Cisco IOS: Interface gi2/0/31(T810-112): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.83],5m): item is not supported."
+      },
+      "35758": {
+        "description": "Cisco IOS: Interface gi2/0/17(T810-092): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.69],5m): item is not supported."
+      },
+      "35759": {
+        "description": "Cisco IOS: Interface gi2/0/8(T910-115): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.60],5m): item is not supported."
+      },
+      "35760": {
+        "description": "Cisco IOS: Interface gi1/0/17(T810-064): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.17],5m): item is not supported."
+      },
+      "35762": {
+        "description": "Cisco IOS: Interface gi2/0/47(SCL-TEC1-SW04 - gi1/0/24): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.99],5m): item is not supported."
+      },
+      "35764": {
+        "description": "Cisco IOS: Interface gi2/0/28(T810-104): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.80],5m): item is not supported."
+      },
+      "35765": {
+        "description": "Cisco IOS: Interface gi1/0/31(T810-071): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.31],5m): item is not supported."
+      },
+      "35766": {
+        "description": "Cisco IOS: Interface gi1/0/3(T810-081): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.3],5m): item is not supported."
+      },
+      "35767": {
+        "description": "Cisco IOS: Interface gi2/0/46(T910-120): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.98],5m): item is not supported."
+      },
+      "35768": {
+        "description": "Cisco IOS: Interface gi2/0/24(SCL-TEC1-AP03): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.76],5m): item is not supported."
+      },
+      "35769": {
+        "description": "Cisco IOS: Interface gi1/0/40(T810-095): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.40],5m): item is not supported."
+      },
+      "35770": {
+        "description": "Cisco IOS: Interface gi2/0/34(T810-084): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.86],5m): item is not supported."
+      },
+      "35771": {
+        "description": "Cisco IOS: Interface gi1/0/21(T810-074): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.21],5m): item is not supported."
+      },
+      "35772": {
+        "description": "Cisco IOS: Interface gi2/0/20(T810-101): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.72],5m): item is not supported."
+      },
+      "35773": {
+        "description": "Cisco IOS: Interface gi1/0/37(T810-076): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.37],5m): item is not supported."
+      },
+      "35774": {
+        "description": "Cisco IOS: Interface gi1/0/42(T810-093): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.42],5m): item is not supported."
+      },
+      "35775": {
+        "description": "Cisco IOS: Interface gi1/0/28(T810-052): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.28],5m): item is not supported."
+      },
+      "35776": {
+        "description": "Cisco IOS: Interface gi1/0/32(T910-119): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.32],5m): item is not supported."
+      },
+      "35777": {
+        "description": "Cisco IOS: Interface gi2/0/36(T910-116): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.88],5m): item is not supported."
+      },
+      "35778": {
+        "description": "Cisco IOS: Interface gi1/0/41(T810-078): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.41],5m): item is not supported."
+      },
+      "35780": {
+        "description": "Cisco IOS: Interface gi1/0/13(T810-059): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.13],5m): item is not supported."
+      },
+      "35781": {
+        "description": "Cisco IOS: Interface gi2/0/26(T810-106): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.78],5m): item is not supported."
+      },
+      "35783": {
+        "description": "Cisco IOS: Interface gi2/0/37(T810-100): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.89],5m): item is not supported."
+      },
+      "35788": {
+        "description": "Cisco IOS: Interface gi2/0/5(T810-117): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW02/net.if.in.errors[ifInErrors.57],5m): item is not supported."
+      }
+    },
+    "item_key_prefixes": [],
+    "item_error_prefixes": [],
+    "counts": {
+      "items_disable": 0,
+      "triggers_disable": 144
+    }
+  },
+  "SCL-TEC1-SW03": {
+    "hostid": "10801",
+    "unknown_triggers": 122,
+    "items_to_disable": {},
+    "triggers_to_disable": {
+      "26551": {
+        "description": "Cisco IOS: Device has been replaced",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC1-SW03/system.hw.serialnumber,#1): item is not supported."
+      },
+      "26553": {
+        "description": "Cisco IOS: Operating system description has changed",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC1-SW03/system.sw.os[sysDescr.0],#1): item is not supported."
+      },
+      "33645": {
+        "description": "Cisco IOS: Interface gi2/0/45(T810-046): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.97],15m): item is disabled."
+      },
+      "33646": {
+        "description": "Cisco IOS: Interface gi2/0/16(T810-053): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.68],15m): item is disabled."
+      },
+      "33649": {
+        "description": "Cisco IOS: Interface gi2/0/13(T810-008): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.65],15m): item is disabled."
+      },
+      "33652": {
+        "description": "Cisco IOS: Interface gi1/0/1(T810-025): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.1],15m): item is disabled."
+      },
+      "33653": {
+        "description": "Cisco IOS: Interface gi2/0/44(T810-041): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.96],15m): item is disabled."
+      },
+      "33655": {
+        "description": "Cisco IOS: Interface gi2/0/11(T810-009): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.63],15m): item is disabled."
+      },
+      "33656": {
+        "description": "Cisco IOS: Interface gi1/0/20(T810-069): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.20],15m): item is disabled."
+      },
+      "33657": {
+        "description": "Cisco IOS: Interface gi2/0/35(T810-034): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.87],15m): item is disabled."
+      },
+      "33659": {
+        "description": "Cisco IOS: Interface gi1/0/16(SCL-TEC-D05): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.16],15m): item is disabled."
+      },
+      "33660": {
+        "description": "Cisco IOS: Interface gi2/0/12(T810-012): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.64],15m): item is disabled."
+      },
+      "33661": {
+        "description": "Cisco IOS: Interface gi2/0/23(T810-016): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.75],15m): item is disabled."
+      },
+      "33662": {
+        "description": "Cisco IOS: Interface gi2/0/32(T810-062): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.84],15m): item is disabled."
+      },
+      "33663": {
+        "description": "Cisco IOS: Interface gi1/0/19(T810-021): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.19],15m): item is disabled."
+      },
+      "33664": {
+        "description": "Cisco IOS: Interface gi1/0/4(T810-044): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.4],15m): item is disabled."
+      },
+      "33665": {
+        "description": "Cisco IOS: Interface gi1/0/2(T810-023): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.2],15m): item is disabled."
+      },
+      "33666": {
+        "description": "Cisco IOS: Interface gi2/0/15(T810-010): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.67],15m): item is disabled."
+      },
+      "33667": {
+        "description": "Cisco IOS: Interface gi2/0/25(T810-049): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.77],15m): item is disabled."
+      },
+      "33668": {
+        "description": "Cisco IOS: Interface gi2/0/29(T810-020): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.81],15m): item is disabled."
+      },
+      "33669": {
+        "description": "Cisco IOS: Interface gi2/0/3(T810-004): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.55],15m): item is disabled."
+      },
+      "33670": {
+        "description": "Cisco IOS: Interface gi1/0/11(SCL-TEC1-D12): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.11],15m): item is disabled."
+      },
+      "33671": {
+        "description": "Cisco IOS: Interface gi2/0/27(T810-029): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.79],15m): item is disabled."
+      },
+      "33672": {
+        "description": "Cisco IOS: Interface gi2/0/9(T810-013): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.61],15m): item is disabled."
+      },
+      "33673": {
+        "description": "Cisco IOS: Interface gi1/0/7(T810-026): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.7],15m): item is disabled."
+      },
+      "33675": {
+        "description": "Cisco IOS: Interface gi2/0/1(T810-001): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.53],15m): item is disabled."
+      },
+      "33676": {
+        "description": "Cisco IOS: Interface gi1/0/10(Tecelagem 1 - lado de fora): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.10],15m): item is disabled."
+      },
+      "33677": {
+        "description": "Cisco IOS: Interface gi2/0/43(T810-022): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.95],15m): item is disabled."
+      },
+      "33678": {
+        "description": "Cisco IOS: Interface gi2/0/30(T810-019): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.82],15m): item is disabled."
+      },
+      "33679": {
+        "description": "Cisco IOS: Interface gi2/0/10(T810-011): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.62],15m): item is disabled."
+      },
+      "33680": {
+        "description": "Cisco IOS: Interface gi2/0/22(T810-018): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.74],15m): item is disabled."
+      },
+      "33682": {
+        "description": "Cisco IOS: Interface gi1/0/5(T810-015): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.5],15m): item is disabled."
+      },
+      "33684": {
+        "description": "Cisco IOS: Interface gi2/0/4(T810-005): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.56],15m): item is disabled."
+      },
+      "33686": {
+        "description": "Cisco IOS: Interface gi1/0/8(T810-050): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.8],15m): item is disabled."
+      },
+      "33690": {
+        "description": "Cisco IOS: Interface gi1/0/14(SCL-TEC1-UPS01): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.14],15m): item is disabled."
+      },
+      "33692": {
+        "description": "Cisco IOS: Interface gi1/0/24(SCL-TEC1-SW02 - ge2/0/47): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.24],15m): item is disabled."
+      },
+      "33693": {
+        "description": "Cisco IOS: Interface gi2/0/6(T810-003): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.58],15m): item is disabled."
+      },
+      "33695": {
+        "description": "Cisco IOS: Interface gi2/0/38(T810-037): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.90],15m): item is disabled."
+      },
+      "33696": {
+        "description": "Cisco IOS: Interface gi2/0/33(T810-028): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.85],15m): item is disabled."
+      },
+      "33697": {
+        "description": "Cisco IOS: Interface gi2/0/18(T810-038): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.70],15m): item is disabled."
+      },
+      "33700": {
+        "description": "Cisco IOS: Interface gi2/0/14(T810-035): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.66],15m): item is disabled."
+      },
+      "33701": {
+        "description": "Cisco IOS: Interface gi1/0/18(T810-051): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.18],15m): item is disabled."
+      },
+      "33705": {
+        "description": "Cisco IOS: Interface gi2/0/31(T810-027): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.83],15m): item is disabled."
+      },
+      "33706": {
+        "description": "Cisco IOS: Interface gi2/0/7(T810-007): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.59],15m): item is disabled."
+      },
+      "33707": {
+        "description": "Cisco IOS: Interface gi2/0/17(T810-017): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.69],15m): item is disabled."
+      },
+      "33708": {
+        "description": "Cisco IOS: Interface gi2/0/8(T810-014): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.60],15m): item is disabled."
+      },
+      "33709": {
+        "description": "Cisco IOS: Interface gi1/0/17(T810-045): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.17],15m): item is disabled."
+      },
+      "33712": {
+        "description": "Cisco IOS: Interface gi2/0/47(T810-042): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.99],15m): item is disabled."
+      },
+      "33714": {
+        "description": "Cisco IOS: Interface gi2/0/28(T810-030): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.80],15m): item is disabled."
+      },
+      "33716": {
+        "description": "Cisco IOS: Interface gi2/0/46(T810-024): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.98],15m): item is disabled."
+      },
+      "33717": {
+        "description": "Cisco IOS: Interface gi2/0/24(T810-006): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.76],15m): item is disabled."
+      },
+      "33718": {
+        "description": "Cisco IOS: Interface gi2/0/34(T810-055): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.86],15m): item is disabled."
+      },
+      "33719": {
+        "description": "Cisco IOS: Interface gi1/0/21(T810-031): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.21],15m): item is disabled."
+      },
+      "33722": {
+        "description": "Cisco IOS: Interface gi1/0/13(T810-047): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.13],15m): item is disabled."
+      },
+      "33723": {
+        "description": "Cisco IOS: Interface gi2/0/26(T810-043): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.78],15m): item is disabled."
+      },
+      "33724": {
+        "description": "Cisco IOS: Interface gi2/0/40(T810-033): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.92],15m): item is disabled."
+      },
+      "33725": {
+        "description": "Cisco IOS: Interface gi2/0/37(T810-036): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.89],15m): item is disabled."
+      },
+      "33727": {
+        "description": "Cisco IOS: Interface gi2/0/41(T810-032): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.93],15m): item is disabled."
+      },
+      "33728": {
+        "description": "Cisco IOS: Interface gi1/0/22(T810-048): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.22],15m): item is disabled."
+      },
+      "33729": {
+        "description": "Cisco IOS: Interface gi2/0/42(T810-039): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.94],15m): item is disabled."
+      },
+      "33730": {
+        "description": "Cisco IOS: Interface gi2/0/5(T810-002): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.57],15m): item is disabled."
+      },
+      "33731": {
+        "description": "Cisco IOS: Interface gi2/0/39(T810-040): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.91],15m): item is disabled."
+      },
+      "33734": {
+        "description": "Cisco IOS: Interface gi2/0/45(T810-046): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.97],5m): item is not supported."
+      },
+      "33735": {
+        "description": "Cisco IOS: Interface gi2/0/16(T810-053): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.68],5m): item is not supported."
+      },
+      "33738": {
+        "description": "Cisco IOS: Interface gi2/0/13(T810-008): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.65],5m): item is not supported."
+      },
+      "33741": {
+        "description": "Cisco IOS: Interface gi1/0/1(T810-025): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.1],5m): item is not supported."
+      },
+      "33742": {
+        "description": "Cisco IOS: Interface gi2/0/44(T810-041): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.96],5m): item is not supported."
+      },
+      "33744": {
+        "description": "Cisco IOS: Interface gi2/0/11(T810-009): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.63],5m): item is not supported."
+      },
+      "33745": {
+        "description": "Cisco IOS: Interface gi1/0/20(T810-069): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.20],5m): item is not supported."
+      },
+      "33746": {
+        "description": "Cisco IOS: Interface gi2/0/35(T810-034): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.87],5m): item is not supported."
+      },
+      "33748": {
+        "description": "Cisco IOS: Interface gi1/0/16(SCL-TEC-D05): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.16],5m): item is not supported."
+      },
+      "33749": {
+        "description": "Cisco IOS: Interface gi2/0/12(T810-012): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.64],5m): item is not supported."
+      },
+      "33750": {
+        "description": "Cisco IOS: Interface gi2/0/23(T810-016): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.75],5m): item is not supported."
+      },
+      "33751": {
+        "description": "Cisco IOS: Interface gi2/0/32(T810-062): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.84],5m): item is not supported."
+      },
+      "33752": {
+        "description": "Cisco IOS: Interface gi1/0/19(T810-021): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.19],5m): item is not supported."
+      },
+      "33753": {
+        "description": "Cisco IOS: Interface gi1/0/4(T810-044): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.4],5m): item is not supported."
+      },
+      "33754": {
+        "description": "Cisco IOS: Interface gi1/0/2(T810-023): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.2],5m): item is not supported."
+      },
+      "33755": {
+        "description": "Cisco IOS: Interface gi2/0/15(T810-010): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.67],5m): item is not supported."
+      },
+      "33756": {
+        "description": "Cisco IOS: Interface gi2/0/25(T810-049): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.77],5m): item is not supported."
+      },
+      "33757": {
+        "description": "Cisco IOS: Interface gi2/0/29(T810-020): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.81],5m): item is not supported."
+      },
+      "33758": {
+        "description": "Cisco IOS: Interface gi2/0/3(T810-004): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.55],5m): item is not supported."
+      },
+      "33759": {
+        "description": "Cisco IOS: Interface gi1/0/11(SCL-TEC1-D12): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.11],5m): item is not supported."
+      },
+      "33760": {
+        "description": "Cisco IOS: Interface gi2/0/27(T810-029): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.79],5m): item is not supported."
+      },
+      "33761": {
+        "description": "Cisco IOS: Interface gi2/0/9(T810-013): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.61],5m): item is not supported."
+      },
+      "33762": {
+        "description": "Cisco IOS: Interface gi1/0/7(T810-026): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.7],5m): item is not supported."
+      },
+      "33764": {
+        "description": "Cisco IOS: Interface gi2/0/1(T810-001): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.53],5m): item is not supported."
+      },
+      "33765": {
+        "description": "Cisco IOS: Interface gi1/0/10(Tecelagem 1 - lado de fora): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.10],5m): item is not supported."
+      },
+      "33766": {
+        "description": "Cisco IOS: Interface gi2/0/43(T810-022): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.95],5m): item is not supported."
+      },
+      "33767": {
+        "description": "Cisco IOS: Interface gi2/0/30(T810-019): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.82],5m): item is not supported."
+      },
+      "33768": {
+        "description": "Cisco IOS: Interface gi2/0/10(T810-011): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.62],5m): item is not supported."
+      },
+      "33769": {
+        "description": "Cisco IOS: Interface gi2/0/22(T810-018): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.74],5m): item is not supported."
+      },
+      "33771": {
+        "description": "Cisco IOS: Interface gi1/0/5(T810-015): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.5],5m): item is not supported."
+      },
+      "33773": {
+        "description": "Cisco IOS: Interface gi2/0/4(T810-005): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.56],5m): item is not supported."
+      },
+      "33775": {
+        "description": "Cisco IOS: Interface gi1/0/8(T810-050): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.8],5m): item is not supported."
+      },
+      "33779": {
+        "description": "Cisco IOS: Interface gi1/0/14(SCL-TEC1-UPS01): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.14],5m): item is not supported."
+      },
+      "33781": {
+        "description": "Cisco IOS: Interface gi1/0/24(SCL-TEC1-SW02 - ge2/0/47): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.24],5m): item is not supported."
+      },
+      "33782": {
+        "description": "Cisco IOS: Interface gi2/0/6(T810-003): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.58],5m): item is not supported."
+      },
+      "33784": {
+        "description": "Cisco IOS: Interface gi2/0/38(T810-037): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.90],5m): item is not supported."
+      },
+      "33785": {
+        "description": "Cisco IOS: Interface gi2/0/33(T810-028): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.85],5m): item is not supported."
+      },
+      "33786": {
+        "description": "Cisco IOS: Interface gi2/0/18(T810-038): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.70],5m): item is not supported."
+      },
+      "33789": {
+        "description": "Cisco IOS: Interface gi2/0/14(T810-035): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.66],5m): item is not supported."
+      },
+      "33790": {
+        "description": "Cisco IOS: Interface gi1/0/18(T810-051): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.18],5m): item is not supported."
+      },
+      "33794": {
+        "description": "Cisco IOS: Interface gi2/0/31(T810-027): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.83],5m): item is not supported."
+      },
+      "33795": {
+        "description": "Cisco IOS: Interface gi2/0/7(T810-007): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.59],5m): item is not supported."
+      },
+      "33796": {
+        "description": "Cisco IOS: Interface gi2/0/17(T810-017): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.69],5m): item is not supported."
+      },
+      "33797": {
+        "description": "Cisco IOS: Interface gi2/0/8(T810-014): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.60],5m): item is not supported."
+      },
+      "33798": {
+        "description": "Cisco IOS: Interface gi1/0/17(T810-045): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.17],5m): item is not supported."
+      },
+      "33801": {
+        "description": "Cisco IOS: Interface gi2/0/47(T810-042): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.99],5m): item is not supported."
+      },
+      "33803": {
+        "description": "Cisco IOS: Interface gi2/0/28(T810-030): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.80],5m): item is not supported."
+      },
+      "33805": {
+        "description": "Cisco IOS: Interface gi2/0/46(T810-024): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.98],5m): item is not supported."
+      },
+      "33806": {
+        "description": "Cisco IOS: Interface gi2/0/24(T810-006): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.76],5m): item is not supported."
+      },
+      "33807": {
+        "description": "Cisco IOS: Interface gi2/0/34(T810-055): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.86],5m): item is not supported."
+      },
+      "33808": {
+        "description": "Cisco IOS: Interface gi1/0/21(T810-031): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.21],5m): item is not supported."
+      },
+      "33811": {
+        "description": "Cisco IOS: Interface gi1/0/13(T810-047): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.13],5m): item is not supported."
+      },
+      "33812": {
+        "description": "Cisco IOS: Interface gi2/0/26(T810-043): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.78],5m): item is not supported."
+      },
+      "33813": {
+        "description": "Cisco IOS: Interface gi2/0/40(T810-033): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.92],5m): item is not supported."
+      },
+      "33814": {
+        "description": "Cisco IOS: Interface gi2/0/37(T810-036): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.89],5m): item is not supported."
+      },
+      "33816": {
+        "description": "Cisco IOS: Interface gi2/0/41(T810-032): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.93],5m): item is not supported."
+      },
+      "33817": {
+        "description": "Cisco IOS: Interface gi1/0/22(T810-048): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.22],5m): item is not supported."
+      },
+      "33818": {
+        "description": "Cisco IOS: Interface gi2/0/42(T810-039): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.94],5m): item is not supported."
+      },
+      "33819": {
+        "description": "Cisco IOS: Interface gi2/0/5(T810-002): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.57],5m): item is not supported."
+      },
+      "33820": {
+        "description": "Cisco IOS: Interface gi2/0/39(T810-040): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC1-SW03/net.if.in.errors[ifInErrors.91],5m): item is not supported."
+      }
+    },
+    "item_key_prefixes": [],
+    "item_error_prefixes": [],
+    "counts": {
+      "items_disable": 0,
+      "triggers_disable": 122
+    }
+  },
+  "SCL-TEC2-SW01": {
+    "hostid": "10735",
+    "unknown_triggers": 284,
+    "items_to_disable": {},
+    "triggers_to_disable": {
+      "26229": {
+        "description": "Cisco IOS: Device has been replaced",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/system.hw.serialnumber,#1): item is not supported."
+      },
+      "26231": {
+        "description": "Cisco IOS: Operating system description has changed",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+      },
+      "35996": {
+        "description": "Cisco IOS: Interface gi2/0/19(Tear 259 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.71],15m): item is not supported."
+      },
+      "35997": {
+        "description": "Cisco IOS: Interface stack-port(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.9000],15m): item is not supported."
+      },
+      "35998": {
+        "description": "Cisco IOS: Interface gi2/0/16(Tear 268 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.68],15m): item is not supported."
+      },
+      "35999": {
+        "description": "Cisco IOS: Interface gi1/0/45(Tear 245 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.45],15m): item is not supported."
+      },
+      "36000": {
+        "description": "Cisco IOS: Interface 10(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100009],15m): item is not supported."
+      },
+      "36001": {
+        "description": "Cisco IOS: Interface 310(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100309],15m): item is not supported."
+      },
+      "36002": {
+        "description": "Cisco IOS: Interface gi2/0/13(Tear 254 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.65],15m): item is not supported."
+      },
+      "36003": {
+        "description": "Cisco IOS: Interface 1(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100000],15m): item is not supported."
+      },
+      "36004": {
+        "description": "Cisco IOS: Interface gi1/0/6(Tear 206 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.6],15m): item is not supported."
+      },
+      "36005": {
+        "description": "Cisco IOS: Interface gi1/0/1(Tear 201 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.1],15m): item is not supported."
+      },
+      "36006": {
+        "description": "Cisco IOS: Interface gi2/0/44(Tear 215 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.96],15m): item is not supported."
+      },
+      "36007": {
+        "description": "Cisco IOS: Interface 6(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100005],15m): item is not supported."
+      },
+      "36008": {
+        "description": "Cisco IOS: Interface gi2/0/11(Tear 255 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.63],15m): item is not supported."
+      },
+      "36009": {
+        "description": "Cisco IOS: Interface gi1/0/20(Tear 220 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.20],15m): item is not supported."
+      },
+      "36010": {
+        "description": "Cisco IOS: Interface 112(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100111],15m): item is not supported."
+      },
+      "36011": {
+        "description": "Cisco IOS: Interface gi1/0/16(Tear 216 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.16],15m): item is not supported."
+      },
+      "36012": {
+        "description": "Cisco IOS: Interface gi1/0/44(Tear 244 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.44],15m): item is not supported."
+      },
+      "36013": {
+        "description": "Cisco IOS: Interface gi2/0/12(Tear 263 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.64],15m): item is not supported."
+      },
+      "36014": {
+        "description": "Cisco IOS: Interface 114(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100113],15m): item is not supported."
+      },
+      "36015": {
+        "description": "Cisco IOS: Interface gi2/0/23(Tear 258 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.75],15m): item is not supported."
+      },
+      "36016": {
+        "description": "Cisco IOS: Interface gi2/0/32(Tear 204 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.84],15m): item is not supported."
+      },
+      "36017": {
+        "description": "Cisco IOS: Interface gi1/0/19(Tear 219 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.19],15m): item is not supported."
+      },
+      "36018": {
+        "description": "Cisco IOS: Interface gi1/0/2(Tear 202 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.2],15m): item is not supported."
+      },
+      "36019": {
+        "description": "Cisco IOS: Interface gi2/0/15(Tear 256 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.67],15m): item is not supported."
+      },
+      "36020": {
+        "description": "Cisco IOS: Interface gi2/0/25(Tear 272 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.77],15m): item is not supported."
+      },
+      "36021": {
+        "description": "Cisco IOS: Interface gi1/0/35(Tear 235 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.35],15m): item is not supported."
+      },
+      "36022": {
+        "description": "Cisco IOS: Interface gi2/0/3(Tear 250 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.55],15m): item is not supported."
+      },
+      "36023": {
+        "description": "Cisco IOS: Interface gi1/0/11(Tear 211 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.11],15m): item is not supported."
+      },
+      "36024": {
+        "description": "Cisco IOS: Interface gi2/0/27(Tear 214 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.79],15m): item is not supported."
+      },
+      "36025": {
+        "description": "Cisco IOS: Interface 100(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100099],15m): item is not supported."
+      },
+      "36026": {
+        "description": "Cisco IOS: Interface gi2/0/9(Tear 253 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.61],15m): item is not supported."
+      },
+      "36027": {
+        "description": "Cisco IOS: Interface gi1/0/7(Tear 207 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.7],15m): item is not supported."
+      },
+      "36028": {
+        "description": "Cisco IOS: Interface 111(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100110],15m): item is not supported."
+      },
+      "36029": {
+        "description": "Cisco IOS: Interface gi1/0/10(Tear 210 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.10],15m): item is not supported."
+      },
+      "36030": {
+        "description": "Cisco IOS: Interface gi1/0/38(Tear 238 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.38],15m): item is not supported."
+      },
+      "36031": {
+        "description": "Cisco IOS: Interface gi1/0/27(Tear 227 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.27],15m): item is not supported."
+      },
+      "36032": {
+        "description": "Cisco IOS: Interface gi2/0/10(Tear 251 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.62],15m): item is not supported."
+      },
+      "36033": {
+        "description": "Cisco IOS: Interface gi2/0/22(Tear 270 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.74],15m): item is not supported."
+      },
+      "36034": {
+        "description": "Cisco IOS: Interface te1/0/3(Uplink SCL-TEC2-SW02 - te1/0/1): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.51],15m): item is not supported."
+      },
+      "36035": {
+        "description": "Cisco IOS: Interface gi1/0/30(Tear 230 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.30],15m): item is not supported."
+      },
+      "36036": {
+        "description": "Cisco IOS: Interface gi1/0/29(Tear 229 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.29],15m): item is not supported."
+      },
+      "36037": {
+        "description": "Cisco IOS: Interface gi1/0/26(Tear 226 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.26],15m): item is not supported."
+      },
+      "36038": {
+        "description": "Cisco IOS: Interface gi1/0/5(Tear 205 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.5],15m): item is not supported."
+      },
+      "36039": {
+        "description": "Cisco IOS: Interface gi2/0/21(Tear 260 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.73],15m): item is not supported."
+      },
+      "36040": {
+        "description": "Cisco IOS: Interface gi2/0/4(Tear 262 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.56],15m): item is not supported."
+      },
+      "36041": {
+        "description": "Cisco IOS: Interface te2/0/3(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.103],15m): item is not supported."
+      },
+      "36042": {
+        "description": "Cisco IOS: Interface gi1/0/8(Tear 208 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.8],15m): item is not supported."
+      },
+      "36043": {
+        "description": "Cisco IOS: Interface gi1/0/12(Tear 212 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.12],15m): item is not supported."
+      },
+      "36044": {
+        "description": "Cisco IOS: Interface loopback1(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.7000],15m): item is not supported."
+      },
+      "36045": {
+        "description": "Cisco IOS: Interface gi1/0/25(Tear 225 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.25],15m): item is not supported."
+      },
+      "36046": {
+        "description": "Cisco IOS: Interface gi1/0/14(Tear 243 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.14],15m): item is not supported."
+      },
+      "36047": {
+        "description": "Cisco IOS: Interface gi1/0/15(Tear 247 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.15],15m): item is not supported."
+      },
+      "36048": {
+        "description": "Cisco IOS: Interface gi1/0/24(Tear 224 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.24],15m): item is not supported."
+      },
+      "36049": {
+        "description": "Cisco IOS: Interface gi2/0/6(Tear 261 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.58],15m): item is not supported."
+      },
+      "36050": {
+        "description": "Cisco IOS: Interface 23(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100022],15m): item is not supported."
+      },
+      "36051": {
+        "description": "Cisco IOS: Interface gi1/0/46(Tear 246 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.46],15m): item is not supported."
+      },
+      "36052": {
+        "description": "Cisco IOS: Interface gi1/0/33(Tear 233 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.33],15m): item is not supported."
+      },
+      "36053": {
+        "description": "Cisco IOS: Interface 116(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100115],15m): item is not supported."
+      },
+      "36054": {
+        "description": "Cisco IOS: Interface gi2/0/38(Tear 248 (TOYOTA)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.90],15m): item is not supported."
+      },
+      "36055": {
+        "description": "Cisco IOS: Interface gi1/0/34(Tear 234 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.34],15m): item is not supported."
+      },
+      "36056": {
+        "description": "Cisco IOS: Interface gi2/0/18(Tear 266 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.70],15m): item is not supported."
+      },
+      "36057": {
+        "description": "Cisco IOS: Interface gi1/0/23(Tear 223 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.23],15m): item is not supported."
+      },
+      "36058": {
+        "description": "Cisco IOS: Interface 115(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100114],15m): item is not supported."
+      },
+      "36059": {
+        "description": "Cisco IOS: Interface gi2/0/14(Tear 267 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.66],15m): item is not supported."
+      },
+      "36060": {
+        "description": "Cisco IOS: Interface gi1/0/39(Tear 239 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.39],15m): item is not supported."
+      },
+      "36061": {
+        "description": "Cisco IOS: Interface gi1/0/18(Tear 218 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.18],15m): item is not supported."
+      },
+      "36062": {
+        "description": "Cisco IOS: Interface te1/0/4(Uplink SCL-CPD-SW01 - gi1/0/11): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.52],15m): item is not supported."
+      },
+      "36063": {
+        "description": "Cisco IOS: Interface te2/0/4(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.104],15m): item is not supported."
+      },
+      "36064": {
+        "description": "Cisco IOS: Interface gi2/0/7(Tear 252 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.59],15m): item is not supported."
+      },
+      "36065": {
+        "description": "Cisco IOS: Interface gi2/0/17(Tear 271 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.69],15m): item is not supported."
+      },
+      "36066": {
+        "description": "Cisco IOS: Interface gi2/0/8(Tear 249 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.60],15m): item is not supported."
+      },
+      "36067": {
+        "description": "Cisco IOS: Interface gi1/0/17(Tear 217 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.17],15m): item is not supported."
+      },
+      "36068": {
+        "description": "Cisco IOS: Interface gi1/0/9(Tear 209 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.9],15m): item is not supported."
+      },
+      "36069": {
+        "description": "Cisco IOS: Interface Logical-int 1(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.20000],15m): item is not supported."
+      },
+      "36070": {
+        "description": "Cisco IOS: Interface 14(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100013],15m): item is not supported."
+      },
+      "36071": {
+        "description": "Cisco IOS: Interface gi2/0/28(Tear 237 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.80],15m): item is not supported."
+      },
+      "36072": {
+        "description": "Cisco IOS: Interface gi1/0/31(Tear 231 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.31],15m): item is not supported."
+      },
+      "36073": {
+        "description": "Cisco IOS: Interface gi1/0/3(Tear 203 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.3],15m): item is not supported."
+      },
+      "36074": {
+        "description": "Cisco IOS: Interface gi2/0/46(SCL-TEC2-UPS02): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.98],15m): item is not supported."
+      },
+      "36075": {
+        "description": "Cisco IOS: Interface gi2/0/24(Tear 264 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.76],15m): item is not supported."
+      },
+      "36076": {
+        "description": "Cisco IOS: Interface gi1/0/40(Tear 240 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.40],15m): item is not supported."
+      },
+      "36077": {
+        "description": "Cisco IOS: Interface 4(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100003],15m): item is not supported."
+      },
+      "36078": {
+        "description": "Cisco IOS: Interface gi1/0/21(Tear 221 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.21],15m): item is not supported."
+      },
+      "36079": {
+        "description": "Cisco IOS: Interface gi2/0/20(Tear 257 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.72],15m): item is not supported."
+      },
+      "36080": {
+        "description": "Cisco IOS: Interface gi1/0/37(Tear 236 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.37],15m): item is not supported."
+      },
+      "36081": {
+        "description": "Cisco IOS: Interface gi1/0/42(Tear 242 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.42],15m): item is not supported."
+      },
+      "36082": {
+        "description": "Cisco IOS: Interface gi1/0/32(Tear 232 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.32],15m): item is not supported."
+      },
+      "36083": {
+        "description": "Cisco IOS: Interface gi1/0/41(Tear 241 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.41],15m): item is not supported."
+      },
+      "36084": {
+        "description": "Cisco IOS: Interface gi1/0/13(Tear 213 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.13],15m): item is not supported."
+      },
+      "36085": {
+        "description": "Cisco IOS: Interface gi2/0/26(Tear 265 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.78],15m): item is not supported."
+      },
+      "36086": {
+        "description": "Cisco IOS: Interface gi2/0/40(Tear 228 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.92],15m): item is not supported."
+      },
+      "36087": {
+        "description": "Cisco IOS: Interface User Defined Port 1(): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.8000],15m): item is not supported."
+      },
+      "36088": {
+        "description": "Cisco IOS: Interface gi1/0/22(Tear 222 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.22],15m): item is not supported."
+      },
+      "36089": {
+        "description": "Cisco IOS: Interface gi2/0/5(Tear 269 (Picanol)): High bandwidth usage",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.57],15m): item is not supported."
+      },
+      "36090": {
+        "description": "Cisco IOS: Interface gi2/0/19(Tear 259 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.71],5m): item is not supported."
+      },
+      "36091": {
+        "description": "Cisco IOS: Interface stack-port(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.9000],5m): item is not supported."
+      },
+      "36092": {
+        "description": "Cisco IOS: Interface gi2/0/16(Tear 268 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.68],5m): item is not supported."
+      },
+      "36093": {
+        "description": "Cisco IOS: Interface gi1/0/45(Tear 245 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.45],5m): item is not supported."
+      },
+      "36094": {
+        "description": "Cisco IOS: Interface 10(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100009],5m): item is not supported."
+      },
+      "36095": {
+        "description": "Cisco IOS: Interface 310(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100309],5m): item is not supported."
+      },
+      "36096": {
+        "description": "Cisco IOS: Interface gi2/0/13(Tear 254 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.65],5m): item is not supported."
+      },
+      "36097": {
+        "description": "Cisco IOS: Interface 1(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100000],5m): item is not supported."
+      },
+      "36098": {
+        "description": "Cisco IOS: Interface gi1/0/6(Tear 206 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.6],5m): item is not supported."
+      },
+      "36099": {
+        "description": "Cisco IOS: Interface gi1/0/1(Tear 201 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.1],5m): item is not supported."
+      },
+      "36100": {
+        "description": "Cisco IOS: Interface gi2/0/44(Tear 215 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.96],5m): item is not supported."
+      },
+      "36101": {
+        "description": "Cisco IOS: Interface 6(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100005],5m): item is not supported."
+      },
+      "36102": {
+        "description": "Cisco IOS: Interface gi2/0/11(Tear 255 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.63],5m): item is not supported."
+      },
+      "36103": {
+        "description": "Cisco IOS: Interface gi1/0/20(Tear 220 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.20],5m): item is not supported."
+      },
+      "36104": {
+        "description": "Cisco IOS: Interface 112(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100111],5m): item is not supported."
+      },
+      "36105": {
+        "description": "Cisco IOS: Interface gi1/0/16(Tear 216 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.16],5m): item is not supported."
+      },
+      "36106": {
+        "description": "Cisco IOS: Interface gi1/0/44(Tear 244 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.44],5m): item is not supported."
+      },
+      "36107": {
+        "description": "Cisco IOS: Interface gi2/0/12(Tear 263 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.64],5m): item is not supported."
+      },
+      "36108": {
+        "description": "Cisco IOS: Interface 114(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100113],5m): item is not supported."
+      },
+      "36109": {
+        "description": "Cisco IOS: Interface gi2/0/23(Tear 258 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.75],5m): item is not supported."
+      },
+      "36110": {
+        "description": "Cisco IOS: Interface gi2/0/32(Tear 204 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.84],5m): item is not supported."
+      },
+      "36111": {
+        "description": "Cisco IOS: Interface gi1/0/19(Tear 219 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.19],5m): item is not supported."
+      },
+      "36112": {
+        "description": "Cisco IOS: Interface gi1/0/2(Tear 202 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.2],5m): item is not supported."
+      },
+      "36113": {
+        "description": "Cisco IOS: Interface gi2/0/15(Tear 256 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.67],5m): item is not supported."
+      },
+      "36114": {
+        "description": "Cisco IOS: Interface gi2/0/25(Tear 272 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.77],5m): item is not supported."
+      },
+      "36115": {
+        "description": "Cisco IOS: Interface gi1/0/35(Tear 235 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.35],5m): item is not supported."
+      },
+      "36116": {
+        "description": "Cisco IOS: Interface gi2/0/3(Tear 250 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.55],5m): item is not supported."
+      },
+      "36117": {
+        "description": "Cisco IOS: Interface gi1/0/11(Tear 211 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.11],5m): item is not supported."
+      },
+      "36118": {
+        "description": "Cisco IOS: Interface gi2/0/27(Tear 214 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.79],5m): item is not supported."
+      },
+      "36119": {
+        "description": "Cisco IOS: Interface 100(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100099],5m): item is not supported."
+      },
+      "36120": {
+        "description": "Cisco IOS: Interface gi2/0/9(Tear 253 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.61],5m): item is not supported."
+      },
+      "36121": {
+        "description": "Cisco IOS: Interface gi1/0/7(Tear 207 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.7],5m): item is not supported."
+      },
+      "36122": {
+        "description": "Cisco IOS: Interface 111(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100110],5m): item is not supported."
+      },
+      "36123": {
+        "description": "Cisco IOS: Interface gi1/0/10(Tear 210 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.10],5m): item is not supported."
+      },
+      "36124": {
+        "description": "Cisco IOS: Interface gi1/0/38(Tear 238 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.38],5m): item is not supported."
+      },
+      "36125": {
+        "description": "Cisco IOS: Interface gi1/0/27(Tear 227 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.27],5m): item is not supported."
+      },
+      "36126": {
+        "description": "Cisco IOS: Interface gi2/0/10(Tear 251 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.62],5m): item is not supported."
+      },
+      "36127": {
+        "description": "Cisco IOS: Interface gi2/0/22(Tear 270 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.74],5m): item is not supported."
+      },
+      "36128": {
+        "description": "Cisco IOS: Interface te1/0/3(Uplink SCL-TEC2-SW02 - te1/0/1): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.51],5m): item is not supported."
+      },
+      "36129": {
+        "description": "Cisco IOS: Interface gi1/0/30(Tear 230 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.30],5m): item is not supported."
+      },
+      "36130": {
+        "description": "Cisco IOS: Interface gi1/0/29(Tear 229 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.29],5m): item is not supported."
+      },
+      "36131": {
+        "description": "Cisco IOS: Interface gi1/0/26(Tear 226 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.26],5m): item is not supported."
+      },
+      "36132": {
+        "description": "Cisco IOS: Interface gi1/0/5(Tear 205 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.5],5m): item is not supported."
+      },
+      "36133": {
+        "description": "Cisco IOS: Interface gi2/0/21(Tear 260 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.73],5m): item is not supported."
+      },
+      "36134": {
+        "description": "Cisco IOS: Interface gi2/0/4(Tear 262 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.56],5m): item is not supported."
+      },
+      "36135": {
+        "description": "Cisco IOS: Interface te2/0/3(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.103],5m): item is not supported."
+      },
+      "36136": {
+        "description": "Cisco IOS: Interface gi1/0/8(Tear 208 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.8],5m): item is not supported."
+      },
+      "36137": {
+        "description": "Cisco IOS: Interface gi1/0/12(Tear 212 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.12],5m): item is not supported."
+      },
+      "36138": {
+        "description": "Cisco IOS: Interface loopback1(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.7000],5m): item is not supported."
+      },
+      "36139": {
+        "description": "Cisco IOS: Interface gi1/0/25(Tear 225 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.25],5m): item is not supported."
+      },
+      "36140": {
+        "description": "Cisco IOS: Interface gi1/0/14(Tear 243 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.14],5m): item is not supported."
+      },
+      "36141": {
+        "description": "Cisco IOS: Interface gi1/0/15(Tear 247 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.15],5m): item is not supported."
+      },
+      "36142": {
+        "description": "Cisco IOS: Interface gi1/0/24(Tear 224 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.24],5m): item is not supported."
+      },
+      "36143": {
+        "description": "Cisco IOS: Interface gi2/0/6(Tear 261 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.58],5m): item is not supported."
+      },
+      "36144": {
+        "description": "Cisco IOS: Interface 23(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100022],5m): item is not supported."
+      },
+      "36145": {
+        "description": "Cisco IOS: Interface gi1/0/46(Tear 246 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.46],5m): item is not supported."
+      },
+      "36146": {
+        "description": "Cisco IOS: Interface gi1/0/33(Tear 233 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.33],5m): item is not supported."
+      },
+      "36147": {
+        "description": "Cisco IOS: Interface 116(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100115],5m): item is not supported."
+      },
+      "36148": {
+        "description": "Cisco IOS: Interface gi2/0/38(Tear 248 (TOYOTA)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.90],5m): item is not supported."
+      },
+      "36149": {
+        "description": "Cisco IOS: Interface gi1/0/34(Tear 234 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.34],5m): item is not supported."
+      },
+      "36150": {
+        "description": "Cisco IOS: Interface gi2/0/18(Tear 266 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.70],5m): item is not supported."
+      },
+      "36151": {
+        "description": "Cisco IOS: Interface gi1/0/23(Tear 223 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.23],5m): item is not supported."
+      },
+      "36152": {
+        "description": "Cisco IOS: Interface 115(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100114],5m): item is not supported."
+      },
+      "36153": {
+        "description": "Cisco IOS: Interface gi2/0/14(Tear 267 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.66],5m): item is not supported."
+      },
+      "36154": {
+        "description": "Cisco IOS: Interface gi1/0/39(Tear 239 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.39],5m): item is not supported."
+      },
+      "36155": {
+        "description": "Cisco IOS: Interface gi1/0/18(Tear 218 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.18],5m): item is not supported."
+      },
+      "36156": {
+        "description": "Cisco IOS: Interface te1/0/4(Uplink SCL-CPD-SW01 - gi1/0/11): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.52],5m): item is not supported."
+      },
+      "36157": {
+        "description": "Cisco IOS: Interface te2/0/4(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.104],5m): item is not supported."
+      },
+      "36158": {
+        "description": "Cisco IOS: Interface gi2/0/7(Tear 252 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.59],5m): item is not supported."
+      },
+      "36159": {
+        "description": "Cisco IOS: Interface gi2/0/17(Tear 271 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.69],5m): item is not supported."
+      },
+      "36160": {
+        "description": "Cisco IOS: Interface gi2/0/8(Tear 249 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.60],5m): item is not supported."
+      },
+      "36161": {
+        "description": "Cisco IOS: Interface gi1/0/17(Tear 217 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.17],5m): item is not supported."
+      },
+      "36162": {
+        "description": "Cisco IOS: Interface gi1/0/9(Tear 209 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.9],5m): item is not supported."
+      },
+      "36163": {
+        "description": "Cisco IOS: Interface Logical-int 1(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.20000],5m): item is not supported."
+      },
+      "36164": {
+        "description": "Cisco IOS: Interface 14(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100013],5m): item is not supported."
+      },
+      "36165": {
+        "description": "Cisco IOS: Interface gi2/0/28(Tear 237 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.80],5m): item is not supported."
+      },
+      "36166": {
+        "description": "Cisco IOS: Interface gi1/0/31(Tear 231 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.31],5m): item is not supported."
+      },
+      "36167": {
+        "description": "Cisco IOS: Interface gi1/0/3(Tear 203 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.3],5m): item is not supported."
+      },
+      "36168": {
+        "description": "Cisco IOS: Interface gi2/0/46(SCL-TEC2-UPS02): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.98],5m): item is not supported."
+      },
+      "36169": {
+        "description": "Cisco IOS: Interface gi2/0/24(Tear 264 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.76],5m): item is not supported."
+      },
+      "36170": {
+        "description": "Cisco IOS: Interface gi1/0/40(Tear 240 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.40],5m): item is not supported."
+      },
+      "36171": {
+        "description": "Cisco IOS: Interface 4(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.100003],5m): item is not supported."
+      },
+      "36172": {
+        "description": "Cisco IOS: Interface gi1/0/21(Tear 221 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.21],5m): item is not supported."
+      },
+      "36173": {
+        "description": "Cisco IOS: Interface gi2/0/20(Tear 257 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.72],5m): item is not supported."
+      },
+      "36174": {
+        "description": "Cisco IOS: Interface gi1/0/37(Tear 236 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.37],5m): item is not supported."
+      },
+      "36175": {
+        "description": "Cisco IOS: Interface gi1/0/42(Tear 242 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.42],5m): item is not supported."
+      },
+      "36176": {
+        "description": "Cisco IOS: Interface gi1/0/32(Tear 232 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.32],5m): item is not supported."
+      },
+      "36177": {
+        "description": "Cisco IOS: Interface gi1/0/41(Tear 241 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.41],5m): item is not supported."
+      },
+      "36178": {
+        "description": "Cisco IOS: Interface gi1/0/13(Tear 213 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.13],5m): item is not supported."
+      },
+      "36179": {
+        "description": "Cisco IOS: Interface gi2/0/26(Tear 265 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.78],5m): item is not supported."
+      },
+      "36180": {
+        "description": "Cisco IOS: Interface gi2/0/40(Tear 228 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.92],5m): item is not supported."
+      },
+      "36181": {
+        "description": "Cisco IOS: Interface User Defined Port 1(): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.8000],5m): item is not supported."
+      },
+      "36182": {
+        "description": "Cisco IOS: Interface gi1/0/22(Tear 222 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.22],5m): item is not supported."
+      },
+      "36183": {
+        "description": "Cisco IOS: Interface gi2/0/5(Tear 269 (Picanol)): High error rate",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function min(/SCL-TEC2-SW01/net.if.in.errors[ifInErrors.57],5m): item is not supported."
+      },
+      "36184": {
+        "description": "Cisco IOS: Interface gi2/0/19(Tear 259 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.71]): item is not supported."
+      },
+      "36185": {
+        "description": "Cisco IOS: Interface stack-port(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.9000]): item is not supported."
+      },
+      "36186": {
+        "description": "Cisco IOS: Interface gi2/0/16(Tear 268 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.68]): item is not supported."
+      },
+      "36187": {
+        "description": "Cisco IOS: Interface gi1/0/45(Tear 245 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.45]): item is not supported."
+      },
+      "36188": {
+        "description": "Cisco IOS: Interface 10(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100009]): item is not supported."
+      },
+      "36189": {
+        "description": "Cisco IOS: Interface 310(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100309]): item is not supported."
+      },
+      "36190": {
+        "description": "Cisco IOS: Interface gi2/0/13(Tear 254 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.65]): item is not supported."
+      },
+      "36191": {
+        "description": "Cisco IOS: Interface 1(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100000]): item is not supported."
+      },
+      "36192": {
+        "description": "Cisco IOS: Interface gi1/0/6(Tear 206 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.6]): item is not supported."
+      },
+      "36193": {
+        "description": "Cisco IOS: Interface gi1/0/1(Tear 201 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.1]): item is not supported."
+      },
+      "36194": {
+        "description": "Cisco IOS: Interface gi2/0/44(Tear 215 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.96]): item is not supported."
+      },
+      "36195": {
+        "description": "Cisco IOS: Interface 6(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100005]): item is not supported."
+      },
+      "36196": {
+        "description": "Cisco IOS: Interface gi2/0/11(Tear 255 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.63]): item is not supported."
+      },
+      "36197": {
+        "description": "Cisco IOS: Interface gi1/0/20(Tear 220 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.20]): item is not supported."
+      },
+      "36198": {
+        "description": "Cisco IOS: Interface 112(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100111]): item is not supported."
+      },
+      "36199": {
+        "description": "Cisco IOS: Interface gi1/0/16(Tear 216 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.16]): item is not supported."
+      },
+      "36200": {
+        "description": "Cisco IOS: Interface gi1/0/44(Tear 244 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.44]): item is not supported."
+      },
+      "36201": {
+        "description": "Cisco IOS: Interface gi2/0/12(Tear 263 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.64]): item is not supported."
+      },
+      "36202": {
+        "description": "Cisco IOS: Interface 114(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100113]): item is not supported."
+      },
+      "36203": {
+        "description": "Cisco IOS: Interface gi2/0/23(Tear 258 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.75]): item is not supported."
+      },
+      "36204": {
+        "description": "Cisco IOS: Interface gi2/0/32(Tear 204 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.84]): item is not supported."
+      },
+      "36205": {
+        "description": "Cisco IOS: Interface gi1/0/19(Tear 219 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.19]): item is not supported."
+      },
+      "36206": {
+        "description": "Cisco IOS: Interface gi1/0/2(Tear 202 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.2]): item is not supported."
+      },
+      "36207": {
+        "description": "Cisco IOS: Interface gi2/0/15(Tear 256 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.67]): item is not supported."
+      },
+      "36208": {
+        "description": "Cisco IOS: Interface gi2/0/25(Tear 272 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.77]): item is not supported."
+      },
+      "36209": {
+        "description": "Cisco IOS: Interface gi1/0/35(Tear 235 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.35]): item is not supported."
+      },
+      "36210": {
+        "description": "Cisco IOS: Interface gi2/0/3(Tear 250 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.55]): item is not supported."
+      },
+      "36211": {
+        "description": "Cisco IOS: Interface gi1/0/11(Tear 211 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.11]): item is not supported."
+      },
+      "36212": {
+        "description": "Cisco IOS: Interface gi2/0/27(Tear 214 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.79]): item is not supported."
+      },
+      "36213": {
+        "description": "Cisco IOS: Interface 100(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100099]): item is not supported."
+      },
+      "36214": {
+        "description": "Cisco IOS: Interface gi2/0/9(Tear 253 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.61]): item is not supported."
+      },
+      "36215": {
+        "description": "Cisco IOS: Interface gi1/0/7(Tear 207 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.7]): item is not supported."
+      },
+      "36216": {
+        "description": "Cisco IOS: Interface 111(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100110]): item is not supported."
+      },
+      "36217": {
+        "description": "Cisco IOS: Interface gi1/0/10(Tear 210 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.10]): item is not supported."
+      },
+      "36218": {
+        "description": "Cisco IOS: Interface gi1/0/38(Tear 238 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.38]): item is not supported."
+      },
+      "36219": {
+        "description": "Cisco IOS: Interface gi1/0/27(Tear 227 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.27]): item is not supported."
+      },
+      "36220": {
+        "description": "Cisco IOS: Interface gi2/0/10(Tear 251 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.62]): item is not supported."
+      },
+      "36221": {
+        "description": "Cisco IOS: Interface gi2/0/22(Tear 270 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.74]): item is not supported."
+      },
+      "36222": {
+        "description": "Cisco IOS: Interface te1/0/3(Uplink SCL-TEC2-SW02 - te1/0/1): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.51]): item is not supported."
+      },
+      "36223": {
+        "description": "Cisco IOS: Interface gi1/0/30(Tear 230 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.30]): item is not supported."
+      },
+      "36224": {
+        "description": "Cisco IOS: Interface gi1/0/29(Tear 229 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.29]): item is not supported."
+      },
+      "36225": {
+        "description": "Cisco IOS: Interface gi1/0/26(Tear 226 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.26]): item is not supported."
+      },
+      "36226": {
+        "description": "Cisco IOS: Interface gi1/0/5(Tear 205 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.5]): item is not supported."
+      },
+      "36227": {
+        "description": "Cisco IOS: Interface gi2/0/21(Tear 260 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.73]): item is not supported."
+      },
+      "36228": {
+        "description": "Cisco IOS: Interface gi2/0/4(Tear 262 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.56]): item is not supported."
+      },
+      "36229": {
+        "description": "Cisco IOS: Interface te2/0/3(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.103]): item is not supported."
+      },
+      "36230": {
+        "description": "Cisco IOS: Interface gi1/0/8(Tear 208 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.8]): item is not supported."
+      },
+      "36231": {
+        "description": "Cisco IOS: Interface gi1/0/12(Tear 212 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.12]): item is not supported."
+      },
+      "36232": {
+        "description": "Cisco IOS: Interface loopback1(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.7000]): item is not supported."
+      },
+      "36233": {
+        "description": "Cisco IOS: Interface gi1/0/25(Tear 225 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.25]): item is not supported."
+      },
+      "36234": {
+        "description": "Cisco IOS: Interface gi1/0/14(Tear 243 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.14]): item is not supported."
+      },
+      "36235": {
+        "description": "Cisco IOS: Interface gi1/0/15(Tear 247 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.15]): item is not supported."
+      },
+      "36236": {
+        "description": "Cisco IOS: Interface gi1/0/24(Tear 224 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.24]): item is not supported."
+      },
+      "36237": {
+        "description": "Cisco IOS: Interface gi2/0/6(Tear 261 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.58]): item is not supported."
+      },
+      "36238": {
+        "description": "Cisco IOS: Interface 23(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100022]): item is not supported."
+      },
+      "36239": {
+        "description": "Cisco IOS: Interface gi1/0/46(Tear 246 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.46]): item is not supported."
+      },
+      "36240": {
+        "description": "Cisco IOS: Interface gi1/0/33(Tear 233 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.33]): item is not supported."
+      },
+      "36241": {
+        "description": "Cisco IOS: Interface 116(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100115]): item is not supported."
+      },
+      "36242": {
+        "description": "Cisco IOS: Interface gi2/0/38(Tear 248 (TOYOTA)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.90]): item is not supported."
+      },
+      "36243": {
+        "description": "Cisco IOS: Interface gi1/0/34(Tear 234 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.34]): item is not supported."
+      },
+      "36244": {
+        "description": "Cisco IOS: Interface gi2/0/18(Tear 266 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.70]): item is not supported."
+      },
+      "36245": {
+        "description": "Cisco IOS: Interface gi1/0/23(Tear 223 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.23]): item is not supported."
+      },
+      "36246": {
+        "description": "Cisco IOS: Interface 115(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100114]): item is not supported."
+      },
+      "36247": {
+        "description": "Cisco IOS: Interface gi2/0/14(Tear 267 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.66]): item is not supported."
+      },
+      "36248": {
+        "description": "Cisco IOS: Interface gi1/0/39(Tear 239 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.39]): item is not supported."
+      },
+      "36249": {
+        "description": "Cisco IOS: Interface gi1/0/18(Tear 218 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.18]): item is not supported."
+      },
+      "36250": {
+        "description": "Cisco IOS: Interface te1/0/4(Uplink SCL-CPD-SW01 - gi1/0/11): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.52]): item is not supported."
+      },
+      "36251": {
+        "description": "Cisco IOS: Interface te2/0/4(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.104]): item is not supported."
+      },
+      "36252": {
+        "description": "Cisco IOS: Interface gi2/0/7(Tear 252 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.59]): item is not supported."
+      },
+      "36253": {
+        "description": "Cisco IOS: Interface gi2/0/17(Tear 271 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.69]): item is not supported."
+      },
+      "36254": {
+        "description": "Cisco IOS: Interface gi2/0/8(Tear 249 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.60]): item is not supported."
+      },
+      "36255": {
+        "description": "Cisco IOS: Interface gi1/0/17(Tear 217 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.17]): item is not supported."
+      },
+      "36256": {
+        "description": "Cisco IOS: Interface gi1/0/9(Tear 209 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.9]): item is not supported."
+      },
+      "36257": {
+        "description": "Cisco IOS: Interface Logical-int 1(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.20000]): item is not supported."
+      },
+      "36258": {
+        "description": "Cisco IOS: Interface 14(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100013]): item is not supported."
+      },
+      "36259": {
+        "description": "Cisco IOS: Interface gi2/0/28(Tear 237 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.80]): item is not supported."
+      },
+      "36260": {
+        "description": "Cisco IOS: Interface gi1/0/31(Tear 231 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.31]): item is not supported."
+      },
+      "36261": {
+        "description": "Cisco IOS: Interface gi1/0/3(Tear 203 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.3]): item is not supported."
+      },
+      "36262": {
+        "description": "Cisco IOS: Interface gi2/0/46(SCL-TEC2-UPS02): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.98]): item is not supported."
+      },
+      "36263": {
+        "description": "Cisco IOS: Interface gi2/0/24(Tear 264 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.76]): item is not supported."
+      },
+      "36264": {
+        "description": "Cisco IOS: Interface gi1/0/40(Tear 240 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.40]): item is not supported."
+      },
+      "36265": {
+        "description": "Cisco IOS: Interface 4(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.100003]): item is not supported."
+      },
+      "36266": {
+        "description": "Cisco IOS: Interface gi1/0/21(Tear 221 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.21]): item is not supported."
+      },
+      "36267": {
+        "description": "Cisco IOS: Interface gi2/0/20(Tear 257 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.72]): item is not supported."
+      },
+      "36268": {
+        "description": "Cisco IOS: Interface gi1/0/37(Tear 236 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.37]): item is not supported."
+      },
+      "36269": {
+        "description": "Cisco IOS: Interface gi1/0/42(Tear 242 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.42]): item is not supported."
+      },
+      "36270": {
+        "description": "Cisco IOS: Interface gi1/0/32(Tear 232 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.32]): item is not supported."
+      },
+      "36271": {
+        "description": "Cisco IOS: Interface gi1/0/41(Tear 241 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.41]): item is not supported."
+      },
+      "36272": {
+        "description": "Cisco IOS: Interface gi1/0/13(Tear 213 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.13]): item is not supported."
+      },
+      "36273": {
+        "description": "Cisco IOS: Interface gi2/0/26(Tear 265 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.78]): item is not supported."
+      },
+      "36274": {
+        "description": "Cisco IOS: Interface gi2/0/40(Tear 228 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.92]): item is not supported."
+      },
+      "36275": {
+        "description": "Cisco IOS: Interface User Defined Port 1(): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.8000]): item is not supported."
+      },
+      "36276": {
+        "description": "Cisco IOS: Interface gi1/0/22(Tear 222 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.22]): item is not supported."
+      },
+      "36277": {
+        "description": "Cisco IOS: Interface gi2/0/5(Tear 269 (Picanol)): Link down",
+        "reason": "depends_on_disabled_item",
+        "error": "Cannot evaluate function last(/SCL-TEC2-SW01/net.if.status[ifOperStatus.57]): item is not supported."
+      }
+    },
+    "item_key_prefixes": [],
+    "item_error_prefixes": [],
+    "counts": {
+      "items_disable": 0,
+      "triggers_disable": 284
+    }
+  }
+}

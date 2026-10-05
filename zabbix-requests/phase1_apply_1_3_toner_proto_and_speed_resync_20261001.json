@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "96476",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "var n = Number(value);\nif (value === '' || value === null || isNaN(n) || n < 0) {\n  throw 'toner level sentinel/absent';\n}\nreturn String(n);",
+            "error_handler": "1",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_toner_prototype_96476_js_discard_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "104339",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "if (value === '' || value === '-1' || isNaN(Number(value)) || Number(value) < 0) {\n  return '0';\n}\nreturn value;",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "1",
+            "params": "1000000",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "20",
+            "params": "1h",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_speed_host_proto_104339_resync_20261001.json",
+    "quiet": true
+  }
+]

@@ -1,0 +1,80 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "110116",
+          "104688"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "error",
+          "flags"
+        ],
+        "selectItemDiscovery": [
+          "parent_itemid",
+          "key_",
+          "lastcheck",
+          "ts_delete"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_item_discovery_parents_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "hostids": [
+          "10978",
+          "11088"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "delay",
+          "error"
+        ],
+        "search": {
+          "key_": "net.if.discovery"
+        },
+        "searchByAny": true,
+        "searchWildcardsEnabled": true
+      }
+    },
+    "save": "backups/phase1_discovery_rules_hosts_partial_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "hostids": [
+          "10978",
+          "11088"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "hostid",
+          "status",
+          "state",
+          "delay"
+        ]
+      }
+    },
+    "save": "backups/phase1_discovery_rules_hosts_all_20261001.json",
+    "quiet": true
+  }
+]
