@@ -78,6 +78,10 @@ services:
 networks:
   zabbix-net:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/16
+          gateway: 10.10.0.1
 
 volumes:
   zbx-pgsql-data:
