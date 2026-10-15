@@ -30,3 +30,6 @@ venv/
 
 # Credenciais locais do Teams Incident Hub
 teams_incident_hub/.env
+
+# Credenciais do stack local Zabbix 8.0 (POC via Docker Desktop)
+docker/zabbix-8-local/.env
