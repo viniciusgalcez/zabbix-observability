@@ -67,8 +67,7 @@ python = sys.executable
 migrate = str(HERE / "migrate.py")
 
 result = subprocess.run(
-    [python, migrate, "--export-dir", export_dir, "--batch-size", "15",
-     "--skip-templates", "--skip-dashboards", "--skip-hosts"],
+    [python, migrate, "--export-dir", export_dir, "--batch-size", "15"],
     env=env,
 )
 sys.exit(result.returncode)
