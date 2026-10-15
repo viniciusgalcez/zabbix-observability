@@ -1,0 +1,58 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["45"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/backup_correlation_45_before_storm_pilot_disable_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "recent": true,
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend",
+        "sortfield": "eventid",
+        "sortorder": "DESC",
+        "limit": 100
+      }
+    },
+    "save": "backups/backup_scl_problems_before_correlation_45_disable_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "45",
+        "status": 1,
+        "description": "PILOTO 30/09/2026: desativada temporariamente porque close-new reabria sintomas persistentes a cada coleta, gerando 1.000 eventos em 83 minutos no SCL. Backup: backup_correlation_45_before_storm_pilot_disable_20260930.json."
+      }
+    },
+    "save": "backups/apply_disable_correlation_45_storm_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["45"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/verify_correlation_45_disabled_storm_pilot_20260930.json",
+    "quiet": true
+  }
+]

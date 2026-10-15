@@ -1,0 +1,86 @@
+[
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "55144",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "event_name": "",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ]
+  }
+]

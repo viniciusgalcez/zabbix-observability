@@ -1,0 +1,82 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": ["hostid", "host", "name", "status"],
+        "selectParentTemplates": ["templateid", "name"],
+        "selectGroups": ["groupid", "name"],
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_report_hosts_enabled_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "hostid", "state", "error", "lastclock", "status"],
+        "filter": {"state": 1, "status": 0},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_report_unsupported_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "r_eventid", "acknowledged", "cause_eventid"],
+        "recent": true,
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 1000
+      }
+    },
+    "save": "backups/audit_report_all_open_problems_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": ["correlationid", "name", "status"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/audit_report_correlations_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "output": ["actionid", "name", "status", "eventsource", "esc_period", "pause_symptoms"],
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "filter": {"eventsource": 0}
+      }
+    },
+    "save": "backups/audit_report_actions_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "hostgroup.get",
+      "params": {
+        "output": ["groupid", "name"],
+        "search": {"name": "Classifica"},
+        "searchWildcardsEnabled": true,
+        "selectHosts": ["hostid", "host", "name"]
+      }
+    },
+    "save": "backups/audit_report_em_classificacao_20261001.json",
+    "quiet": true
+  }
+]

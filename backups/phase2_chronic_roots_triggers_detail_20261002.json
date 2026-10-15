@@ -1,0 +1,174 @@
+[
+  {
+    "triggerid": "43212",
+    "description": "FortiGate: Interface dmz(): Link down",
+    "priority": "3",
+    "value": "1",
+    "status": "0",
+    "state": "0",
+    "manual_close": "1",
+    "flags": "4",
+    "templateid": "0",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"dmz\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+    "expression": "1=1 and last(/SPO-CPD-FW01/net.if.status[ifOperStatus.3])=2 and (last(/SPO-CPD-FW01/net.if.status[ifOperStatus.3],#1)<>last(/SPO-CPD-FW01/net.if.status[ifOperStatus.3],#2))",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93359",
+        "name": "Interface dmz(): Operational status",
+        "key_": "net.if.status[ifOperStatus.3]",
+        "status": "0",
+        "units": "",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790939237",
+        "lastvalue": "2"
+      }
+    ]
+  },
+  {
+    "triggerid": "53811",
+    "description": "FortiGate: Interface lan3(ISP2-): Link down",
+    "priority": "3",
+    "value": "1",
+    "status": "0",
+    "state": "0",
+    "manual_close": "1",
+    "flags": "4",
+    "templateid": "0",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"lan3\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+    "expression": "1=1 and last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.6])=2 and (last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.6],#1)<>last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.6],#2))",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2-"
+      }
+    ],
+    "items": [
+      {
+        "itemid": "110657",
+        "name": "Interface lan3(ISP2-): Operational status",
+        "key_": "net.if.status[ifOperStatus.6]",
+        "status": "0",
+        "units": "",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790939238",
+        "lastvalue": "2"
+      }
+    ]
+  },
+  {
+    "triggerid": "53814",
+    "description": "FortiGate: Interface lan2(): Link down",
+    "priority": "3",
+    "value": "1",
+    "status": "0",
+    "state": "0",
+    "manual_close": "1",
+    "flags": "4",
+    "templateid": "0",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"lan2\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+    "expression": "1=1 and last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.7])=2 and (last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.7],#1)<>last(/BRAS-CPD-FW01/net.if.status[ifOperStatus.7],#2))",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01",
+        "name": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "110660",
+        "name": "Interface lan2(): Operational status",
+        "key_": "net.if.status[ifOperStatus.7]",
+        "status": "0",
+        "units": "",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790939238",
+        "lastvalue": "2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54995",
+    "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "priority": "3",
+    "value": "1",
+    "status": "0",
+    "state": "0",
+    "manual_close": "1",
+    "flags": "4",
+    "templateid": "0",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the current tunnel state is down.\r\n2. `{$VPN.STATE.CONTROL}=1` - a user can redefine the context macro to \"0\", marking this notification as not important. No new trigger will be fired if this tunnel is down.",
+    "expression": "1=1 and min(/AZ-VM-FW-01/vpn.tunnel.status[fgVpnTunEntStatus.2.1],5m)=1 and max(/AZ-VM-FW-01/vpn.tunnel.status[fgVpnTunEntStatus.2.1],5m)=1",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01",
+        "name": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn2"
+      }
+    ],
+    "items": [
+      {
+        "itemid": "112617",
+        "name": "VPN az-to-oci-vpn2: Tunnel Status",
+        "key_": "vpn.tunnel.status[fgVpnTunEntStatus.2.1]",
+        "status": "0",
+        "units": "",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790939241",
+        "lastvalue": "1"
+      }
+    ]
+  }
+]

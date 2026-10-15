@@ -1,0 +1,58 @@
+[
+  {
+    "triggerid": "23665",
+    "description": "FortiGate: SD-WAN [{#HNAME}]:[{#IFNAME}]: High packets loss",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "{#IFNAME}"
+      },
+      {
+        "tag": "depends-on",
+        "value": "{#IFNAME}"
+      }
+    ]
+  },
+  {
+    "triggerid": "23666",
+    "description": "FortiGate: SD-WAN [{#HNAME}]:[{#IFNAME}]: Health check state is dead",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "{#IFNAME}"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "{#IFNAME}"
+      }
+    ]
+  }
+]

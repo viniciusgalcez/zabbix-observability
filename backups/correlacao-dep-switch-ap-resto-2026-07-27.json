@@ -1,0 +1,748 @@
+{
+    "descricao":  "Correlacao #4 (switch-\u003eAP) resto do estado. Cada trigger de down do AP (ICMP+SNMP) passa a depender do \u0027Cisco IOS: Unavailable by ICMP ping\u0027 do switch. Topologia via descricoes de porta dos switches (autoritativo, completo, 718 portas).",
+    "data":  "2026-07-27",
+    "metodo_reverter":  "Para cada \u0027child\u0027 abaixo, trigger.update dependencies=[] (estado original vazio, mesmo padrao do lote SW03).",
+    "excluidos":  [
+                      "BGP-EXP-SW03 (ja feito em lote anterior)",
+                      "SCL-TIN-AP07 (porta em 2 switches - ambiguo)",
+                      "SCL-AC-AP01 (typo, host inexistente)",
+                      "SCL-TIN-AP09 (descricao nao casa com host real)"
+                  ],
+    "operacoes":  {
+                      "value":  [
+                                    {
+                                        "child":  "37570",
+                                        "parent":  26203,
+                                        "ap":  "BGP-ACA-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39942",
+                                        "parent":  26203,
+                                        "ap":  "BGP-ACA-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37645",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP07",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39874",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP07",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37648",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP08",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39918",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP08",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37651",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP09",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "40042",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP09",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37654",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP10",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "40048",
+                                        "parent":  26203,
+                                        "ap":  "BGP-EXP-AP10",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37767",
+                                        "parent":  26203,
+                                        "ap":  "BGP-PCP-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "40016",
+                                        "parent":  26203,
+                                        "ap":  "BGP-PCP-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37779",
+                                        "parent":  26203,
+                                        "ap":  "BGP-QUA-AP02",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39894",
+                                        "parent":  26203,
+                                        "ap":  "BGP-QUA-AP02",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37785",
+                                        "parent":  26203,
+                                        "ap":  "BGP-REV-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "40028",
+                                        "parent":  26203,
+                                        "ap":  "BGP-REV-AP01",
+                                        "switch":  "BGP-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "37576",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP01",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "40072",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP01",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "37860",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP02",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "39970",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP02",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "50392",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP03",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "50395",
+                                        "parent":  26709,
+                                        "ap":  "BGP-ADM-AP03",
+                                        "switch":  "BGP-ADM-SW01"
+                                    },
+                                    {
+                                        "child":  "37741",
+                                        "parent":  26479,
+                                        "ap":  "BGP-MAN-AP01",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "40084",
+                                        "parent":  26479,
+                                        "ap":  "BGP-MAN-AP01",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "37776",
+                                        "parent":  26479,
+                                        "ap":  "BGP-QUA-AP01",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "39898",
+                                        "parent":  26479,
+                                        "ap":  "BGP-QUA-AP01",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "38259",
+                                        "parent":  26479,
+                                        "ap":  "BGP-TRN-AP02",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "40066",
+                                        "parent":  26479,
+                                        "ap":  "BGP-TRN-AP02",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "38262",
+                                        "parent":  26479,
+                                        "ap":  "BGP-TRN-AP03",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "39924",
+                                        "parent":  26479,
+                                        "ap":  "BGP-TRN-AP03",
+                                        "switch":  "BGP-CPD-SW01"
+                                    },
+                                    {
+                                        "child":  "37627",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP01",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "39940",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP01",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37630",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP02",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "40010",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP02",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37633",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP03",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "40022",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP03",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37636",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP04",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "39984",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP04",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37639",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP05",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "40014",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP05",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37642",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP06",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "40076",
+                                        "parent":  26755,
+                                        "ap":  "BGP-EXP-AP06",
+                                        "switch":  "BGP-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "37624",
+                                        "parent":  26594,
+                                        "ap":  "BGP-ENF-AP01",
+                                        "switch":  "BGP-POR-SW01"
+                                    },
+                                    {
+                                        "child":  "40058",
+                                        "parent":  26594,
+                                        "ap":  "BGP-ENF-AP01",
+                                        "switch":  "BGP-POR-SW01"
+                                    },
+                                    {
+                                        "child":  "37788",
+                                        "parent":  26640,
+                                        "ap":  "BGP-REV-AP02",
+                                        "switch":  "BGP-REV-SW01"
+                                    },
+                                    {
+                                        "child":  "39982",
+                                        "parent":  26640,
+                                        "ap":  "BGP-REV-AP02",
+                                        "switch":  "BGP-REV-SW01"
+                                    },
+                                    {
+                                        "child":  "38235",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP01",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "39968",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP01",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "37729",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP05",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "40000",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP05",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "38250",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP06",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "39972",
+                                        "parent":  26502,
+                                        "ap":  "BGP-TEC-AP06",
+                                        "switch":  "BGP-TEC-SW01"
+                                    },
+                                    {
+                                        "child":  "38238",
+                                        "parent":  26686,
+                                        "ap":  "BGP-TEC-AP02",
+                                        "switch":  "BGP-TEC-SW02"
+                                    },
+                                    {
+                                        "child":  "39946",
+                                        "parent":  26686,
+                                        "ap":  "BGP-TEC-AP02",
+                                        "switch":  "BGP-TEC-SW02"
+                                    },
+                                    {
+                                        "child":  "38241",
+                                        "parent":  26778,
+                                        "ap":  "BGP-TEC-AP03",
+                                        "switch":  "BGP-TEC-SW03"
+                                    },
+                                    {
+                                        "child":  "39930",
+                                        "parent":  26778,
+                                        "ap":  "BGP-TEC-AP03",
+                                        "switch":  "BGP-TEC-SW03"
+                                    },
+                                    {
+                                        "child":  "38253",
+                                        "parent":  26778,
+                                        "ap":  "BGP-TEC-AP07",
+                                        "switch":  "BGP-TEC-SW03"
+                                    },
+                                    {
+                                        "child":  "39966",
+                                        "parent":  26778,
+                                        "ap":  "BGP-TEC-AP07",
+                                        "switch":  "BGP-TEC-SW03"
+                                    },
+                                    {
+                                        "child":  "38247",
+                                        "parent":  26249,
+                                        "ap":  "BGP-TEC-AP04",
+                                        "switch":  "BGP-TEC-SW04"
+                                    },
+                                    {
+                                        "child":  "39882",
+                                        "parent":  26249,
+                                        "ap":  "BGP-TEC-AP04",
+                                        "switch":  "BGP-TEC-SW04"
+                                    },
+                                    {
+                                        "child":  "38517",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP01",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39960",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP01",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "38520",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP02",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39908",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP02",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "38523",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP03",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "39938",
+                                        "parent":  26663,
+                                        "ap":  "SCL-ACA-AP03",
+                                        "switch":  "SCL-ACA-SW01"
+                                    },
+                                    {
+                                        "child":  "38550",
+                                        "parent":  26364,
+                                        "ap":  "SCL-ALM-AP01",
+                                        "switch":  "SCL-ALM-SW01"
+                                    },
+                                    {
+                                        "child":  "40080",
+                                        "parent":  26364,
+                                        "ap":  "SCL-ALM-AP01",
+                                        "switch":  "SCL-ALM-SW01"
+                                    },
+                                    {
+                                        "child":  "38559",
+                                        "parent":  26525,
+                                        "ap":  "SCL-DRH-AP01",
+                                        "switch":  "SCL-DRH-SW01"
+                                    },
+                                    {
+                                        "child":  "40054",
+                                        "parent":  26525,
+                                        "ap":  "SCL-DRH-AP01",
+                                        "switch":  "SCL-DRH-SW01"
+                                    },
+                                    {
+                                        "child":  "38974",
+                                        "parent":  26525,
+                                        "ap":  "SCL-TRN-AP01",
+                                        "switch":  "SCL-DRH-SW01"
+                                    },
+                                    {
+                                        "child":  "39996",
+                                        "parent":  26525,
+                                        "ap":  "SCL-TRN-AP01",
+                                        "switch":  "SCL-DRH-SW01"
+                                    },
+                                    {
+                                        "child":  "38588",
+                                        "parent":  26824,
+                                        "ap":  "SCL-EXP-AP01",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "40052",
+                                        "parent":  26824,
+                                        "ap":  "SCL-EXP-AP01",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "38632",
+                                        "parent":  26824,
+                                        "ap":  "SCL-REV-AP05",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "39892",
+                                        "parent":  26824,
+                                        "ap":  "SCL-REV-AP05",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "38635",
+                                        "parent":  26824,
+                                        "ap":  "SCL-REV-AP06",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "39886",
+                                        "parent":  26824,
+                                        "ap":  "SCL-REV-AP06",
+                                        "switch":  "SCL-EXP-SW01"
+                                    },
+                                    {
+                                        "child":  "38591",
+                                        "parent":  26410,
+                                        "ap":  "SCL-MAN-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "39974",
+                                        "parent":  26410,
+                                        "ap":  "SCL-MAN-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "38623",
+                                        "parent":  26410,
+                                        "ap":  "SCL-PCP-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "39976",
+                                        "parent":  26410,
+                                        "ap":  "SCL-PCP-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "38860",
+                                        "parent":  26410,
+                                        "ap":  "SCL-Tenda-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "40032",
+                                        "parent":  26410,
+                                        "ap":  "SCL-Tenda-AP01",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "38863",
+                                        "parent":  26410,
+                                        "ap":  "SCL-Tenda-AP02",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "40034",
+                                        "parent":  26410,
+                                        "ap":  "SCL-Tenda-AP02",
+                                        "switch":  "SCL-MAN-SW01"
+                                    },
+                                    {
+                                        "child":  "38839",
+                                        "parent":  26295,
+                                        "ap":  "SCL-TEC1-AP01",
+                                        "switch":  "SCL-TEC1-SW01"
+                                    },
+                                    {
+                                        "child":  "40056",
+                                        "parent":  26295,
+                                        "ap":  "SCL-TEC1-AP01",
+                                        "switch":  "SCL-TEC1-SW01"
+                                    },
+                                    {
+                                        "child":  "38845",
+                                        "parent":  26847,
+                                        "ap":  "SCL-TEC1-AP03",
+                                        "switch":  "SCL-TEC1-SW02"
+                                    },
+                                    {
+                                        "child":  "39936",
+                                        "parent":  26847,
+                                        "ap":  "SCL-TEC1-AP03",
+                                        "switch":  "SCL-TEC1-SW02"
+                                    },
+                                    {
+                                        "child":  "38842",
+                                        "parent":  26801,
+                                        "ap":  "SCL-TEC1-AP02",
+                                        "switch":  "SCL-TEC1-SW04"
+                                    },
+                                    {
+                                        "child":  "40044",
+                                        "parent":  26801,
+                                        "ap":  "SCL-TEC1-AP02",
+                                        "switch":  "SCL-TEC1-SW04"
+                                    },
+                                    {
+                                        "child":  "38851",
+                                        "parent":  26571,
+                                        "ap":  "SCL-TEC2-AP01",
+                                        "switch":  "SCL-TEC2-SW02"
+                                    },
+                                    {
+                                        "child":  "40088",
+                                        "parent":  26571,
+                                        "ap":  "SCL-TEC2-AP01",
+                                        "switch":  "SCL-TEC2-SW02"
+                                    },
+                                    {
+                                        "child":  "38866",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP01",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "40024",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP01",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "38875",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP04",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "40062",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP04",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "38881",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP06",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "39916",
+                                        "parent":  26318,
+                                        "ap":  "SCL-TIN-AP06",
+                                        "switch":  "SCL-TIN-SW01"
+                                    },
+                                    {
+                                        "child":  "38869",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP02",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "40074",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP02",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "38878",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP05",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "40046",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP05",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "38887",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP08",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "39876",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP08",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "38893",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP10",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "39910",
+                                        "parent":  26433,
+                                        "ap":  "SCL-TIN-AP10",
+                                        "switch":  "SCL-TIN-SW02"
+                                    },
+                                    {
+                                        "child":  "38594",
+                                        "parent":  26341,
+                                        "ap":  "SCL-MAN-AP02",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "40018",
+                                        "parent":  26341,
+                                        "ap":  "SCL-MAN-AP02",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38872",
+                                        "parent":  26341,
+                                        "ap":  "SCL-TIN-AP03",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "39880",
+                                        "parent":  26341,
+                                        "ap":  "SCL-TIN-AP03",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38977",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP01",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "39906",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP01",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38980",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP02",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "39980",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP02",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38983",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP03",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "40002",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP03",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38986",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP04",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "40078",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP04",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "38989",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP05",
+                                        "switch":  "SCL-URD-SW01"
+                                    },
+                                    {
+                                        "child":  "39994",
+                                        "parent":  26341,
+                                        "ap":  "SCL-URD-AP05",
+                                        "switch":  "SCL-URD-SW01"
+                                    }
+                                ],
+                      "Count":  122
+                  }
+}

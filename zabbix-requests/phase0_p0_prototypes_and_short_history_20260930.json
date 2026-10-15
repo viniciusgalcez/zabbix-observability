@@ -1,0 +1,27 @@
+[
+  {
+    "arguments": {"method": "history.get", "params": {"output": "extend", "history": 0, "itemids": ["91217"], "time_from": 1790762700, "sortfield": ["clock", "ns"], "sortorder": "DESC", "limit": 30}},
+    "save": "backups/audit_bgp_packet_loss_short_history_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "history.get", "params": {"output": "extend", "history": 0, "itemids": ["92207"], "time_from": 1790762700, "sortfield": ["clock", "ns"], "sortorder": "DESC", "limit": 30}},
+    "save": "backups/audit_scl_packet_loss_short_history_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "triggerprototype.get", "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "High packets loss"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}},
+    "save": "backups/audit_template_10604_packet_loss_prototypes_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "triggerprototype.get", "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "Link down"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}},
+    "save": "backups/audit_template_10604_link_down_prototypes_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "triggerprototype.get", "params": {"output": "extend", "hostids": ["10604"], "search": {"description": "Tunnel down"}, "selectHosts": "extend", "selectTags": "extend", "selectDependencies": "extend", "selectItems": "extend", "selectDiscoveryRule": "extend", "expandExpression": true}},
+    "save": "backups/audit_template_10604_tunnel_down_prototypes_20260930.json",
+    "quiet": true
+  }
+]

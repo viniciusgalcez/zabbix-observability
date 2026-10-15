@@ -1,0 +1,117 @@
+[
+  {
+    "triggerid": "50306",
+    "expression": "last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.20])>=3",
+    "description": "SCL: Saida de internet 1 (VIVO) sem conectividade",
+    "url": "",
+    "status": "0",
+    "value": "0",
+    "priority": "4",
+    "lastchange": "1790742765",
+    "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SLA_INTERNET, Systextil_Web, Teams, GLPI, HK_VIVO). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.20])<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "",
+    "event_name": "SCL: Link HK_VIVO (ISP1_VIVO) DOWN",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01",
+        "name": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "HK_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "92259",
+        "name": "SD-WAN [GLPI]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.17]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92261",
+        "name": "SD-WAN [HK_VIVO]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.20]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92262",
+        "name": "SD-WAN [HK_Teams]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.13]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92275",
+        "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.11]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92281",
+        "name": "SD-WAN [SLA_INTERNET]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.1]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      }
+    ]
+  }
+]

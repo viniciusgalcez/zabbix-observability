@@ -1,0 +1,16 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "status", "manual_close", "flags", "templateid"],
+        "hostids": ["10713"],
+        "search": {"description": "Unavailable by ICMP ping"},
+        "searchWildcardsEnabled": true,
+        "expandDescription": true
+      }
+    },
+    "save": "backups/phase1_icmp_trigger_on_ap_20261001.json",
+    "quiet": true
+  }
+]

@@ -1,0 +1,97 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "eventids": [
+          "18116214"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "r_eventid",
+          "cause_eventid",
+          "acknowledged"
+        ],
+        "selectTags": "extend",
+        "recent": true
+      }
+    },
+    "save": "backups/false_alerts_root_spo_vivo_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid",
+          "acknowledged"
+        ],
+        "selectTags": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/false_alerts_all_fw_problems_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50306",
+          "50308",
+          "47620"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "priority",
+          "status",
+          "state",
+          "lastchange"
+        ],
+        "selectHosts": [
+          "hostid",
+          "host"
+        ],
+        "selectItems": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "lastclock",
+          "status",
+          "state"
+        ],
+        "expandExpression": true
+      }
+    },
+    "save": "backups/false_alerts_vivo_cause_triggers_20261002.json",
+    "quiet": true
+  }
+]

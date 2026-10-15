@@ -1,0 +1,4693 @@
+[
+  {
+    "eventid": "16063536",
+    "objectid": "40408",
+    "name": "Hyper-V Host Memory pressure 90-100%",
+    "severity": "2",
+    "clock": "1783507929",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "application",
+        "value": "Hyper-V Host"
+      },
+      {
+        "tag": "target",
+        "value": "hyper-v"
+      },
+      {
+        "tag": "target",
+        "value": "hyper-v-host"
+      }
+    ]
+  },
+  {
+    "eventid": "16568520",
+    "objectid": "49672",
+    "name": "Entra Connect Health Agent parado em SPO-SRV-FAD01",
+    "severity": "3",
+    "clock": "1785849178",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "entra-connect"
+      }
+    ]
+  },
+  {
+    "eventid": "16021099",
+    "objectid": "49157",
+    "name": "Hyper-V Host Memory pressure 90-100%",
+    "severity": "2",
+    "clock": "1783424664",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "application",
+        "value": "Hyper-V Host"
+      },
+      {
+        "tag": "target",
+        "value": "hyper-v"
+      },
+      {
+        "tag": "target",
+        "value": "hyper-v-host"
+      }
+    ]
+  },
+  {
+    "eventid": "16701826",
+    "objectid": "25597",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786033178",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17543271",
+    "objectid": "53888",
+    "name": "Vigil365: servico Windows M365SecurityDashboard nao esta em execucao",
+    "severity": "2",
+    "clock": "1789582663",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "application",
+        "value": "Vigil365"
+      }
+    ]
+  },
+  {
+    "eventid": "16698631",
+    "objectid": "41122",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786023874",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "veeam-backup"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "18499651",
+    "objectid": "43262",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ_TO_AZURE"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "16353229",
+    "objectid": "45813",
+    "name": "Web cenário falhou: \"CLP SCL-TIN-UTL01\".",
+    "severity": "4",
+    "clock": "1785131804",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "18499635",
+    "objectid": "43242",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ_TO_AZURE"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499647",
+    "objectid": "43270",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_BRAGANCA"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499629",
+    "objectid": "43231",
+    "name": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "health-check",
+        "value": "sla_internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499634",
+    "objectid": "43238",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499646",
+    "objectid": "43254",
+    "name": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499639",
+    "objectid": "43255",
+    "name": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499641",
+    "objectid": "51807",
+    "name": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_BRAS"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499636",
+    "objectid": "43246",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "16699190",
+    "objectid": "25436",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786025566",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "dimep"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16700505",
+    "objectid": "38201",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786029194",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17745065",
+    "objectid": "53566",
+    "name": "Toner baixo 10%: Toner ciano em BGP-DRH-COLOR01",
+    "severity": "1",
+    "clock": "1790276741",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "16176067",
+    "objectid": "44804",
+    "name": "MSSQL: Number of physical database page reads per second is high (over 90 for 5m)",
+    "severity": "2",
+    "clock": "1784116680",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "page"
+      },
+      {
+        "tag": "component",
+        "value": "performance"
+      },
+      {
+        "tag": "negocio",
+        "value": "dimep"
+      },
+      {
+        "tag": "negocio",
+        "value": "eas-cozinha"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "13637140",
+    "objectid": "45649",
+    "name": "Windows: \"iphlpsvc\" (IP Helper) is not running (startup type automatic)",
+    "severity": "1",
+    "clock": "1779389107",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "name",
+        "value": "IP Helper"
+      },
+      {
+        "tag": "service",
+        "value": "iphlpsvc"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16266424",
+    "objectid": "48498",
+    "name": "Linux: Number of installed packages has been changed",
+    "severity": "2",
+    "clock": "1784628192",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "clickhouse"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "16318547",
+    "objectid": "26111",
+    "name": "Windows: \"DiagTrack\" (Connected User Experiences and Telemetry) is not running (startup type automatic)",
+    "severity": "3",
+    "clock": "1784919812",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "name",
+        "value": "Connected User Experiences and Telemetry"
+      },
+      {
+        "tag": "service",
+        "value": "DiagTrack"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17498586",
+    "objectid": "53814",
+    "name": "FortiGate: Interface lan2(): Link down",
+    "severity": "1",
+    "clock": "1789413377",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "interface",
+        "value": "lan2"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "16206946",
+    "objectid": "25868",
+    "name": "Windows: 1 D:: Disk write request responses are too high (write > 0.02s for 15m)",
+    "severity": "2",
+    "clock": "1784286781",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "disk",
+        "value": "1 D:"
+      },
+      {
+        "tag": "negocio",
+        "value": "dimep"
+      },
+      {
+        "tag": "negocio",
+        "value": "eas-cozinha"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16067879",
+    "objectid": "50161",
+    "name": "PostgreSQL: Service is down",
+    "severity": "4",
+    "clock": "1783515290",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "application"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "postgresql"
+      }
+    ]
+  },
+  {
+    "eventid": "17297217",
+    "objectid": "37570",
+    "name": "Unavailable by ICMP ping",
+    "severity": "4",
+    "clock": "1788455397",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "slahost",
+        "value": "BGP-ACA-AP01"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "sla",
+        "value": "hostdown"
+      },
+      {
+        "tag": "Application",
+        "value": "Status"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "ap"
+      }
+    ]
+  },
+  {
+    "eventid": "16316056",
+    "objectid": "43584",
+    "name": "Windows: 0 C:: Disk read request responses are too high (read > 0.02s for 15m)",
+    "severity": "2",
+    "clock": "1784905448",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "disk",
+        "value": "0 C:"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16721742",
+    "objectid": "46455",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786082306",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "deps"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16722351",
+    "objectid": "38107",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786082940",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "totvs"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16021656",
+    "objectid": "38030",
+    "name": "Windows: CPU privileged time is too high (over 30% for 5m)",
+    "severity": "1",
+    "clock": "1783427505",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "cpu"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16022948",
+    "objectid": "38169",
+    "name": "Linux: Operating system description has changed",
+    "severity": "1",
+    "clock": "1783429930",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "16722153",
+    "objectid": "37969",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786082574",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16722468",
+    "objectid": "50021",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786084492",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16722402",
+    "objectid": "25537",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786083423",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16068692",
+    "objectid": "48840",
+    "name": "Linux: Number of installed packages has been changed",
+    "severity": "2",
+    "clock": "1783516381",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "16209441",
+    "objectid": "41301",
+    "name": "Windows: 0 C:: Disk is overloaded (util > 95% for 15m)",
+    "severity": "2",
+    "clock": "1784301399",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "disk",
+        "value": "0 C:"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "13501111",
+    "objectid": "45473",
+    "name": "FortiGate: SD-WAN [HK_8.8.8.8]:[port3]: High packets loss",
+    "severity": "1",
+    "clock": "1779203342",
+    "cause_eventid": "15827427",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_8.8.8.8"
+      },
+      {
+        "tag": "interface",
+        "value": "port3"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "16070953",
+    "objectid": "50270",
+    "name": "MySQL: Buffer pool utilization is too low (less than 50% for 5m)",
+    "severity": "2",
+    "clock": "1783520428",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "memory"
+      },
+      {
+        "tag": "component",
+        "value": "mysql"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mysql"
+      }
+    ]
+  },
+  {
+    "eventid": "16209486",
+    "objectid": "44801",
+    "name": "MSSQL: Some blocking is occurring for 5m",
+    "severity": "3",
+    "clock": "1784302080",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "lock"
+      },
+      {
+        "tag": "component",
+        "value": "performance"
+      },
+      {
+        "tag": "negocio",
+        "value": "dimep"
+      },
+      {
+        "tag": "negocio",
+        "value": "eas-cozinha"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "18501088",
+    "objectid": "51487",
+    "name": "Temperature sensor 1 is above warning threshold (79C)",
+    "severity": "2",
+    "clock": "1790773362",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "switch"
+      }
+    ]
+  },
+  {
+    "eventid": "16721570",
+    "objectid": "44254",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786081177",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16722360",
+    "objectid": "38130",
+    "name": "Windows: Operating system description has changed",
+    "severity": "1",
+    "clock": "1786083001",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "negocio",
+        "value": "portal-os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "16989128",
+    "objectid": "53697",
+    "name": "Sem papel: Tray 2 em BGP-PCP-COLOR01 (RICOH IM C2000)",
+    "severity": "1",
+    "clock": "1786969244",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "16023097",
+    "objectid": "38176",
+    "name": "Linux: Load average is too high (per CPU load over 1.5 for 5m)",
+    "severity": "3",
+    "clock": "1783430570",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "capacity"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "cpu"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "16206301",
+    "objectid": "25866",
+    "name": "Windows: 1 D:: Disk read request responses are too high (read > 0.02s for 15m)",
+    "severity": "2",
+    "clock": "1784283839",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "disk",
+        "value": "1 D:"
+      },
+      {
+        "tag": "negocio",
+        "value": "dimep"
+      },
+      {
+        "tag": "negocio",
+        "value": "eas-cozinha"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17437418",
+    "objectid": "53811",
+    "name": "FortiGate: Interface lan3(ISP2-): Link down",
+    "severity": "1",
+    "clock": "1789120758",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2-"
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": "ISP2-"
+      },
+      {
+        "tag": "interface",
+        "value": "lan3"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "17004448",
+    "objectid": "53918",
+    "name": "Windows: \"InventorySvc\" (Inventory and Compatibility Appraisal service) is not running (startup type automatic delayed)",
+    "severity": "3",
+    "clock": "1787053652",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "name",
+        "value": "Inventory and Compatibility Appraisal service"
+      },
+      {
+        "tag": "service",
+        "value": "InventorySvc"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17004450",
+    "objectid": "53929",
+    "name": "Windows: \"MSSQLLaunchpad$SQLEXPRESS\" (SQL Server Launchpad (SQLEXPRESS)) is not running (startup type automatic delayed)",
+    "severity": "3",
+    "clock": "1787053663",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "name",
+        "value": "SQL Server Launchpad (SQLEXPRESS)"
+      },
+      {
+        "tag": "service",
+        "value": "MSSQLLaunchpad$SQLEXPRESS"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17316006",
+    "objectid": "53551",
+    "name": "Toner baixo 10%: Toner amarelo em SCL-PCP-COLOR01",
+    "severity": "1",
+    "clock": "1788544231",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "16206286",
+    "objectid": "47145",
+    "name": "Linux: Number of installed packages has been changed",
+    "severity": "2",
+    "clock": "1784283670",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "os"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "16206299",
+    "objectid": "25325",
+    "name": "Windows: 2: Disk read request responses are too high (read > 0.02s for 15m)",
+    "severity": "2",
+    "clock": "1784283818",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "disk",
+        "value": "2"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "15825569",
+    "objectid": "37750",
+    "name": "Disk latency is high (>30 for 15m)",
+    "severity": "1",
+    "clock": "1782385431",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "Application",
+        "value": "Disks"
+      }
+    ]
+  },
+  {
+    "eventid": "15825163",
+    "objectid": "33353",
+    "name": "Disk latency is high (>30 for 15m)",
+    "severity": "1",
+    "clock": "1782384509",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "Application",
+        "value": "Disks"
+      }
+    ]
+  },
+  {
+    "eventid": "17292739",
+    "objectid": "33269",
+    "name": "UPS: Active alarms on SCL-EXP-UPS01 (Phoenixtec UPS)",
+    "severity": "1",
+    "clock": "1788444005",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "infra",
+        "value": "ups"
+      }
+    ]
+  },
+  {
+    "eventid": "11804031",
+    "objectid": "44702",
+    "name": "MSSQL: Percentage of work tables available from the work table cache is low (below 90% for 5m)",
+    "severity": "4",
+    "clock": "1778850840",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "cache"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "18499648",
+    "objectid": "43256",
+    "name": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499630",
+    "objectid": "43234",
+    "name": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499643",
+    "objectid": "51808",
+    "name": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_BRAS"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499638",
+    "objectid": "43250",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_BRAGANCA"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499640",
+    "objectid": "43257",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_BRAGANCA"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499645",
+    "objectid": "54101",
+    "name": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_SAOCARLOS_FIACAO"
+      },
+      {
+        "tag": "interface",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499637",
+    "objectid": "43247",
+    "name": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499632",
+    "objectid": "43236",
+    "name": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499633",
+    "objectid": "43237",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_BRAGANCA"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_BGPISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499644",
+    "objectid": "43267",
+    "name": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499650",
+    "objectid": "43266",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499642",
+    "objectid": "54100",
+    "name": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_SAOCARLOS_FIACAO"
+      },
+      {
+        "tag": "interface",
+        "value": "SPO_SCL_FIACAO1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499649",
+    "objectid": "43258",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499631",
+    "objectid": "43235",
+    "name": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "severity": "2",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499276",
+    "objectid": "55010",
+    "name": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767742",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "AZ_MTZ"
+      },
+      {
+        "tag": "interface",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "site",
+        "value": "azure"
+      },
+      {
+        "tag": "slahost",
+        "value": "AZ-VM-FW-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "18499284",
+    "objectid": "54331",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "severity": "3",
+    "clock": "1790767750",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-SCL-FIA-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499293",
+    "objectid": "54991",
+    "name": "FortiGate: VPN AZ_MTZ_W1: Tunnel down",
+    "severity": "3",
+    "clock": "1790767760",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "AZ_MTZ_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "site",
+        "value": "azure"
+      },
+      {
+        "tag": "slahost",
+        "value": "AZ-VM-FW-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "18499372",
+    "objectid": "54314",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "severity": "2",
+    "clock": "1790767791",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-SCL-FIA-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499373",
+    "objectid": "54324",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767791",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-SCL-FIA-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "17004498",
+    "objectid": "53898",
+    "name": "Windows: \"AppXSvc\" (AppX Deployment Service (AppXSVC)) is not running (startup type automatic)",
+    "severity": "3",
+    "clock": "1787054112",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "name",
+        "value": "AppX Deployment Service (AppXSVC)"
+      },
+      {
+        "tag": "service",
+        "value": "AppXSvc"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "17441868",
+    "objectid": "54995",
+    "name": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "severity": "1",
+    "clock": "1789141400",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn2"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "az-to-oci-vpn2"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "site",
+        "value": "azure"
+      },
+      {
+        "tag": "slahost",
+        "value": "AZ-VM-FW-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "17043120",
+    "objectid": "53547",
+    "name": "Toner baixo 10%: Toner preto em SCL-PCP-COLOR01",
+    "severity": "1",
+    "clock": "1787245831",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "13506674",
+    "objectid": "45479",
+    "name": "APC UPS: 1.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217613",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "13506675",
+    "objectid": "45480",
+    "name": "APC UPS: 3.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217617",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "15821486",
+    "objectid": "33399",
+    "name": "Disk latency is high (>30 for 15m)",
+    "severity": "1",
+    "clock": "1782359339",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "Application",
+        "value": "Disks"
+      }
+    ]
+  },
+  {
+    "eventid": "13506682",
+    "objectid": "45422",
+    "name": "APC UPS: 4.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217651",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "15748020",
+    "objectid": "45502",
+    "name": "MSSQL: DB 'supervisorio_utilidades': Total wait time to flush the log is high (over 1ms for 5m)",
+    "severity": "1",
+    "clock": "1781925480",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "supervisorio_utilidades"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "13506679",
+    "objectid": "45420",
+    "name": "APC UPS: 1.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217645",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "13506680",
+    "objectid": "45476",
+    "name": "APC UPS: 1.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217649",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "13506681",
+    "objectid": "45421",
+    "name": "APC UPS: 3.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217649",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "13506683",
+    "objectid": "45477",
+    "name": "APC UPS: 4.2: Battery lifetime is not okay",
+    "severity": "1",
+    "clock": "1779217655",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "notice"
+      },
+      {
+        "tag": "component",
+        "value": "health"
+      },
+      {
+        "tag": "component",
+        "value": "power"
+      },
+      {
+        "tag": "class",
+        "value": "power"
+      },
+      {
+        "tag": "target",
+        "value": "apc"
+      }
+    ]
+  },
+  {
+    "eventid": "15823449",
+    "objectid": "45193",
+    "name": "MSSQL: DB 'lansweeperdb': Number of commits waiting for the log flush is high (over 1/sec for 5m)",
+    "severity": "1",
+    "clock": "1782372900",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "lansweeperdb"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "15804256",
+    "objectid": "45500",
+    "name": "MSSQL: DB 'supervisorio_utilidades': Number of commits waiting for the log flush is high (over 1/sec for 5m)",
+    "severity": "1",
+    "clock": "1782262140",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "supervisorio_utilidades"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "14255385",
+    "objectid": "38174",
+    "name": "Linux: High swap space usage (less than 50% free)",
+    "severity": "1",
+    "clock": "1780042808",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "capacity"
+      },
+      {
+        "tag": "component",
+        "value": "memory"
+      },
+      {
+        "tag": "component",
+        "value": "storage"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "linux"
+      }
+    ]
+  },
+  {
+    "eventid": "15829154",
+    "objectid": "45494",
+    "name": "MSSQL: DB 'VeeamOne': Number of commits waiting for the log flush is high (over 1/sec for 5m)",
+    "severity": "2",
+    "clock": "1782402240",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "VeeamOne"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "15826140",
+    "objectid": "33445",
+    "name": "Disk latency is high (>30 for 15m)",
+    "severity": "1",
+    "clock": "1782389024",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "Application",
+        "value": "Disks"
+      }
+    ]
+  },
+  {
+    "eventid": "15805880",
+    "objectid": "44758",
+    "name": "MSSQL: Percentage of work tables available from the work table cache is low (below 90% for 5m)",
+    "severity": "1",
+    "clock": "1782272160",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "cache"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "18501859",
+    "objectid": "53638",
+    "name": "Toner vazio: Toner em SCL-MAN-PB01",
+    "severity": "2",
+    "clock": "1790775930",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "15829896",
+    "objectid": "45501",
+    "name": "MSSQL: DB 'MAESTRO': Total wait time to flush the log is high (over 1ms for 5m)",
+    "severity": "2",
+    "clock": "1782403321",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "MAESTRO"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "15830791",
+    "objectid": "45291",
+    "name": "MSSQL: DB 'DepsNet_qa': Number of commits waiting for the log flush is high (over 1/sec for 5m)",
+    "severity": "2",
+    "clock": "1782406380",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "database",
+        "value": "DepsNet_qa"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "database"
+      },
+      {
+        "tag": "class",
+        "value": "database"
+      },
+      {
+        "tag": "target",
+        "value": "mssql"
+      }
+    ]
+  },
+  {
+    "eventid": "18502751",
+    "objectid": "41104",
+    "name": "Windows: CPU privileged time is too high (over 30% for 5m)",
+    "severity": "2",
+    "clock": "1790777599",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "cpu"
+      },
+      {
+        "tag": "negocio",
+        "value": "veeam-backup"
+      },
+      {
+        "tag": "class",
+        "value": "os"
+      },
+      {
+        "tag": "target",
+        "value": "windows"
+      }
+    ]
+  },
+  {
+    "eventid": "18363368",
+    "objectid": "53637",
+    "name": "Toner baixo 10%: Toner em SCL-MAN-PB01",
+    "severity": "1",
+    "clock": "1790704230",
+    "cause_eventid": "0",
+    "tags": []
+  },
+  {
+    "eventid": "18379641",
+    "objectid": "42706",
+    "name": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "severity": "3",
+    "clock": "1790711264",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18379687",
+    "objectid": "43212",
+    "name": "FortiGate: Interface dmz(): Link down",
+    "severity": "3",
+    "clock": "1790711298",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "interface",
+        "value": "dmz"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "16660502",
+    "objectid": "40432",
+    "name": "Hyper-V Host Memory pressure 80-100%",
+    "severity": "2",
+    "clock": "1785933051",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "application",
+        "value": "Hyper-V Host"
+      }
+    ]
+  },
+  {
+    "eventid": "18499356",
+    "objectid": "54099",
+    "name": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "severity": "3",
+    "clock": "1790767784",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499273",
+    "objectid": "54365",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "severity": "2",
+    "clock": "1790767737",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-DENIM-CAPRI-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499274",
+    "objectid": "54375",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767737",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-DENIM-CAPRI-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499342",
+    "objectid": "53820",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "severity": "2",
+    "clock": "1790767761",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499343",
+    "objectid": "53829",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767761",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN-MTZ-01"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499349",
+    "objectid": "54802",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "severity": "3",
+    "clock": "1790767780",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499275",
+    "objectid": "55004",
+    "name": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767742",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "AZ_MTZ"
+      },
+      {
+        "tag": "interface",
+        "value": "AZ_MTZ_W1_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "site",
+        "value": "azure"
+      },
+      {
+        "tag": "slahost",
+        "value": "AZ-VM-FW-01"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "18499306",
+    "objectid": "50823",
+    "name": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: High packets loss",
+    "severity": "2",
+    "clock": "1790767759",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_DENIM"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499288",
+    "objectid": "55204",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "severity": "3",
+    "clock": "1790767756",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "VPN_SPO"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BR-DENIM-CAPRI-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499609",
+    "objectid": "42702",
+    "name": "FortiGate: VPN P2MTZ1SCL1: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1SCL1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499614",
+    "objectid": "51770",
+    "name": "FortiGate: VPN MTZISP1_BRAS-01: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499611",
+    "objectid": "42710",
+    "name": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499612",
+    "objectid": "42712",
+    "name": "FortiGate: VPN P2MTZ1BGP1: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1BGP1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499613",
+    "objectid": "50821",
+    "name": "FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499330",
+    "objectid": "50824",
+    "name": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767759",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "interface",
+        "value": "VPN_DENIM-01"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "SLA_DENIM"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499610",
+    "objectid": "42704",
+    "name": "FortiGate: VPN P2MTZ1SCL2: Tunnel down",
+    "severity": "3",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1SCL2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499620",
+    "objectid": "42344",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: High packets loss",
+    "severity": "2",
+    "clock": "1790767982",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BGP-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499621",
+    "objectid": "42369",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767982",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BGP-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499622",
+    "objectid": "42376",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP1_MTZISP1]: Health check state is dead",
+    "severity": "4",
+    "clock": "1790767982",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "interface",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BGP-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499652",
+    "objectid": "42411",
+    "name": "FortiGate: VPN BGPISP1_MTZISP1: Tunnel down",
+    "severity": "3",
+    "clock": "1790768007",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BGP-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18499653",
+    "objectid": "42415",
+    "name": "FortiGate: VPN BGPISP2_MTZISP1: Tunnel down",
+    "severity": "3",
+    "clock": "1790768007",
+    "cause_eventid": "18116214",
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "slahost",
+        "value": "BGP-CPD-FW01"
+      }
+    ]
+  },
+  {
+    "eventid": "18482911",
+    "objectid": "13486",
+    "name": "Zabbix server: More than 100 items have been missing data for over 10 minutes",
+    "severity": "2",
+    "clock": "1790759811",
+    "cause_eventid": "0",
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "component",
+        "value": "system"
+      },
+      {
+        "tag": "class",
+        "value": "software"
+      },
+      {
+        "tag": "target",
+        "value": "server"
+      },
+      {
+        "tag": "target",
+        "value": "zabbix"
+      }
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "alertid": "83864",
+    "actionid": "22",
+    "eventid": "18116214",
+    "userid": "1",
+    "clock": "1790593700",
+    "mediatypeid": "53",
+    "sendto": "https://defaultd2c9c2b5ff834631809b8f520e4912.d0.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/29/workflows/f5d6fbc8ac0844669cf3543d378ecee2/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=QMqkSwsXgGHljpELxXXuWk1RccX880RmFVPi_3IAcYA",
+    "subject": "SPO-CPD-FW01 · SPO: Link HK_ISP1 (VIVO) DOWN",
+    "message": "Estado: INCIDENTE ATIVO\nSeveridade: High\nHost: SPO-CPD-FW01\nEndereco: 172.17.23.6\nInicio: 2026.09.28 08:03:19\nDado operacional: dead (1), dead (1), dead (1), dead (1), dead (1)\nValor atual: dead (1)\nEvento: 18116214\nContexto: alerta enviado pelo Zabbix para troubleshooting no Teams",
+    "status": "1",
+    "retries": "0",
+    "error": "",
+    "esc_step": "2",
+    "alerttype": "0",
+    "p_eventid": "0",
+    "acknowledgeid": "0"
+  },
+  {
+    "alertid": "83863",
+    "actionid": "20",
+    "eventid": "18116214",
+    "userid": "1",
+    "clock": "1790593400",
+    "mediatypeid": "65",
+    "sendto": "-1005145663126",
+    "subject": "⚠️ <b>Problem:</b> SPO: Link HK_ISP1 (VIVO) DOWN",
+    "message": "<b>Problem started at:</b> 08:03:19 on 2026.09.28\r\n<b>Host:</b> SPO-CPD-FW01\r\n<b>Severity:</b> High\r\n<b>Operational data:</b> dead (1), alive (0), dead (1), dead (1), dead (1)\r\n<b>Original problem ID:</b> 18116214\r\n\r\n ",
+    "status": "2",
+    "retries": "3",
+    "error": "Sending failed: Bad Request: chat not found",
+    "esc_step": "1",
+    "alerttype": "0",
+    "p_eventid": "0",
+    "acknowledgeid": "0"
+  }
+]

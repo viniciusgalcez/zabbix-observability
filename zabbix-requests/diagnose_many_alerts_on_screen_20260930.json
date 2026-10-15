@@ -1,0 +1,81 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "hostids": [
+          "10724",
+          "10741",
+          "10758",
+          "11171",
+          "11173",
+          "11174",
+          "11178"
+        ],
+        "selectTags": "extend",
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "limit": 200
+      }
+    },
+    "save": "backups/diagnose_many_alerts_fw_problems_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": [
+          "correlationid",
+          "name",
+          "status"
+        ],
+        "correlationids": [
+          "16",
+          "17",
+          "45",
+          "46"
+        ],
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/diagnose_many_alerts_corr_status_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": [
+          "eventid",
+          "clock",
+          "name",
+          "value",
+          "correlationid",
+          "userid"
+        ],
+        "hostids": [
+          "10758"
+        ],
+        "time_from": 1790775901,
+        "sortfield": [
+          "clock"
+        ],
+        "sortorder": "DESC",
+        "limit": 50
+      }
+    },
+    "save": "backups/diagnose_many_alerts_recent_spo_events_20260930.json",
+    "quiet": true
+  }
+]

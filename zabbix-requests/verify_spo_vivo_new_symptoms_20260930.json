@@ -1,0 +1,12 @@
+[
+  {
+    "arguments": {"method": "problem.get", "params": {"output": ["eventid", "objectid", "name", "clock", "cause_eventid", "severity"], "hostids": ["10758"], "source": 0, "object": 0, "sortfield": ["eventid"], "sortorder": "DESC", "limit": 200}},
+    "save": "backups/verify_spo_vivo_new_symptoms_live_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {"method": "trigger.get", "params": {"output": ["triggerid", "description", "value", "status", "state", "error", "lastchange"], "triggerids": ["50308", "55144"]}},
+    "save": "backups/verify_spo_vivo_root_state_live_20260930.json",
+    "quiet": true
+  }
+]

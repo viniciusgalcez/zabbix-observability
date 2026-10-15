@@ -1,0 +1,38 @@
+[
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          "18520140",
+          "18520139",
+          "18520135",
+          "18520132",
+          "18520131",
+          "18520130",
+          "18516633",
+          "18516632",
+          "18516631",
+          "18516630",
+          "18516629",
+          "18516628",
+          "18516627",
+          "18379641",
+          "18116214"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "cause_eventid",
+          "value",
+          "r_eventid"
+        ],
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/verify_ranked_fw_symptoms_batch_20261001.json",
+    "quiet": true
+  }
+]

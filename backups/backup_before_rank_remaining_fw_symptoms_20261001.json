@@ -1,0 +1,952 @@
+[
+  {
+    "eventid": "18116214",
+    "source": "0",
+    "object": "0",
+    "objectid": "50308",
+    "clock": "1790593399",
+    "ns": "148260667",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "health-check",
+        "value": "sla_internet"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18379641",
+    "source": "0",
+    "object": "0",
+    "objectid": "42706",
+    "clock": "1790711264",
+    "ns": "983242860",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SYSTEXTIL_W1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516627",
+    "source": "0",
+    "object": "0",
+    "objectid": "55827",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "BGP_SCL_FIACAO_T1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516628",
+    "source": "0",
+    "object": "0",
+    "objectid": "55829",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN P2MTZ1SCL1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1SCL1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516629",
+    "source": "0",
+    "object": "0",
+    "objectid": "55830",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SYSTEXTIL_W1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516630",
+    "source": "0",
+    "object": "0",
+    "objectid": "55831",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1BGP2"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516631",
+    "source": "0",
+    "object": "0",
+    "objectid": "55835",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN P2MTZ1BGP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1BGP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516632",
+    "source": "0",
+    "object": "0",
+    "objectid": "55839",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "MTZ_AZ_W1_W1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18516633",
+    "source": "0",
+    "object": "0",
+    "objectid": "55840",
+    "clock": "1790823224",
+    "ns": "989118749",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN MTZISP1_BRAS-01: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "MTZISP1_BRAS-01"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18520130",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790838045",
+    "ns": "827955927",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18520131",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790838070",
+    "ns": "812127060",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18520132",
+    "source": "0",
+    "object": "0",
+    "objectid": "43246",
+    "clock": "1790838079",
+    "ns": "234572943",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18520135",
+    "source": "0",
+    "object": "0",
+    "objectid": "43266",
+    "clock": "1790838079",
+    "ns": "234572943",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_SAOCARLOS"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "MTZISP1_SCLISP2"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18520139",
+    "source": "0",
+    "object": "0",
+    "objectid": "55848",
+    "clock": "1790838104",
+    "ns": "236612125",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: VPN P2MTZ1SCL2: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL2"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "P2MTZ1SCL2"
+      }
+    ],
+    "urls": []
+  }
+]

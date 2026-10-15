@@ -1,0 +1,439 @@
+{
+  "stamp": "20261005T143708Z",
+  "phases": [
+    {
+      "label": "3A — Hyper-V",
+      "missing_hosts": [],
+      "hosts": [
+        {
+          "host": "SCL-SRV-FHV02",
+          "hostid": "10683",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Template Windows Hyper-V Host 2",
+            "Role - Servidor Hyper-V"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.16.2.200",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-SRV-FHV03",
+          "hostid": "10920",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Template Windows Hyper-V Host 2",
+            "Role - Servidor Hyper-V"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.16.2.201",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "BGP-SRV-FHV01",
+          "hostid": "10884",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Template Windows Hyper-V Host 2",
+            "Role - Servidor Hyper-V"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.18.2.200",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "BGP-SRV-FHV02",
+          "hostid": "10885",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Template Windows Hyper-V Host 2",
+            "Role - Servidor Hyper-V"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.18.2.201",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "BGP-SRV-FHV03",
+          "hostid": "10886",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Template Windows Hyper-V Host 2",
+            "Role - Servidor Hyper-V"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.18.2.203",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SPO-SRV-FAD01",
+          "hostid": "10941",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "Role - Controlador de Dominio Primario On-Prem",
+            "Role - Servidor Hyper-V",
+            "Role - Entra Connect e Gateways",
+            "Template App NDD Print"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.17.2.140",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 5,
+          "lld_bad": [
+            {
+              "itemid": "85275",
+              "name": "Windows services discovery",
+              "key_": "service.discovery",
+              "status": "0",
+              "state": "0",
+              "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n"
+            }
+          ],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 1,
+          "unsupported_sample": []
+        }
+      ],
+      "totals": {
+        "hosts": 6,
+        "lld_rules": 35,
+        "lld_bad_enabled": 1,
+        "unsupported_enabled": 0,
+        "unknown_triggers": 11
+      },
+      "bad_rules": [
+        {
+          "host": "SPO-SRV-FAD01",
+          "itemid": "85275",
+          "name": "Windows services discovery",
+          "key_": "service.discovery",
+          "state": "0",
+          "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already"
+        }
+      ]
+    },
+    {
+      "label": "3B — Switches SNMP",
+      "missing_hosts": [],
+      "hosts": [
+        {
+          "host": "SCL-CPD-SW01",
+          "hostid": "10731",
+          "status": "0",
+          "templates": [
+            "Cisco IOS by SNMP",
+            "Cisco CBS350 Environment by SNMP"
+          ],
+          "interfaces": [
+            {
+              "type": "2",
+              "ip": "172.16.23.9",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 12,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-TEC2-SW01",
+          "hostid": "10735",
+          "status": "0",
+          "templates": [
+            "Cisco IOS by SNMP",
+            "Cisco CBS350 Environment by SNMP"
+          ],
+          "interfaces": [
+            {
+              "type": "2",
+              "ip": "172.16.23.29",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 12,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 284,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SPO-CPD-SW01",
+          "hostid": "10834",
+          "status": "0",
+          "templates": [
+            "Cisco IOS by SNMP",
+            "Cisco CBS350 Environment by SNMP"
+          ],
+          "interfaces": [
+            {
+              "type": "2",
+              "ip": "172.17.23.15",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 12,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-TEC1-SW02",
+          "hostid": "10847",
+          "status": "0",
+          "templates": [
+            "Cisco IOS by SNMP",
+            "Cisco CBS350 Environment by SNMP"
+          ],
+          "interfaces": [
+            {
+              "type": "2",
+              "ip": "172.16.23.16",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 12,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 144,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-TEC1-SW03",
+          "hostid": "10801",
+          "status": "0",
+          "templates": [
+            "Cisco IOS by SNMP",
+            "Cisco CBS350 Environment by SNMP"
+          ],
+          "interfaces": [
+            {
+              "type": "2",
+              "ip": "172.16.23.26",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 12,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 122,
+          "unsupported_sample": []
+        }
+      ],
+      "totals": {
+        "hosts": 5,
+        "lld_rules": 60,
+        "lld_bad_enabled": 0,
+        "unsupported_enabled": 0,
+        "unknown_triggers": 554
+      },
+      "bad_rules": []
+    },
+    {
+      "label": "3C — LLD config",
+      "missing_hosts": [],
+      "hosts": [
+        {
+          "host": "AZ-VM-APP-03-DB",
+          "hostid": "11139",
+          "status": "0",
+          "templates": [
+            "MySQL by Zabbix agent 2"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "10.11.2.6",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 6,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 3,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SPO-SRV-V02",
+          "hostid": "11102",
+          "status": "0",
+          "templates": [
+            "Linux by Zabbix agent active",
+            "PostgreSQL by Zabbix agent"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.17.2.52",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 4,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 8,
+          "unsupported_sample": []
+        },
+        {
+          "host": "BGP-SRV-VAPP12",
+          "hostid": "10898",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent",
+            "IIS by Zabbix agent",
+            "Role - Servidor IIS"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.18.200.11",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 5,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 2,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-ETE-TB01",
+          "hostid": "10918",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.16.113.167",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 4,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 5,
+          "unsupported_sample": []
+        },
+        {
+          "host": "SCL-TIN-TMXC01",
+          "hostid": "10937",
+          "status": "0",
+          "templates": [
+            "Windows by Zabbix agent"
+          ],
+          "interfaces": [
+            {
+              "type": "1",
+              "ip": "172.16.113.12",
+              "available": "1",
+              "error": "",
+              "main": "1"
+            }
+          ],
+          "lld_rules_total": 4,
+          "lld_bad": [],
+          "unsupported_enabled": 0,
+          "unknown_triggers": 5,
+          "unsupported_sample": []
+        }
+      ],
+      "totals": {
+        "hosts": 5,
+        "lld_rules": 23,
+        "lld_bad_enabled": 0,
+        "unsupported_enabled": 0,
+        "unknown_triggers": 23
+      },
+      "bad_rules": []
+    }
+  ]
+}

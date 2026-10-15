@@ -1,0 +1,66 @@
+{
+  "triggers": [
+    {
+      "triggerid": "40288",
+      "description": "Hyper-V Host Memory pressure 90-100%",
+      "expression": "last(/Template Windows Hyper-V Host 2/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=90 and last(/Template Windows Hyper-V Host 2/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])<100 and last(/Template Windows Hyper-V Host 2/hyperv.host.memory.free)<8589934592",
+      "value": "0",
+      "status": "0",
+      "manual_close": "1",
+      "state": "0",
+      "error": ""
+    },
+    {
+      "triggerid": "40289",
+      "description": "Hyper-V Host Memory pressure 100%",
+      "expression": "last(/Template Windows Hyper-V Host 2/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=100 and last(/Template Windows Hyper-V Host 2/hyperv.host.memory.free)<8589934592",
+      "value": "0",
+      "status": "0",
+      "manual_close": "1",
+      "state": "0",
+      "error": ""
+    },
+    {
+      "triggerid": "49157",
+      "description": "Hyper-V Host Memory pressure 90-100%",
+      "expression": "last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=90 and last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])<100 and last(/BGP-SRV-FHV03/hyperv.host.memory.free)<8589934592",
+      "value": "0",
+      "status": "0",
+      "manual_close": "1",
+      "state": "0",
+      "error": ""
+    },
+    {
+      "triggerid": "49158",
+      "description": "Hyper-V Host Memory pressure 100%",
+      "expression": "last(/BGP-SRV-FHV03/perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30])>=100 and last(/BGP-SRV-FHV03/hyperv.host.memory.free)<8589934592",
+      "value": "0",
+      "status": "0",
+      "manual_close": "1",
+      "state": "0",
+      "error": ""
+    }
+  ],
+  "closed": [],
+  "problems_final": [],
+  "items": [
+    {
+      "itemid": "82662",
+      "key_": "vm.memory.util",
+      "units": "%",
+      "lastvalue": "54.85897174241453"
+    },
+    {
+      "itemid": "105503",
+      "key_": "hyperv.host.memory.free",
+      "units": "",
+      "lastvalue": "93300289536"
+    },
+    {
+      "itemid": "105504",
+      "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+      "units": "%",
+      "lastvalue": "101.133333"
+    }
+  ]
+}

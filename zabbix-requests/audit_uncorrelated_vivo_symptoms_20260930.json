@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "clock", "severity", "cause_eventid"],
+        "eventids": [
+          "18499653", "18499652", "18499622", "18499621", "18499620",
+          "18499373", "18499372", "18499349", "18499343", "18499342",
+          "18499293", "18499288", "18499284", "18499276", "18499275",
+          "18499274", "18499273", "18116214"
+        ],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host", "name"],
+        "sortfield": ["eventid"],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/audit_uncorrelated_link_events_hosts_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "value", "status", "priority"],
+        "search": {"event_name": "VIVO"},
+        "selectTags": ["tag", "value"],
+        "selectHosts": ["hostid", "host"],
+        "filter": {"value": 1, "status": 0}
+      }
+    },
+    "save": "backups/audit_open_link_cause_triggers_20260930.json",
+    "quiet": true
+  }
+]

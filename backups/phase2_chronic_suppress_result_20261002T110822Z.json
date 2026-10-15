@@ -1,0 +1,64 @@
+{
+  "created": [
+    {
+      "macro": {
+        "hostid": "11171",
+        "macro": "{$IFCONTROL:\"lan2\"}",
+        "value": "0",
+        "description": "Fase 2 roadmap 2026-10-02: porta lan2 crônica down sem notify; reserva/não usada. Revisar se reativar."
+      },
+      "result": {
+        "hostmacroids": [
+          "8605"
+        ]
+      }
+    },
+    {
+      "macro": {
+        "hostid": "11171",
+        "macro": "{$IFCONTROL:\"lan3\"}",
+        "value": "0",
+        "description": "Fase 2 roadmap 2026-10-02: porta lan3(ISP2-) crônica down sem notify; reserva/não usada. Revisar se reativar."
+      },
+      "result": {
+        "hostmacroids": [
+          "8606"
+        ]
+      }
+    },
+    {
+      "macro": {
+        "hostid": "10758",
+        "macro": "{$IFCONTROL:\"dmz\"}",
+        "value": "0",
+        "description": "Fase 2 roadmap 2026-10-02: interface dmz crônica down sem notify. Revisar se reativar."
+      },
+      "result": {
+        "hostmacroids": [
+          "8607"
+        ]
+      }
+    },
+    {
+      "macro": {
+        "hostid": "11178",
+        "macro": "{$VPN.STATE.CONTROL:\"az-to-oci-vpn2\"}",
+        "value": "0",
+        "description": "Fase 2 roadmap 2026-10-02: túnel az-to-oci-vpn2 crônico down sem notify. Revisar se reativar."
+      },
+      "result": {
+        "hostmacroids": [
+          "8608"
+        ]
+      }
+    }
+  ],
+  "updated": [],
+  "closed": [
+    "17437418",
+    "17498586",
+    "18379687",
+    "17441868"
+  ],
+  "stamp": "20261002T110822Z"
+}

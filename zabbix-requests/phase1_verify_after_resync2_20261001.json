@@ -1,0 +1,41 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "110116",
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "status",
+          "state",
+          "error",
+          "lastvalue"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_items_after_resync2_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "task.create",
+      "params": {
+        "type": "6",
+        "request": {
+          "itemid": "110116"
+        }
+      }
+    },
+    "save": "backups/phase1_task_checknow_toner_only_20261001.json",
+    "quiet": true
+  }
+]

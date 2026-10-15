@@ -1,0 +1,94 @@
+[
+  {
+    "itemid": "93359",
+    "name": "Interface dmz(): Operational status",
+    "key_": "net.if.status[ifOperStatus.3]",
+    "status": "0",
+    "flags": "4",
+    "templateid": "0",
+    "description": "MIB: IF-MIB\r\nThe current operational state of the interface.\r\n- The `testing(3)` state indicates that no operational packets can be passed.\r\n- If `ifAdminStatus` is `down(2)`, then `ifOperStatus` should be `down(2)`.\r\n- If `ifAdminStatus` is changed to `up(1)`, then `ifOperStatus` should change to `up(1)` if the interface is ready to transmit and receive network traffic.\r\n- It should change to `dormant(5)` if the interface is waiting for external actions (such as a serial line waiting for an incoming connection).\r\n- It should remain in the `down(2)` state if and only if there is a fault that prevents it from going to the `up(1)` state.\r\n- It should remain in the `notPresent(6)` state if the interface has missing (typically, hardware) components.",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "interface",
+        "value": "dmz"
+      }
+    ]
+  },
+  {
+    "itemid": "110657",
+    "name": "Interface lan3(ISP2-): Operational status",
+    "key_": "net.if.status[ifOperStatus.6]",
+    "status": "0",
+    "flags": "4",
+    "templateid": "0",
+    "description": "MIB: IF-MIB\r\nThe current operational state of the interface.\r\n- The `testing(3)` state indicates that no operational packets can be passed.\r\n- If `ifAdminStatus` is `down(2)`, then `ifOperStatus` should be `down(2)`.\r\n- If `ifAdminStatus` is changed to `up(1)`, then `ifOperStatus` should change to `up(1)` if the interface is ready to transmit and receive network traffic.\r\n- It should change to `dormant(5)` if the interface is waiting for external actions (such as a serial line waiting for an incoming connection).\r\n- It should remain in the `down(2)` state if and only if there is a fault that prevents it from going to the `up(1)` state.\r\n- It should remain in the `notPresent(6)` state if the interface has missing (typically, hardware) components.",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": "ISP2-"
+      },
+      {
+        "tag": "interface",
+        "value": "lan3"
+      }
+    ]
+  },
+  {
+    "itemid": "110660",
+    "name": "Interface lan2(): Operational status",
+    "key_": "net.if.status[ifOperStatus.7]",
+    "status": "0",
+    "flags": "4",
+    "templateid": "0",
+    "description": "MIB: IF-MIB\r\nThe current operational state of the interface.\r\n- The `testing(3)` state indicates that no operational packets can be passed.\r\n- If `ifAdminStatus` is `down(2)`, then `ifOperStatus` should be `down(2)`.\r\n- If `ifAdminStatus` is changed to `up(1)`, then `ifOperStatus` should change to `up(1)` if the interface is ready to transmit and receive network traffic.\r\n- It should change to `dormant(5)` if the interface is waiting for external actions (such as a serial line waiting for an incoming connection).\r\n- It should remain in the `down(2)` state if and only if there is a fault that prevents it from going to the `up(1)` state.\r\n- It should remain in the `notPresent(6)` state if the interface has missing (typically, hardware) components.",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "interface",
+        "value": "lan2"
+      }
+    ]
+  },
+  {
+    "itemid": "112617",
+    "name": "VPN az-to-oci-vpn2: Tunnel Status",
+    "key_": "vpn.tunnel.status[fgVpnTunEntStatus.2.1]",
+    "status": "0",
+    "flags": "4",
+    "templateid": "0",
+    "description": "MIB: FORTINET-FORTIGATE-MIB\r\nCurrent status of tunnel (up or down).",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "tunnel",
+        "value": "az-to-oci-vpn2"
+      }
+    ]
+  }
+]

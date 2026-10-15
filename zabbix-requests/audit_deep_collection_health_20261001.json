@@ -1,0 +1,102 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "hostid", "state", "error", "lastclock", "status", "type", "delay"],
+        "filter": {"state": 1},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 1000
+      }
+    },
+    "save": "backups/audit_deep_unsupported_all_status_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "hostid", "state", "error", "lastclock", "status", "type", "delay", "flags"],
+        "filter": {"status": 0},
+        "search": {"error": "Timeout|not supported|cannot|No such|SNMP|Authentication|Unknown"},
+        "searchWildcardsEnabled": true,
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_deep_items_with_error_text_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "proxy.get",
+      "params": {
+        "output": ["proxyid", "host", "status", "lastaccess", "proxy_groupid", "state", "version", "compatibility"],
+        "selectHosts": ["hostid", "host"]
+      }
+    },
+    "save": "backups/audit_deep_proxies_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "hostinterface.get",
+      "params": {
+        "output": "extend",
+        "filter": {"type": 2},
+        "selectHosts": ["hostid", "host", "name", "status"]
+      }
+    },
+    "save": "backups/audit_deep_snmp_interfaces_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "httptest.get",
+      "params": {
+        "output": "extend",
+        "selectSteps": "extend",
+        "selectHosts": ["hostid", "host", "name"]
+      }
+    },
+    "save": "backups/audit_deep_httptests_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "priority", "value", "status", "state", "error", "lastchange"],
+        "filter": {"state": 1, "status": 0},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_deep_triggers_unknown_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "drule.get",
+      "params": {
+        "output": "extend",
+        "selectDChecks": "extend"
+      }
+    },
+    "save": "backups/audit_deep_discovery_rules_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastclock", "delay"],
+        "filter": {"state": 1},
+        "selectHosts": ["hostid", "host", "name"],
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_deep_lld_unsupported_20261001.json",
+    "quiet": true
+  }
+]

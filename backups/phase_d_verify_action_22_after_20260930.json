@@ -1,0 +1,23 @@
+[
+  {
+    "actionid": "22",
+    "name": "Notificar MS Teams",
+    "status": "0",
+    "esc_period": "5m",
+    "pause_symptoms": "1",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A",
+      "eval_formula": "A",
+      "conditions": [
+        {
+          "conditiontype": "26",
+          "operator": "0",
+          "value": "teams",
+          "value2": "notify",
+          "formulaid": "A"
+        }
+      ]
+    }
+  }
+]

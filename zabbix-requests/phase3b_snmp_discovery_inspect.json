@@ -1,0 +1,643 @@
+{
+  "hosts": [
+    {
+      "hostid": "10731",
+      "host": "SCL-CPD-SW01",
+      "macros": [
+        {
+          "hostmacroid": "8036",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12}|^[Ll]oopback|^stack-port|^[0-9]+$)",
+          "description": ""
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10218",
+          "host": "Cisco IOS by SNMP"
+        },
+        {
+          "templateid": "11167",
+          "host": "Cisco CBS350 Environment by SNMP"
+        }
+      ],
+      "interfaces": [
+        {
+          "interfaceid": "75",
+          "hostid": "10731",
+          "main": "1",
+          "type": "2",
+          "useip": "1",
+          "ip": "172.16.23.9",
+          "dns": "",
+          "port": "161",
+          "available": "1",
+          "error": "",
+          "errors_from": "0",
+          "disable_until": "0",
+          "details": {
+            "version": "3",
+            "bulk": "1",
+            "securityname": "zabbix_snmp",
+            "securitylevel": "2",
+            "authpassphrase": "ZbxAuth_2026@Net",
+            "privpassphrase": "ZbxPriv_2026@Secure",
+            "authprotocol": "1",
+            "privprotocol": "1",
+            "contextname": "",
+            "max_repetitions": "10"
+          }
+        }
+      ]
+    },
+    {
+      "hostid": "10847",
+      "host": "SCL-TEC1-SW02",
+      "macros": [
+        {
+          "hostmacroid": "8065",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12}|^[Ll]oopback|^stack-port|^[0-9]+$)",
+          "description": ""
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10218",
+          "host": "Cisco IOS by SNMP"
+        },
+        {
+          "templateid": "11167",
+          "host": "Cisco CBS350 Environment by SNMP"
+        }
+      ],
+      "interfaces": [
+        {
+          "interfaceid": "191",
+          "hostid": "10847",
+          "main": "1",
+          "type": "2",
+          "useip": "1",
+          "ip": "172.16.23.16",
+          "dns": "",
+          "port": "161",
+          "available": "1",
+          "error": "",
+          "errors_from": "0",
+          "disable_until": "0",
+          "details": {
+            "version": "3",
+            "bulk": "1",
+            "securityname": "zabbix_snmp",
+            "securitylevel": "2",
+            "authpassphrase": "ZbxAuth_2026@Net",
+            "privpassphrase": "ZbxPriv_2026@Secure",
+            "authprotocol": "1",
+            "privprotocol": "1",
+            "contextname": "",
+            "max_repetitions": "10"
+          }
+        }
+      ]
+    },
+    {
+      "hostid": "10801",
+      "host": "SCL-TEC1-SW03",
+      "macros": [
+        {
+          "hostmacroid": "8052",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12}|^[Ll]oopback|^stack-port|^[0-9]+$)",
+          "description": ""
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10218",
+          "host": "Cisco IOS by SNMP"
+        },
+        {
+          "templateid": "11167",
+          "host": "Cisco CBS350 Environment by SNMP"
+        }
+      ],
+      "interfaces": [
+        {
+          "interfaceid": "145",
+          "hostid": "10801",
+          "main": "1",
+          "type": "2",
+          "useip": "1",
+          "ip": "172.16.23.26",
+          "dns": "",
+          "port": "161",
+          "available": "1",
+          "error": "",
+          "errors_from": "0",
+          "disable_until": "0",
+          "details": {
+            "version": "3",
+            "bulk": "1",
+            "securityname": "zabbix_snmp",
+            "securitylevel": "2",
+            "authpassphrase": "ZbxAuth_2026@Net",
+            "privpassphrase": "ZbxPriv_2026@Secure",
+            "authprotocol": "1",
+            "privprotocol": "1",
+            "contextname": "",
+            "max_repetitions": "10"
+          }
+        }
+      ]
+    },
+    {
+      "hostid": "10735",
+      "host": "SCL-TEC2-SW01",
+      "macros": [
+        {
+          "hostmacroid": "8038",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12}|^[Ll]oopback|^stack-port|^[0-9]+$)",
+          "description": ""
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10218",
+          "host": "Cisco IOS by SNMP"
+        },
+        {
+          "templateid": "11167",
+          "host": "Cisco CBS350 Environment by SNMP"
+        }
+      ],
+      "interfaces": [
+        {
+          "interfaceid": "79",
+          "hostid": "10735",
+          "main": "1",
+          "type": "2",
+          "useip": "1",
+          "ip": "172.16.23.29",
+          "dns": "",
+          "port": "161",
+          "available": "1",
+          "error": "",
+          "errors_from": "0",
+          "disable_until": "0",
+          "details": {
+            "version": "3",
+            "bulk": "1",
+            "securityname": "zabbix_snmp",
+            "securitylevel": "2",
+            "authpassphrase": "ZbxAuth_2026@Net",
+            "privpassphrase": "ZbxPriv_2026@Secure",
+            "authprotocol": "1",
+            "privprotocol": "1",
+            "contextname": "",
+            "max_repetitions": "10"
+          }
+        }
+      ]
+    },
+    {
+      "hostid": "10834",
+      "host": "SPO-CPD-SW01",
+      "macros": [
+        {
+          "hostmacroid": "8060",
+          "macro": "{$NET.IF.IFNAME.NOT_MATCHES}",
+          "value": "(^Software Loopback Interface|^NULL[0-9.]*$|^[Ll]o[0-9.]*$|^[Ss]ystem$|^Nu[0-9.]*$|^veth[0-9a-z]+$|docker[0-9]+|br-[a-z0-9]{12}|^[Ll]oopback|^stack-port|^[0-9]+$)",
+          "description": ""
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10218",
+          "host": "Cisco IOS by SNMP"
+        },
+        {
+          "templateid": "11167",
+          "host": "Cisco CBS350 Environment by SNMP"
+        }
+      ],
+      "interfaces": [
+        {
+          "interfaceid": "178",
+          "hostid": "10834",
+          "main": "1",
+          "type": "2",
+          "useip": "1",
+          "ip": "172.17.23.15",
+          "dns": "",
+          "port": "161",
+          "available": "1",
+          "error": "",
+          "errors_from": "0",
+          "disable_until": "0",
+          "details": {
+            "version": "3",
+            "bulk": "1",
+            "securityname": "zabbix_snmp",
+            "securitylevel": "2",
+            "authpassphrase": "ZbxAuth_2026@Net",
+            "privpassphrase": "ZbxPriv_2026@Secure",
+            "authprotocol": "1",
+            "privprotocol": "1",
+            "contextname": "",
+            "max_repetitions": "10"
+          }
+        }
+      ]
+    }
+  ],
+  "template_cisco": [
+    {
+      "templateid": "10218",
+      "host": "Cisco IOS by SNMP"
+    }
+  ],
+  "template_net_if_discovery": [
+    {
+      "itemid": "40652",
+      "type": "18",
+      "snmp_oid": "",
+      "hostid": "10218",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "delay": "0",
+      "history": "90d",
+      "trends": "0",
+      "status": "0",
+      "value_type": "4",
+      "trapper_hosts": "",
+      "units": "",
+      "logtimefmt": "",
+      "templateid": "0",
+      "valuemapid": "0",
+      "params": "",
+      "ipmi_sensor": "",
+      "authtype": "0",
+      "username": "",
+      "password": "",
+      "publickey": "",
+      "privatekey": "",
+      "flags": "1",
+      "interfaceid": "0",
+      "description": "Discovering interfaces from IF-MIB.",
+      "inventory_link": "0",
+      "lifetime": "7d",
+      "jmx_endpoint": "",
+      "master_itemid": "45134",
+      "timeout": "",
+      "url": "",
+      "query_fields": [],
+      "posts": "",
+      "status_codes": "200",
+      "follow_redirects": "1",
+      "post_type": "0",
+      "http_proxy": "",
+      "headers": [],
+      "retrieve_mode": "0",
+      "request_method": "0",
+      "ssl_cert_file": "",
+      "ssl_key_file": "",
+      "ssl_key_password": "",
+      "verify_peer": "0",
+      "verify_host": "0",
+      "allow_traps": "0",
+      "discover": "0",
+      "uuid": "b416fb001e46464f847578a50451164b",
+      "lifetime_type": "0",
+      "enabled_lifetime_type": "2",
+      "enabled_lifetime": "0",
+      "state": "0",
+      "error": "",
+      "parameters": [],
+      "items": [
+        {
+          "itemid": "40677",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets discarded",
+          "key_": "net.if.in.discards[ifInDiscards.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40678",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Inbound packets with errors",
+          "key_": "net.if.in.errors[ifInErrors.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40679",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Bits received",
+          "key_": "net.if.in[ifHCInOctets.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40680",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets discarded",
+          "key_": "net.if.out.discards[ifOutDiscards.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40681",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Outbound packets with errors",
+          "key_": "net.if.out.errors[ifOutErrors.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40682",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Bits sent",
+          "key_": "net.if.out[ifHCOutOctets.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40683",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Speed",
+          "key_": "net.if.speed[ifHighSpeed.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40684",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Operational status",
+          "key_": "net.if.status[ifOperStatus.{#SNMPINDEX}]",
+          "status": "0"
+        },
+        {
+          "itemid": "40685",
+          "name": "Interface {#IFNAME}({#IFALIAS}): Interface type",
+          "key_": "net.if.type[ifType.{#SNMPINDEX}]",
+          "status": "0"
+        }
+      ],
+      "filter": {
+        "evaltype": "1",
+        "formula": "",
+        "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+        "conditions": [
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+            "formulaid": "A"
+          },
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+            "formulaid": "B"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFALIAS.MATCHES}",
+            "formulaid": "C"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+            "formulaid": "D"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "8",
+            "value": "{$NET.IF.IFDESCR.MATCHES}",
+            "formulaid": "E"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "9",
+            "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+            "formulaid": "F"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "8",
+            "value": "{$NET.IF.IFNAME.MATCHES}",
+            "formulaid": "G"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "9",
+            "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+            "formulaid": "H"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+            "formulaid": "I"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+            "formulaid": "J"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "8",
+            "value": "{$NET.IF.IFTYPE.MATCHES}",
+            "formulaid": "K"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "9",
+            "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+            "formulaid": "L"
+          }
+        ]
+      }
+    }
+  ],
+  "unknown": {
+    "SCL-CPD-SW01": {
+      "count": 2,
+      "sample": [
+        {
+          "triggerid": "26183",
+          "description": "Cisco IOS: Device has been replaced",
+          "error": "Cannot evaluate function last(/SCL-CPD-SW01/system.hw.serialnumber,#1): item is not supported."
+        },
+        {
+          "triggerid": "26185",
+          "description": "Cisco IOS: Operating system description has changed",
+          "error": "Cannot evaluate function last(/SCL-CPD-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+        }
+      ]
+    },
+    "SCL-TEC1-SW02": {
+      "count": 144,
+      "sample": [
+        {
+          "triggerid": "26850",
+          "description": "Cisco IOS: Device has been replaced",
+          "error": "Cannot evaluate function last(/SCL-TEC1-SW02/system.hw.serialnumber,#1): item is not supported."
+        },
+        {
+          "triggerid": "26852",
+          "description": "Cisco IOS: Operating system description has changed",
+          "error": "Cannot evaluate function last(/SCL-TEC1-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+        },
+        {
+          "triggerid": "35568",
+          "description": "Cisco IOS: Interface gi2/0/45(SCL-TEC1-UPS02): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.97],15m): item is disabled."
+        },
+        {
+          "triggerid": "35569",
+          "description": "Cisco IOS: Interface gi2/0/16(T810-102): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.68],15m): item is disabled."
+        },
+        {
+          "triggerid": "35570",
+          "description": "Cisco IOS: Interface gi1/0/45(T810-063): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.45],15m): item is disabled."
+        },
+        {
+          "triggerid": "35572",
+          "description": "Cisco IOS: Interface gi1/0/36(T810-087): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.36],15m): item is disabled."
+        },
+        {
+          "triggerid": "35574",
+          "description": "Cisco IOS: Interface gi2/0/13(T810-098): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.65],15m): item is disabled."
+        },
+        {
+          "triggerid": "35576",
+          "description": "Cisco IOS: Interface gi1/0/6(T810-089): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW02/net.if.in[ifHCInOctets.6],15m): item is disabled."
+        }
+      ]
+    },
+    "SCL-TEC1-SW03": {
+      "count": 122,
+      "sample": [
+        {
+          "triggerid": "26551",
+          "description": "Cisco IOS: Device has been replaced",
+          "error": "Cannot evaluate function last(/SCL-TEC1-SW03/system.hw.serialnumber,#1): item is not supported."
+        },
+        {
+          "triggerid": "26553",
+          "description": "Cisco IOS: Operating system description has changed",
+          "error": "Cannot evaluate function last(/SCL-TEC1-SW03/system.sw.os[sysDescr.0],#1): item is not supported."
+        },
+        {
+          "triggerid": "33645",
+          "description": "Cisco IOS: Interface gi2/0/45(T810-046): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.97],15m): item is disabled."
+        },
+        {
+          "triggerid": "33646",
+          "description": "Cisco IOS: Interface gi2/0/16(T810-053): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.68],15m): item is disabled."
+        },
+        {
+          "triggerid": "33649",
+          "description": "Cisco IOS: Interface gi2/0/13(T810-008): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.65],15m): item is disabled."
+        },
+        {
+          "triggerid": "33652",
+          "description": "Cisco IOS: Interface gi1/0/1(T810-025): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.1],15m): item is disabled."
+        },
+        {
+          "triggerid": "33653",
+          "description": "Cisco IOS: Interface gi2/0/44(T810-041): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.96],15m): item is disabled."
+        },
+        {
+          "triggerid": "33655",
+          "description": "Cisco IOS: Interface gi2/0/11(T810-009): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC1-SW03/net.if.in[ifHCInOctets.63],15m): item is disabled."
+        }
+      ]
+    },
+    "SCL-TEC2-SW01": {
+      "count": 284,
+      "sample": [
+        {
+          "triggerid": "26229",
+          "description": "Cisco IOS: Device has been replaced",
+          "error": "Cannot evaluate function last(/SCL-TEC2-SW01/system.hw.serialnumber,#1): item is not supported."
+        },
+        {
+          "triggerid": "26231",
+          "description": "Cisco IOS: Operating system description has changed",
+          "error": "Cannot evaluate function last(/SCL-TEC2-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+        },
+        {
+          "triggerid": "35996",
+          "description": "Cisco IOS: Interface gi2/0/19(Tear 259 (Picanol)): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.71],15m): item is not supported."
+        },
+        {
+          "triggerid": "35997",
+          "description": "Cisco IOS: Interface stack-port(): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.9000],15m): item is not supported."
+        },
+        {
+          "triggerid": "35998",
+          "description": "Cisco IOS: Interface gi2/0/16(Tear 268 (Picanol)): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.68],15m): item is not supported."
+        },
+        {
+          "triggerid": "35999",
+          "description": "Cisco IOS: Interface gi1/0/45(Tear 245 (Picanol)): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.45],15m): item is not supported."
+        },
+        {
+          "triggerid": "36000",
+          "description": "Cisco IOS: Interface 10(): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100009],15m): item is not supported."
+        },
+        {
+          "triggerid": "36001",
+          "description": "Cisco IOS: Interface 310(): High bandwidth usage",
+          "error": "Cannot evaluate function avg(/SCL-TEC2-SW01/net.if.in[ifHCInOctets.100309],15m): item is not supported."
+        }
+      ]
+    },
+    "SPO-CPD-SW01": {
+      "count": 2,
+      "sample": [
+        {
+          "triggerid": "26735",
+          "description": "Cisco IOS: Device has been replaced",
+          "error": "Cannot evaluate function last(/SPO-CPD-SW01/system.hw.serialnumber,#1): item is not supported."
+        },
+        {
+          "triggerid": "26737",
+          "description": "Cisco IOS: Operating system description has changed",
+          "error": "Cannot evaluate function last(/SPO-CPD-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+        }
+      ]
+    }
+  },
+  "host_proxy": {
+    "SPO-CPD-SW01": {
+      "proxyid": "1",
+      "name": "SPO-SRV-V04"
+    },
+    "SCL-TEC2-SW01": {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08"
+    },
+    "SCL-CPD-SW01": {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08"
+    },
+    "SCL-TEC1-SW02": {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08"
+    },
+    "SCL-TEC1-SW03": {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08"
+    }
+  }
+}

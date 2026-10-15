@@ -1,0 +1,69 @@
+[
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "actionids": ["22"],
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "selectUpdateOperations": "extend"
+      }
+    },
+    "save": "backups/backup_action_22_before_exclude_dependent_symptoms_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.update",
+      "params": {
+        "actionid": "22",
+        "filter": {
+          "evaltype": 3,
+          "formula": "A or (B and C)",
+          "conditions": [
+            {
+              "conditiontype": 26,
+              "operator": 0,
+              "value": "teams",
+              "value2": "notify",
+              "formulaid": "A"
+            },
+            {
+              "conditiontype": 4,
+              "operator": 5,
+              "value": "4",
+              "value2": "",
+              "formulaid": "B"
+            },
+            {
+              "conditiontype": 25,
+              "operator": 1,
+              "value": "depends-on",
+              "value2": "",
+              "formulaid": "C"
+            }
+          ]
+        }
+      }
+    },
+    "save": "backups/apply_action_22_exclude_dependent_symptoms_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "actionids": ["22"],
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "selectUpdateOperations": "extend"
+      }
+    },
+    "save": "backups/verify_action_22_exclude_dependent_symptoms_20260930.json",
+    "quiet": true
+  }
+]

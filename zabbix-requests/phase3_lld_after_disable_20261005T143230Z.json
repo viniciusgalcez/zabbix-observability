@@ -1,0 +1,622 @@
+{
+  "backup": "backups\\phase3_lld_before_disable_20261005T143230Z.json",
+  "disabled": [
+    "88015",
+    "88016",
+    "88057",
+    "88058",
+    "105434",
+    "105435",
+    "105476",
+    "105477",
+    "105532",
+    "105533",
+    "88099",
+    "108884",
+    "106824",
+    "107176",
+    "107177"
+  ],
+  "physicaldisk": [
+    {
+      "itemid": "84289",
+      "host": "SCL-ETE-TB01",
+      "action": "disabled_fallback",
+      "error": "{\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1\\\": cannot update readonly parameter \\\"key_\\\" of inherited object.\"\n}"
+    },
+    {
+      "itemid": "85156",
+      "host": "SCL-TIN-TMXC01",
+      "action": "disabled_fallback",
+      "error": "{\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1\\\": cannot update readonly parameter \\\"key_\\\" of inherited object.\"\n}"
+    }
+  ],
+  "snmp": [
+    {
+      "itemid": "52328",
+      "host": "SCL-CPD-SW01",
+      "key_": "net.if.discovery",
+      "timeout": "",
+      "delay": "0",
+      "filter": {
+        "evaltype": "1",
+        "formula": "",
+        "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+        "conditions": [
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+            "formulaid": "A"
+          },
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+            "formulaid": "B"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFALIAS.MATCHES}",
+            "formulaid": "C"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+            "formulaid": "D"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "8",
+            "value": "{$NET.IF.IFDESCR.MATCHES}",
+            "formulaid": "E"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "9",
+            "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+            "formulaid": "F"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "8",
+            "value": "{$NET.IF.IFNAME.MATCHES}",
+            "formulaid": "G"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "9",
+            "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+            "formulaid": "H"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+            "formulaid": "I"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+            "formulaid": "J"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "8",
+            "value": "{$NET.IF.IFTYPE.MATCHES}",
+            "formulaid": "K"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "9",
+            "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+            "formulaid": "L"
+          }
+        ]
+      },
+      "templateid": "40652",
+      "action": "timeout_failed: {\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1/timeout\\\": value must be empty.\"\n}"
+    },
+    {
+      "itemid": "52428",
+      "host": "SCL-TEC2-SW01",
+      "key_": "net.if.discovery",
+      "timeout": "",
+      "delay": "0",
+      "filter": {
+        "evaltype": "1",
+        "formula": "",
+        "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+        "conditions": [
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+            "formulaid": "A"
+          },
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+            "formulaid": "B"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFALIAS.MATCHES}",
+            "formulaid": "C"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+            "formulaid": "D"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "8",
+            "value": "{$NET.IF.IFDESCR.MATCHES}",
+            "formulaid": "E"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "9",
+            "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+            "formulaid": "F"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "8",
+            "value": "{$NET.IF.IFNAME.MATCHES}",
+            "formulaid": "G"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "9",
+            "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+            "formulaid": "H"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+            "formulaid": "I"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+            "formulaid": "J"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "8",
+            "value": "{$NET.IF.IFTYPE.MATCHES}",
+            "formulaid": "K"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "9",
+            "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+            "formulaid": "L"
+          }
+        ]
+      },
+      "templateid": "40652",
+      "action": "timeout_failed: {\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1/timeout\\\": value must be empty.\"\n}"
+    },
+    {
+      "itemid": "53528",
+      "host": "SPO-CPD-SW01",
+      "key_": "net.if.discovery",
+      "timeout": "",
+      "delay": "0",
+      "filter": {
+        "evaltype": "1",
+        "formula": "",
+        "eval_formula": "(A and B) and (C and D) and (E and F) and (G and H) and (I and J) and (K and L)",
+        "conditions": [
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFADMINSTATUS.MATCHES}",
+            "formulaid": "A"
+          },
+          {
+            "macro": "{#IFADMINSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFADMINSTATUS.NOT_MATCHES}",
+            "formulaid": "B"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFALIAS.MATCHES}",
+            "formulaid": "C"
+          },
+          {
+            "macro": "{#IFALIAS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFALIAS.NOT_MATCHES}",
+            "formulaid": "D"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "8",
+            "value": "{$NET.IF.IFDESCR.MATCHES}",
+            "formulaid": "E"
+          },
+          {
+            "macro": "{#IFDESCR}",
+            "operator": "9",
+            "value": "{$NET.IF.IFDESCR.NOT_MATCHES}",
+            "formulaid": "F"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "8",
+            "value": "{$NET.IF.IFNAME.MATCHES}",
+            "formulaid": "G"
+          },
+          {
+            "macro": "{#IFNAME}",
+            "operator": "9",
+            "value": "{$NET.IF.IFNAME.NOT_MATCHES}",
+            "formulaid": "H"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "8",
+            "value": "{$NET.IF.IFOPERSTATUS.MATCHES}",
+            "formulaid": "I"
+          },
+          {
+            "macro": "{#IFOPERSTATUS}",
+            "operator": "9",
+            "value": "{$NET.IF.IFOPERSTATUS.NOT_MATCHES}",
+            "formulaid": "J"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "8",
+            "value": "{$NET.IF.IFTYPE.MATCHES}",
+            "formulaid": "K"
+          },
+          {
+            "macro": "{#IFTYPE}",
+            "operator": "9",
+            "value": "{$NET.IF.IFTYPE.NOT_MATCHES}",
+            "formulaid": "L"
+          }
+        ]
+      },
+      "templateid": "40652",
+      "action": "timeout_failed: {\n  \"code\": -32602,\n  \"message\": \"Invalid params.\",\n  \"data\": \"Invalid parameter \\\"/1/timeout\\\": value must be empty.\"\n}"
+    }
+  ],
+  "after": [
+    {
+      "itemid": "52328",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "timeout": "",
+      "templateid": "40652",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.1.80' from [[172.16.23.9]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10731",
+          "host": "SCL-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "52428",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "timeout": "",
+      "templateid": "40652",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.6.80' from [[172.16.23.29]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10735",
+          "host": "SCL-TEC2-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "53528",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "0",
+      "timeout": "",
+      "templateid": "40652",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.18.100' from [[172.17.23.15]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10834",
+          "host": "SPO-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "84289",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "1",
+      "timeout": "",
+      "templateid": "42488",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10918",
+          "host": "SCL-ETE-TB01"
+        }
+      ]
+    },
+    {
+      "itemid": "85156",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "1",
+      "timeout": "",
+      "templateid": "42488",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10937",
+          "host": "SCL-TIN-TMXC01"
+        }
+      ]
+    },
+    {
+      "itemid": "88015",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "87847",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10683",
+          "host": "SCL-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "88016",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "timeout": "",
+      "templateid": "87848",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10683",
+          "host": "SCL-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "88057",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "87847",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10920",
+          "host": "SCL-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "88058",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "timeout": "",
+      "templateid": "87848",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10920",
+          "host": "SCL-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "88099",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10941",
+          "host": "SPO-SRV-FAD01"
+        }
+      ]
+    },
+    {
+      "itemid": "105434",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "87847",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10884",
+          "host": "BGP-SRV-FHV01"
+        }
+      ]
+    },
+    {
+      "itemid": "105435",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "timeout": "",
+      "templateid": "87848",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10884",
+          "host": "BGP-SRV-FHV01"
+        }
+      ]
+    },
+    {
+      "itemid": "105476",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "87847",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10885",
+          "host": "BGP-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "105477",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "timeout": "",
+      "templateid": "87848",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10885",
+          "host": "BGP-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "105532",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "timeout": "30s",
+      "templateid": "87847",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10886",
+          "host": "BGP-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "105533",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "timeout": "",
+      "templateid": "87848",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10886",
+          "host": "BGP-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "106824",
+      "name": "Database discovery",
+      "key_": "pgsql.discovery.db[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{$PG.DATABASE}\"]",
+      "status": "1",
+      "timeout": "",
+      "templateid": "32404",
+      "state": "1",
+      "error": "Unknown metric pgsql.discovery.db",
+      "hosts": [
+        {
+          "hostid": "11102",
+          "host": "SPO-SRV-V02"
+        }
+      ]
+    },
+    {
+      "itemid": "107176",
+      "name": "MariaDB discovery",
+      "key_": "mysql.extra_metric.discovery",
+      "status": "1",
+      "timeout": "",
+      "templateid": "33147",
+      "state": "1",
+      "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "107177",
+      "name": "Replication discovery",
+      "key_": "mysql.replication.discovery[\"{$MYSQL.DSN}\",\"{$MYSQL.USER}\",\"{$MYSQL.PASSWORD}\"]",
+      "status": "1",
+      "timeout": "",
+      "templateid": "30679",
+      "state": "1",
+      "error": "Cannot fetch data: Cannot fetch data.: error getting slave or replica status: Error 1227 (42000): Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "108884",
+      "name": "Application pools discovery",
+      "key_": "wmi.getall[root\\webAdministration, select Name from ApplicationPool]",
+      "status": "1",
+      "timeout": "",
+      "templateid": "31005",
+      "state": "1",
+      "error": "Exception occurred. (Invalid namespace )",
+      "hosts": [
+        {
+          "hostid": "10898",
+          "host": "BGP-SRV-VAPP12"
+        }
+      ]
+    }
+  ]
+}

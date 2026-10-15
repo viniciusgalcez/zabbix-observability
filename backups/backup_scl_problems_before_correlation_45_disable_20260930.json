@@ -1,0 +1,2042 @@
+[
+  {
+    "eventid": "18499267",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790767725",
+    "ns": "822528934",
+    "r_eventid": "18499268",
+    "r_clock": "1790767725",
+    "r_ns": "822528934",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499265",
+    "source": "0",
+    "object": "0",
+    "objectid": "55128",
+    "clock": "1790767725",
+    "ns": "822528934",
+    "r_eventid": "18499266",
+    "r_clock": "1790767725",
+    "r_ns": "822528934",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state is dead [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499262",
+    "source": "0",
+    "object": "0",
+    "objectid": "47633",
+    "clock": "1790767725",
+    "ns": "822528934",
+    "r_eventid": "18499264",
+    "r_clock": "1790767725",
+    "r_ns": "822528934",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499261",
+    "source": "0",
+    "object": "0",
+    "objectid": "42722",
+    "clock": "1790767725",
+    "ns": "822528934",
+    "r_eventid": "18499263",
+    "r_clock": "1790767725",
+    "r_ns": "822528934",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499174",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767690",
+    "ns": "68218727",
+    "r_eventid": "18499177",
+    "r_clock": "1790767690",
+    "r_ns": "68218727",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499172",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790767690",
+    "ns": "68218727",
+    "r_eventid": "18499175",
+    "r_clock": "1790767690",
+    "r_ns": "68218727",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499137",
+    "source": "0",
+    "object": "0",
+    "objectid": "55128",
+    "clock": "1790767665",
+    "ns": "822409621",
+    "r_eventid": "18499139",
+    "r_clock": "1790767665",
+    "r_ns": "822409621",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state is dead [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499136",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790767665",
+    "ns": "822409621",
+    "r_eventid": "18499138",
+    "r_clock": "1790767665",
+    "r_ns": "822409621",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499133",
+    "source": "0",
+    "object": "0",
+    "objectid": "47633",
+    "clock": "1790767665",
+    "ns": "822409621",
+    "r_eventid": "18499135",
+    "r_clock": "1790767665",
+    "r_ns": "822409621",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499132",
+    "source": "0",
+    "object": "0",
+    "objectid": "42722",
+    "clock": "1790767665",
+    "ns": "822409621",
+    "r_eventid": "18499134",
+    "r_clock": "1790767665",
+    "r_ns": "822409621",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499046",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767630",
+    "ns": "783752859",
+    "r_eventid": "18499049",
+    "r_clock": "1790767630",
+    "r_ns": "783752859",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499044",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790767630",
+    "ns": "783752859",
+    "r_eventid": "18499047",
+    "r_clock": "1790767630",
+    "r_ns": "783752859",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499009",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790767605",
+    "ns": "823381692",
+    "r_eventid": "18499010",
+    "r_clock": "1790767605",
+    "r_ns": "823381692",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499007",
+    "source": "0",
+    "object": "0",
+    "objectid": "55128",
+    "clock": "1790767605",
+    "ns": "823381692",
+    "r_eventid": "18499008",
+    "r_clock": "1790767605",
+    "r_ns": "823381692",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state is dead [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499004",
+    "source": "0",
+    "object": "0",
+    "objectid": "47633",
+    "clock": "1790767605",
+    "ns": "823381692",
+    "r_eventid": "18499006",
+    "r_clock": "1790767605",
+    "r_ns": "823381692",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499003",
+    "source": "0",
+    "object": "0",
+    "objectid": "42722",
+    "clock": "1790767605",
+    "ns": "823381692",
+    "r_eventid": "18499005",
+    "r_clock": "1790767605",
+    "r_ns": "823381692",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498910",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767570",
+    "ns": "846944908",
+    "r_eventid": "18498913",
+    "r_clock": "1790767570",
+    "r_ns": "846944908",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498908",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790767570",
+    "ns": "846944908",
+    "r_eventid": "18498911",
+    "r_clock": "1790767570",
+    "r_ns": "846944908",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498888",
+    "source": "0",
+    "object": "0",
+    "objectid": "55128",
+    "clock": "1790767545",
+    "ns": "824336150",
+    "r_eventid": "18498889",
+    "r_clock": "1790767545",
+    "r_ns": "824336150",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state is dead [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498884",
+    "source": "0",
+    "object": "0",
+    "objectid": "47633",
+    "clock": "1790767545",
+    "ns": "824336150",
+    "r_eventid": "18498887",
+    "r_clock": "1790767545",
+    "r_ns": "824336150",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498883",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790767545",
+    "ns": "824336150",
+    "r_eventid": "18498886",
+    "r_clock": "1790767545",
+    "r_ns": "824336150",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498882",
+    "source": "0",
+    "object": "0",
+    "objectid": "42722",
+    "clock": "1790767545",
+    "ns": "824336150",
+    "r_eventid": "18498885",
+    "r_clock": "1790767545",
+    "r_ns": "824336150",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498795",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767510",
+    "ns": "255506369",
+    "r_eventid": "18498798",
+    "r_clock": "1790767510",
+    "r_ns": "255506369",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498793",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790767510",
+    "ns": "255506369",
+    "r_eventid": "18498796",
+    "r_clock": "1790767510",
+    "r_ns": "255506369",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498773",
+    "source": "0",
+    "object": "0",
+    "objectid": "42745",
+    "clock": "1790767485",
+    "ns": "833763720",
+    "r_eventid": "18498774",
+    "r_clock": "1790767485",
+    "r_ns": "833763720",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498771",
+    "source": "0",
+    "object": "0",
+    "objectid": "55128",
+    "clock": "1790767485",
+    "ns": "833763720",
+    "r_eventid": "18498772",
+    "r_clock": "1790767485",
+    "r_ns": "833763720",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state is dead [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current state: dead (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498768",
+    "source": "0",
+    "object": "0",
+    "objectid": "47633",
+    "clock": "1790767485",
+    "ns": "833763720",
+    "r_eventid": "18498770",
+    "r_clock": "1790767485",
+    "r_ns": "833763720",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498767",
+    "source": "0",
+    "object": "0",
+    "objectid": "42722",
+    "clock": "1790767485",
+    "ns": "833763720",
+    "r_eventid": "18498769",
+    "r_clock": "1790767485",
+    "r_ns": "833763720",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[SCLISP2_MTZISP1]: High packets loss",
+    "acknowledged": "0",
+    "severity": "2",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Loss: 100 %",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_MATRIZ"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498681",
+    "source": "0",
+    "object": "0",
+    "objectid": "55127",
+    "clock": "1790767450",
+    "ns": "783113442",
+    "r_eventid": "18498684",
+    "r_clock": "1790767450",
+    "r_ns": "783113442",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP1_MTZISP1"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18498679",
+    "source": "0",
+    "object": "0",
+    "objectid": "42398",
+    "clock": "1790767450",
+    "ns": "783113442",
+    "r_eventid": "18498682",
+    "r_clock": "1790767450",
+    "r_ns": "783113442",
+    "correlationid": "45",
+    "userid": "0",
+    "name": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "acknowledged": "0",
+    "severity": "3",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "Current status: down (1)",
+    "suppression_data": [],
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "slahost",
+        "value": "SCL-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "SCLISP2_MTZISP1"
+      }
+    ],
+    "urls": []
+  }
+]

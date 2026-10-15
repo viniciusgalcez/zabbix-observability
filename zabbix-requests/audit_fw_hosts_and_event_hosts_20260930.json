@@ -1,0 +1,27 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": ["hostid", "host", "name", "status"],
+        "groupids": ["27", "28", "29", "30", "31", "98", "99", "100"],
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_all_firewall_hosts_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "clock", "severity", "cause_eventid", "value"],
+        "eventids": [],
+        "selectHosts": ["hostid", "host", "name"],
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC"
+      }
+    }
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend",
+        "sortfield": "eventid",
+        "sortorder": "DESC",
+        "limit": 100
+      }
+    },
+    "save": "backups/observe_scl_problems_after_correlations_16_45_disable_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": "extend",
+        "source": 0,
+        "object": 0,
+        "hostids": ["10724"],
+        "time_from": 1790767920,
+        "sortfield": ["clock", "eventid"],
+        "sortorder": "ASC",
+        "limit": 500,
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/observe_scl_events_after_correlations_16_45_disable_20260930.json",
+    "quiet": true
+  }
+]

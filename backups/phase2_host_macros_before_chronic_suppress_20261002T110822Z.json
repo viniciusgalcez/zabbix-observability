@@ -1,0 +1,91 @@
+[
+  {
+    "hostmacroid": "8033",
+    "hostid": "10758",
+    "macro": "{$FGATE.API.FQDN}",
+    "value": "172.17.23.6",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8034",
+    "hostid": "10758",
+    "macro": "{$FGATE.API.PORT}",
+    "value": "8443",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8035",
+    "hostid": "10758",
+    "macro": "{$FGATE.API.TOKEN}",
+    "description": "",
+    "type": "1",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8032",
+    "hostid": "10758",
+    "macro": "{$FGATE.SCHEME}",
+    "value": "https",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8603",
+    "hostid": "10758",
+    "macro": "{$VPN.STATE.CONTROL:\"SYSTEXTIL_W2\"}",
+    "value": "0",
+    "description": "Exceção permanente 2026-09-28: SYSTEXTIL_W2 é inoperante (never used). Tunnel sempre down independente do link VIVO. Alerta suprimido para evitar ruído permanente no NOC.",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8573",
+    "hostid": "10758",
+    "macro": "{$VPN.STATE.CONTROL:\"VPN-AYKO-MSS-01\"}",
+    "value": "0",
+    "description": "Exceção aprovada em 2026-09-16: evita falso positivo causado por múltiplas referências SNMP do túnel AYKO. O firewall, a interface e os demais túneis permanecem monitorados.",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8574",
+    "hostid": "10758",
+    "macro": "{$VPN.STATE.CONTROL:\"VPN-AYKO-MSS-02\"}",
+    "value": "0",
+    "description": "Exceção aprovada em 2026-09-16: evita falso positivo causado por múltiplas referências SNMP do túnel AYKO. O firewall, a interface e os demais túneis permanecem monitorados.",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8552",
+    "hostid": "11171",
+    "macro": "{$FGATE.API.FQDN}",
+    "value": "172.23.10.1",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8553",
+    "hostid": "11171",
+    "macro": "{$FGATE.API.PORT}",
+    "value": "8443",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  },
+  {
+    "hostmacroid": "8551",
+    "hostid": "11171",
+    "macro": "{$FGATE.SCHEME}",
+    "value": "https",
+    "description": "",
+    "type": "0",
+    "automatic": "0"
+  }
+]

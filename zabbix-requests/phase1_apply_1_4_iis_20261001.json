@@ -1,0 +1,24 @@
+[
+  {
+    "arguments": {
+      "method": "item.update",
+      "params": {
+        "itemid": "108972",
+        "status": 1
+      }
+    },
+    "save": "backups/phase1_apply_disable_vapp10_dotnet_v2_queue_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "51071",
+        "status": 1
+      }
+    },
+    "save": "backups/phase1_apply_disable_trigger_51071_iis_queue_20261001.json",
+    "quiet": true
+  }
+]

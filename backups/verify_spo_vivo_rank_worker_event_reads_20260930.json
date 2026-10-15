@@ -1,0 +1,184 @@
+[
+  {
+    "eventid": "18116214",
+    "source": "0",
+    "object": "0",
+    "objectid": "50308",
+    "clock": "1790593399",
+    "ns": "148260667",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "0",
+    "suppressed": "0",
+    "acknowledges": [],
+    "opdata": "",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "health-check",
+        "value": "sla_internet"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  },
+  {
+    "eventid": "18499648",
+    "source": "0",
+    "object": "0",
+    "objectid": "43256",
+    "clock": "1790767999",
+    "ns": "987202928",
+    "r_eventid": "0",
+    "r_clock": "0",
+    "r_ns": "0",
+    "correlationid": "0",
+    "userid": "0",
+    "name": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "acknowledged": "0",
+    "severity": "4",
+    "cause_eventid": "18116214",
+    "suppressed": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1702",
+        "userid": "32",
+        "clock": "1790773044",
+        "message": "",
+        "action": "256",
+        "old_severity": "0",
+        "new_severity": "0",
+        "suppress_until": "0",
+        "taskid": "0"
+      }
+    ],
+    "opdata": "Current state: dead (1)",
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ],
+    "urls": []
+  }
+]

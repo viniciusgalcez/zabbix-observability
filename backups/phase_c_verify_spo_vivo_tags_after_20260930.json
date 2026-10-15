@@ -1,0 +1,117 @@
+[
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "error": "",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "wan-link"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ],
+    "dependencies": []
+  },
+  {
+    "triggerid": "55144",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "event_name": "",
+    "priority": "4",
+    "status": "0",
+    "value": "1",
+    "error": "",
+    "state": "0",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1.vpn-agg"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "50308",
+        "description": "SPO: Saida de internet 1 (VIVO) sem conectividade"
+      }
+    ]
+  }
+]

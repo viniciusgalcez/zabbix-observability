@@ -1,0 +1,7 @@
+[
+  {
+    "arguments": {"method": "problem.get", "params": {"output": "extend", "eventids": ["18116214", "18499648"], "selectTags": "extend", "selectAcknowledges": "extend"}},
+    "save": "backups/verify_spo_vivo_rank_worker_event_reads_20260930.json",
+    "quiet": true
+  }
+]

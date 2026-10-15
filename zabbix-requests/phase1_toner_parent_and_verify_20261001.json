@@ -1,0 +1,87 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "flags", "templateid", "hostid"],
+        "itemids": ["110116"],
+        "selectDiscoveryRule": ["itemid", "name", "key_"],
+        "selectItemDiscovery": ["parent_itemid"]
+      }
+    },
+    "save": "backups/phase1_toner_item_parent_discovery_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": ["hostid", "host"],
+        "filter": {"host": ["SCL-DRH-COLOR01"]},
+        "selectParentTemplates": ["templateid", "host", "name"]
+      }
+    },
+    "save": "backups/phase1_color01_templates_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "name"],
+        "hostids": ["10713"],
+        "recent": true
+      }
+    },
+    "save": "backups/phase1_verify_ap_problems_left_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": ["17297217"],
+        "output": ["eventid", "value", "r_eventid", "name"],
+        "select_acknowledges": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_icmp_event_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": ["itemid", "name"],
+        "itemids": ["42682"],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_speed_proto_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "status", "state", "error"],
+        "itemids": ["108972", "104688"],
+        "selectPreprocessing": "extend",
+        "selectHosts": ["host"]
+      }
+    },
+    "save": "backups/phase1_verify_iis_speed_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "status", "manual_close"],
+        "triggerids": ["51071", "23176", "37570"]
+      }
+    },
+    "save": "backups/phase1_verify_triggers_after_20261001.json",
+    "quiet": true
+  }
+]

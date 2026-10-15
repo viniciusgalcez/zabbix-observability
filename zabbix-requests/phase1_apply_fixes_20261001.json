@@ -1,0 +1,84 @@
+[
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": ["17297217"],
+        "action": 1,
+        "message": "Fase 1.1: host BGP-ACA-AP01 ja esta desabilitado (status=1). Fechando problem ICMP residual em producao."
+      }
+    },
+    "save": "backups/phase1_apply_close_icmp_17297217_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.update",
+      "params": {
+        "itemid": "42682",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "if (value === '' || value === '-1' || isNaN(Number(value)) || Number(value) < 0) {\n  return '0';\n}\nreturn value;",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "1",
+            "params": "1000000",
+            "error_handler": "0",
+            "error_handler_params": ""
+          },
+          {
+            "type": "20",
+            "params": "1h",
+            "error_handler": "0",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_speed_prototype_42682_js_sanitize_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.update",
+      "params": {
+        "itemid": "110116",
+        "preprocessing": [
+          {
+            "type": "21",
+            "params": "if (value === '-2' || Number(value) < 0) {\n  throw 'toner sentinel';\n}\nreturn value;",
+            "error_handler": "1",
+            "error_handler_params": ""
+          }
+        ]
+      }
+    },
+    "save": "backups/phase1_apply_toner_magenta_discard_sentinel_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.update",
+      "params": {
+        "itemid": "108972",
+        "status": 1
+      }
+    },
+    "save": "backups/phase1_apply_disable_vapp10_dotnet_v2_queue_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "51071",
+        "status": 1
+      }
+    },
+    "save": "backups/phase1_apply_disable_trigger_51071_iis_queue_20261001.json",
+    "quiet": true
+  }
+]

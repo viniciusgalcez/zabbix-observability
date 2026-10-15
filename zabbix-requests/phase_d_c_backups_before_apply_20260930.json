@@ -1,0 +1,30 @@
+[
+  {
+    "arguments": {
+      "method": "configuration.export",
+      "params": {
+        "format": "json",
+        "options": {
+          "templates": ["10604"]
+        }
+      }
+    },
+    "save": "backups/phase_c_export_template_10604_before_scope_tags_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "actionids": ["22"],
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "selectRecoveryOperations": "extend",
+        "selectUpdateOperations": "extend"
+      }
+    },
+    "save": "backups/phase_d_backup_action_22_full_before_filter_20260930.json",
+    "quiet": true
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/audit_pilot_events_still_open_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend",
+        "sortfield": "eventid",
+        "sortorder": "DESC",
+        "limit": 100
+      }
+    },
+    "save": "backups/audit_scl_all_open_after_correlation_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["16", "45"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/audit_correlations_16_45_before_pilot_cleanup_20260930.json",
+    "quiet": true
+  }
+]

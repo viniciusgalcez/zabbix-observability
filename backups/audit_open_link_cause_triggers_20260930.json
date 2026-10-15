@@ -1,0 +1,46 @@
+[
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "value": "1",
+    "status": "0",
+    "priority": "4",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ]
+  }
+]

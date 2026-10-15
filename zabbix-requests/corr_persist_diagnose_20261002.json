@@ -1,0 +1,83 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "correlationids": [
+          "11",
+          "12",
+          "16",
+          "17",
+          "35",
+          "36",
+          "45",
+          "46"
+        ]
+      }
+    },
+    "save": "backups/corr_status_vivo_rules_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50308",
+          "50306",
+          "55144"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "status",
+          "priority",
+          "manual_close"
+        ],
+        "selectHosts": [
+          "host"
+        ],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/corr_cause_triggers_status_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/corr_fw_problems_now_20261002.json",
+    "quiet": true
+  }
+]

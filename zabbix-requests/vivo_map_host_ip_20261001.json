@@ -1,0 +1,58 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": [
+          "hostid",
+          "host",
+          "name",
+          "status"
+        ],
+        "selectInterfaces": [
+          "interfaceid",
+          "ip",
+          "dns",
+          "port",
+          "type",
+          "main",
+          "available"
+        ],
+        "search": {
+          "ip": "172.16.23.6"
+        },
+        "searchByAny": true
+      }
+    },
+    "save": "backups/vivo_map_host_by_ip_172_16_23_6_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": [
+          "hostid",
+          "host",
+          "name",
+          "status"
+        ],
+        "selectInterfaces": [
+          "interfaceid",
+          "ip",
+          "main",
+          "type"
+        ],
+        "filter": {
+          "host": [
+            "BGP-CPD-FW01",
+            "SPO-CPD-FW01",
+            "SCL-CPD-FW01"
+          ]
+        }
+      }
+    },
+    "save": "backups/vivo_map_fw_hosts_known_20261001.json",
+    "quiet": true
+  }
+]

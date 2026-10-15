@@ -1,0 +1,1182 @@
+[
+  {
+    "triggerid": "43050",
+    "expression": "change(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])<0 and last(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])>0 and (\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=6 or\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=7 or\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=11 or\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=62 or\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=69 or\r\nlast(/SPO-CPD-FW01/net.if.type[ifType.17])=117\r\n) and (last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17])<>2)",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Ethernet has changed to lower speed than it was before",
+    "url": "",
+    "status": "1",
+    "value": "0",
+    "priority": "1",
+    "lastchange": "0",
+    "comments": "This Ethernet connection has transitioned down from its known maximum speed. This might be a sign of autonegotiation issues. Acknowledge to close the problem manually.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "(change(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])>0 and \r\nlast(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17],#2)>0) or\r\n(last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17])=2)",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "Current reported speed: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "43188",
+        "expression": "{$IFCONTROL:\"ISP1_VIVO\"}=1 and {85281}=2 and ({85282}<>{85283})",
+        "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Link down",
+        "url": "",
+        "status": "1",
+        "value": "0",
+        "priority": "3",
+        "lastchange": "1790711418",
+        "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"ISP1_VIVO\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "4",
+        "recovery_mode": "1",
+        "recovery_expression": "{85281}<>2 or {$IFCONTROL:\"ISP1_VIVO\"}=0",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "1",
+        "opdata": "Current state: {ITEM.LASTVALUE1}",
+        "event_name": "",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93289",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Speed",
+        "key_": "net.if.speed[ifHighSpeed.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711358",
+        "lastvalue": "2000000000"
+      },
+      {
+        "itemid": "93335",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Operational status",
+        "key_": "net.if.status[ifOperStatus.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "2"
+      },
+      {
+        "itemid": "93381",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Interface type",
+        "key_": "net.if.type[ifType.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711358",
+        "lastvalue": "135"
+      }
+    ]
+  },
+  {
+    "triggerid": "43096",
+    "expression": "(avg(/SPO-CPD-FW01/net.if.in[ifHCInOctets.17],15m)>(95/100)*last(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17]) or \r\navg(/SPO-CPD-FW01/net.if.out[ifHCOutOctets.17],15m)>(95/100)*last(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])) and \r\nlast(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])>0",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High bandwidth usage",
+    "url": "",
+    "status": "1",
+    "value": "0",
+    "priority": "2",
+    "lastchange": "0",
+    "comments": "The utilization of the network interface is close to its estimated maximum bandwidth.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "avg(/SPO-CPD-FW01/net.if.in[ifHCInOctets.17],15m)<((95-3)/100)*last(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17]) and \r\navg(/SPO-CPD-FW01/net.if.out[ifHCOutOctets.17],15m)<((95-3)/100)*last(/SPO-CPD-FW01/net.if.speed[ifHighSpeed.17])",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "In: {ITEM.LASTVALUE1}, out: {ITEM.LASTVALUE3}, speed: {ITEM.LASTVALUE2}",
+    "event_name": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High bandwidth usage (>{$IF.UTIL.MAX:\"ISP1_VIVO\"}%)",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "43188",
+        "expression": "{$IFCONTROL:\"ISP1_VIVO\"}=1 and {85281}=2 and ({85282}<>{85283})",
+        "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Link down",
+        "url": "",
+        "status": "1",
+        "value": "0",
+        "priority": "3",
+        "lastchange": "1790711418",
+        "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"ISP1_VIVO\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "4",
+        "recovery_mode": "1",
+        "recovery_expression": "{85281}<>2 or {$IFCONTROL:\"ISP1_VIVO\"}=0",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "1",
+        "opdata": "Current state: {ITEM.LASTVALUE1}",
+        "event_name": "",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93105",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Bits received",
+        "key_": "net.if.in[ifHCInOctets.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "6048"
+      },
+      {
+        "itemid": "93243",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Bits sent",
+        "key_": "net.if.out[ifHCOutOctets.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "8"
+      },
+      {
+        "itemid": "93289",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Speed",
+        "key_": "net.if.speed[ifHighSpeed.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711358",
+        "lastvalue": "2000000000"
+      }
+    ]
+  },
+  {
+    "triggerid": "43142",
+    "expression": "min(/SPO-CPD-FW01/net.if.in.errors[ifInErrors.17],5m)>10\r\nor min(/SPO-CPD-FW01/net.if.out.errors[ifOutErrors.17],5m)>10",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High error rate",
+    "url": "",
+    "status": "1",
+    "value": "0",
+    "priority": "2",
+    "lastchange": "0",
+    "comments": "The trigger recovers when it is below 80% of the `{$IF.ERRORS.WARN:\"ISP1_VIVO\"}` threshold.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "max(/SPO-CPD-FW01/net.if.in.errors[ifInErrors.17],5m)<10*0.8\r\nand max(/SPO-CPD-FW01/net.if.out.errors[ifOutErrors.17],5m)<10*0.8",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "errors in: {ITEM.LASTVALUE1}, errors out: {ITEM.LASTVALUE2}",
+    "event_name": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): High error rate (>{$IF.ERRORS.WARN:\"ISP1_VIVO\"} for 5m)",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "scope",
+        "value": "performance"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "43188",
+        "expression": "{$IFCONTROL:\"ISP1_VIVO\"}=1 and {85281}=2 and ({85282}<>{85283})",
+        "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Link down",
+        "url": "",
+        "status": "1",
+        "value": "0",
+        "priority": "3",
+        "lastchange": "1790711418",
+        "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"ISP1_VIVO\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "4",
+        "recovery_mode": "1",
+        "recovery_expression": "{85281}<>2 or {$IFCONTROL:\"ISP1_VIVO\"}=0",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "1",
+        "opdata": "Current state: {ITEM.LASTVALUE1}",
+        "event_name": "",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93059",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Inbound packets with errors",
+        "key_": "net.if.in.errors[ifInErrors.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "93197",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Outbound packets with errors",
+        "key_": "net.if.out.errors[ifOutErrors.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "0"
+      }
+    ]
+  },
+  {
+    "triggerid": "43188",
+    "expression": "1=1 and last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17])=2 and (last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17],#1)<>last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17],#2))",
+    "description": "FortiGate: Interface ISP1_VIVO(ISP1-VIVO): Link down",
+    "url": "",
+    "status": "1",
+    "value": "0",
+    "priority": "3",
+    "lastchange": "1790711418",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"ISP1_VIVO\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SPO-CPD-FW01/net.if.status[ifOperStatus.17])<>2 or 1=0",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1-VIVO"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93335",
+        "name": "Interface ISP1_VIVO(ISP1-VIVO): Operational status",
+        "key_": "net.if.status[ifOperStatus.17]",
+        "status": "1",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790711418",
+        "lastvalue": "2"
+      }
+    ]
+  },
+  {
+    "triggerid": "43231",
+    "expression": "min(/SPO-CPD-FW01/sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.17],5m)>20",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "comments": "High level of packet loss detected.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "0",
+    "recovery_expression": "",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Loss: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93464",
+        "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Packets loss",
+        "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.17]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "100"
+      }
+    ]
+  },
+  {
+    "triggerid": "43234",
+    "expression": "min(/SPO-CPD-FW01/sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.13],5m)>20",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "comments": "High level of packet loss detected.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "0",
+    "recovery_expression": "",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Loss: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93467",
+        "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Packets loss",
+        "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.13]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "100"
+      }
+    ]
+  },
+  {
+    "triggerid": "43235",
+    "expression": "min(/SPO-CPD-FW01/sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.15],5m)>20",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "comments": "High level of packet loss detected.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "0",
+    "recovery_expression": "",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Loss: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93468",
+        "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Packets loss",
+        "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.15]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "100"
+      }
+    ]
+  },
+  {
+    "triggerid": "43236",
+    "expression": "min(/SPO-CPD-FW01/sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.9],5m)>20",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "comments": "High level of packet loss detected.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "0",
+    "recovery_expression": "",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Loss: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93469",
+        "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Packets loss",
+        "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.9]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "100"
+      }
+    ]
+  },
+  {
+    "triggerid": "43247",
+    "expression": "min(/SPO-CPD-FW01/sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.11],5m)>20",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "2",
+    "lastchange": "1790767999",
+    "comments": "High level of packet loss detected.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "0",
+    "recovery_expression": "",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Loss: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93480",
+        "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Packets loss",
+        "key_": "sdwan_health.loss[fgVWLHealthCheckLinkPacketLoss.11]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "100"
+      }
+    ]
+  },
+  {
+    "triggerid": "43251",
+    "expression": "1=1 and min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17],5m)=1",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state is dead",
+    "url": "",
+    "status": "1",
+    "value": "0",
+    "priority": "4",
+    "lastchange": "1782489619",
+    "comments": "SLA de SD-WAN indisponível: health-check fora do padrão do FortiGate por 3+ min seguidos. Oscilação curta e isolada = normal (provedor). Se persistir ou repetir bastante, verificar o link indicado no nome do alerta.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17],5m)=0 or 1=0",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93524",
+        "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.17]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43254",
+    "expression": "1=1 and min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13],5m)=1",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "comments": "SLA de SD-WAN indisponível: health-check fora do padrão do FortiGate por 3+ min seguidos. Oscilação curta e isolada = normal (provedor). Se persistir ou repetir bastante, verificar o link indicado no nome do alerta.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13],5m)=0 or 1=0",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93527",
+        "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.13]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43255",
+    "expression": "1=1 and min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15],5m)=1",
+    "description": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "comments": "SLA de SD-WAN indisponível: health-check fora do padrão do FortiGate por 3+ min seguidos. Oscilação curta e isolada = normal (provedor). Se persistir ou repetir bastante, verificar o link indicado no nome do alerta.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15],5m)=0 or 1=0",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93528",
+        "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.15]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43256",
+    "expression": "1=1 and min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9],5m)=1",
+    "description": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "comments": "SLA de SD-WAN indisponível: health-check fora do padrão do FortiGate por 3+ min seguidos. Oscilação curta e isolada = normal (provedor). Se persistir ou repetir bastante, verificar o link indicado no nome do alerta.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9],5m)=0 or 1=0",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93529",
+        "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.9]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "43267",
+    "expression": "1=1 and min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11],5m)=1",
+    "description": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790767999",
+    "comments": "SLA de SD-WAN indisponível: health-check fora do padrão do FortiGate por 3+ min seguidos. Oscilação curta e isolada = normal (provedor). Se persistir ou repetir bastante, verificar o link indicado no nome do alerta.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "min(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11],5m)=0 or 1=0",
+    "correlation_mode": "1",
+    "correlation_tag": "sdwan-if",
+    "manual_close": "1",
+    "opdata": "Current state: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "alert-type",
+        "value": "hk-state"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93540",
+        "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.11]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "50308",
+    "expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])>=3",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790593399",
+    "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SynergyRH, Systextil_Web, HK_ISP1, TEAMS, sla_internet). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "0",
+    "opdata": "",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93524",
+        "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.17]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93527",
+        "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.13]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93528",
+        "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.15]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93529",
+        "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.9]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93540",
+        "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.11]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "55144",
+    "expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.2])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.5])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.6])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.19])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25])>=4",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790408059",
+    "comments": "CAUSA de correlacao (link-cause=SPO_ISP1_VPN). 4+ dos 8 tuneis que saem pela VIVO da Matriz (MTZISP1_BGP/SCL, MTZ_AZ_W1, BRAS-01, DENIM-01, FIACAO1) dead com a internet OK. Recupera apos 10 min estavel. Depende da trigger de internet 50308. Criada 2026-09-11.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.2],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.5],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.6],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.19],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25],10m)<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "50308",
+        "expression": "{106085}+{106086}+{106087}+{106088}+{106089}>=3",
+        "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+        "url": "",
+        "status": "0",
+        "value": "1",
+        "priority": "4",
+        "lastchange": "1790593399",
+        "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SynergyRH, Systextil_Web, HK_ISP1, TEAMS, sla_internet). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "1",
+        "recovery_expression": "{106085}+{106086}+{106087}+{106088}+{106089}<=1",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "0",
+        "opdata": "",
+        "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93530",
+        "name": "SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.2]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93531",
+        "name": "SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.5]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93535",
+        "name": "SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.19]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93539",
+        "name": "SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.6]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93543",
+        "name": "SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.1]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "108706",
+        "name": "SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.21]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "109523",
+        "name": "SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.23]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "111025",
+        "name": "SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.25]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772799",
+        "lastvalue": "1"
+      }
+    ]
+  }
+]

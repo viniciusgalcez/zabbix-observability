@@ -1,0 +1,247 @@
+[
+  {
+    "eventid": "18499276",
+    "name": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1722",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499284",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1723",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499293",
+    "name": "FortiGate: VPN AZ_MTZ_W1: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1725",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499372",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1729",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499373",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1730",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499273",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1719",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499274",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1720",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499342",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: High packets loss",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1726",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499343",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ]:[VPN-MTZ-01]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1727",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499349",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1728",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499275",
+    "name": "FortiGate: SD-WAN [AZ_MTZ]:[AZ_MTZ_W1_W1]: High packets loss",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1721",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499288",
+    "name": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1724",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499620",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: High packets loss",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1731",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499621",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP2_MTZISP1]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1732",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499622",
+    "name": "FortiGate: SD-WAN [HK_MATRIZ]:[BGPISP1_MTZISP1]: Health check state is dead",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1733",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499652",
+    "name": "FortiGate: VPN BGPISP1_MTZISP1: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1734",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18499653",
+    "name": "FortiGate: VPN BGPISP2_MTZISP1: Tunnel down",
+    "cause_eventid": "18116214",
+    "acknowledged": "0",
+    "acknowledges": [
+      {
+        "acknowledgeid": "1735",
+        "action": "260",
+        "clock": "1790775851",
+        "message": "Sintoma da saida Vivo. Causa: evento 18116214, SPO: Link HK_ISP1 (VIVO) DOWN."
+      }
+    ]
+  },
+  {
+    "eventid": "18116214",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "acknowledges": []
+  }
+]

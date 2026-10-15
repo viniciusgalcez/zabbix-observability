@@ -1,0 +1,84 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "name", "severity", "clock", "acknowledged"],
+        "hostids": ["10713"],
+        "recent": true,
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase1_problems_on_disabled_ap_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "discoveryrule.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state"],
+        "hostids": ["11088"],
+        "search": {"key_": "net.if"},
+        "searchWildcardsEnabled": true
+      }
+    },
+    "save": "backups/phase1_frep_net_if_lld_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "value_type", "status", "type"],
+        "hostids": ["11088"],
+        "search": {"key_": "speed"},
+        "searchWildcardsEnabled": true,
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_frep_speed_prototypes_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastvalue"],
+        "hostids": ["11039"],
+        "search": {"key_": "HTTP Service Request Queues|APP_POOL|CurrentQueueSize"},
+        "searchWildcardsEnabled": true,
+        "selectTriggers": ["triggerid", "description", "status", "state"]
+      }
+    },
+    "save": "backups/phase1_vapp10_iis_queue_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "error", "lastvalue", "value_type"],
+        "hostids": ["10978"],
+        "search": {"key_": "printer.toner"},
+        "searchWildcardsEnabled": true,
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_color01_all_toner_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "value_type", "status"],
+        "search": {"key_": "printer.toner.level"},
+        "searchWildcardsEnabled": true,
+        "selectPreprocessing": "extend",
+        "selectHosts": ["hostid", "host", "name"]
+      }
+    },
+    "save": "backups/phase1_toner_prototypes_global_20261001.json",
+    "quiet": true
+  }
+]

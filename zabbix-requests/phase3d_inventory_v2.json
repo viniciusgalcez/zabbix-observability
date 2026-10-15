@@ -1,0 +1,604 @@
+{
+  "known_lld": [
+    {
+      "itemid": "52328",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "1",
+      "templateid": "40652",
+      "type": "18",
+      "master_itemid": "52305",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.10.65' from [[172.16.23.9]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10731",
+          "host": "SCL-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "52428",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "1",
+      "templateid": "40652",
+      "type": "18",
+      "master_itemid": "52405",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.6.80' from [[172.16.23.29]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10735",
+          "host": "SCL-TEC2-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "53528",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "1",
+      "templateid": "40652",
+      "type": "18",
+      "master_itemid": "53505",
+      "state": "1",
+      "error": "only partial data received, cannot retrieve OID: '.1.3.6.1.2.1.31.1.1.1.15.10' from [[172.17.23.15]:161]: timed out",
+      "hosts": [
+        {
+          "hostid": "10834",
+          "host": "SPO-CPD-SW01"
+        }
+      ]
+    },
+    {
+      "itemid": "84289",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "1",
+      "templateid": "42488",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10918",
+          "host": "SCL-ETE-TB01"
+        }
+      ]
+    },
+    {
+      "itemid": "85156",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "1",
+      "templateid": "42488",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Cannot obtain object's localized name.",
+      "hosts": [
+        {
+          "hostid": "10937",
+          "host": "SCL-TIN-TMXC01"
+        }
+      ]
+    },
+    {
+      "itemid": "85275",
+      "name": "Windows services discovery",
+      "key_": "service.discovery",
+      "status": "1",
+      "templateid": "42489",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "0",
+      "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n",
+      "hosts": [
+        {
+          "hostid": "10941",
+          "host": "SPO-SRV-FAD01"
+        }
+      ]
+    },
+    {
+      "itemid": "88015",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "87847",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10683",
+          "host": "SCL-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "88016",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "templateid": "87848",
+      "type": "18",
+      "master_itemid": "87985",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10683",
+          "host": "SCL-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "88057",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "87847",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10920",
+          "host": "SCL-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "88058",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "templateid": "87848",
+      "type": "18",
+      "master_itemid": "88027",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10920",
+          "host": "SCL-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "88099",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "0",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10941",
+          "host": "SPO-SRV-FAD01"
+        }
+      ]
+    },
+    {
+      "itemid": "105434",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "87847",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10884",
+          "host": "BGP-SRV-FHV01"
+        }
+      ]
+    },
+    {
+      "itemid": "105435",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "templateid": "87848",
+      "type": "18",
+      "master_itemid": "105404",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10884",
+          "host": "BGP-SRV-FHV01"
+        }
+      ]
+    },
+    {
+      "itemid": "105476",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "87847",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10885",
+          "host": "BGP-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "105477",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "templateid": "87848",
+      "type": "18",
+      "master_itemid": "105446",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10885",
+          "host": "BGP-SRV-FHV02"
+        }
+      ]
+    },
+    {
+      "itemid": "105532",
+      "name": "Hyper-V VM Discovery",
+      "key_": "hyperv.discover.vms",
+      "status": "1",
+      "templateid": "87847",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric hyperv.discover.vms",
+      "hosts": [
+        {
+          "hostid": "10886",
+          "host": "BGP-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "105533",
+      "name": "Hyper-V VM Disk Discovery",
+      "key_": "hyperv.discover.vms.data",
+      "status": "1",
+      "templateid": "87848",
+      "type": "18",
+      "master_itemid": "105502",
+      "state": "1",
+      "error": "Unknown metric hyperv.discovery.vms",
+      "hosts": [
+        {
+          "hostid": "10886",
+          "host": "BGP-SRV-FHV03"
+        }
+      ]
+    },
+    {
+      "itemid": "106824",
+      "name": "Database discovery",
+      "key_": "pgsql.discovery.db[\"{$PG.HOST}\",\"{$PG.PORT}\",\"{$PG.USER}\",\"{$PG.PASSWORD}\",\"{$PG.DATABASE}\"]",
+      "status": "1",
+      "templateid": "32404",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Unknown metric pgsql.discovery.db",
+      "hosts": [
+        {
+          "hostid": "11102",
+          "host": "SPO-SRV-V02"
+        }
+      ]
+    },
+    {
+      "itemid": "107176",
+      "name": "MariaDB discovery",
+      "key_": "mysql.extra_metric.discovery",
+      "status": "1",
+      "templateid": "33147",
+      "type": "18",
+      "master_itemid": "107132",
+      "state": "1",
+      "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "107177",
+      "name": "Replication discovery",
+      "key_": "mysql.replication.discovery[\"{$MYSQL.DSN}\",\"{$MYSQL.USER}\",\"{$MYSQL.PASSWORD}\"]",
+      "status": "1",
+      "templateid": "30679",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Cannot fetch data: Cannot fetch data.: error getting slave or replica status: Error 1227 (42000): Access denied; you need (at least one of) the SUPER, REPLICATION CLIENT privilege(s) for this operation.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ]
+    },
+    {
+      "itemid": "108884",
+      "name": "Application pools discovery",
+      "key_": "wmi.getall[root\\webAdministration, select Name from ApplicationPool]",
+      "status": "1",
+      "templateid": "31005",
+      "type": "0",
+      "master_itemid": "0",
+      "state": "1",
+      "error": "Exception occurred. (Invalid namespace )",
+      "hosts": [
+        {
+          "hostid": "10898",
+          "host": "BGP-SRV-VAPP12"
+        }
+      ]
+    }
+  ],
+  "phys_parent_attempt": [
+    {
+      "itemid": "42488",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "0",
+      "templateid": "0",
+      "hosts": [
+        {
+          "hostid": "10081",
+          "host": "Windows by Zabbix agent"
+        }
+      ]
+    }
+  ],
+  "windows_template": [
+    {
+      "templateid": "10081",
+      "host": "Windows by Zabbix agent"
+    }
+  ],
+  "windows_discovery_rules": [
+    {
+      "itemid": "42487",
+      "name": "Network interfaces discovery",
+      "key_": "net.if.discovery",
+      "status": "0"
+    },
+    {
+      "itemid": "42488",
+      "name": "Physical disks discovery",
+      "key_": "perf_instance_en.discovery[PhysicalDisk]",
+      "status": "0"
+    },
+    {
+      "itemid": "42489",
+      "name": "Windows services discovery",
+      "key_": "service.discovery",
+      "status": "0"
+    },
+    {
+      "itemid": "42490",
+      "name": "Mounted filesystem discovery",
+      "key_": "vfs.fs.dependent.discovery",
+      "status": "0"
+    }
+  ],
+  "hyperv_templates": [
+    {
+      "templateid": "11073",
+      "host": "Role - Servidor Hyper-V",
+      "name": "Role - Servidor Hyper-V"
+    },
+    {
+      "templateid": "10945",
+      "host": "Template Windows Hyper-V Host 2",
+      "name": "Template Windows Hyper-V Host 2"
+    }
+  ],
+  "hyperv_template_rules": {
+    "Role - Servidor Hyper-V": [],
+    "Template Windows Hyper-V Host 2": [
+      {
+        "itemid": "87847",
+        "name": "Hyper-V VM Discovery",
+        "key_": "hyperv.discover.vms",
+        "status": "0"
+      },
+      {
+        "itemid": "87848",
+        "name": "Hyper-V VM Disk Discovery",
+        "key_": "hyperv.discover.vms.data",
+        "status": "0"
+      }
+    ]
+  },
+  "az_macros": [
+    {
+      "hostmacroid": "8461",
+      "hostid": "11139",
+      "macro": "{$MYSQL.DSN}",
+      "value": "localhost",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8462",
+      "hostid": "11139",
+      "macro": "{$MYSQL.PASSWORD}",
+      "description": "",
+      "type": "1",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8463",
+      "hostid": "11139",
+      "macro": "{$MYSQL.USER}",
+      "value": "root_glpi",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    }
+  ],
+  "spo_macros": [
+    {
+      "hostmacroid": "8456",
+      "hostid": "11102",
+      "macro": "{$PG.DATABASE}",
+      "value": "zabbix",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8455",
+      "hostid": "11102",
+      "macro": "{$PG.HOST}",
+      "value": "127.0.0.1",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8457",
+      "hostid": "11102",
+      "macro": "{$PG.PASSWORD}",
+      "description": "",
+      "type": "1",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8454",
+      "hostid": "11102",
+      "macro": "{$PG.PORT}",
+      "value": "5432",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8458",
+      "hostid": "11102",
+      "macro": "{$PG.USER}",
+      "value": "zabbix",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    }
+  ],
+  "fad_templates": [
+    {
+      "templateid": "10081",
+      "host": "Windows by Zabbix agent"
+    },
+    {
+      "templateid": "11069",
+      "host": "Role - Controlador de Dominio Primario On-Prem"
+    },
+    {
+      "templateid": "11073",
+      "host": "Role - Servidor Hyper-V"
+    },
+    {
+      "templateid": "11078",
+      "host": "Role - Entra Connect e Gateways"
+    },
+    {
+      "templateid": "11170",
+      "host": "Template App NDD Print"
+    }
+  ],
+  "fad_service_discovery": [
+    {
+      "itemid": "85275",
+      "key_": "service.discovery",
+      "status": "1",
+      "templateid": "42489",
+      "state": "0",
+      "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n"
+    }
+  ],
+  "fad_templates_with_service_discovery": [
+    {
+      "template": "Windows by Zabbix agent",
+      "templateid": "10081",
+      "rules": [
+        {
+          "itemid": "42489",
+          "key_": "service.discovery",
+          "status": "0"
+        }
+      ]
+    }
+  ],
+  "fad_dup_keys_count": 0,
+  "fad_dup_sample": [],
+  "proxies": [
+    {
+      "proxyid": "1",
+      "name": "SPO-SRV-V04",
+      "custom_timeouts": "0",
+      "timeout_snmp_agent": ""
+    },
+    {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08",
+      "custom_timeouts": "0",
+      "timeout_snmp_agent": ""
+    },
+    {
+      "proxyid": "3",
+      "name": "BGP-SRV-V08",
+      "custom_timeouts": "0",
+      "timeout_snmp_agent": ""
+    }
+  ],
+  "fhv_agent_versions": [
+    {
+      "host": "SCL-SRV-FHV02",
+      "agent.version": "7.0.26"
+    },
+    {
+      "host": "SPO-SRV-FAD01",
+      "agent.version": "7.0.26"
+    },
+    {
+      "host": "BGP-SRV-FHV01",
+      "agent.version": "7.0.26"
+    },
+    {
+      "host": "BGP-SRV-FHV02",
+      "agent.version": "7.0.26"
+    },
+    {
+      "host": "BGP-SRV-FHV03",
+      "agent.version": "7.0.26"
+    },
+    {
+      "host": "SCL-SRV-FHV03",
+      "agent.version": "7.0.26"
+    }
+  ]
+}

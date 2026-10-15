@@ -1,0 +1,74 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "lastclock",
+          "status",
+          "state",
+          "error"
+        ],
+        "search": {
+          "name": "*ISP1_VIVO*"
+        },
+        "searchWildcardsEnabled": true,
+        "limit": 80
+      }
+    },
+    "save": "backups/vivo_scl_all_isp1_vivo_items_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "92259",
+          "92261",
+          "92262",
+          "92275",
+          "92281"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "lastvalue",
+          "prevvalue",
+          "lastclock",
+          "status",
+          "state"
+        ]
+      }
+    },
+    "save": "backups/vivo_scl_50306_items_now_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50306"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "priority"
+        ],
+        "expandExpression": true
+      }
+    },
+    "save": "backups/vivo_scl_50306_value_now_20261001.json",
+    "quiet": true
+  }
+]

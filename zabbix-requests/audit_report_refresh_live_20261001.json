@@ -1,0 +1,110 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "r_eventid",
+          "acknowledged",
+          "cause_eventid"
+        ],
+        "recent": true,
+        "selectTags": "extend",
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC",
+        "limit": 1000
+      }
+    },
+    "save": "backups/audit_report_all_open_problems_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "filter": {
+          "status": 0
+        }
+      }
+    },
+    "save": "backups/audit_fw_hosts_enabled_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": [
+          "correlationid",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "save": "backups/audit_report_correlations_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "proxy.get",
+      "params": {
+        "output": [
+          "proxyid",
+          "name",
+          "operating_mode",
+          "lastaccess",
+          "version",
+          "compatibility",
+          "state",
+          "address",
+          "port"
+        ]
+      }
+    },
+    "save": "backups/audit_deep_proxies_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "action.get",
+      "params": {
+        "output": [
+          "actionid",
+          "name",
+          "status",
+          "esc_period",
+          "pause_symptoms"
+        ],
+        "selectFilter": "extend",
+        "selectRecoveryOperations": "extend",
+        "filter": {
+          "eventsource": 0
+        }
+      }
+    },
+    "save": "backups/audit_report_actions_20261001.json",
+    "quiet": true
+  }
+]

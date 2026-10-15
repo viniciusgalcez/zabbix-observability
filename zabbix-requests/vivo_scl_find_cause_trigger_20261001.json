@@ -1,0 +1,115 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "priority",
+          "value",
+          "status",
+          "state",
+          "error"
+        ],
+        "selectTags": "extend",
+        "search": {
+          "description": "VIVO"
+        },
+        "searchWildcardsEnabled": true
+      }
+    },
+    "save": "backups/vivo_scl_triggers_vivo_search_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "priority",
+          "value",
+          "status",
+          "state"
+        ],
+        "selectTags": "extend",
+        "tags": [
+          {
+            "tag": "link-cause"
+          }
+        ],
+        "evaltype": 0
+      }
+    },
+    "save": "backups/vivo_scl_triggers_link_cause_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "hostids": [
+          "10724",
+          "10758",
+          "10741"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "priority",
+          "value",
+          "status"
+        ],
+        "selectTags": "extend",
+        "selectHosts": [
+          "hostid",
+          "host"
+        ],
+        "tags": [
+          {
+            "tag": "link-cause",
+            "value": "HK_VIVO"
+          },
+          {
+            "tag": "link-cause",
+            "value": "SPO_VIVO"
+          },
+          {
+            "tag": "link-cause",
+            "value": "BGP_ISP2"
+          }
+        ],
+        "evaltype": 2
+      }
+    },
+    "save": "backups/vivo_fw_link_cause_triggers_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "correlationids": [
+          "11",
+          "12",
+          "16",
+          "35",
+          "36"
+        ]
+      }
+    },
+    "save": "backups/vivo_correlations_hk_spo_before_20261001.json",
+    "quiet": true
+  }
+]

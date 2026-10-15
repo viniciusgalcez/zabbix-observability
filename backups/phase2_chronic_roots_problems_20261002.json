@@ -1,0 +1,313 @@
+[
+  {
+    "eventid": "17498586",
+    "objectid": "53814",
+    "name": "FortiGate: Interface lan2(): Link down",
+    "severity": "1",
+    "clock": "1789413377",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "lan2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "17437418",
+    "objectid": "53811",
+    "name": "FortiGate: Interface lan3(ISP2-): Link down",
+    "severity": "1",
+    "clock": "1789120758",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP2-"
+      },
+      {
+        "tag": "description",
+        "value": "ISP2-"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "lan3"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "slahost",
+        "value": "BRAS-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "vendor",
+        "value": "Fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "17441868",
+    "objectid": "54995",
+    "name": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "severity": "1",
+    "clock": "1789141400",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn2"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "azure"
+      },
+      {
+        "tag": "slahost",
+        "value": "AZ-VM-FW-01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      },
+      {
+        "tag": "tunnel",
+        "value": "az-to-oci-vpn2"
+      }
+    ]
+  },
+  {
+    "eventid": "18379687",
+    "objectid": "43212",
+    "name": "FortiGate: Interface dmz(): Link down",
+    "severity": "3",
+    "clock": "1790711298",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "network"
+      },
+      {
+        "tag": "depends-on",
+        "value": ""
+      },
+      {
+        "tag": "description",
+        "value": ""
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "dmz"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  },
+  {
+    "eventid": "18116214",
+    "objectid": "50308",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "severity": "4",
+    "clock": "1790593399",
+    "cause_eventid": "0",
+    "acknowledged": "0",
+    "tags": [
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "sd-wan"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ISP1"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_ SynergyRH"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_Systextil_Web"
+      },
+      {
+        "tag": "health-check",
+        "value": "HK_TEAMS"
+      },
+      {
+        "tag": "health-check",
+        "value": "sla_internet"
+      },
+      {
+        "tag": "infra",
+        "value": "firewall"
+      },
+      {
+        "tag": "interface",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "slahost",
+        "value": "SPO-CPD-FW01"
+      },
+      {
+        "tag": "target",
+        "value": "fortigate"
+      },
+      {
+        "tag": "target",
+        "value": "fortinet"
+      }
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+[
+  {
+    "actionid": "22",
+    "name": "Notificar MS Teams",
+    "eventsource": "0",
+    "status": "0",
+    "esc_period": "5m",
+    "pause_suppressed": "1",
+    "notify_if_canceled": "0",
+    "pause_symptoms": "1",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A or B",
+      "eval_formula": "A or B",
+      "conditions": [
+        {
+          "conditiontype": "26",
+          "operator": "0",
+          "value": "teams",
+          "value2": "notify",
+          "formulaid": "A"
+        },
+        {
+          "conditiontype": "4",
+          "operator": "5",
+          "value": "4",
+          "value2": "",
+          "formulaid": "B"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "operationid": "42",
+        "actionid": "22",
+        "operationtype": "0",
+        "esc_period": "0",
+        "esc_step_from": "2",
+        "esc_step_to": "2",
+        "evaltype": "0",
+        "opconditions": [],
+        "opmessage": {
+          "default_msg": "0",
+          "subject": "{HOST.NAME} · {EVENT.NAME}",
+          "message": "Estado: INCIDENTE ATIVO\nSeveridade: {EVENT.SEVERITY}\nHost: {HOST.NAME}\nEndereco: {HOST.CONN}\nInicio: {EVENT.DATE} {EVENT.TIME}\nDado operacional: {EVENT.OPDATA}\nValor atual: {ITEM.LASTVALUE}\nEvento: {EVENT.ID}\nContexto: alerta enviado pelo Zabbix para troubleshooting no Teams",
+          "mediatypeid": "53"
+        },
+        "opmessage_grp": [],
+        "opmessage_usr": [
+          {
+            "userid": "1"
+          }
+        ]
+      }
+    ],
+    "recovery_operations": [
+      {
+        "operationid": "44",
+        "actionid": "22",
+        "operationtype": "11",
+        "evaltype": "0",
+        "opconditions": [],
+        "opmessage": {
+          "default_msg": "0",
+          "subject": "{HOST.NAME} · {EVENT.NAME}",
+          "message": "Estado: RESOLVIDO\nSeveridade: {EVENT.SEVERITY}\nHost: {HOST.NAME}\nEndereco: {HOST.CONN}\nDuracao: {EVENT.DURATION}\nResolvido em: {EVENT.RECOVERY.DATE} {EVENT.RECOVERY.TIME}\nEvento: {EVENT.ID}\nContexto: normalizado apos validacao do Zabbix",
+          "mediatypeid": "0"
+        }
+      }
+    ],
+    "update_operations": []
+  }
+]

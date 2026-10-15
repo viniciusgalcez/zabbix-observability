@@ -1,0 +1,52 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["16", "45"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/backup_correlations_16_45_before_blocked_pilot_rollback_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "16",
+        "status": 0,
+        "description": ""
+      }
+    },
+    "save": "backups/rollback_correlation_16_after_blocked_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "45",
+        "status": 0,
+        "description": "Também aceita a causa física SPO_VIVO para correlacionar os mesmos sintomas de VPN."
+      }
+    },
+    "save": "backups/rollback_correlation_45_after_blocked_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["16", "45"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/verify_correlations_16_45_restored_after_blocked_pilot_20260930.json",
+    "quiet": true
+  }
+]

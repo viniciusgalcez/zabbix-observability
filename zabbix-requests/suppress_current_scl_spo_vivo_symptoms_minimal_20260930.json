@@ -1,0 +1,42 @@
+[
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": "extend",
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/backup_current_scl_spo_vivo_symptoms_before_minimal_suppression_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "action": 32,
+        "suppress_until": 1790782500
+      }
+    },
+    "save": "backups/apply_suppress_current_scl_spo_vivo_symptoms_minimal_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "eventids": ["18499624", "18499623", "18499618", "18499617", "18499616", "18499615"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/verify_current_scl_spo_vivo_symptoms_minimal_suppression_20260930.json",
+    "quiet": true
+  }
+]

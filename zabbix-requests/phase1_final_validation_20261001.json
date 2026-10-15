@@ -1,0 +1,117 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "110116",
+          "104688",
+          "104689",
+          "104690",
+          "104691",
+          "104692",
+          "108972"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "hostid",
+          "status",
+          "state",
+          "error",
+          "lastvalue",
+          "lastclock"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_verify_items_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": [
+          "eventid",
+          "name",
+          "objectid",
+          "severity",
+          "severity_orig",
+          "clock"
+        ],
+        "eventids": [
+          "17297217"
+        ]
+      }
+    },
+    "save": "backups/phase1_verify_icmp_event_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10713"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "severity_orig",
+          "clock"
+        ],
+        "recent": true
+      }
+    },
+    "save": "backups/phase1_verify_icmp_host_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "hostid",
+          "status",
+          "state",
+          "error"
+        ],
+        "filter": {
+          "status": "0",
+          "state": "1"
+        },
+        "selectHosts": [
+          "hostid",
+          "host",
+          "name"
+        ],
+        "limit": 50
+      }
+    },
+    "save": "backups/phase1_recount_unsupported_enabled_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "hostids": [
+          "10713"
+        ],
+        "output": [
+          "hostid",
+          "host",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "save": "backups/phase1_verify_ap_host_status_20261001.json",
+    "quiet": true
+  }
+]

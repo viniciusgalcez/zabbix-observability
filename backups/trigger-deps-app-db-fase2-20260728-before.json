@@ -1,0 +1,12 @@
+{
+  "_backup": "Estado das dependencias ANTES da fase 2 (outros app+banco do SLA)",
+  "_data": "2026-07-28",
+  "triggers": [
+    {"triggerid": "45821", "host": "Lansweeper (Web)", "desc": "Web cenario falhou: Lansweeper", "dependencies": [{"triggerid": "45223", "desc": "MSSQL DB lansweeperdb State"}]},
+    {"triggerid": "50137", "host": "Portal de OS (Web)", "desc": "Web cenario falhou: Portal de OS", "dependencies": [{"triggerid": "45226", "desc": "MSSQL DB PSC State"}]},
+    {"triggerid": "45829", "host": "GLPI (Web)", "desc": "Web cenario falhou: GLPI", "dependencies": [{"triggerid": "50262", "desc": "MySQL Service is down"}], "_nota": "ja completo, nao alterado"},
+    {"triggerid": "49529", "host": "App Totvs por Zabbix agent (master)", "desc": "Totvs fora do ar", "templateid": "0", "dependencies": []},
+    {"triggerid": "49485", "host": "App Dimep por Zabbix agent (master)", "desc": "Dimep parado", "templateid": "0", "dependencies": []},
+    {"triggerid": "49525", "host": "App EAS Cozinha por Zabbix agent (master)", "desc": "EAS Cozinha fora do ar", "templateid": "0", "dependencies": []}
+  ]
+}

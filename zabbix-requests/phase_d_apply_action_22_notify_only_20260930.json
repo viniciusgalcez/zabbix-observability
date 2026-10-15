@@ -1,0 +1,28 @@
+[
+  {
+    "arguments": {
+      "method": "action.update",
+      "params": {
+        "actionid": "22",
+        "esc_period": "5m",
+        "pause_symptoms": 1,
+        "pause_suppressed": 1,
+        "notify_if_canceled": 0,
+        "filter": {
+          "evaltype": 3,
+          "formula": "A",
+          "conditions": [
+            {
+              "conditiontype": 26,
+              "operator": 0,
+              "value": "teams",
+              "value2": "notify",
+              "formulaid": "A"
+            }
+          ]
+        }
+      }
+    },
+    "save": "backups/phase_d_apply_action_22_notify_teams_only_20260930.json"
+  }
+]

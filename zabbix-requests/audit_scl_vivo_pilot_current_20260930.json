@@ -1,0 +1,74 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "tags": [
+          {"tag": "link-cause", "value": "HK_VIVO", "operator": 1}
+        ],
+        "selectHosts": ["hostid", "host", "name"],
+        "selectItems": ["itemid", "name", "key_", "lastvalue", "lastclock", "status", "state", "error"],
+        "selectTags": "extend",
+        "selectDependencies": "extend",
+        "expandExpression": true,
+        "expandDescription": true
+      }
+    },
+    "save": "backups/audit_scl_vivo_hk_vivo_causes_current_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": "extend",
+        "hostids": ["10724"],
+        "tags": [
+          {"tag": "link-cause", "value": "SCL_ISP1_VPN", "operator": 1}
+        ],
+        "selectHosts": ["hostid", "host", "name"],
+        "selectItems": ["itemid", "name", "key_", "lastvalue", "lastclock", "status", "state", "error"],
+        "selectTags": "extend",
+        "selectDependencies": "extend",
+        "expandExpression": true,
+        "expandDescription": true
+      }
+    },
+    "save": "backups/audit_scl_vivo_vpn_causes_current_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": "extend",
+        "source": 0,
+        "object": 0,
+        "hostids": ["10724"],
+        "time_from": 1788220800,
+        "sortfield": ["clock", "eventid"],
+        "sortorder": "DESC",
+        "limit": 1000,
+        "selectTags": "extend",
+        "selectSuppressionData": "extend"
+      }
+    },
+    "save": "backups/audit_scl_events_september_for_correlation_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["11", "12", "35", "36"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/backup_scl_vivo_correlations_before_pilot_20260930.json",
+    "quiet": true
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "mediatypeid": "53",
+  "name": "MS Teams Workflow",
+  "status": "0",
+  "script_len": 17677,
+  "has_recommendation": false,
+  "has_acao_sugerida": false,
+  "backup": "backups\\backup_mediatype_53_before_remove_recommendation_20261005T122059Z.json"
+}

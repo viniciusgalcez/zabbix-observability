@@ -1,0 +1,43 @@
+[
+  {
+    "arguments": {
+      "method": "hostgroup.get",
+      "params": {
+        "output": ["groupid", "name"],
+        "search": {"name": "Firewall"},
+        "searchWildcardsEnabled": true
+      }
+    },
+    "save": "backups/audit_firewall_groups_for_rank_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": ["eventid", "objectid", "name", "severity", "clock", "cause_eventid", "acknowledged"],
+        "selectTags": "extend",
+        "sortfield": ["eventid"],
+        "sortorder": "DESC",
+        "limit": 500
+      }
+    },
+    "save": "backups/audit_all_open_problems_before_fw_rank_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "value", "status", "priority", "lastchange"],
+        "selectTags": ["tag", "value"],
+        "selectHosts": ["hostid", "host", "name"],
+        "filter": {"value": 1, "status": 0},
+        "tags": [{"tag": "link-cause", "operator": 5}],
+        "evaltype": 0
+      }
+    },
+    "save": "backups/audit_all_open_link_causes_before_fw_rank_20260930.json",
+    "quiet": true
+  }
+]

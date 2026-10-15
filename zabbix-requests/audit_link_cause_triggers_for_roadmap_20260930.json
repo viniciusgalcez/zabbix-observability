@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "selectTags": ["tag", "value"],
+        "selectHosts": ["hostid", "host"],
+        "tags": [{"tag": "link-cause", "operator": 5}],
+        "evaltype": 0,
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_all_fw_link_cause_triggers_for_roadmap_20260930.json",
+    "quiet": true
+  }
+]

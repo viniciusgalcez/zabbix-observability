@@ -1,0 +1,290 @@
+[
+  {
+    "eventid": "18499651",
+    "objectid": "43262",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499650",
+    "objectid": "43266",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499649",
+    "objectid": "43258",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499648",
+    "objectid": "43256",
+    "name": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499647",
+    "objectid": "43270",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499646",
+    "objectid": "43254",
+    "name": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499645",
+    "objectid": "54101",
+    "name": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499644",
+    "objectid": "43267",
+    "name": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499643",
+    "objectid": "51808",
+    "name": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499642",
+    "objectid": "54100",
+    "name": "FortiGate: SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499641",
+    "objectid": "51807",
+    "name": "FortiGate: SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499640",
+    "objectid": "43257",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499639",
+    "objectid": "43255",
+    "name": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state is dead",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499638",
+    "objectid": "43250",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499637",
+    "objectid": "43247",
+    "name": "FortiGate: SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499636",
+    "objectid": "43246",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499635",
+    "objectid": "43242",
+    "name": "FortiGate: SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499634",
+    "objectid": "43238",
+    "name": "FortiGate: SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499633",
+    "objectid": "43237",
+    "name": "FortiGate: SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499632",
+    "objectid": "43236",
+    "name": "FortiGate: SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499631",
+    "objectid": "43235",
+    "name": "FortiGate: SD-WAN [HK_TEAMS]:[ISP1_VIVO]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499630",
+    "objectid": "43234",
+    "name": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499629",
+    "objectid": "43231",
+    "name": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "clock": "1790767999",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18499614",
+    "objectid": "51770",
+    "name": "FortiGate: VPN MTZISP1_BRAS-01: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499613",
+    "objectid": "50821",
+    "name": "FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499612",
+    "objectid": "42712",
+    "name": "FortiGate: VPN P2MTZ1BGP1: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499611",
+    "objectid": "42710",
+    "name": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499610",
+    "objectid": "42704",
+    "name": "FortiGate: VPN P2MTZ1SCL2: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499609",
+    "objectid": "42702",
+    "name": "FortiGate: VPN P2MTZ1SCL1: Tunnel down",
+    "clock": "1790767964",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499356",
+    "objectid": "54099",
+    "name": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "clock": "1790767784",
+    "cause_eventid": "18116214",
+    "severity": "3"
+  },
+  {
+    "eventid": "18499330",
+    "objectid": "50824",
+    "name": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state is dead",
+    "clock": "1790767759",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  },
+  {
+    "eventid": "18499306",
+    "objectid": "50823",
+    "name": "FortiGate: SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: High packets loss",
+    "clock": "1790767759",
+    "cause_eventid": "18116214",
+    "severity": "2"
+  },
+  {
+    "eventid": "18379687",
+    "objectid": "43212",
+    "name": "FortiGate: Interface dmz(): Link down",
+    "clock": "1790711298",
+    "cause_eventid": "0",
+    "severity": "3"
+  },
+  {
+    "eventid": "18379641",
+    "objectid": "42706",
+    "name": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "clock": "1790711264",
+    "cause_eventid": "0",
+    "severity": "3"
+  },
+  {
+    "eventid": "18116214",
+    "objectid": "50308",
+    "name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "clock": "1790593399",
+    "cause_eventid": "0",
+    "severity": "4"
+  },
+  {
+    "eventid": "17779567",
+    "objectid": "55144",
+    "name": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "clock": "1790408059",
+    "cause_eventid": "18116214",
+    "severity": "4"
+  }
+]

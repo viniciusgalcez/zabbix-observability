@@ -1,0 +1,1970 @@
+[
+  {
+    "triggerid": "42389",
+    "description": "FortiGate: VPN SCLISP2_MTZISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42392",
+    "description": "FortiGate: VPN SCLISP2_BGPISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_BGPISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42398",
+    "description": "FortiGate: VPN SCLISP2_MTZISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_MTZISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42399",
+    "description": "FortiGate: VPN SCLISP2_BGPISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP2_BGPISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42401",
+    "description": "FortiGate: VPN BGPISP1_SCLISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_SCLISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_SCLISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42404",
+    "description": "FortiGate: VPN BGPISP2_SCLISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_SCLISP2"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_SCLISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "42405",
+    "description": "FortiGate: VPN BGPISP1_SCLISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_SCLISP2"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_SCLISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "42407",
+    "description": "FortiGate: VPN SYSTEXTIL2ISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL2ISP1"
+      },
+      {
+        "tag": "link",
+        "value": "SYSTEXTIL2ISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42409",
+    "description": "FortiGate: VPN BGPISP2_MTZISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP2"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "42410",
+    "description": "FortiGate: VPN SYSTEXTIL1ISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL1ISP1"
+      },
+      {
+        "tag": "link",
+        "value": "SYSTEXTIL1ISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42411",
+    "description": "FortiGate: VPN BGPISP1_MTZISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42412",
+    "description": "FortiGate: VPN BGPISP1_MTZISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_MTZISP2"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_MTZISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "42414",
+    "description": "FortiGate: VPN BGPISP2_SCLISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_SCLISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_SCLISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42415",
+    "description": "FortiGate: VPN BGPISP2_MTZISP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_MTZISP1"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_MTZISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "42702",
+    "description": "FortiGate: VPN P2MTZ1SCL1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42703",
+    "description": "FortiGate: VPN P2MTZ2SCL2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ2SCL2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42704",
+    "description": "FortiGate: VPN P2MTZ1SCL2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1SCL2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42706",
+    "description": "FortiGate: VPN SYSTEXTIL_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42707",
+    "description": "FortiGate: VPN P2MTZ2BGP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ2BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42710",
+    "description": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42711",
+    "description": "FortiGate: VPN SYSTEXTIL_W2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42712",
+    "description": "FortiGate: VPN P2MTZ1BGP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42713",
+    "description": "FortiGate: VPN P2MTZ2SCL1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ2SCL1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42714",
+    "description": "FortiGate: VPN P2MTZ2BGP1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ2BGP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "42716",
+    "description": "FortiGate: VPN SYSTEXTIL_W4: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W4"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "46433",
+    "description": "FortiGate: VPN VPN-AYKO-MSS-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-AYKO-MSS-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "46436",
+    "description": "FortiGate: VPN VPN-AYKO-MSS-01: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-AYKO-MSS-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "50794",
+    "description": "FortiGate: VPN SCL_AZ_W2_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCL_AZ_W2_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "50820",
+    "description": "FortiGate: VPN MTZ_AZ_W2_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W2_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "50821",
+    "description": "FortiGate: VPN MTZ_AZ_W1_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZ_AZ_W1_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "50822",
+    "description": "FortiGate: VPN SYSTEXTIL_W3: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL_W3"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "50871",
+    "description": "FortiGate: VPN SYSTEXTIL1ISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL1ISP2"
+      },
+      {
+        "tag": "link",
+        "value": "SYSTEXTIL1ISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "50872",
+    "description": "FortiGate: VPN SYSTEXTIL2ISP2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SYSTEXTIL2ISP2"
+      },
+      {
+        "tag": "link",
+        "value": "SYSTEXTIL2ISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "50873",
+    "description": "FortiGate: VPN BGP_AZ_W2_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_AZ_W2_W1"
+      },
+      {
+        "tag": "link",
+        "value": "BGP_AZ_W2_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "50874",
+    "description": "FortiGate: VPN BGP_AZ_W1_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_AZ_W1_W1"
+      },
+      {
+        "tag": "link",
+        "value": "BGP_AZ_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "50875",
+    "description": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "link",
+        "value": "BGP_SCL_FIACAO_T1"
+      }
+    ]
+  },
+  {
+    "triggerid": "51770",
+    "description": "FortiGate: VPN MTZISP1_BRAS-01: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP1_BRAS-01"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "51806",
+    "description": "FortiGate: VPN MTZISP2_BRAS-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "MTZISP2_BRAS-02"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "51814",
+    "description": "FortiGate: VPN SCL2_BRAS-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCL2_BRAS-02"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "51834",
+    "description": "FortiGate: VPN VPN_DENIM-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-02"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "51848",
+    "description": "FortiGate: VPN VPN_DENIM-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-02"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54099",
+    "description": "FortiGate: VPN BGP_SCL_FIACAO_T1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO_T1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54105",
+    "description": "FortiGate: VPN VPN_SCL_FIACAO2_T1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_SCL_FIACAO2_T1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54106",
+    "description": "FortiGate: VPN VPN_SCL_FIACAO2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_SCL_FIACAO2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54113",
+    "description": "FortiGate: VPN SPO_SCL_FIACAO2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SPO_SCL_FIACAO2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "54124",
+    "description": "FortiGate: VPN BGPISP2_BRAS-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP2_BRAS-02"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP2_BRAS-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54125",
+    "description": "FortiGate: VPN VPN_DENIM-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN_DENIM-02"
+      },
+      {
+        "tag": "link",
+        "value": "VPN_DENIM-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54126",
+    "description": "FortiGate: VPN BGPISP1_BRAS-01: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGPISP1_BRAS-01"
+      },
+      {
+        "tag": "link",
+        "value": "BGPISP1_BRAS-01"
+      }
+    ]
+  },
+  {
+    "triggerid": "54127",
+    "description": "FortiGate: VPN BGP_SCL_FIACAO2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10741",
+        "host": "BGP-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "BGP_SCL_FIACAO2"
+      },
+      {
+        "tag": "link",
+        "value": "BGP_SCL_FIACAO2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54326",
+    "description": "FortiGate: VPN VPN_SCL: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SCL"
+      }
+    ]
+  },
+  {
+    "triggerid": "54327",
+    "description": "FortiGate: VPN VPN-MTZ-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54328",
+    "description": "FortiGate: VPN VPN_BGP: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_BGP"
+      }
+    ]
+  },
+  {
+    "triggerid": "54329",
+    "description": "FortiGate: VPN VPN-SCL-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-SCL-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54330",
+    "description": "FortiGate: VPN VPN-BGP-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-BGP-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54331",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "11173",
+        "host": "BR-SCL-FIA-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54802",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54803",
+    "description": "FortiGate: VPN VPN-MTZ-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54804",
+    "description": "FortiGate: VPN VPN_BGP: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_BGP"
+      }
+    ]
+  },
+  {
+    "triggerid": "54805",
+    "description": "FortiGate: VPN VPN_SCL: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SCL"
+      }
+    ]
+  },
+  {
+    "triggerid": "54806",
+    "description": "FortiGate: VPN VPN-SCL-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-SCL-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54807",
+    "description": "FortiGate: VPN VPN-BGP-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11171",
+        "host": "BRAS-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-BGP-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "54991",
+    "description": "FortiGate: VPN AZ_MTZ_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "54992",
+    "description": "FortiGate: VPN AZ_SCL_W1_W2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_SCL_W1_W2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54993",
+    "description": "FortiGate: VPN AZ_MTZ_W1_W2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_MTZ_W1_W2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54994",
+    "description": "FortiGate: VPN AZ_BGP_W1_W2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_BGP_W1_W2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54995",
+    "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn2"
+      }
+    ]
+  },
+  {
+    "triggerid": "54996",
+    "description": "FortiGate: VPN az-to-oci-vpn1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "az-to-oci-vpn1"
+      }
+    ]
+  },
+  {
+    "triggerid": "54997",
+    "description": "FortiGate: VPN AZ_SCL_W1_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_SCL_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "54998",
+    "description": "FortiGate: VPN AZ_BGP_W1_W1: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11178",
+        "host": "AZ-VM-FW-01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "AZ_BGP_W1_W1"
+      }
+    ]
+  },
+  {
+    "triggerid": "55117",
+    "description": "FortiGate: VPN SCLISP1_BGPISP1: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_BGPISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55118",
+    "description": "FortiGate: VPN SCLISP1_BGPISP2: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_BGPISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55127",
+    "description": "FortiGate: VPN SCLISP1_MTZISP1: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55129",
+    "description": "FortiGate: VPN SCLISP1_MTZISP2: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_MTZISP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55131",
+    "description": "FortiGate: VPN SCLISP1_BRAS-01: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCLISP1_BRAS-01"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55132",
+    "description": "FortiGate: VPN SCL_AZ_W1_W1: Tunnel down [persistência 5m]",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "SCL_AZ_W1_W1"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  },
+  {
+    "triggerid": "55204",
+    "description": "FortiGate: VPN VPN_SPO: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "1",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SPO"
+      }
+    ]
+  },
+  {
+    "triggerid": "55205",
+    "description": "FortiGate: VPN VPN-MTZ-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-MTZ-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "55206",
+    "description": "FortiGate: VPN VPN_BGP: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_BGP"
+      }
+    ]
+  },
+  {
+    "triggerid": "55207",
+    "description": "FortiGate: VPN VPN_SCL: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN_SCL"
+      }
+    ]
+  },
+  {
+    "triggerid": "55208",
+    "description": "FortiGate: VPN VPN-SCL-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-SCL-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "55209",
+    "description": "FortiGate: VPN VPN-BGP-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "11174",
+        "host": "BR-DENIM-CAPRI-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "depends-on",
+        "value": "VPN-BGP-02"
+      }
+    ]
+  },
+  {
+    "triggerid": "55787",
+    "description": "FortiGate: VPN VPN-AYKO-MSS-02: Tunnel down",
+    "event_name": "",
+    "priority": "3",
+    "status": "0",
+    "value": "0",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "VPN-AYKO-MSS-02"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ]
+  }
+]

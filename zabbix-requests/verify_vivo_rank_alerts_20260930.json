@@ -1,0 +1,23 @@
+[
+  {
+    "arguments": {
+      "method": "alert.get",
+      "params": {
+        "output": ["alertid", "eventid", "clock", "status", "error", "mediatypeid", "sendto"],
+        "eventids": [
+          "18116214",
+          "18499653",
+          "18499652",
+          "18499349",
+          "18499293",
+          "18499284"
+        ],
+        "sortfield": ["alertid"],
+        "sortorder": "DESC",
+        "limit": 30
+      }
+    },
+    "save": "backups/verify_vivo_rank_alerts_20260930.json",
+    "quiet": true
+  }
+]

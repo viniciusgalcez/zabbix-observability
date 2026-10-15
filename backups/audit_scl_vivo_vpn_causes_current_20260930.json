@@ -1,0 +1,194 @@
+[
+  {
+    "triggerid": "55133",
+    "expression": "last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.3])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.4])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.7])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.8])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23])+last(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25])>=4",
+    "description": "SCL: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "url": "",
+    "status": "0",
+    "value": "0",
+    "priority": "4",
+    "lastchange": "1790689305",
+    "comments": "CAUSA de correlacao (link-cause=SCL_ISP1_VPN). Dispara quando 4+ dos 8 health-checks de tunel que saem pela VIVO do SCL (SCLISP1_BGP/MTZ, SCL_AZ_W1, BRAS-01, DENIM-01, FIACAO1) estao dead ao mesmo tempo, mesmo com a internet OK. So recupera apos 10 min estavel (histerese contra oscilacao). Depende da trigger de internet 50306: se a internet cair, quem alerta e ela. Criada 2026-09-11 apos chuva de alertas das 09:13 e 11:49.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.3],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.4],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.7],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.8],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23],10m)+max(/SCL-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25],10m)<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10724",
+        "host": "SCL-CPD-FW01",
+        "name": "SCL-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SCL_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "50306",
+        "expression": "{106067}+{106068}+{106069}+{106070}+{106071}>=3",
+        "description": "SCL: Saida de internet 1 (VIVO) sem conectividade",
+        "url": "",
+        "status": "0",
+        "value": "0",
+        "priority": "4",
+        "lastchange": "1790742765",
+        "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SLA_INTERNET, Systextil_Web, Teams, GLPI, HK_VIVO). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "1",
+        "recovery_expression": "{106067}+{106068}+{106069}+{106070}+{106071}<=1",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "1",
+        "opdata": "",
+        "event_name": "SCL: Link HK_VIVO (ISP1_VIVO) DOWN",
+        "uuid": "",
+        "url_name": ""
+      },
+      {
+        "triggerid": "50308",
+        "expression": "{106085}+{106086}+{106087}+{106088}+{106089}>=3",
+        "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+        "url": "",
+        "status": "0",
+        "value": "1",
+        "priority": "4",
+        "lastchange": "1790593399",
+        "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SynergyRH, Systextil_Web, HK_ISP1, TEAMS, sla_internet). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "1",
+        "recovery_expression": "{106085}+{106086}+{106087}+{106088}+{106089}<=1",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "0",
+        "opdata": "",
+        "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "92263",
+        "name": "SD-WAN [SLA_AZURE]:[SCL_AZ_W1_W1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.15]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92267",
+        "name": "SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.8]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92271",
+        "name": "SD-WAN [HK_BRAGANCA]:[SCLISP1_BGPISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.4]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "92273",
+        "name": "SD-WAN [HK_BRAGANCA]:[SCLISP1_BGPISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.3]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "103784",
+        "name": "SD-WAN [HK_MATRIZ]:[SCLISP1_MTZISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.7]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "109491",
+        "name": "SD-WAN [SLA_BRAS]:[SCLISP1_BRAS-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.21]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "109570",
+        "name": "SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.23]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      },
+      {
+        "itemid": "111031",
+        "name": "SD-WAN [SLA_SAOCARLOS_FIACAO]:[VPN_SCL_FIACAO1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.25]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790767185",
+        "lastvalue": "0"
+      }
+    ]
+  }
+]

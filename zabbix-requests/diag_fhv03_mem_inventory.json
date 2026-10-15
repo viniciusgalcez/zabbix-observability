@@ -1,0 +1,276 @@
+{
+  "item": {
+    "itemid": "105504",
+    "type": "7",
+    "snmp_oid": "",
+    "hostid": "10886",
+    "name": "Hyper-V Average memory pressure",
+    "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+    "delay": "1m",
+    "history": "30d",
+    "trends": "365d",
+    "status": "0",
+    "value_type": "0",
+    "trapper_hosts": "",
+    "units": "%",
+    "formula": "",
+    "logtimefmt": "",
+    "templateid": "87819",
+    "valuemapid": "0",
+    "params": "",
+    "ipmi_sensor": "",
+    "authtype": "0",
+    "username": "",
+    "password": "",
+    "publickey": "",
+    "privatekey": "",
+    "flags": "0",
+    "interfaceid": "0",
+    "description": "The percentage of time spent by the processor in guest code.",
+    "inventory_link": "0",
+    "lifetime": "7d",
+    "evaltype": "0",
+    "jmx_endpoint": "",
+    "master_itemid": "0",
+    "timeout": "",
+    "url": "",
+    "query_fields": [],
+    "posts": "",
+    "status_codes": "200",
+    "follow_redirects": "1",
+    "post_type": "0",
+    "http_proxy": "",
+    "headers": [],
+    "retrieve_mode": "0",
+    "request_method": "0",
+    "output_format": "0",
+    "ssl_cert_file": "",
+    "ssl_key_file": "",
+    "ssl_key_password": "",
+    "verify_peer": "0",
+    "verify_host": "0",
+    "allow_traps": "0",
+    "uuid": "",
+    "lifetime_type": "0",
+    "enabled_lifetime_type": "2",
+    "enabled_lifetime": "0",
+    "state": "0",
+    "error": "",
+    "name_resolved": "Hyper-V Average memory pressure",
+    "parameters": [],
+    "lastclock": "1791200424",
+    "lastns": "178039900",
+    "lastvalue": "101",
+    "prevvalue": "101"
+  },
+  "problem_triggers": [
+    {
+      "triggerid": "49157",
+      "description": "Hyper-V Host Memory pressure 90-100%",
+      "priority": "2",
+      "value": "1",
+      "status": "1",
+      "state": "0",
+      "lastchange": "1783424664",
+      "error": "",
+      "items": [
+        {
+          "itemid": "105504",
+          "name": "Hyper-V Average memory pressure",
+          "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+          "units": "%",
+          "lastvalue": "101"
+        }
+      ]
+    },
+    {
+      "triggerid": "49158",
+      "description": "Hyper-V Host Memory pressure 100%",
+      "priority": "4",
+      "value": "1",
+      "status": "0",
+      "state": "0",
+      "lastchange": "1791191244",
+      "error": "",
+      "items": [
+        {
+          "itemid": "105504",
+          "name": "Hyper-V Average memory pressure",
+          "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+          "units": "%",
+          "lastvalue": "101"
+        }
+      ]
+    }
+  ],
+  "memish_items": [
+    {
+      "itemid": "105503",
+      "name": "Hyper-V Host free memory",
+      "key_": "hyperv.host.memory.free",
+      "units": "",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "92838944768"
+    },
+    {
+      "itemid": "105504",
+      "name": "Hyper-V Average memory pressure",
+      "key_": "perf_counter_en[\\Hyper-V Dynamic Memory Balancer(System Balancer)\\Average Pressure,30]",
+      "units": "%",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "101"
+    },
+    {
+      "itemid": "82636",
+      "name": "Cache bytes",
+      "key_": "perf_counter_en[\"\\Memory\\Cache Bytes\"]",
+      "units": "B",
+      "status": "1",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "82637",
+      "name": "Free system page table entries",
+      "key_": "perf_counter_en[\"\\Memory\\Free System Page Table Entries\"]",
+      "units": "",
+      "status": "1",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "82638",
+      "name": "Memory page faults per second",
+      "key_": "perf_counter_en[\"\\Memory\\Page Faults/sec\"]",
+      "units": "",
+      "status": "1",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "82639",
+      "name": "Memory pages per second",
+      "key_": "perf_counter_en[\"\\Memory\\Pages/sec\"]",
+      "units": "",
+      "status": "1",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "82640",
+      "name": "Memory pool non-paged",
+      "key_": "perf_counter_en[\"\\Memory\\Pool Nonpaged Bytes\"]",
+      "units": "B",
+      "status": "1",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "89983",
+      "name": "State of service \"PcaSvc\" (Program Compatibility Assistant Service)",
+      "key_": "service.info[\"PcaSvc\",state]",
+      "units": "",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "0"
+    },
+    {
+      "itemid": "82660",
+      "name": "Total memory",
+      "key_": "vm.memory.size[total]",
+      "units": "B",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "205691416576"
+    },
+    {
+      "itemid": "82661",
+      "name": "Used memory",
+      "key_": "vm.memory.size[used]",
+      "units": "B",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "112840196096"
+    },
+    {
+      "itemid": "82662",
+      "name": "Memory utilization",
+      "key_": "vm.memory.util",
+      "units": "%",
+      "status": "0",
+      "state": "0",
+      "lastvalue": "54.86493976587625"
+    }
+  ],
+  "templates": [
+    {
+      "templateid": "10081",
+      "host": "Windows by Zabbix agent",
+      "name": "Windows by Zabbix agent"
+    },
+    {
+      "templateid": "10945",
+      "host": "Template Windows Hyper-V Host 2",
+      "name": "Template Windows Hyper-V Host 2"
+    },
+    {
+      "templateid": "11073",
+      "host": "Role - Servidor Hyper-V",
+      "name": "Role - Servidor Hyper-V"
+    }
+  ],
+  "fhv": [
+    {
+      "hostid": "10683",
+      "host": "SCL-SRV-FHV02",
+      "name": "SCL-SRV-FHV02 (Hyper-V 01)"
+    },
+    {
+      "hostid": "10909",
+      "host": "IDRAC-BGP-SRV-FHV01",
+      "name": "IDRAC-BGP-SRV-FHV01"
+    },
+    {
+      "hostid": "10910",
+      "host": "IDRAC-BGP-SRV-FHV02",
+      "name": "IDRAC-BGP-SRV-FHV02"
+    },
+    {
+      "hostid": "10911",
+      "host": "IDRAC-BGP-SRV-FHV03",
+      "name": "IDRAC-BGP-SRV-FHV03"
+    },
+    {
+      "hostid": "10884",
+      "host": "BGP-SRV-FHV01",
+      "name": "BGP-SRV-FHV01 (Hyper-V 01)"
+    },
+    {
+      "hostid": "10913",
+      "host": "IDRAC-SCL-SRV-FHV02",
+      "name": "IDRAC-SCL-SRV-FHV02"
+    },
+    {
+      "hostid": "10885",
+      "host": "BGP-SRV-FHV02",
+      "name": "BGP-SRV-FHV02 (Hyper-V 02)"
+    },
+    {
+      "hostid": "10914",
+      "host": "IDRAC-SCL-SRV-FHV03",
+      "name": "IDRAC-SCL-SRV-FHV03"
+    },
+    {
+      "hostid": "10886",
+      "host": "BGP-SRV-FHV03",
+      "name": "BGP-SRV-FHV03 (Hyper-V 03)"
+    },
+    {
+      "hostid": "10920",
+      "host": "SCL-SRV-FHV03",
+      "name": "SCL-SRV-FHV03 (Hyper-V 02)"
+    }
+  ]
+}

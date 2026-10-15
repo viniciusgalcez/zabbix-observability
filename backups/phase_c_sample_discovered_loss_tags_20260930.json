@@ -1,0 +1,34 @@
+[
+  {
+    "triggerid": "43231",
+    "description": "FortiGate: SD-WAN [sla_internet]:[ISP1_VIVO]: High packets loss",
+    "flags": "4",
+    "templateid": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "43234",
+    "description": "FortiGate: SD-WAN [HK_ISP1]:[ISP1_VIVO]: High packets loss",
+    "flags": "4",
+    "templateid": "0",
+    "tags": [
+      {
+        "tag": "sdwan-if",
+        "value": "ISP1_VIVO"
+      },
+      {
+        "tag": "depends-on",
+        "value": "ISP1_VIVO"
+      }
+    ]
+  }
+]

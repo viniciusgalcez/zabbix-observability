@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["16"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/backup_correlation_16_before_storm_pilot_disable_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.update",
+      "params": {
+        "correlationid": "16",
+        "status": 1,
+        "description": "PILOTO 30/09/2026: desativada temporariamente junto da correlação 45. Ambas fechavam imediatamente sintomas SPO/Vivo persistentes, provocando reabertura contínua. Backup: backup_correlation_16_before_storm_pilot_disable_20260930.json."
+      }
+    },
+    "save": "backups/apply_disable_correlation_16_storm_pilot_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "correlationids": ["16"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/verify_correlation_16_disabled_storm_pilot_20260930.json",
+    "quiet": true
+  }
+]

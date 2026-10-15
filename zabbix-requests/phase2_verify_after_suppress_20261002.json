@@ -1,0 +1,76 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "eventids": [
+          "17437418",
+          "17498586",
+          "18379687",
+          "17441868",
+          "18116214"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "cause_eventid"
+        ]
+      }
+    },
+    "save": "backups/phase2_verify_chronic_closed_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "53814",
+          "53811",
+          "54995",
+          "43212",
+          "50308"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "status"
+        ],
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/phase2_verify_chronic_trigger_values_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true
+      }
+    },
+    "save": "backups/phase2_fw_problems_after_2_2_20261002.json",
+    "quiet": true
+  }
+]

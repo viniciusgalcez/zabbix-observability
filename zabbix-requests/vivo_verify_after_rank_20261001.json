@@ -1,0 +1,29 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10724",
+          "10741",
+          "10758"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/vivo_fw_problems_after_rank_20261001.json",
+    "quiet": true
+  }
+]

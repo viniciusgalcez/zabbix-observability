@@ -1,0 +1,5 @@
+[
+  {"arguments":{"method":"problem.get","params":{"output":"extend","hostids":["10758"],"selectTags":"extend","sortfield":"eventid","sortorder":"DESC","limit":100}},"save":"backups/verify_spo_vivo_problems_after_rank_processed_20260930.json","quiet":true},
+  {"arguments":{"method":"event.get","params":{"output":"extend","eventids":["18116214","17779567","18499651","18499648","18379687","18379641"],"selectTags":"extend","selectAcknowledges":"extend"}},"save":"backups/verify_spo_vivo_sample_rank_processed_20260930.json","quiet":true},
+  {"arguments":{"method":"alert.get","params":{"output":"extend","eventids":["18116214"],"sortfield":"alertid","sortorder":"DESC","limit":10}},"save":"backups/audit_spo_vivo_root_teams_alerts_20260930.json","quiet":true}
+]

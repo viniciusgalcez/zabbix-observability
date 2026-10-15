@@ -1,0 +1,53 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "filter": {
+          "host": [
+            "BRAS-CPD-FW01",
+            "AZ-VM-FW-01",
+            "SPO-CPD-FW01"
+          ]
+        },
+        "output": [
+          "hostid",
+          "host"
+        ],
+        "selectMacros": [
+          "macro",
+          "value",
+          "description"
+        ]
+      }
+    },
+    "save": "backups/phase2_chronic_hosts_macros_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "93359",
+          "110657",
+          "110660",
+          "112617"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "key_",
+          "status",
+          "state",
+          "flags",
+          "templateid",
+          "description"
+        ],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase2_chronic_items_20261002.json",
+    "quiet": true
+  }
+]

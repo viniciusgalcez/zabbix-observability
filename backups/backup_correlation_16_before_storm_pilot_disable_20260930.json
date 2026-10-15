@@ -1,0 +1,75 @@
+[
+  {
+    "correlationid": "16",
+    "name": "SPO VIVO: fechar sintomas enquanto causa ativa",
+    "description": "",
+    "status": "0",
+    "filter": {
+      "evaltype": "3",
+      "formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "eval_formula": "A and ((B and (C or D)) or E or F or G or H)",
+      "conditions": [
+        {
+          "type": "4",
+          "value": "SPO_VIVO",
+          "tag": "link-cause",
+          "operator": "0",
+          "formulaid": "A"
+        },
+        {
+          "type": "2",
+          "groupid": "29",
+          "operator": "0",
+          "formulaid": "B"
+        },
+        {
+          "type": "5",
+          "value": "ISP1_VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "C"
+        },
+        {
+          "type": "5",
+          "value": "ISP1-VIVO",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "D"
+        },
+        {
+          "type": "5",
+          "value": "MTZISP1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "E"
+        },
+        {
+          "type": "5",
+          "value": "MTZ_AZ_W1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "F"
+        },
+        {
+          "type": "5",
+          "value": "SPO_SCL_FIACAO1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "G"
+        },
+        {
+          "type": "5",
+          "value": "P2MTZ1",
+          "tag": "depends-on",
+          "operator": "2",
+          "formulaid": "H"
+        }
+      ]
+    },
+    "operations": [
+      {
+        "type": "1"
+      }
+    ]
+  }
+]

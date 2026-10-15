@@ -1,0 +1,60 @@
+[
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": "extend",
+        "selectFilter": "extend",
+        "selectOperations": "extend",
+        "sortfield": "correlationid"
+      }
+    },
+    "save": "backups/audit_link_correlations_current_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "output": "extend",
+        "source": 0,
+        "object": 0,
+        "value": 1,
+        "time_from": 1788231600,
+        "search": {
+          "name": ["Link down", "Tunnel down", "High packets loss", "Health check state is dead"]
+        },
+        "searchByAny": true,
+        "selectHosts": ["hostid", "host", "name"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "sortfield": ["clock", "eventid"],
+        "sortorder": "DESC",
+        "limit": 10000
+      }
+    },
+    "save": "backups/audit_link_events_september_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "source": 0,
+        "object": 0,
+        "search": {
+          "name": ["Link down", "Tunnel down", "High packets loss", "Health check state is dead"]
+        },
+        "searchByAny": true,
+        "selectHosts": ["hostid", "host", "name"],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend",
+        "sortfield": ["clock", "eventid"],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/audit_open_link_problems_20260930.json",
+    "quiet": true
+  }
+]

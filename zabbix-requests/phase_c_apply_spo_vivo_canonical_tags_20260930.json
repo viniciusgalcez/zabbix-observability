@@ -1,0 +1,45 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "50308",
+        "tags": [
+          {"tag": "notify", "value": "teams"},
+          {"tag": "notify", "value": "telegram"},
+          {"tag": "scope", "value": "availability"},
+          {"tag": "service", "value": "internet"},
+          {"tag": "site", "value": "spo"},
+          {"tag": "link", "value": "ISP1"},
+          {"tag": "link-cause", "value": "SPO_VIVO"},
+          {"tag": "link-id", "value": "spo.vivo.isp1"},
+          {"tag": "carrier", "value": "vivo"},
+          {"tag": "class", "value": "network"},
+          {"tag": "component", "value": "wan-link"}
+        ]
+      }
+    },
+    "save": "backups/phase_c_apply_tags_cause_50308_20260930.json"
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "55144",
+        "tags": [
+          {"tag": "link-cause", "value": "SPO_ISP1_VPN"},
+          {"tag": "link-id", "value": "spo.vivo.isp1.vpn-agg"},
+          {"tag": "notify", "value": "telegram"},
+          {"tag": "scope", "value": "availability"},
+          {"tag": "service", "value": "vpn"},
+          {"tag": "site", "value": "spo"},
+          {"tag": "carrier", "value": "vivo"},
+          {"tag": "class", "value": "network"},
+          {"tag": "component", "value": "vpn"},
+          {"tag": "depends-on", "value": "SPO_VIVO"}
+        ]
+      }
+    },
+    "save": "backups/phase_c_apply_tags_aggregate_55144_20260930.json"
+  }
+]

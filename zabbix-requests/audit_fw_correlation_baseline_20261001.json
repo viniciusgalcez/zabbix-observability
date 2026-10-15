@@ -1,0 +1,26 @@
+[
+  {
+    "arguments": {
+      "method": "host.get",
+      "params": {
+        "output": ["hostid", "host", "name"],
+        "groupids": ["27", "28", "29", "30", "31", "98", "99", "100"],
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/audit_fw_hosts_enabled_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "output": ["correlationid", "name", "status", "description"],
+        "selectFilter": "extend",
+        "selectOperations": "extend"
+      }
+    },
+    "save": "backups/audit_all_correlations_status_20261001.json",
+    "quiet": true
+  }
+]

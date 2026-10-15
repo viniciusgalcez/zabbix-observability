@@ -1,0 +1,263 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "output": "extend",
+        "eventids": [
+          "18520139",
+          "18520135",
+          "18520132",
+          "18520131",
+          "18520130",
+          "18516633",
+          "18516632",
+          "18516631",
+          "18516630",
+          "18516628",
+          "18516627",
+          "18516629",
+          "18379641",
+          "18116214"
+        ],
+        "selectTags": "extend",
+        "selectAcknowledges": "extend"
+      }
+    },
+    "save": "backups/backup_before_rank_remaining_fw_symptoms_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18520139"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (P2MTZ1SCL2). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18520139_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18520135"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (MTZISP1_SCLISP2 dead). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18520135_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18520132"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (MTZISP1_SCLISP2 loss). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18520132_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18520131"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (SCLISP2_MTZISP1 tunnel). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18520131_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18520130"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (SCLISP2_MTZISP1 dead). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18520130_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516633"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (MTZISP1_BRAS-01). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516633_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516632"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (MTZ_AZ_W1_W1). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516632_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516631"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (P2MTZ1BGP1). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516631_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516630"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (P2MTZ1BGP2). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516630_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516628"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (P2MTZ1SCL1). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516628_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516627"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (BGP_SCL_FIACAO_T1). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516627_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18516629"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (SYSTEXTIL_W1). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18516629_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": [
+          "18379641"
+        ],
+        "action": 260,
+        "cause_eventid": "18116214",
+        "message": "Sintoma da causa SPO_VIVO (SYSTEXTIL_W1 older). Causa: evento 18116214."
+      }
+    },
+    "save": "backups/apply_rank_18379641_under_18116214_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.get",
+      "params": {
+        "eventids": [
+          "18520139",
+          "18520135",
+          "18520132",
+          "18520131",
+          "18520130",
+          "18516633",
+          "18516632",
+          "18516631",
+          "18516630",
+          "18516628",
+          "18516627",
+          "18516629",
+          "18379641",
+          "18116214",
+          "18520140"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "value",
+          "r_eventid",
+          "cause_eventid",
+          "acknowledged"
+        ],
+        "selectHosts": [
+          "host",
+          "name"
+        ]
+      }
+    },
+    "save": "backups/verify_ranked_fw_symptoms_batch_20261001.json",
+    "quiet": true
+  }
+]

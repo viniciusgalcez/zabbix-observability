@@ -1,0 +1,70 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "53814",
+          "53811",
+          "54995",
+          "43212"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "expression",
+          "recovery_expression",
+          "status",
+          "value",
+          "flags"
+        ],
+        "selectHosts": [
+          "host"
+        ]
+      }
+    },
+    "save": "backups/phase2_chronic_triggers_raw_expr_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "output": [
+          "globalmacroid",
+          "macro",
+          "value",
+          "description"
+        ],
+        "search": {
+          "macro": "*CONTROL*"
+        },
+        "searchWildcardsEnabled": true
+      }
+    },
+    "save": "backups/phase2_global_control_macros_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "usermacro.get",
+      "params": {
+        "globalmacro": true,
+        "output": [
+          "globalmacroid",
+          "macro",
+          "value",
+          "description"
+        ],
+        "search": {
+          "macro": "*IF*"
+        },
+        "searchWildcardsEnabled": true,
+        "limit": 50
+      }
+    },
+    "save": "backups/phase2_global_if_macros_20261002.json",
+    "quiet": true
+  }
+]

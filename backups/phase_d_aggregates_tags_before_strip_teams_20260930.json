@@ -1,0 +1,390 @@
+[
+  {
+    "triggerid": "55133",
+    "description": "SCL: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SCL_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      }
+    ]
+  },
+  {
+    "triggerid": "55141",
+    "description": "BGP: tuneis VPN pela saida 1 (CROSSCONNECTION) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BGP_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      }
+    ]
+  },
+  {
+    "triggerid": "55142",
+    "description": "BGP: tuneis VPN pela saida 2 (VIVO) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BGP_ISP2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      }
+    ]
+  },
+  {
+    "triggerid": "55143",
+    "description": "SCL: tuneis VPN pela saida 2 (ALGAR) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SCL_ISP2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      }
+    ]
+  },
+  {
+    "triggerid": "55144",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "vpn"
+      },
+      {
+        "tag": "depends-on",
+        "value": "SPO_VIVO"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1.vpn-agg"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ]
+  },
+  {
+    "triggerid": "55145",
+    "description": "SPO: tuneis VPN pela saida 2 (ALGAR) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ]
+  },
+  {
+    "triggerid": "55149",
+    "description": "BRAS: tuneis VPN pela saida 1 (CLARO) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BRAS_WAN1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      }
+    ]
+  },
+  {
+    "triggerid": "55150",
+    "description": "BRAS: tuneis VPN pela saida 2 instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BRAS_WAN2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      }
+    ]
+  },
+  {
+    "triggerid": "55151",
+    "description": "FIA: tuneis VPN pela saida 1 (CLARO DEDICADO) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "FIA_WAN1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "fia"
+      }
+    ]
+  },
+  {
+    "triggerid": "55152",
+    "description": "FIA: tuneis VPN pela saida 2 (CLARO BANDA LARGA) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "FIA_WAN2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "fia"
+      }
+    ]
+  },
+  {
+    "triggerid": "55153",
+    "description": "DENIM: tuneis VPN pela saida 1 (FLEXUS) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "DENIM_WAN1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "denim"
+      }
+    ]
+  },
+  {
+    "triggerid": "55154",
+    "description": "DENIM: tuneis VPN pela saida 2 (ALGAR) instaveis",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "DENIM_WAN2_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "denim"
+      }
+    ]
+  }
+]

@@ -1,0 +1,567 @@
+{
+  "physicaldisk_rules": [],
+  "fhv_hosts": [
+    {
+      "hostid": "10683",
+      "host": "SCL-SRV-FHV02",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10945",
+          "host": "Template Windows Hyper-V Host 2"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        }
+      ]
+    },
+    {
+      "hostid": "10941",
+      "host": "SPO-SRV-FAD01",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "11069",
+          "host": "Role - Controlador de Dominio Primario On-Prem"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        },
+        {
+          "templateid": "11078",
+          "host": "Role - Entra Connect e Gateways"
+        },
+        {
+          "templateid": "11170",
+          "host": "Template App NDD Print"
+        }
+      ]
+    },
+    {
+      "hostid": "10884",
+      "host": "BGP-SRV-FHV01",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10945",
+          "host": "Template Windows Hyper-V Host 2"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        }
+      ]
+    },
+    {
+      "hostid": "10885",
+      "host": "BGP-SRV-FHV02",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10945",
+          "host": "Template Windows Hyper-V Host 2"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        }
+      ]
+    },
+    {
+      "hostid": "10886",
+      "host": "BGP-SRV-FHV03",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10945",
+          "host": "Template Windows Hyper-V Host 2"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        }
+      ]
+    },
+    {
+      "hostid": "10920",
+      "host": "SCL-SRV-FHV03",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10945",
+          "host": "Template Windows Hyper-V Host 2"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        }
+      ]
+    }
+  ],
+  "fhv_agent_items": [
+    {
+      "host": "SCL-SRV-FHV02",
+      "items": [
+        {
+          "itemid": "50774",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "SCL-SRV-FHV02"
+        },
+        {
+          "itemid": "50775",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "50776",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        }
+      ]
+    },
+    {
+      "host": "SPO-SRV-FAD01",
+      "items": [
+        {
+          "itemid": "85239",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "SPO-SRV-FAD01"
+        },
+        {
+          "itemid": "85240",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "85241",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        },
+        {
+          "itemid": "109861",
+          "key_": "service.info[\"nddPrint.Agent.Guardian\",state]",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "0"
+        },
+        {
+          "itemid": "109862",
+          "key_": "service.info[\"nddPrint.Agent.HttpServer\",state]",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "0"
+        },
+        {
+          "itemid": "109863",
+          "key_": "service.info[\"nddPrint.Agent.Listener\",state]",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "0"
+        },
+        {
+          "itemid": "109864",
+          "key_": "service.info[\"nddPrint.Agent.Sender\",state]",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "0"
+        },
+        {
+          "itemid": "109865",
+          "key_": "service.info[\"nddPrint.Agent.Watcher\",state]",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "0"
+        }
+      ]
+    },
+    {
+      "host": "BGP-SRV-FHV01",
+      "items": [
+        {
+          "itemid": "82511",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "BGP-SRV-FHV01"
+        },
+        {
+          "itemid": "82512",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "82513",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        }
+      ]
+    },
+    {
+      "host": "BGP-SRV-FHV02",
+      "items": [
+        {
+          "itemid": "82572",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "BGP-SRV-FHV02"
+        },
+        {
+          "itemid": "82573",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "82574",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        }
+      ]
+    },
+    {
+      "host": "BGP-SRV-FHV03",
+      "items": [
+        {
+          "itemid": "82633",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "BGP-SRV-FHV03"
+        },
+        {
+          "itemid": "82634",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "82635",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        }
+      ]
+    },
+    {
+      "host": "SCL-SRV-FHV03",
+      "items": [
+        {
+          "itemid": "84408",
+          "key_": "agent.hostname",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "SCL-SRV-FHV03"
+        },
+        {
+          "itemid": "84409",
+          "key_": "agent.ping",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "1"
+        },
+        {
+          "itemid": "84410",
+          "key_": "agent.version",
+          "status": "0",
+          "state": "0",
+          "lastvalue": "7.0.26"
+        }
+      ]
+    }
+  ],
+  "hyperv_templates": [],
+  "hyperv_template_rules": [],
+  "az_mysql": [
+    {
+      "hostid": "11139",
+      "host": "AZ-VM-APP-03-DB",
+      "macros": [
+        {
+          "hostmacroid": "8461",
+          "hostid": "11139",
+          "macro": "{$MYSQL.DSN}",
+          "value": "localhost",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8462",
+          "hostid": "11139",
+          "macro": "{$MYSQL.PASSWORD}",
+          "description": "",
+          "type": "1",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8463",
+          "hostid": "11139",
+          "macro": "{$MYSQL.USER}",
+          "value": "root_glpi",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10320",
+          "host": "MySQL by Zabbix agent 2"
+        }
+      ]
+    }
+  ],
+  "spo_pgsql": [
+    {
+      "hostid": "11102",
+      "host": "SPO-SRV-V02",
+      "macros": [
+        {
+          "hostmacroid": "8456",
+          "hostid": "11102",
+          "macro": "{$PG.DATABASE}",
+          "value": "zabbix",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8455",
+          "hostid": "11102",
+          "macro": "{$PG.HOST}",
+          "value": "127.0.0.1",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8457",
+          "hostid": "11102",
+          "macro": "{$PG.PASSWORD}",
+          "description": "",
+          "type": "1",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8454",
+          "hostid": "11102",
+          "macro": "{$PG.PORT}",
+          "value": "5432",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "8458",
+          "hostid": "11102",
+          "macro": "{$PG.USER}",
+          "value": "zabbix",
+          "description": "",
+          "type": "0",
+          "automatic": "0"
+        }
+      ],
+      "parentTemplates": [
+        {
+          "templateid": "10343",
+          "host": "Linux by Zabbix agent active"
+        },
+        {
+          "templateid": "10357",
+          "host": "PostgreSQL by Zabbix agent"
+        }
+      ]
+    }
+  ],
+  "vapp12": [
+    {
+      "hostid": "10898",
+      "host": "BGP-SRV-VAPP12",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "10325",
+          "host": "IIS by Zabbix agent"
+        },
+        {
+          "templateid": "11076",
+          "host": "Role - Servidor IIS"
+        }
+      ]
+    }
+  ],
+  "vapp12_wmi": [
+    {
+      "itemid": "108884",
+      "name": "Application pools discovery",
+      "key_": "wmi.getall[root\\webAdministration, select Name from ApplicationPool]",
+      "status": "1",
+      "templateid": "31005",
+      "state": "1",
+      "error": "Exception occurred. (Invalid namespace )"
+    }
+  ],
+  "fad01": [
+    {
+      "hostid": "10941",
+      "host": "SPO-SRV-FAD01",
+      "parentTemplates": [
+        {
+          "templateid": "10081",
+          "host": "Windows by Zabbix agent"
+        },
+        {
+          "templateid": "11069",
+          "host": "Role - Controlador de Dominio Primario On-Prem"
+        },
+        {
+          "templateid": "11073",
+          "host": "Role - Servidor Hyper-V"
+        },
+        {
+          "templateid": "11078",
+          "host": "Role - Entra Connect e Gateways"
+        },
+        {
+          "templateid": "11170",
+          "host": "Template App NDD Print"
+        }
+      ]
+    }
+  ],
+  "fad01_service_info_count": 109,
+  "fad01_duplicate_keys": {},
+  "fad01_service_discovery": [
+    {
+      "itemid": "85275",
+      "key_": "service.discovery",
+      "status": "1",
+      "templateid": "42489",
+      "state": "0",
+      "error": "Cannot create item: item with the same key \"service.info[\"DCSServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Guardian\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.HttpServer\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Listener\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Sender\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Agent.Watcher\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.ApiService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Polices.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.Cache.Policies\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host.PrintersMonitor\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.LiveUpdate.Host\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NancyService\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser.NetReader\",state]\" already exists.\nCannot create item: item with the same key \"service.info[\"nddPrint.Releaser\",state]\" already exists.\n",
+      "hosts": [
+        {
+          "hostid": "10941",
+          "host": "SPO-SRV-FAD01"
+        }
+      ]
+    }
+  ],
+  "switches_snmp": [
+    {
+      "host": "SCL-CPD-SW01",
+      "snmp": [
+        {
+          "interfaceid": "75",
+          "ip": "172.16.23.9",
+          "bulk": "1",
+          "max_repetitions": "5",
+          "version": "3"
+        }
+      ]
+    },
+    {
+      "host": "SCL-TEC2-SW01",
+      "snmp": [
+        {
+          "interfaceid": "79",
+          "ip": "172.16.23.29",
+          "bulk": "1",
+          "max_repetitions": "5",
+          "version": "3"
+        }
+      ]
+    },
+    {
+      "host": "SPO-CPD-SW01",
+      "snmp": [
+        {
+          "interfaceid": "178",
+          "ip": "172.17.23.15",
+          "bulk": "1",
+          "max_repetitions": "5",
+          "version": "3"
+        }
+      ]
+    }
+  ],
+  "proxies": [
+    {
+      "proxyid": "1",
+      "name": "SPO-SRV-V04",
+      "operating_mode": "0",
+      "tls_connect": "1",
+      "custom_timeouts": "0",
+      "timeout_zabbix_agent": "",
+      "timeout_simple_check": "",
+      "timeout_snmp_agent": "",
+      "timeout_db_monitor": "",
+      "timeout_external_check": "",
+      "timeout_http_agent": "",
+      "timeout_ssh_agent": "",
+      "timeout_telnet_agent": "",
+      "timeout_script": ""
+    },
+    {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08",
+      "operating_mode": "0",
+      "tls_connect": "1",
+      "custom_timeouts": "0",
+      "timeout_zabbix_agent": "",
+      "timeout_simple_check": "",
+      "timeout_snmp_agent": "",
+      "timeout_db_monitor": "",
+      "timeout_external_check": "",
+      "timeout_http_agent": "",
+      "timeout_ssh_agent": "",
+      "timeout_telnet_agent": "",
+      "timeout_script": ""
+    }
+  ]
+}

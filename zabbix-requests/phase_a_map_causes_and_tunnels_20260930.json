@@ -1,0 +1,46 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "expression", "recovery_expression", "priority", "status", "value", "comments"],
+        "triggerids": ["50308", "50305", "50306", "50307", "47620", "47636", "54332", "54333", "54334", "54451", "54452", "55144", "55145", "55133", "55143", "55141", "55142", "55149", "55150", "55151", "55152", "55153", "55154"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"],
+        "selectItems": ["itemid", "name", "key_", "status", "state", "lastvalue", "lastclock"],
+        "expandExpression": true
+      }
+    },
+    "save": "backups/phase_a_all_cause_triggers_detail_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "output": ["itemid", "name", "key_", "status", "state", "lastvalue", "lastclock"],
+        "hostids": ["10758"],
+        "search": {"name": "ISP1_VIVO"},
+        "searchWildcardsEnabled": true,
+        "sortfield": "name"
+      }
+    },
+    "save": "backups/phase_a_spo_isp1_vivo_items_20260930.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": ["triggerid", "description", "event_name", "priority", "status", "value"],
+        "hostids": ["10724", "10741", "10758", "11171", "11173", "11174", "11178"],
+        "selectTags": "extend",
+        "selectHosts": ["hostid", "host"],
+        "search": {"description": "Tunnel down"},
+        "filter": {"status": 0}
+      }
+    },
+    "save": "backups/phase_a_all_fw_tunnel_down_triggers_20260930.json",
+    "quiet": true
+  }
+]

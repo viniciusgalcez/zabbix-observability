@@ -1,0 +1,356 @@
+{
+  "top": [
+    [
+      "BGP-NAS-Hyperv",
+      18
+    ],
+    [
+      "SCL-CPD-SW02",
+      17
+    ],
+    [
+      "Zabbix server",
+      10
+    ],
+    [
+      "CLICKHOUSE-172.16.2.145",
+      10
+    ],
+    [
+      "SCL-NAS-Hyperv",
+      10
+    ],
+    [
+      "BGP-NAS-Backup",
+      10
+    ],
+    [
+      "BGP-NAS-03",
+      10
+    ],
+    [
+      "SCL-NAS-Backup",
+      10
+    ],
+    [
+      "SCL-SRV-FREP",
+      10
+    ],
+    [
+      "BGP-NAS-DB",
+      10
+    ],
+    [
+      "SPO-NAS-Backup",
+      10
+    ],
+    [
+      "SCL-SRV-VAPP02-DB",
+      8
+    ],
+    [
+      "SCL-SRV-V08",
+      7
+    ],
+    [
+      "SCL-TEC1-SW04",
+      6
+    ],
+    [
+      "SCL-ETE-TB01",
+      5
+    ],
+    [
+      "SCL-TIN-TMXC01",
+      5
+    ],
+    [
+      "AZ-VM-APP-03-DB",
+      3
+    ],
+    [
+      "BGP-ACA-SW01",
+      2
+    ],
+    [
+      "SCL-SRV-V03",
+      2
+    ],
+    [
+      "SCL-SRV-VAPP13",
+      2
+    ],
+    [
+      "BGP-TEC-SW04",
+      2
+    ],
+    [
+      "BGP-CPD-SW01",
+      2
+    ],
+    [
+      "SCL-TEC1-SW01",
+      2
+    ],
+    [
+      "SCL-TIN-SW01",
+      2
+    ],
+    [
+      "SCL-URD-SW01",
+      2
+    ]
+  ],
+  "to_disable_count": 172,
+  "server_noise": [
+    "13537",
+    "23226",
+    "23225",
+    "13476",
+    "13477",
+    "13563",
+    "13436"
+  ],
+  "sample_to_disable": [
+    {
+      "triggerid": "13482",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of snmp trapper processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,snmp trapper,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "13537",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Excessive vmware cache usage",
+      "error": "Cannot evaluate function max(/Zabbix server/zabbix[vmware,buffer,pused],10m): item is not supported."
+    },
+    {
+      "triggerid": "18532",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of report manager processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,report manager,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "23226",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of connector worker processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,connector worker,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "23225",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of connector manager processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,connector manager,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "13476",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of ipmi poller processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,ipmi poller,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "13477",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of java poller processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,java poller,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "13563",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of ipmi manager processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,ipmi manager,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "13436",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of vmware collector processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,vmware collector,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "18533",
+      "host": "Zabbix server",
+      "description": "Zabbix server: Utilization of report writer processes is high",
+      "error": "Cannot evaluate function avg(/Zabbix server/zabbix[process,report writer,avg,busy],10m): item is not supported."
+    },
+    {
+      "triggerid": "50285",
+      "host": "CLICKHOUSE-172.16.2.145",
+      "description": "ClickHouse: Failed to fetch info data",
+      "error": "Cannot evaluate function nodata(/CLICKHOUSE-172.16.2.145/clickhouse.uptime,30m): item does not have enough data after server start or item creation."
+    },
+    {
+      "triggerid": "26206",
+      "host": "BGP-ACA-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-ACA-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26208",
+      "host": "BGP-ACA-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-ACA-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "25401",
+      "host": "SCL-SRV-V03",
+      "description": "Windows: High swap space usage",
+      "error": "Cannot evaluate function max(/SCL-SRV-V03/system.swap.pfree,5m): item is disabled."
+    },
+    {
+      "triggerid": "25584",
+      "host": "SCL-SRV-VAPP13",
+      "description": "Windows: CPU queue length is too high",
+      "error": "Cannot evaluate function min(/SCL-SRV-VAPP13/perf_counter_en[\"\\System\\Processor Queue Length\"],5m): item is disabled."
+    },
+    {
+      "triggerid": "26252",
+      "host": "BGP-TEC-SW04",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-TEC-SW04/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26482",
+      "host": "BGP-CPD-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-CPD-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26275",
+      "host": "SCL-CPD-SW02",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-CPD-SW02/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26298",
+      "host": "SCL-TEC1-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-TEC1-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26321",
+      "host": "SCL-TIN-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-TIN-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26323",
+      "host": "SCL-TIN-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-TIN-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26346",
+      "host": "SCL-URD-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-URD-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26369",
+      "host": "SCL-ALM-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-ALM-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26645",
+      "host": "BGP-REV-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-REV-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26438",
+      "host": "SCL-TIN-SW02",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-TIN-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26459",
+      "host": "BGP-EXP-SW02",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-EXP-SW02/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26484",
+      "host": "BGP-CPD-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-CPD-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26643",
+      "host": "BGP-REV-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-REV-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26576",
+      "host": "SCL-TEC2-SW02",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-TEC2-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26597",
+      "host": "BGP-POR-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/BGP-POR-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26873",
+      "host": "SCL-CLD-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-CLD-SW01/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26875",
+      "host": "SCL-CLD-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-CLD-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "50281",
+      "host": "CLICKHOUSE-172.16.2.145",
+      "description": "ClickHouse: There are queries running is long",
+      "error": "Cannot evaluate function last(/CLICKHOUSE-172.16.2.145/clickhouse.process.elapsed): item is not supported."
+    },
+    {
+      "triggerid": "26691",
+      "host": "BGP-TEC-SW02",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-TEC-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26714",
+      "host": "BGP-ADM-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-ADM-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26804",
+      "host": "SCL-TEC1-SW04",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-TEC1-SW04/system.hw.serialnumber,#1): item is not supported."
+    },
+    {
+      "triggerid": "26829",
+      "host": "SCL-EXP-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-EXP-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26461",
+      "host": "BGP-EXP-SW02",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/BGP-EXP-SW02/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26300",
+      "host": "SCL-TEC1-SW01",
+      "description": "Cisco IOS: Operating system description has changed",
+      "error": "Cannot evaluate function last(/SCL-TEC1-SW01/system.sw.os[sysDescr.0],#1): item is not supported."
+    },
+    {
+      "triggerid": "26344",
+      "host": "SCL-URD-SW01",
+      "description": "Cisco IOS: Device has been replaced",
+      "error": "Cannot evaluate function last(/SCL-URD-SW01/system.hw.serialnumber,#1): item is not supported."
+    }
+  ]
+}

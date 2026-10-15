@@ -1,0 +1,89 @@
+# POC local do "Zabbix 8.0" via Docker Desktop.
+# Zabbix 8.0 LTS ainda nao tem release GA (ultima publica conhecida: 8.0.0beta2).
+# A Zabbix nao publica tag estavel alpine-8.0-latest no Docker Hub; a imagem
+# mais proxima do 8.0 e a "alpine-trunk" (branch de desenvolvimento continuo,
+# sem versao fixa). Isso e esperado para uma POC, mas NAO use trunk em producao
+# e espere que o pull de hoje seja diferente do pull de amanha.
+services:
+  postgres-server:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-zabbix}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: ${POSTGRES_DB:-zabbix}
+    volumes:
+      - zbx-pgsql-data:/var/lib/postgresql/data
+    networks:
+      - zabbix-net
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-zabbix} -d ${POSTGRES_DB:-zabbix}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:alpine-trunk
+    environment:
+      DB_SERVER_HOST: postgres-server
+      POSTGRES_USER: ${POSTGRES_USER:-zabbix}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: ${POSTGRES_DB:-zabbix}
+      TZ: ${TZ:-America/Sao_Paulo}
+    ports:
+      - "${SERVER_PORT:-10051}:10051"
+    volumes:
+      - zbx-server-alertscripts:/usr/lib/zabbix/alertscripts
+      - zbx-server-externalscripts:/usr/lib/zabbix/externalscripts
+    networks:
+      - zabbix-net
+    depends_on:
+      postgres-server:
+        condition: service_healthy
+    restart: unless-stopped
+
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-pgsql:alpine-trunk
+    environment:
+      DB_SERVER_HOST: postgres-server
+      POSTGRES_USER: ${POSTGRES_USER:-zabbix}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      POSTGRES_DB: ${POSTGRES_DB:-zabbix}
+      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST:-zabbix-server}
+      PHP_TZ: ${TZ:-America/Sao_Paulo}
+    ports:
+      - "${WEB_HTTP_PORT:-8090}:8080"
+      - "${WEB_HTTPS_PORT:-8453}:8443"
+    networks:
+      - zabbix-net
+    depends_on:
+      postgres-server:
+        condition: service_healthy
+      zabbix-server:
+        condition: service_started
+    restart: unless-stopped
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent2:alpine-trunk
+    environment:
+      ZBX_HOSTNAME: docker-desktop-local
+      ZBX_SERVER_HOST: ${ZBX_SERVER_HOST:-zabbix-server}
+      TZ: ${TZ:-America/Sao_Paulo}
+    networks:
+      - zabbix-net
+    depends_on:
+      - zabbix-server
+    restart: unless-stopped
+
+networks:
+  zabbix-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/16
+          gateway: 10.10.0.1
+
+volumes:
+  zbx-pgsql-data:
+  zbx-server-alertscripts:
+  zbx-server-externalscripts:

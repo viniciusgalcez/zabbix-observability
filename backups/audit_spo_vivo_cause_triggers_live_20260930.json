@@ -1,0 +1,394 @@
+[
+  {
+    "triggerid": "42707",
+    "expression": "1=1 and min(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.6.1],5m)=1 and max(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.6.1],5m)=1",
+    "description": "FortiGate: VPN P2MTZ2BGP2: Tunnel down",
+    "url": "",
+    "status": "0",
+    "value": "0",
+    "priority": "3",
+    "lastchange": "1790711204",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the current tunnel state is down.\r\n2. `{$VPN.STATE.CONTROL}=1` - a user can redefine the context macro to \"0\", marking this notification as not important. No new trigger will be fired if this tunnel is down.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.6.1])<>1 or 1=0",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "Current status: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ2BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "92134",
+        "name": "VPN P2MTZ2BGP2: Tunnel Status",
+        "key_": "vpn.tunnel.status[fgVpnTunEntStatus.6.1]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772704",
+        "lastvalue": "2"
+      }
+    ]
+  },
+  {
+    "triggerid": "42710",
+    "expression": "1=1 and min(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.2.1],5m)=1 and max(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.2.1],5m)=1",
+    "description": "FortiGate: VPN P2MTZ1BGP2: Tunnel down",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "3",
+    "lastchange": "1790767964",
+    "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the current tunnel state is down.\r\n2. `{$VPN.STATE.CONTROL}=1` - a user can redefine the context macro to \"0\", marking this notification as not important. No new trigger will be fired if this tunnel is down.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "4",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SPO-CPD-FW01/vpn.tunnel.status[fgVpnTunEntStatus.2.1])<>1 or 1=0",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "Current status: {ITEM.LASTVALUE1}",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "depends-on",
+        "value": "P2MTZ1BGP2"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "92137",
+        "name": "VPN P2MTZ1BGP2: Tunnel Status",
+        "key_": "vpn.tunnel.status[fgVpnTunEntStatus.2.1]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772704",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "50308",
+    "expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])>=3",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790593399",
+    "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SynergyRH, Systextil_Web, HK_ISP1, TEAMS, sla_internet). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.9])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.11])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.13])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.15])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.17])<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "0",
+    "opdata": "",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ],
+    "dependencies": [],
+    "items": [
+      {
+        "itemid": "93524",
+        "name": "SD-WAN [sla_internet]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.17]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93527",
+        "name": "SD-WAN [HK_ISP1]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.13]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93528",
+        "name": "SD-WAN [HK_TEAMS]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.15]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93529",
+        "name": "SD-WAN [HK_ SynergyRH]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.9]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93540",
+        "name": "SD-WAN [HK_Systextil_Web]:[ISP1_VIVO]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.11]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      }
+    ]
+  },
+  {
+    "triggerid": "55144",
+    "expression": "last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.2])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.5])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.6])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.19])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21])+last(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25])>=4",
+    "description": "SPO: tuneis VPN pela saida 1 (VIVO) instaveis",
+    "url": "",
+    "status": "0",
+    "value": "1",
+    "priority": "4",
+    "lastchange": "1790408059",
+    "comments": "CAUSA de correlacao (link-cause=SPO_ISP1_VPN). 4+ dos 8 tuneis que saem pela VIVO da Matriz (MTZISP1_BGP/SCL, MTZ_AZ_W1, BRAS-01, DENIM-01, FIACAO1) dead com a internet OK. Recupera apos 10 min estavel. Depende da trigger de internet 50308. Criada 2026-09-11.",
+    "error": "",
+    "templateid": "0",
+    "type": "0",
+    "state": "0",
+    "flags": "0",
+    "recovery_mode": "1",
+    "recovery_expression": "max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.1],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.2],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.5],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.6],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.19],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.23],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.21],10m)+max(/SPO-CPD-FW01/sdwan_health.state[fgVWLHealthCheckLinkState.25],10m)<=1",
+    "correlation_mode": "0",
+    "correlation_tag": "",
+    "manual_close": "1",
+    "opdata": "",
+    "event_name": "",
+    "uuid": "",
+    "url_name": "",
+    "hosts": [
+      {
+        "hostid": "10758",
+        "host": "SPO-CPD-FW01",
+        "name": "SPO-CPD-FW01"
+      }
+    ],
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "SPO_ISP1_VPN"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "vpn"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      }
+    ],
+    "dependencies": [
+      {
+        "triggerid": "50308",
+        "expression": "{106085}+{106086}+{106087}+{106088}+{106089}>=3",
+        "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+        "url": "",
+        "status": "0",
+        "value": "1",
+        "priority": "4",
+        "lastchange": "1790593399",
+        "comments": "Conta apenas os health-checks que testam a internet PROPRIA deste site nesta saida (SynergyRH, Systextil_Web, HK_ISP1, TEAMS, sla_internet). Os health-checks de tunel para outros sites ficam de fora de proposito: eles podem morrer por queda do site remoto, e sao suprimidos pela regra de correlacao do site remoto. Dispara com 3 de 5 mortos; recupera com no maximo 1.",
+        "error": "",
+        "templateid": "0",
+        "type": "0",
+        "state": "0",
+        "flags": "0",
+        "recovery_mode": "1",
+        "recovery_expression": "{106085}+{106086}+{106087}+{106088}+{106089}<=1",
+        "correlation_mode": "0",
+        "correlation_tag": "",
+        "manual_close": "0",
+        "opdata": "",
+        "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+        "uuid": "",
+        "url_name": ""
+      }
+    ],
+    "items": [
+      {
+        "itemid": "93530",
+        "name": "SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.2]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93531",
+        "name": "SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.5]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93535",
+        "name": "SD-WAN [SLA_MATRIZ_TO_AZURE]:[MTZ_AZ_W1_W1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.19]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93539",
+        "name": "SD-WAN [HK_SAOCARLOS]:[MTZISP1_SCLISP2]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.6]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "93543",
+        "name": "SD-WAN [HK_BRAGANCA]:[MTZISP1_BGPISP1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.1]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "108706",
+        "name": "SD-WAN [SLA_DENIM]:[VPN_DENIM-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.21]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "109523",
+        "name": "SD-WAN [SLA_BRAS]:[MTZISP1_BRAS-01]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.23]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      },
+      {
+        "itemid": "111025",
+        "name": "SD-WAN [SLA_SAOCARLOS_FIACAO]:[SPO_SCL_FIACAO1]: Health check state",
+        "key_": "sdwan_health.state[fgVWLHealthCheckLinkState.25]",
+        "status": "0",
+        "state": "0",
+        "error": "",
+        "lastclock": "1790772679",
+        "lastvalue": "1"
+      }
+    ]
+  }
+]

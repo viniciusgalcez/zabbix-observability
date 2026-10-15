@@ -1,0 +1,414 @@
+{
+  "problems": [
+    {
+      "eventid": "17437418",
+      "source": "0",
+      "object": "0",
+      "objectid": "53811",
+      "clock": "1789120758",
+      "ns": "482552075",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "FortiGate: Interface lan3(ISP2-): Link down",
+      "acknowledged": "0",
+      "severity": "1",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Current state: down (2)",
+      "tags": [
+        {
+          "tag": "class",
+          "value": "network"
+        },
+        {
+          "tag": "component",
+          "value": "network"
+        },
+        {
+          "tag": "depends-on",
+          "value": "ISP2-"
+        },
+        {
+          "tag": "description",
+          "value": "ISP2-"
+        },
+        {
+          "tag": "infra",
+          "value": "firewall"
+        },
+        {
+          "tag": "interface",
+          "value": "lan3"
+        },
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "site",
+          "value": "bras"
+        },
+        {
+          "tag": "slahost",
+          "value": "BRAS-CPD-FW01"
+        },
+        {
+          "tag": "target",
+          "value": "fortigate"
+        },
+        {
+          "tag": "target",
+          "value": "fortinet"
+        },
+        {
+          "tag": "vendor",
+          "value": "Fortinet"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "17441868",
+      "source": "0",
+      "object": "0",
+      "objectid": "54995",
+      "clock": "1789141400",
+      "ns": "890675611",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+      "acknowledged": "0",
+      "severity": "1",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Current status: down (1)",
+      "tags": [
+        {
+          "tag": "class",
+          "value": "network"
+        },
+        {
+          "tag": "component",
+          "value": "vpn"
+        },
+        {
+          "tag": "depends-on",
+          "value": "az-to-oci-vpn2"
+        },
+        {
+          "tag": "infra",
+          "value": "firewall"
+        },
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "site",
+          "value": "azure"
+        },
+        {
+          "tag": "slahost",
+          "value": "AZ-VM-FW-01"
+        },
+        {
+          "tag": "target",
+          "value": "fortigate"
+        },
+        {
+          "tag": "target",
+          "value": "fortinet"
+        },
+        {
+          "tag": "tunnel",
+          "value": "az-to-oci-vpn2"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "17498586",
+      "source": "0",
+      "object": "0",
+      "objectid": "53814",
+      "clock": "1789413377",
+      "ns": "873815761",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "FortiGate: Interface lan2(): Link down",
+      "acknowledged": "0",
+      "severity": "1",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Current state: down (2)",
+      "tags": [
+        {
+          "tag": "class",
+          "value": "network"
+        },
+        {
+          "tag": "component",
+          "value": "network"
+        },
+        {
+          "tag": "depends-on",
+          "value": ""
+        },
+        {
+          "tag": "description",
+          "value": ""
+        },
+        {
+          "tag": "infra",
+          "value": "firewall"
+        },
+        {
+          "tag": "interface",
+          "value": "lan2"
+        },
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "site",
+          "value": "bras"
+        },
+        {
+          "tag": "slahost",
+          "value": "BRAS-CPD-FW01"
+        },
+        {
+          "tag": "target",
+          "value": "fortigate"
+        },
+        {
+          "tag": "target",
+          "value": "fortinet"
+        },
+        {
+          "tag": "vendor",
+          "value": "Fortinet"
+        }
+      ],
+      "urls": []
+    },
+    {
+      "eventid": "18379687",
+      "source": "0",
+      "object": "0",
+      "objectid": "43212",
+      "clock": "1790711298",
+      "ns": "139398867",
+      "r_eventid": "0",
+      "r_clock": "0",
+      "r_ns": "0",
+      "correlationid": "0",
+      "userid": "0",
+      "name": "FortiGate: Interface dmz(): Link down",
+      "acknowledged": "0",
+      "severity": "3",
+      "cause_eventid": "0",
+      "suppressed": "0",
+      "opdata": "Current state: down (2)",
+      "tags": [
+        {
+          "tag": "class",
+          "value": "network"
+        },
+        {
+          "tag": "component",
+          "value": "network"
+        },
+        {
+          "tag": "depends-on",
+          "value": ""
+        },
+        {
+          "tag": "description",
+          "value": ""
+        },
+        {
+          "tag": "infra",
+          "value": "firewall"
+        },
+        {
+          "tag": "interface",
+          "value": "dmz"
+        },
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "site",
+          "value": "spo"
+        },
+        {
+          "tag": "slahost",
+          "value": "SPO-CPD-FW01"
+        },
+        {
+          "tag": "target",
+          "value": "fortigate"
+        },
+        {
+          "tag": "target",
+          "value": "fortinet"
+        }
+      ],
+      "urls": []
+    }
+  ],
+  "triggers": [
+    {
+      "triggerid": "43212",
+      "expression": "{$IFCONTROL:\"dmz\"}=1 and {85353}=2 and ({85354}<>{85355})",
+      "description": "FortiGate: Interface dmz(): Link down",
+      "url": "",
+      "status": "0",
+      "value": "1",
+      "priority": "3",
+      "lastchange": "1790711298",
+      "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"dmz\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+      "error": "",
+      "templateid": "0",
+      "type": "0",
+      "state": "0",
+      "flags": "4",
+      "recovery_mode": "1",
+      "recovery_expression": "{85353}<>2 or {$IFCONTROL:\"dmz\"}=0",
+      "correlation_mode": "0",
+      "correlation_tag": "",
+      "manual_close": "1",
+      "opdata": "Current state: {ITEM.LASTVALUE1}",
+      "event_name": "",
+      "uuid": "",
+      "url_name": "",
+      "tags": [
+        {
+          "tag": "depends-on",
+          "value": ""
+        },
+        {
+          "tag": "scope",
+          "value": "availability"
+        }
+      ]
+    },
+    {
+      "triggerid": "53811",
+      "expression": "{$IFCONTROL:\"lan3\"}=1 and {104019}=2 and ({104020}<>{104021})",
+      "description": "FortiGate: Interface lan3(ISP2-): Link down",
+      "url": "",
+      "status": "0",
+      "value": "1",
+      "priority": "3",
+      "lastchange": "1789120758",
+      "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"lan3\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+      "error": "",
+      "templateid": "0",
+      "type": "0",
+      "state": "0",
+      "flags": "4",
+      "recovery_mode": "1",
+      "recovery_expression": "{104019}<>2 or {$IFCONTROL:\"lan3\"}=0",
+      "correlation_mode": "0",
+      "correlation_tag": "",
+      "manual_close": "1",
+      "opdata": "Current state: {ITEM.LASTVALUE1}",
+      "event_name": "",
+      "uuid": "",
+      "url_name": "",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "depends-on",
+          "value": "ISP2-"
+        }
+      ]
+    },
+    {
+      "triggerid": "53814",
+      "expression": "{$IFCONTROL:\"lan2\"}=1 and {104028}=2 and ({104029}<>{104030})",
+      "description": "FortiGate: Interface lan2(): Link down",
+      "url": "",
+      "status": "0",
+      "value": "1",
+      "priority": "3",
+      "lastchange": "1789413377",
+      "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the operations status is down.\r\n2. `{$IFCONTROL:\"lan2\"}=1` - a user can redefine the context macro to \"0\", marking this interface as not important. No new trigger will be fired if this interface is down.\r\n3. `{TEMPLATE_NAME:METRIC.diff()}=1` - the trigger fires only if the operational status was up to \"1\" sometime before.\r\n\r\nWARNING: if closed manually - it will not fire again on the next poll, because of `.diff`.",
+      "error": "",
+      "templateid": "0",
+      "type": "0",
+      "state": "0",
+      "flags": "4",
+      "recovery_mode": "1",
+      "recovery_expression": "{104028}<>2 or {$IFCONTROL:\"lan2\"}=0",
+      "correlation_mode": "0",
+      "correlation_tag": "",
+      "manual_close": "1",
+      "opdata": "Current state: {ITEM.LASTVALUE1}",
+      "event_name": "",
+      "uuid": "",
+      "url_name": "",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "depends-on",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "triggerid": "54995",
+      "expression": "{$VPN.STATE.CONTROL:\"az-to-oci-vpn2\"}=1 and {106951}=1 and {106952}=1",
+      "description": "FortiGate: VPN az-to-oci-vpn2: Tunnel down",
+      "url": "",
+      "status": "0",
+      "value": "1",
+      "priority": "3",
+      "lastchange": "1789141400",
+      "comments": "This trigger expression works as follows:\r\n1. It can be triggered if the current tunnel state is down.\r\n2. `{$VPN.STATE.CONTROL}=1` - a user can redefine the context macro to \"0\", marking this notification as not important. No new trigger will be fired if this tunnel is down.",
+      "error": "",
+      "templateid": "0",
+      "type": "0",
+      "state": "0",
+      "flags": "4",
+      "recovery_mode": "1",
+      "recovery_expression": "{106953}<>1 or {$VPN.STATE.CONTROL:\"az-to-oci-vpn2\"}=0",
+      "correlation_mode": "0",
+      "correlation_tag": "",
+      "manual_close": "1",
+      "opdata": "Current status: {ITEM.LASTVALUE1}",
+      "event_name": "",
+      "uuid": "",
+      "url_name": "",
+      "tags": [
+        {
+          "tag": "scope",
+          "value": "availability"
+        },
+        {
+          "tag": "depends-on",
+          "value": "az-to-oci-vpn2"
+        }
+      ]
+    }
+  ]
+}

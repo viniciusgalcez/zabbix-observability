@@ -1,0 +1,5 @@
+[
+  {"arguments":{"method":"event.get","params":{"output":"extend","eventids":["18116214","17779567","18499624","18499651"],"selectTags":"extend","selectAcknowledges":"extend","selectSuppressionData":"extend"}},"save":"backups/audit_spo_vivo_open_event_identity_20260930.json","quiet":true},
+  {"arguments":{"method":"trigger.get","params":{"output":"extend","hostids":["10758"],"search":{"description":"VIVO"},"expandExpression":true,"expandDescription":true,"selectHosts":["hostid","host"],"selectTags":"extend","selectItems":["itemid","name","key_","lastvalue","lastclock","status","state","error"],"selectDependencies":"extend"}},"save":"backups/audit_spo_vivo_all_triggers_current_20260930.json","quiet":true},
+  {"arguments":{"method":"item.get","params":{"output":["itemid","name","key_","lastvalue","lastclock","status","state","error"],"hostids":["10758"],"search":{"name":"ISP1_VIVO"},"sortfield":"name"}},"save":"backups/audit_spo_vivo_items_current_20260930.json","quiet":true}
+]

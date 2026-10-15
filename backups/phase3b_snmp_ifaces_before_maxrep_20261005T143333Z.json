@@ -1,0 +1,80 @@
+[
+  {
+    "interfaceid": "75",
+    "hostid": "10731",
+    "main": "1",
+    "type": "2",
+    "useip": "1",
+    "ip": "172.16.23.9",
+    "dns": "",
+    "port": "161",
+    "available": "1",
+    "error": "",
+    "errors_from": "0",
+    "disable_until": "0",
+    "details": {
+      "version": "3",
+      "bulk": "1",
+      "securityname": "zabbix_snmp",
+      "securitylevel": "2",
+      "authpassphrase": "ZbxAuth_2026@Net",
+      "privpassphrase": "ZbxPriv_2026@Secure",
+      "authprotocol": "1",
+      "privprotocol": "1",
+      "contextname": "",
+      "max_repetitions": "10"
+    }
+  },
+  {
+    "interfaceid": "79",
+    "hostid": "10735",
+    "main": "1",
+    "type": "2",
+    "useip": "1",
+    "ip": "172.16.23.29",
+    "dns": "",
+    "port": "161",
+    "available": "1",
+    "error": "",
+    "errors_from": "0",
+    "disable_until": "0",
+    "details": {
+      "version": "3",
+      "bulk": "1",
+      "securityname": "zabbix_snmp",
+      "securitylevel": "2",
+      "authpassphrase": "ZbxAuth_2026@Net",
+      "privpassphrase": "ZbxPriv_2026@Secure",
+      "authprotocol": "1",
+      "privprotocol": "1",
+      "contextname": "",
+      "max_repetitions": "10"
+    }
+  },
+  {
+    "interfaceid": "178",
+    "hostid": "10834",
+    "main": "1",
+    "type": "2",
+    "useip": "1",
+    "ip": "172.17.23.15",
+    "dns": "",
+    "port": "161",
+    "available": "1",
+    "error": "",
+    "errors_from": "0",
+    "disable_until": "0",
+    "details": {
+      "version": "3",
+      "bulk": "1",
+      "securityname": "zabbix_snmp",
+      "securitylevel": "2",
+      "authpassphrase": "ZbxAuth_2026@Net",
+      "privpassphrase": "ZbxPriv_2026@Secure",
+      "authprotocol": "1",
+      "privprotocol": "1",
+      "contextname": "",
+      "max_repetitions": "10"
+    }
+  }
+]

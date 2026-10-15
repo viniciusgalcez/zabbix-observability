@@ -1,0 +1,74 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "eventids": [
+          "17437418",
+          "17498586",
+          "18379687",
+          "17441868",
+          "18116214"
+        ],
+        "output": [
+          "eventid",
+          "objectid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid",
+          "acknowledged"
+        ],
+        "selectTags": "extend"
+      }
+    },
+    "save": "backups/phase2_chronic_roots_problems_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "correlation.get",
+      "params": {
+        "correlationids": [
+          "16",
+          "45"
+        ],
+        "output": [
+          "correlationid",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "save": "backups/phase2_corr_16_45_status_20261002.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "groupids": [
+          "27",
+          "28",
+          "29",
+          "30",
+          "31",
+          "98",
+          "99",
+          "100"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true
+      }
+    },
+    "save": "backups/phase2_fw_problems_baseline_20261002.json",
+    "quiet": true
+  }
+]

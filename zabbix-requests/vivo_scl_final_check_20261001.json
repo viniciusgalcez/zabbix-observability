@@ -1,0 +1,50 @@
+[
+  {
+    "arguments": {
+      "method": "problem.get",
+      "params": {
+        "hostids": [
+          "10724"
+        ],
+        "output": [
+          "eventid",
+          "name",
+          "severity",
+          "clock",
+          "cause_eventid"
+        ],
+        "selectTags": "extend",
+        "recent": true,
+        "sortfield": [
+          "eventid"
+        ],
+        "sortorder": "DESC"
+      }
+    },
+    "save": "backups/vivo_scl_problems_final_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "triggerids": [
+          "50306"
+        ],
+        "output": [
+          "triggerid",
+          "description",
+          "value",
+          "priority"
+        ],
+        "selectItems": [
+          "itemid",
+          "name",
+          "lastvalue"
+        ]
+      }
+    },
+    "save": "backups/vivo_scl_50306_final_20261001.json",
+    "quiet": true
+  }
+]

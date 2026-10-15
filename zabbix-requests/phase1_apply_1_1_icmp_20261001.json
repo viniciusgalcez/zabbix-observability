@@ -1,0 +1,36 @@
+[
+  {
+    "arguments": {
+      "method": "trigger.get",
+      "params": {
+        "output": "extend",
+        "triggerids": ["23176", "37570"]
+      }
+    },
+    "save": "backups/phase1_icmp_triggers_23176_37570_before_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "trigger.update",
+      "params": {
+        "triggerid": "23176",
+        "manual_close": 1
+      }
+    },
+    "save": "backups/phase1_apply_icmp_template_manual_close_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "event.acknowledge",
+      "params": {
+        "eventids": ["17297217"],
+        "action": 1,
+        "message": "Fase 1.1: BGP-ACA-AP01 ja desabilitado; fechando ICMP residual (manual_close habilitado no Template Module ICMP Ping)."
+      }
+    },
+    "save": "backups/phase1_apply_close_icmp_17297217_20261001.json",
+    "quiet": true
+  }
+]

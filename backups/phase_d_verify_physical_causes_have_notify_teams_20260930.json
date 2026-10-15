@@ -1,0 +1,403 @@
+[
+  {
+    "triggerid": "47620",
+    "description": "BGP: Saida de internet 2 (VIVO) sem conectividade",
+    "event_name": "BGP: Link HK_ISP2 (VIVO) DOWN",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BGP_ISP2"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "link",
+        "value": "ISP2"
+      }
+    ]
+  },
+  {
+    "triggerid": "47636",
+    "description": "BGP: Saida de internet 1 (CROSSCONNECTION) sem conectividade",
+    "event_name": "BGP: Link HK_ISP1 (CROSSCNT) DOWN",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BGP_ISP1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "bgp"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      }
+    ]
+  },
+  {
+    "triggerid": "50305",
+    "description": "SPO: Saida de internet 2 (ALGAR) sem conectividade",
+    "event_name": "SPO: Link HK_ISP2 (ALGAR) DOWN",
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP2"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "50306",
+    "description": "SCL: Saida de internet 1 (VIVO) sem conectividade",
+    "event_name": "SCL: Link HK_VIVO (ISP1_VIVO) DOWN",
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "HK_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "50307",
+    "description": "SCL: Saida de internet 2 (ALGAR) sem conectividade",
+    "event_name": "SCL: Link HK_ALGAR (ISP2_ALGAR) DOWN",
+    "tags": [
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "scl"
+      },
+      {
+        "tag": "link",
+        "value": "ISP2"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SCL_ALGAR"
+      }
+    ]
+  },
+  {
+    "triggerid": "50308",
+    "description": "SPO: Saida de internet 1 (VIVO) sem conectividade",
+    "event_name": "SPO: Link HK_ISP1 (VIVO) DOWN",
+    "tags": [
+      {
+        "tag": "carrier",
+        "value": "vivo"
+      },
+      {
+        "tag": "class",
+        "value": "network"
+      },
+      {
+        "tag": "component",
+        "value": "wan-link"
+      },
+      {
+        "tag": "link-id",
+        "value": "spo.vivo.isp1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "spo"
+      },
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "SPO_VIVO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54332",
+    "description": "FIA: Saida de internet 1 (CLARO DEDICADO) sem conectividade",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "FIA_ISP1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "fia"
+      },
+      {
+        "tag": "link",
+        "value": "BR-SCL-FIA-FW01-CLARO-DEDICADO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54333",
+    "description": "BRAS: Saida de internet 1 (CLARO) sem conectividade",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "BRAS_ISP1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "bras"
+      },
+      {
+        "tag": "link",
+        "value": "BRAS-CPD-FW01-CLARO"
+      }
+    ]
+  },
+  {
+    "triggerid": "54334",
+    "description": "FIA: Saida de internet 2 (CLARO BANDA LARGA) sem conectividade",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link-cause",
+        "value": "FIA_ISP2"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "fia"
+      },
+      {
+        "tag": "link",
+        "value": "BR-SCL-FIA-FW01-CLARO-BANDA-LARGA"
+      }
+    ]
+  },
+  {
+    "triggerid": "54451",
+    "description": "DENIM: Saida de internet 2 (ALGAR) sem conectividade",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link",
+        "value": "ISP2"
+      },
+      {
+        "tag": "link-cause",
+        "value": "DENIM_ISP2"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "denim"
+      }
+    ]
+  },
+  {
+    "triggerid": "54452",
+    "description": "DENIM: Saida de internet 1 (FLEXUS) sem conectividade",
+    "event_name": "",
+    "tags": [
+      {
+        "tag": "link",
+        "value": "ISP1"
+      },
+      {
+        "tag": "link-cause",
+        "value": "DENIM_ISP1"
+      },
+      {
+        "tag": "notify",
+        "value": "teams"
+      },
+      {
+        "tag": "notify",
+        "value": "telegram"
+      },
+      {
+        "tag": "scope",
+        "value": "availability"
+      },
+      {
+        "tag": "service",
+        "value": "internet"
+      },
+      {
+        "tag": "site",
+        "value": "denim"
+      }
+    ]
+  }
+]

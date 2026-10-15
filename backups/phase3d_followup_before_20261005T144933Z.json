@@ -1,0 +1,1157 @@
+{
+  "mysql_rules": [
+    {
+      "itemid": "33147",
+      "type": "18",
+      "snmp_oid": "",
+      "hostid": "10320",
+      "name": "MariaDB discovery",
+      "key_": "mysql.extra_metric.discovery",
+      "delay": "0",
+      "history": "90d",
+      "trends": "0",
+      "status": "0",
+      "value_type": "4",
+      "trapper_hosts": "",
+      "units": "",
+      "logtimefmt": "",
+      "templateid": "0",
+      "valuemapid": "0",
+      "params": "",
+      "ipmi_sensor": "",
+      "authtype": "0",
+      "username": "",
+      "password": "",
+      "publickey": "",
+      "privatekey": "",
+      "flags": "1",
+      "interfaceid": "0",
+      "description": "Used for additional metrics if MariaDB is used.",
+      "inventory_link": "0",
+      "lifetime": "7d",
+      "jmx_endpoint": "",
+      "master_itemid": "30637",
+      "timeout": "",
+      "url": "",
+      "query_fields": [],
+      "posts": "",
+      "status_codes": "200",
+      "follow_redirects": "1",
+      "post_type": "0",
+      "http_proxy": "",
+      "headers": [],
+      "retrieve_mode": "0",
+      "request_method": "0",
+      "ssl_cert_file": "",
+      "ssl_key_file": "",
+      "ssl_key_password": "",
+      "verify_peer": "0",
+      "verify_host": "0",
+      "allow_traps": "0",
+      "discover": "0",
+      "uuid": "15035186d4d54962bc6b82ebbaea8784",
+      "lifetime_type": "0",
+      "enabled_lifetime_type": "2",
+      "enabled_lifetime": "0",
+      "state": "0",
+      "error": "",
+      "hosts": [
+        {
+          "hostid": "10320",
+          "host": "MySQL by Zabbix agent 2"
+        }
+      ],
+      "preprocessing": [
+        {
+          "type": "21",
+          "params": "return JSON.stringify(value.search('MariaDB')>-1 ? [{'{#SINGLETON}': ''}] : []);",
+          "error_handler": "0",
+          "error_handler_params": ""
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "itemid": "107176",
+      "type": "18",
+      "snmp_oid": "",
+      "hostid": "11139",
+      "name": "MariaDB discovery",
+      "key_": "mysql.extra_metric.discovery",
+      "delay": "0",
+      "history": "31d",
+      "trends": "365d",
+      "status": "0",
+      "value_type": "4",
+      "trapper_hosts": "",
+      "units": "",
+      "logtimefmt": "",
+      "templateid": "33147",
+      "valuemapid": "0",
+      "params": "",
+      "ipmi_sensor": "",
+      "authtype": "0",
+      "username": "",
+      "password": "",
+      "publickey": "",
+      "privatekey": "",
+      "flags": "1",
+      "interfaceid": "0",
+      "description": "Used for additional metrics if MariaDB is used.",
+      "inventory_link": "0",
+      "lifetime": "7d",
+      "jmx_endpoint": "",
+      "master_itemid": "107132",
+      "timeout": "",
+      "url": "",
+      "query_fields": [],
+      "posts": "",
+      "status_codes": "200",
+      "follow_redirects": "1",
+      "post_type": "0",
+      "http_proxy": "",
+      "headers": [],
+      "retrieve_mode": "0",
+      "request_method": "0",
+      "ssl_cert_file": "",
+      "ssl_key_file": "",
+      "ssl_key_password": "",
+      "verify_peer": "0",
+      "verify_host": "0",
+      "allow_traps": "0",
+      "discover": "0",
+      "uuid": "",
+      "lifetime_type": "0",
+      "enabled_lifetime_type": "2",
+      "enabled_lifetime": "0",
+      "state": "1",
+      "error": "Invalid parameters: Invalid first parameter \"URI\": parse \"tcp://<Put your DSN>\": invalid character \" \" in host name.",
+      "hosts": [
+        {
+          "hostid": "11139",
+          "host": "AZ-VM-APP-03-DB"
+        }
+      ],
+      "preprocessing": [
+        {
+          "type": "21",
+          "params": "return JSON.stringify(value.search('MariaDB')>-1 ? [{'{#SINGLETON}': ''}] : []);",
+          "error_handler": "0",
+          "error_handler_params": ""
+        }
+      ],
+      "parameters": []
+    }
+  ],
+  "mysql_templates": [
+    {
+      "templateid": "10316",
+      "host": "MySQL by Zabbix agent"
+    },
+    {
+      "templateid": "10317",
+      "host": "MySQL by ODBC"
+    },
+    {
+      "templateid": "10320",
+      "host": "MySQL by Zabbix agent 2"
+    },
+    {
+      "templateid": "10539",
+      "host": "Azure MySQL Flexible Server by HTTP"
+    },
+    {
+      "templateid": "10540",
+      "host": "Azure MySQL Single Server by HTTP"
+    },
+    {
+      "templateid": "10574",
+      "host": "GCP Cloud SQL MySQL Replica by HTTP"
+    },
+    {
+      "templateid": "10573",
+      "host": "GCP Cloud SQL MySQL by HTTP"
+    },
+    {
+      "templateid": "10646",
+      "host": "MySQL by Zabbix agent 2 active"
+    },
+    {
+      "templateid": "10647",
+      "host": "MySQL by Zabbix agent active"
+    }
+  ],
+  "tpl_macros": [
+    {
+      "template": "MySQL by Zabbix agent",
+      "macros": [
+        {
+          "hostmacroid": "1242",
+          "hostid": "10316",
+          "macro": "{$MYSQL.ABORTED_CONN.MAX.WARN}",
+          "value": "3",
+          "description": "Number of failed attempts to connect to the MySQL server for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1243",
+          "hostid": "10316",
+          "macro": "{$MYSQL.BUFF_UTIL.MIN.WARN}",
+          "value": "50",
+          "description": "The minimum buffer pool utilization in percentage for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1359",
+          "hostid": "10316",
+          "macro": "{$MYSQL.CREATED_TMP_DISK_TABLES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary tables created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1360",
+          "hostid": "10316",
+          "macro": "{$MYSQL.CREATED_TMP_FILES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary files created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1361",
+          "hostid": "10316",
+          "macro": "{$MYSQL.CREATED_TMP_TABLES.MAX.WARN}",
+          "value": "30",
+          "description": "The maximum number of temporary tables created in memory per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6744",
+          "hostid": "10316",
+          "macro": "{$MYSQL.DBNAME.MATCHES}",
+          "value": ".+",
+          "description": "Filter of discoverable databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6745",
+          "hostid": "10316",
+          "macro": "{$MYSQL.DBNAME.NOT_MATCHES}",
+          "value": "information_schema",
+          "description": "Filter to exclude discovered databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1244",
+          "hostid": "10316",
+          "macro": "{$MYSQL.HOST}",
+          "value": "127.0.0.1",
+          "description": "Hostname or IP of MySQL host or container.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1735",
+          "hostid": "10316",
+          "macro": "{$MYSQL.INNODB_LOG_FILES}",
+          "value": "2",
+          "description": "Number of physical files in the InnoDB redo log for calculating `innodb_log_file_size`.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1245",
+          "hostid": "10316",
+          "macro": "{$MYSQL.PORT}",
+          "value": "3306",
+          "description": "MySQL service port.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1246",
+          "hostid": "10316",
+          "macro": "{$MYSQL.REPL_LAG.MAX.WARN}",
+          "value": "30m",
+          "description": "Amount of time the slave is behind the master for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1247",
+          "hostid": "10316",
+          "macro": "{$MYSQL.SLOW_QUERIES.MAX.WARN}",
+          "value": "3",
+          "description": "Number of slow queries for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "MySQL by ODBC",
+      "macros": [
+        {
+          "hostmacroid": "1248",
+          "hostid": "10317",
+          "macro": "{$MYSQL.ABORTED_CONN.MAX.WARN}",
+          "value": "3",
+          "description": "Number of failed attempts to connect to the MySQL server for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1249",
+          "hostid": "10317",
+          "macro": "{$MYSQL.BUFF_UTIL.MIN.WARN}",
+          "value": "50",
+          "description": "The minimum buffer pool utilization in percentage for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1365",
+          "hostid": "10317",
+          "macro": "{$MYSQL.CREATED_TMP_DISK_TABLES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary tables created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1366",
+          "hostid": "10317",
+          "macro": "{$MYSQL.CREATED_TMP_FILES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary files created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1367",
+          "hostid": "10317",
+          "macro": "{$MYSQL.CREATED_TMP_TABLES.MAX.WARN}",
+          "value": "30",
+          "description": "The maximum number of temporary tables created in memory per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6748",
+          "hostid": "10317",
+          "macro": "{$MYSQL.DBNAME.MATCHES}",
+          "value": ".+",
+          "description": "Filter of discoverable databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6749",
+          "hostid": "10317",
+          "macro": "{$MYSQL.DBNAME.NOT_MATCHES}",
+          "value": "information_schema",
+          "description": "Filter to exclude discovered databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1250",
+          "hostid": "10317",
+          "macro": "{$MYSQL.DSN}",
+          "value": "<Put your DSN here>",
+          "description": "System data source name.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1737",
+          "hostid": "10317",
+          "macro": "{$MYSQL.INNODB_LOG_FILES}",
+          "value": "2",
+          "description": "Number of physical files in the InnoDB redo log for calculating `innodb_log_file_size`.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1251",
+          "hostid": "10317",
+          "macro": "{$MYSQL.PASSWORD}",
+          "value": "<Put your password here>",
+          "description": "MySQL user password.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1252",
+          "hostid": "10317",
+          "macro": "{$MYSQL.REPL_LAG.MAX.WARN}",
+          "value": "30m",
+          "description": "Amount of time the slave is behind the master for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1253",
+          "hostid": "10317",
+          "macro": "{$MYSQL.SLOW_QUERIES.MAX.WARN}",
+          "value": "3",
+          "description": "Number of slow queries for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1254",
+          "hostid": "10317",
+          "macro": "{$MYSQL.USER}",
+          "value": "<Put your username here>",
+          "description": "MySQL username.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "MySQL by Zabbix agent 2",
+      "macros": [
+        {
+          "hostmacroid": "1264",
+          "hostid": "10320",
+          "macro": "{$MYSQL.ABORTED_CONN.MAX.WARN}",
+          "value": "3",
+          "description": "Number of failed attempts to connect to the MySQL server for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1265",
+          "hostid": "10320",
+          "macro": "{$MYSQL.BUFF_UTIL.MIN.WARN}",
+          "value": "50",
+          "description": "The minimum buffer pool utilization in percentage for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1362",
+          "hostid": "10320",
+          "macro": "{$MYSQL.CREATED_TMP_DISK_TABLES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary tables created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1363",
+          "hostid": "10320",
+          "macro": "{$MYSQL.CREATED_TMP_FILES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary files created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1364",
+          "hostid": "10320",
+          "macro": "{$MYSQL.CREATED_TMP_TABLES.MAX.WARN}",
+          "value": "30",
+          "description": "The maximum number of temporary tables created in memory per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6746",
+          "hostid": "10320",
+          "macro": "{$MYSQL.DBNAME.MATCHES}",
+          "value": ".+",
+          "description": "Filter of discoverable databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6747",
+          "hostid": "10320",
+          "macro": "{$MYSQL.DBNAME.NOT_MATCHES}",
+          "value": "information_schema",
+          "description": "Filter to exclude discovered databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1266",
+          "hostid": "10320",
+          "macro": "{$MYSQL.DSN}",
+          "value": "<Put your DSN>",
+          "description": "System data source name such as <tcp://host:port or unix:/path/to/socket)/>.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1736",
+          "hostid": "10320",
+          "macro": "{$MYSQL.INNODB_LOG_FILES}",
+          "value": "2",
+          "description": "Number of physical files in the InnoDB redo log for calculating `innodb_log_file_size`.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1267",
+          "hostid": "10320",
+          "macro": "{$MYSQL.PASSWORD}",
+          "value": "",
+          "description": "MySQL user password.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1268",
+          "hostid": "10320",
+          "macro": "{$MYSQL.REPL_LAG.MAX.WARN}",
+          "value": "30m",
+          "description": "Amount of time the slave is behind the master for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1269",
+          "hostid": "10320",
+          "macro": "{$MYSQL.SLOW_QUERIES.MAX.WARN}",
+          "value": "3",
+          "description": "Number of slow queries for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "1270",
+          "hostid": "10320",
+          "macro": "{$MYSQL.USER}",
+          "value": "",
+          "description": "MySQL user name.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "Azure MySQL Flexible Server by HTTP",
+      "macros": [
+        {
+          "hostmacroid": "5930",
+          "hostid": "10539",
+          "macro": "{$AZURE.APP.ID}",
+          "value": "",
+          "description": "The App ID of Microsoft Azure.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5683",
+          "hostid": "10539",
+          "macro": "{$AZURE.DATA.TIMEOUT}",
+          "value": "15s",
+          "description": "API response timeout.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5931",
+          "hostid": "10539",
+          "macro": "{$AZURE.DB.ABORTED.CONN.MAX.WARN}",
+          "value": "25",
+          "description": "The number of failed attempts to connect to the MySQL server for a trigger expression.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5685",
+          "hostid": "10539",
+          "macro": "{$AZURE.DB.CPU.UTIL.CRIT}",
+          "value": "90",
+          "description": "The critical threshold of CPU utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5687",
+          "hostid": "10539",
+          "macro": "{$AZURE.DB.STORAGE.PUSED.CRIT}",
+          "value": "90",
+          "description": "The critical threshold of the storage utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5688",
+          "hostid": "10539",
+          "macro": "{$AZURE.DB.STORAGE.PUSED.WARN}",
+          "value": "80",
+          "description": "The warning threshold of the storage utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5689",
+          "hostid": "10539",
+          "macro": "{$AZURE.PASSWORD}",
+          "description": "Microsoft Azure password.",
+          "type": "1",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6111",
+          "hostid": "10539",
+          "macro": "{$AZURE.PROXY}",
+          "value": "",
+          "description": "Sets the HTTP proxy value. If this macro is empty, then no proxy is used.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5932",
+          "hostid": "10539",
+          "macro": "{$AZURE.RESOURCE.ID}",
+          "value": "",
+          "description": "Microsoft Azure MySQL server ID.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5933",
+          "hostid": "10539",
+          "macro": "{$AZURE.SUBSCRIPTION.ID}",
+          "value": "",
+          "description": "Microsoft Azure subscription ID.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5934",
+          "hostid": "10539",
+          "macro": "{$AZURE.TENANT.ID}",
+          "value": "",
+          "description": "Microsoft Azure tenant ID.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "Azure MySQL Single Server by HTTP",
+      "macros": [
+        {
+          "hostmacroid": "5935",
+          "hostid": "10540",
+          "macro": "{$AZURE.APP.ID}",
+          "value": "",
+          "description": "The App ID of Microsoft Azure.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5694",
+          "hostid": "10540",
+          "macro": "{$AZURE.DATA.TIMEOUT}",
+          "value": "15s",
+          "description": "API response timeout.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5695",
+          "hostid": "10540",
+          "macro": "{$AZURE.DB.CPU.UTIL.CRIT}",
+          "value": "90",
+          "description": "The critical threshold of CPU utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5936",
+          "hostid": "10540",
+          "macro": "{$AZURE.DB.FAILED.CONN.MAX.WARN}",
+          "value": "25",
+          "description": "The number of failed attempts to connect to the MySQL server for trigger expression.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5697",
+          "hostid": "10540",
+          "macro": "{$AZURE.DB.MEMORY.UTIL.CRIT}",
+          "value": "90",
+          "description": "The critical threshold of memory utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5698",
+          "hostid": "10540",
+          "macro": "{$AZURE.DB.STORAGE.PUSED.CRIT}",
+          "value": "90",
+          "description": "The critical threshold of storage utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5699",
+          "hostid": "10540",
+          "macro": "{$AZURE.DB.STORAGE.PUSED.WARN}",
+          "value": "80",
+          "description": "The warning threshold of storage utilization, expressed in %.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5700",
+          "hostid": "10540",
+          "macro": "{$AZURE.PASSWORD}",
+          "description": "Microsoft Azure password.",
+          "type": "1",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6112",
+          "hostid": "10540",
+          "macro": "{$AZURE.PROXY}",
+          "value": "",
+          "description": "Sets the HTTP proxy value. If this macro is empty, then no proxy is used.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5937",
+          "hostid": "10540",
+          "macro": "{$AZURE.RESOURCE.ID}",
+          "value": "",
+          "description": "Microsoft Azure MySQL server ID.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5938",
+          "hostid": "10540",
+          "macro": "{$AZURE.SUBSCRIPTION.ID}",
+          "value": "",
+          "description": "Microsoft Azure subscription ID.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "5939",
+          "hostid": "10540",
+          "macro": "{$AZURE.TENANT.ID}",
+          "value": "",
+          "description": "Microsoft Azure tenant ID.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "GCP Cloud SQL MySQL Replica by HTTP",
+      "macros": [
+        {
+          "hostmacroid": "6016",
+          "hostid": "10574",
+          "macro": "{$GCP.DATA.TIMEOUT}",
+          "value": "15s",
+          "description": "A response timeout for an API.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6468",
+          "hostid": "10574",
+          "macro": "{$GCP.PROXY}",
+          "value": "",
+          "description": "Sets HTTP proxy value. If this macro is empty then no proxy is used.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6017",
+          "hostid": "10574",
+          "macro": "{$GCP.TIME.WINDOW}",
+          "value": "5m",
+          "description": "Time interval for the data requests.\r\nSupported usage type:\r\n1. The default update interval for most of the items.\r\n2. The minimal time window for the data requested in the Monitoring Query Language REST API request.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "GCP Cloud SQL MySQL by HTTP",
+      "macros": [
+        {
+          "hostmacroid": "6010",
+          "hostid": "10573",
+          "macro": "{$CLOUD_SQL.MYSQL.CPU.UTIL.MAX}",
+          "value": "95",
+          "description": "GCP Cloud SQL MySQL instance CPU usage threshold.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6011",
+          "hostid": "10573",
+          "macro": "{$CLOUD_SQL.MYSQL.DISK.UTIL.CRIT}",
+          "value": "90",
+          "description": "GCP Cloud SQL MySQL instance critical disk usage threshold.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6012",
+          "hostid": "10573",
+          "macro": "{$CLOUD_SQL.MYSQL.DISK.UTIL.WARN}",
+          "value": "80",
+          "description": "GCP Cloud SQL MySQL instance warning disk usage threshold.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6013",
+          "hostid": "10573",
+          "macro": "{$CLOUD_SQL.MYSQL.RAM.UTIL.MAX}",
+          "value": "90",
+          "description": "GCP Cloud SQL MySQL instance RAM usage threshold.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6014",
+          "hostid": "10573",
+          "macro": "{$GCP.DATA.TIMEOUT}",
+          "value": "15s",
+          "description": "A response timeout for an API.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6467",
+          "hostid": "10573",
+          "macro": "{$GCP.PROXY}",
+          "value": "",
+          "description": "Sets HTTP proxy value. If this macro is empty then no proxy is used.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "6015",
+          "hostid": "10573",
+          "macro": "{$GCP.TIME.WINDOW}",
+          "value": "5m",
+          "description": "Time interval for the data requests.\r\nSupported usage type:\r\n1. The default update interval for most of the items.\r\n2. The minimal time window for the data requested in the Monitoring Query Language REST API request.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "MySQL by Zabbix agent 2 active",
+      "macros": [
+        {
+          "hostmacroid": "7047",
+          "hostid": "10646",
+          "macro": "{$MYSQL.ABORTED_CONN.MAX.WARN}",
+          "value": "3",
+          "description": "Number of failed attempts to connect to the MySQL server for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7048",
+          "hostid": "10646",
+          "macro": "{$MYSQL.BUFF_UTIL.MIN.WARN}",
+          "value": "50",
+          "description": "The minimum buffer pool utilization in percentage for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7049",
+          "hostid": "10646",
+          "macro": "{$MYSQL.CREATED_TMP_DISK_TABLES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary tables created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7050",
+          "hostid": "10646",
+          "macro": "{$MYSQL.CREATED_TMP_FILES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary files created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7051",
+          "hostid": "10646",
+          "macro": "{$MYSQL.CREATED_TMP_TABLES.MAX.WARN}",
+          "value": "30",
+          "description": "The maximum number of temporary tables created in memory per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7052",
+          "hostid": "10646",
+          "macro": "{$MYSQL.DBNAME.MATCHES}",
+          "value": ".+",
+          "description": "Filter of discoverable databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7053",
+          "hostid": "10646",
+          "macro": "{$MYSQL.DBNAME.NOT_MATCHES}",
+          "value": "information_schema",
+          "description": "Filter to exclude discovered databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7054",
+          "hostid": "10646",
+          "macro": "{$MYSQL.DSN}",
+          "value": "<Put your DSN>",
+          "description": "System data source name such as <tcp://host:port or unix:/path/to/socket)/>.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7055",
+          "hostid": "10646",
+          "macro": "{$MYSQL.INNODB_LOG_FILES}",
+          "value": "2",
+          "description": "Number of physical files in the InnoDB redo log for calculating `innodb_log_file_size`.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7056",
+          "hostid": "10646",
+          "macro": "{$MYSQL.PASSWORD}",
+          "value": "",
+          "description": "MySQL user password.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7057",
+          "hostid": "10646",
+          "macro": "{$MYSQL.REPL_LAG.MAX.WARN}",
+          "value": "30m",
+          "description": "Amount of time the slave is behind the master for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7058",
+          "hostid": "10646",
+          "macro": "{$MYSQL.SLOW_QUERIES.MAX.WARN}",
+          "value": "3",
+          "description": "Number of slow queries for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7059",
+          "hostid": "10646",
+          "macro": "{$MYSQL.USER}",
+          "value": "",
+          "description": "MySQL user name.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    },
+    {
+      "template": "MySQL by Zabbix agent active",
+      "macros": [
+        {
+          "hostmacroid": "7060",
+          "hostid": "10647",
+          "macro": "{$MYSQL.ABORTED_CONN.MAX.WARN}",
+          "value": "3",
+          "description": "Number of failed attempts to connect to the MySQL server for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7061",
+          "hostid": "10647",
+          "macro": "{$MYSQL.BUFF_UTIL.MIN.WARN}",
+          "value": "50",
+          "description": "The minimum buffer pool utilization in percentage for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7062",
+          "hostid": "10647",
+          "macro": "{$MYSQL.CREATED_TMP_DISK_TABLES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary tables created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7063",
+          "hostid": "10647",
+          "macro": "{$MYSQL.CREATED_TMP_FILES.MAX.WARN}",
+          "value": "10",
+          "description": "The maximum number of temporary files created on a disk per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7064",
+          "hostid": "10647",
+          "macro": "{$MYSQL.CREATED_TMP_TABLES.MAX.WARN}",
+          "value": "30",
+          "description": "The maximum number of temporary tables created in memory per second for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7065",
+          "hostid": "10647",
+          "macro": "{$MYSQL.DBNAME.MATCHES}",
+          "value": ".+",
+          "description": "Filter of discoverable databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7066",
+          "hostid": "10647",
+          "macro": "{$MYSQL.DBNAME.NOT_MATCHES}",
+          "value": "information_schema",
+          "description": "Filter to exclude discovered databases.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7067",
+          "hostid": "10647",
+          "macro": "{$MYSQL.HOST}",
+          "value": "127.0.0.1",
+          "description": "Hostname or IP of MySQL host or container.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7068",
+          "hostid": "10647",
+          "macro": "{$MYSQL.INNODB_LOG_FILES}",
+          "value": "2",
+          "description": "Number of physical files in the InnoDB redo log for calculating `innodb_log_file_size`.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7069",
+          "hostid": "10647",
+          "macro": "{$MYSQL.PORT}",
+          "value": "3306",
+          "description": "MySQL service port.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7070",
+          "hostid": "10647",
+          "macro": "{$MYSQL.REPL_LAG.MAX.WARN}",
+          "value": "30m",
+          "description": "Amount of time the slave is behind the master for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        },
+        {
+          "hostmacroid": "7071",
+          "hostid": "10647",
+          "macro": "{$MYSQL.SLOW_QUERIES.MAX.WARN}",
+          "value": "3",
+          "description": "Number of slow queries for trigger expressions.",
+          "type": "0",
+          "automatic": "0"
+        }
+      ]
+    }
+  ],
+  "host_macros": [
+    {
+      "hostmacroid": "8461",
+      "hostid": "11139",
+      "macro": "{$MYSQL.DSN}",
+      "value": "tcp://127.0.0.1:3306",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8462",
+      "hostid": "11139",
+      "macro": "{$MYSQL.PASSWORD}",
+      "description": "",
+      "type": "1",
+      "automatic": "0"
+    },
+    {
+      "hostmacroid": "8463",
+      "hostid": "11139",
+      "macro": "{$MYSQL.USER}",
+      "value": "root_glpi",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    }
+  ],
+  "fad_macro": [
+    {
+      "hostmacroid": "8609",
+      "hostid": "10941",
+      "macro": "{$SERVICE.NAME.NOT_MATCHES}",
+      "value": "^(?:RemoteRegistry|MMCSS|gupdate|SysmonLog|clr_optimization_v.+|sppsvc|gpsvc|Pml Driver HPZ12|Net Driver HPZ12|MapsBroker|IntelAudioService|Intel\\(R\\) TPM Provisioning Service|dbupdate|DoSvc|CDPUserSvc_.+|WpnUserService_.+|OneSyncSvc_.+|WbioSrvc|BITS|tiledatamodelsvc|GISvc|ShellHWDetection|TrustedInstaller|TabletInputService|CDPSvc|wuauserv|edgeupdate|cbdhsvc_.+|MDCoreSvc|GoogleUpdaterService.*|GoogleUpdaterInternalService.*|iphlpsvc|VeeamGuestHelper|CsInstallService|testenodered)$|nddPrint.*|DCSServer",
+      "description": "",
+      "type": "0",
+      "automatic": "0"
+    }
+  ],
+  "svc_not_tpl": {
+    "hostmacroid": "5282",
+    "hostid": "10081",
+    "macro": "{$SERVICE.NAME.NOT_MATCHES}",
+    "value": "^(?:RemoteRegistry|MMCSS|gupdate|SysmonLog|clr_optimization_v.+|sppsvc|gpsvc|Pml Driver HPZ12|Net Driver HPZ12|MapsBroker|IntelAudioService|Intel\\(R\\) TPM Provisioning Service|dbupdate|DoSvc|CDPUserSvc_.+|WpnUserService_.+|OneSyncSvc_.+|WbioSrvc|BITS|tiledatamodelsvc|GISvc|ShellHWDetection|TrustedInstaller|TabletInputService|CDPSvc|wuauserv|edgeupdate|cbdhsvc_.+|MDCoreSvc|GoogleUpdaterService.*|GoogleUpdaterInternalService.*|iphlpsvc|VeeamGuestHelper|CsInstallService|testenodered)$",
+    "description": "Used in Service discovery. Can be overridden on the host or linked template level.",
+    "type": "0",
+    "automatic": "0"
+  },
+  "proxies": [
+    {
+      "proxyid": "1",
+      "name": "SPO-SRV-V04",
+      "custom_timeouts": "0",
+      "timeout_snmp_agent": "",
+      "timeout_zabbix_agent": ""
+    },
+    {
+      "proxyid": "2",
+      "name": "SCL-SRV-V08",
+      "custom_timeouts": "0",
+      "timeout_snmp_agent": "",
+      "timeout_zabbix_agent": ""
+    }
+  ]
+}

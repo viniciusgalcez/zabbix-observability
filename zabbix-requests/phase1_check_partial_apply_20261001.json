@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": {
+      "method": "item.get",
+      "params": {
+        "itemids": [
+          "108972",
+          "110116"
+        ],
+        "output": [
+          "itemid",
+          "name",
+          "status",
+          "state",
+          "error"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_check_items_partial_20261001.json",
+    "quiet": true
+  },
+  {
+    "arguments": {
+      "method": "itemprototype.get",
+      "params": {
+        "itemids": [
+          "42682"
+        ],
+        "output": [
+          "itemid",
+          "name"
+        ],
+        "selectPreprocessing": "extend"
+      }
+    },
+    "save": "backups/phase1_check_proto_partial_20261001.json",
+    "quiet": true
+  }
+]
