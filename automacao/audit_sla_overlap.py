@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Auditoria: sobreposição de indisponibilidade em serviços compostos (SLA).
+Auditoria: indisponibilidade de aplicações com vários fatores (SLA).
 
-Verifica:
+Para cada app composta (pai + filhos = fatores: API, app, banco, web…):
   1) Só o PAI tem slatier=critico|padrao (filhos NÃO devem ter).
   2) Pai usa algorithm=2 (Most critical of child services) → união.
-  3) Downtime do pai ≈ união das timelines dos filhos (não a soma).
+  3) Downtime do pai ≈ união das timelines dos fatores (não a soma).
 
 Uso (rede interna Capri / .mcp.json):
   python audit_sla_overlap.py

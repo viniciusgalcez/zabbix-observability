@@ -61,6 +61,19 @@ class TestAlarmsToIntervals(unittest.TestCase):
         self.assertTrue(parent_matches_union(union_duration(parent_i), api_i + banco_i))
 
 
+class TestThreeFactors(unittest.TestCase):
+    """API + Home + Banco: união de N fatores, não soma."""
+
+    def test_three_overlapping_factors(self):
+        api = (0, 3600)       # 1h
+        home = (1800, 4200)   # overlap com API + estende 10 min
+        banco = (2400, 6000)  # overlap + estende até 1h40 após início
+        factors = [api, home, banco]
+        self.assertEqual(union_duration(factors), 6000)  # 0..6000 = 1h40
+        self.assertGreater(sum_durations(factors), 6000)
+        self.assertTrue(parent_matches_union(6000, factors))
+
+
 class TestAdjacentAndDisjoint(unittest.TestCase):
     def test_adjacent_merges(self):
         self.assertEqual(union_intervals([(0, 10), (10, 20)]), [(0, 20)])
