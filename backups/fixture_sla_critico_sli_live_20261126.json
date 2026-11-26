@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "captured_at": "2026-11-26",
+    "source": "Zabbix API sla.getsli + service.get (MCP user-zabbix, produção)",
+    "purpose": "Evidência offline: SLA Crítico lista só o serviço PAI Deps Produção (41), não os filhos API/Home/Banco"
+  },
+  "sla": {
+    "slaid": "3",
+    "name": "SLA Crítico",
+    "slo": "99.9",
+    "service_tags": [{"tag": "slatier", "operator": "0", "value": "critico"}]
+  },
+  "sla_getsli_serviceids": [11, 19, 25, 4, 41, 21, 14, 236, 3, 22, 20, 18, 16, 15, 12],
+  "deps_producao": {
+    "serviceid": "41",
+    "name": "Deps Produção",
+    "algorithm": "2",
+    "algorithm_meaning": "Most critical of child services",
+    "tags": [{"tag": "slatier", "value": "critico"}],
+    "problem_tags": [],
+    "children": [
+      {"serviceid": "43", "name": "Deps Produção Banco"},
+      {"serviceid": "202", "name": "Deps Home"},
+      {"serviceid": "203", "name": "Deps API"}
+    ],
+    "children_in_sla_getsli": false,
+    "note": "Filhos 43/202/203 NÃO aparecem em sla.getsli do SLA Crítico → Zabbix mede só o pai (união natural)."
+  },
+  "verdict": {
+    "native_zabbix_does_union_on_parent": true,
+    "need_to_change_zabbix_sla_engine": false,
+    "need_to_fix_custom_report_if_it_sums_children": true
+  }
+}

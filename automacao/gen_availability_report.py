@@ -32,6 +32,8 @@ import datetime as dt
 import urllib.request
 from pathlib import Path
 
+from sla_overlap_lib import union_duration
+
 # ----------------------------------------------------------------------------- config
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -240,7 +242,13 @@ def write_html(path, outages, meta):
           <td>{fmt_dur(o['dur'])}</td>
           <td><span class="badge {badge}">{html.escape(o['cause'])}</span></td>
         </tr>""")
-    total_dur = sum(o["dur"] for o in outages)
+    # Soma bruta conta sobreposição duas vezes (host A + host B no mesmo instante).
+    # Para impacto real no período, usamos UNIÃO dos intervalos, excluindo colaterais
+    # (já cobertos pela causa raiz, ex.: switch). Isso NÃO substitui o SLI do serviço pai
+    # no Zabbix (Deps Produção etc.) — use gen_sla_app_report.py para SLA de aplicação.
+    raw_sum = sum(o["dur"] for o in outages)
+    primary = [o for o in outages if o.get("cause_cls") != "warn"]
+    union_secs = union_duration((o["start"], o["end"]) for o in primary)
     doc = f"""<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8">
 <title>Relatorio de Indisponibilidade — Capricornio Textil</title><style>
 :root{{--bg:#f4f6f9;--card:#fff;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--brand:#b1271b;--brand2:#7a1a12;}}
@@ -260,19 +268,24 @@ tr:hover td{{background:#fafbfc}}
 .badge{{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:600}}
 .b-bad{{background:#fee2e2;color:#991b1b}}.b-warn{{background:#fef3c7;color:#92400e}}
 .b-pend{{background:#f3f4f6;color:#374151}}.b-ok{{background:#dcfce7;color:#166534}}
+.note{{background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:12px 14px;font-size:13px;margin:12px 0}}
 footer{{color:var(--muted);font-size:12px;text-align:center;padding:16px}}</style></head><body><div class="wrap">
 <header><h1>Relatorio de Indisponibilidade</h1>
-<div class="sub">Capricornio Textil S.A. — quedas de disponibilidade com motivo inferido</div></header>
+<div class="sub">Capricornio Textil S.A. — quedas de disponibilidade com motivo inferido (nível host)</div></header>
 <div class="stats">
 <div class="stat"><b>{len(outages)}</b><span>Quedas no periodo</span></div>
-<div class="stat"><b>{fmt_dur(total_dur)}</b><span>Downtime somado</span></div>
+<div class="stat"><b>{fmt_dur(union_secs)}</b><span>Downtime união (sem colateral)</span></div>
+<div class="stat"><b>{fmt_dur(raw_sum)}</b><span>Soma bruta (só referência)</span></div>
 <div class="stat"><b>{html.escape(meta['periodo'])}</b><span>Periodo</span></div>
 <div class="stat"><b>{html.escape(meta['gerado'])}</b><span>Gerado em</span></div>
 </div>
+<div class="note"><b>Atenção:</b> este relatório é por <b>host</b>. Não use a soma bruta como SLA de aplicação
+(Deps API + Banco etc.). No Zabbix, o SLA de app usa o serviço <b>pai</b> (união). Para SLI oficial:
+<code>gen_sla_app_report.py</code>.</div>
 <section><h2>Incidentes</h2>
 <table><thead><tr><th>Host</th><th>Tipo</th><th>Site</th><th>Inicio</th><th>Fim</th><th>Duracao</th><th>Motivo (inferido)</th></tr></thead>
 <tbody>{''.join(rows) or '<tr><td colspan="7">Nenhuma queda no periodo.</td></tr>'}</tbody></table>
-<p style="color:var(--muted);font-size:12px;margin-top:10px">Motivo inferido por correlacao (uptime/reboot, UPS do site, switch raiz). Revise casos "causa nao determinada".</p>
+<p style="color:var(--muted);font-size:12px;margin-top:10px">Motivo inferido por correlacao (uptime/reboot, UPS do site, switch raiz). Revise casos "causa nao determinada". Colaterais entram na lista mas ficam fora do downtime união.</p>
 </section>
 <footer>Zabbix 7.0 — gerado por gen_availability_report.py</footer>
 </div></body></html>"""
